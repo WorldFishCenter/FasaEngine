@@ -1,0 +1,45 @@
+code,description,class,is_fishmeal,is_binder,max_inclusion,note
+# FASA MVP "plausibly-African" ingredient pool.
+# Per-country splits (Kenya / Nigeria / Zambia) deferred to v2.
+# `max_inclusion` blank = no upper bound (LP picks); fish meal cost-share + binder caps applied separately.
+# `is_binder` flag participates in the collective binder cap (default 25% of mass).
+# `is_fishmeal` flag participates in the fish-meal cost-share cap (default 20% of total cost).
+30354,"Corn, ear, ground, dent yellow",cereal,0,0,,
+30355,"Corn, grain",cereal,0,0,,
+30372,"Corn, feed, flour",cereal,0,0,,
+30342,"Corn gluten meal, 43% CP",protein_concentrate,0,0,,
+30343,"Corn gluten meal, 50% CP",protein_concentrate,0,0,,
+31147,"Sorghum, grain",cereal,0,0,,
+31148,"Sorghum, grain, low tannin",cereal,0,0,,Preferred over high-tannin variety for digestibility
+30307,"Cassava, tuber, meal",binder,0,1,,Common starch source / binder in African feeds
+30310,"Cassava, chips",binder,0,1,,
+30316,"Cassava, flour",binder,0,1,,
+31605,"Wheat bran",cereal_byproduct,0,0,,
+31608,"Wheat middlings",cereal_byproduct,0,0,,
+31621,"Wheat flour, Trigo 30, Indonesia",binder,0,1,,Wheat flour acts as a pellet binder
+30937,"Rice bran",cereal_byproduct,0,0,,
+30938,"Rice bran, defatted",cereal_byproduct,0,0,,
+31237,"Soybean meal, dehulled, 48% CP, solvent extracted",protein_meal,0,0,,
+31252,"Soybean meal, USA, dehulled, Standard, 48% CP",protein_meal,0,0,,
+31407,"Sunflower meal, solvent extract, 41% CP",protein_meal,0,0,,
+31405,"Sunflower meal, solvent extract, 30% CP",protein_meal,0,0,,
+30404,"Cottonseed meal, 36% CP, expeller",protein_meal,0,0,,Watch gossypol cap (TX06)
+30410,"Cottonseed meal, degossypoled",protein_meal,0,0,,
+30557,"Groundnut meal, 45% CP, crude fibre < 9%",protein_meal,0,0,,
+30845,"Peanut meal, expeller, with hulls",protein_meal,0,0,,
+27002,"Black soldier fly larvae meal, defatted",insect_meal,0,0,,
+27108,"Black soldier fly, Full-fat, Enviroflight, USA",insect_meal,0,0,,
+10018,"Fish meal, sardine, 66% CP",animal_protein,1,0,,Cost-share cap applied
+10073,"Fish meal, mixed fish, Mauritania, 66% CP",animal_protein,1,0,,Africa-coast sourcing
+10040,"Fish meal, tilapia, processing by-product, 42%",animal_protein,1,0,,Local by-product alternative
+20002,"Blood meal, ring dried",animal_protein,0,0,0.05,Palatability ceiling (industry default 5%)
+23002,"Poultry by-product meal, feed-grade, 60% CP",animal_protein,0,0,,
+40205,"Yeast, Brewers yeast, 25% CP",functional,0,0,,
+52113,"Palm oil",lipid,0,0,,
+52117,"Soybean oil",lipid,0,0,,
+52118,"Sunflower oil",lipid,0,0,,
+62138,"Limestone (Calcium Carbonate)",mineral,0,0,,
+62134,"Dicalcium phosphate anydrous, DCP, CaHPO4.H2O",mineral,0,0,,
+62135,"Salt, NaCl",mineral,0,0,,
+61109,"L-Lysine HCL",synthetic_aa,0,0,,Optional; remove if not locally available
+61111,"DL-Methionine",synthetic_aa,0,0,,Optional; remove if not locally available

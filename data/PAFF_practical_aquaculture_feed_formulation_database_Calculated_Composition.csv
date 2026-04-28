@@ -1,0 +1,1297 @@
+nutrient,unit,value,species
+Dry Matter,%,90.66,Nile Tilapia - Starter
+Crude Protein,%,40.41,Nile Tilapia - Starter
+Crude Lipid,%,5.00,Nile Tilapia - Starter
+Crude Fibre,%,3.10,Nile Tilapia - Starter
+Ash,%,7.64,Nile Tilapia - Starter
+NFE,%,34.51,Nile Tilapia - Starter
+Starch,%,17.00,Nile Tilapia - Starter
+Dig CP -fish,%,36.00,Nile Tilapia - Starter
+DE Fish Carni MJ,MJ/kg,14.01,Nile Tilapia - Starter
+DE Fish Carni kcal,kcal/kg,3350,Nile Tilapia - Starter
+Arginine,%,2.71,Nile Tilapia - Starter
+Histidine,%,1.08,Nile Tilapia - Starter
+Isoleucine,%,1.95,Nile Tilapia - Starter
+Leucine,%,3.64,Nile Tilapia - Starter
+Lysine,%,2.36,Nile Tilapia - Starter
+Methionine,%,0.77,Nile Tilapia - Starter
+Phenylalanine,%,2.08,Nile Tilapia - Starter
+Threonine,%,1.53,Nile Tilapia - Starter
+Tryptophan,%,0.47,Nile Tilapia - Starter
+Valine,%,2.10,Nile Tilapia - Starter
+Cystine,%,0.61,Nile Tilapia - Starter
+Tyrosine,%,1.46,Nile Tilapia - Starter
+Taurine,%,0.03,Nile Tilapia - Starter
+Linoleic 18:2 n-6,%,0.17,Nile Tilapia - Starter
+EPA 20:5 n-3,%,0.16,Nile Tilapia - Starter
+DHA 22:6 n-3,%,0.12,Nile Tilapia - Starter
+EPA+DHA,%,0.28,Nile Tilapia - Starter
+Sum_n_3,%,0.50,Nile Tilapia - Starter
+Linolenic 18:3 n-3,%,1.49,Nile Tilapia - Starter
+Arachidonic 20:4 n-6,%,0.01,Nile Tilapia - Starter
+Sum n-6,%,1.67,Nile Tilapia - Starter
+Phospholipids,%,0.46,Nile Tilapia - Starter
+Cholesterol,mg,286.69,Nile Tilapia - Starter
+Calcium,%,1.14,Nile Tilapia - Starter
+Phosphorus,%,1.33,Nile Tilapia - Starter
+Digestible P,%,0.81,Nile Tilapia - Starter
+Dry Matter,%,90.23,Nile Tilapia - Grower
+Crude Protein,%,35.01,Nile Tilapia - Grower
+Crude Lipid,%,7.00,Nile Tilapia - Grower
+Crude Fibre,%,4.13,Nile Tilapia - Grower
+Ash,%,7.56,Nile Tilapia - Grower
+NFE,%,36.53,Nile Tilapia - Grower
+Starch,%,19.00,Nile Tilapia - Grower
+Dig CP -fish,%,31.00,Nile Tilapia - Grower
+DE Fish Carni MJ,MJ/kg,13.90,Nile Tilapia - Grower
+DE Fish Carni kcal,kcal/kg,3322,Nile Tilapia - Grower
+Arginine,%,2.38,Nile Tilapia - Grower
+Histidine,%,0.91,Nile Tilapia - Grower
+Isoleucine,%,1.61,Nile Tilapia - Grower
+Leucine,%,2.94,Nile Tilapia - Grower
+Lysine,%,2.04,Nile Tilapia - Grower
+Methionine,%,0.67,Nile Tilapia - Grower
+Phenylalanine,%,1.77,Nile Tilapia - Grower
+Threonine,%,1.32,Nile Tilapia - Grower
+Tryptophan,%,0.40,Nile Tilapia - Grower
+Valine,%,1.80,Nile Tilapia - Grower
+Cystine,%,0.56,Nile Tilapia - Grower
+Tyrosine,%,1.20,Nile Tilapia - Grower
+Taurine,%,0.02,Nile Tilapia - Grower
+Linoleic 18:2 n-6,%,0.14,Nile Tilapia - Grower
+EPA 20:5 n-3,%,0.20,Nile Tilapia - Grower
+DHA 22:6 n-3,%,0.21,Nile Tilapia - Grower
+EPA+DHA,%,0.40,Nile Tilapia - Grower
+Sum_n_3,%,0.60,Nile Tilapia - Grower
+Linolenic 18:3 n-3,%,1.31,Nile Tilapia - Grower
+Arachidonic 20:4 n-6,%,0.04,Nile Tilapia - Grower
+Sum n-6,%,1.50,Nile Tilapia - Grower
+Phospholipids,%,0.50,Nile Tilapia - Grower
+Cholesterol,mg,227.29,Nile Tilapia - Grower
+Calcium,%,1.04,Nile Tilapia - Grower
+Phosphorus,%,1.19,Nile Tilapia - Grower
+Digestible P,%,0.64,Nile Tilapia - Grower
+Dry Matter,%,90.08,Nile Tilapia - Finisher
+Crude Protein,%,26.77,Nile Tilapia - Finisher
+Crude Lipid,%,7.00,Nile Tilapia - Finisher
+Crude Fibre,%,5.47,Nile Tilapia - Finisher
+Ash,%,6.66,Nile Tilapia - Finisher
+NFE,%,44.18,Nile Tilapia - Finisher
+Starch,%,19.00,Nile Tilapia - Finisher
+Dig CP -fish,%,23.00,Nile Tilapia - Finisher
+DE Fish Carni MJ,MJ/kg,12.52,Nile Tilapia - Finisher
+DE Fish Carni kcal,kcal/kg,2992,Nile Tilapia - Finisher
+Arginine,%,1.86,Nile Tilapia - Finisher
+Histidine,%,0.71,Nile Tilapia - Finisher
+Isoleucine,%,1.18,Nile Tilapia - Finisher
+Leucine,%,2.04,Nile Tilapia - Finisher
+Lysine,%,1.50,Nile Tilapia - Finisher
+Methionine,%,0.60,Nile Tilapia - Finisher
+Phenylalanine,%,1.29,Nile Tilapia - Finisher
+Threonine,%,1.00,Nile Tilapia - Finisher
+Tryptophan,%,0.33,Nile Tilapia - Finisher
+Valine,%,1.37,Nile Tilapia - Finisher
+Cystine,%,0.46,Nile Tilapia - Finisher
+Tyrosine,%,0.89,Nile Tilapia - Finisher
+Taurine,%,0.01,Nile Tilapia - Finisher
+Linoleic 18:2 n-6,%,0.35,Nile Tilapia - Finisher
+EPA 20:5 n-3,%,0.00,Nile Tilapia - Finisher
+DHA 22:6 n-3,%,0.00,Nile Tilapia - Finisher
+EPA+DHA,%,0.01,Nile Tilapia - Finisher
+Sum_n_3,%,0.40,Nile Tilapia - Finisher
+Linolenic 18:3 n-3,%,3.13,Nile Tilapia - Finisher
+Arachidonic 20:4 n-6,%,0.02,Nile Tilapia - Finisher
+Sum n-6,%,3.51,Nile Tilapia - Finisher
+Phospholipids,%,0.54,Nile Tilapia - Finisher
+Cholesterol,mg,77.08,Nile Tilapia - Finisher
+Calcium,%,0.70,Nile Tilapia - Finisher
+Phosphorus,%,1.03,Nile Tilapia - Finisher
+Digestible P,%,0.50,Nile Tilapia - Finisher
+Dry Matter,%,89.69,Whiteleg Shrimp - Starter
+Crude Protein,%,41.40,Whiteleg Shrimp - Starter
+Crude Lipid,%,6.05,Whiteleg Shrimp - Starter
+Crude Fibre,%,2.31,Whiteleg Shrimp - Starter
+Ash,%,7.03,Whiteleg Shrimp - Starter
+NFE,%,32.89,Whiteleg Shrimp - Starter
+Starch,%,18.11,Whiteleg Shrimp - Starter
+Dig CP -fish,%,37.00,Whiteleg Shrimp - Starter
+DE Fish Carni MJ,MJ/kg,14.47,Whiteleg Shrimp - Starter
+DE Fish Carni kcal,kcal/kg,3458,Whiteleg Shrimp - Starter
+Arginine,%,2.74,Whiteleg Shrimp - Starter
+Histidine,%,1.07,Whiteleg Shrimp - Starter
+Isoleucine,%,1.91,Whiteleg Shrimp - Starter
+Leucine,%,3.62,Whiteleg Shrimp - Starter
+Lysine,%,2.81,Whiteleg Shrimp - Starter
+Methionine,%,0.88,Whiteleg Shrimp - Starter
+Phenylalanine,%,2.00,Whiteleg Shrimp - Starter
+Threonine,%,1.50,Whiteleg Shrimp - Starter
+Tryptophan,%,0.48,Whiteleg Shrimp - Starter
+Valine,%,2.08,Whiteleg Shrimp - Starter
+Cystine,%,0.59,Whiteleg Shrimp - Starter
+Tyrosine,%,1.40,Whiteleg Shrimp - Starter
+Taurine,%,0.08,Whiteleg Shrimp - Starter
+Linoleic 18:2 n-6,%,0.14,Whiteleg Shrimp - Starter
+EPA 20:5 n-3,%,0.24,Whiteleg Shrimp - Starter
+DHA 22:6 n-3,%,0.23,Whiteleg Shrimp - Starter
+EPA+DHA,%,0.47,Whiteleg Shrimp - Starter
+Sum_n_3,%,0.68,Whiteleg Shrimp - Starter
+Linolenic 18:3 n-3,%,1.33,Whiteleg Shrimp - Starter
+Arachidonic 20:4 n-6,%,0.03,Whiteleg Shrimp - Starter
+Sum n-6,%,1.51,Whiteleg Shrimp - Starter
+Phospholipids,%,1.21,Whiteleg Shrimp - Starter
+Cholesterol,mg,857.12,Whiteleg Shrimp - Starter
+Calcium,%,1.21,Whiteleg Shrimp - Starter
+Phosphorus,%,1.13,Whiteleg Shrimp - Starter
+Digestible P,%,0.61,Whiteleg Shrimp - Starter
+Dry Matter,%,89.72,Whiteleg Shrimp - Grower
+Crude Protein,%,39.89,Whiteleg Shrimp - Grower
+Crude Lipid,%,6.55,Whiteleg Shrimp - Grower
+Crude Fibre,%,2.30,Whiteleg Shrimp - Grower
+Ash,%,8.60,Whiteleg Shrimp - Grower
+NFE,%,32.36,Whiteleg Shrimp - Grower
+Starch,%,18.00,Whiteleg Shrimp - Grower
+Dig CP -fish,%,35.32,Whiteleg Shrimp - Grower
+DE Fish Carni MJ,MJ/kg,14.21,Whiteleg Shrimp - Grower
+DE Fish Carni kcal,kcal/kg,3385,Whiteleg Shrimp - Grower
+Arginine,%,2.74,Whiteleg Shrimp - Grower
+Histidine,%,1.14,Whiteleg Shrimp - Grower
+Isoleucine,%,1.90,Whiteleg Shrimp - Grower
+Leucine,%,3.07,Whiteleg Shrimp - Grower
+Lysine,%,2.43,Whiteleg Shrimp - Grower
+Methionine,%,0.84,Whiteleg Shrimp - Grower
+Phenylalanine,%,2.03,Whiteleg Shrimp - Grower
+Threonine,%,1.54,Whiteleg Shrimp - Grower
+Tryptophan,%,0.51,Whiteleg Shrimp - Grower
+Valine,%,2.14,Whiteleg Shrimp - Grower
+Cystine,%,0.58,Whiteleg Shrimp - Grower
+Tyrosine,%,1.43,Whiteleg Shrimp - Grower
+Taurine,%,0.08,Whiteleg Shrimp - Grower
+Linoleic 18:2 n-6,%,0.23,Whiteleg Shrimp - Grower
+EPA 20:5 n-3,%,0.47,Whiteleg Shrimp - Grower
+DHA 22:6 n-3,%,0.37,Whiteleg Shrimp - Grower
+EPA+DHA,%,0.84,Whiteleg Shrimp - Grower
+Sum_n_3,%,1.19,Whiteleg Shrimp - Grower
+Linolenic 18:3 n-3,%,0.99,Whiteleg Shrimp - Grower
+Arachidonic 20:4 n-6,%,0.02,Whiteleg Shrimp - Grower
+Sum n-6,%,1.13,Whiteleg Shrimp - Grower
+Phospholipids,%,0.90,Whiteleg Shrimp - Grower
+Cholesterol,mg,1036.05,Whiteleg Shrimp - Grower
+Calcium,%,1.46,Whiteleg Shrimp - Grower
+Phosphorus,%,1.55,Whiteleg Shrimp - Grower
+Digestible P,%,0.90,Whiteleg Shrimp - Grower
+Dry Matter,%,88.45,Whiteleg Shrimp - Finisher
+Crude Protein,%,34.97,Whiteleg Shrimp - Finisher
+Crude Lipid,%,6.00,Whiteleg Shrimp - Finisher
+Crude Fibre,%,3.00,Whiteleg Shrimp - Finisher
+Ash,%,6.06,Whiteleg Shrimp - Finisher
+NFE,%,38.42,Whiteleg Shrimp - Finisher
+Starch,%,20.34,Whiteleg Shrimp - Finisher
+Dig CP -fish,%,31.00,Whiteleg Shrimp - Finisher
+DE Fish Carni MJ,MJ/kg,13.62,Whiteleg Shrimp - Finisher
+DE Fish Carni kcal,kcal/kg,3255,Whiteleg Shrimp - Finisher
+Arginine,%,2.37,Whiteleg Shrimp - Finisher
+Histidine,%,0.92,Whiteleg Shrimp - Finisher
+Isoleucine,%,1.53,Whiteleg Shrimp - Finisher
+Leucine,%,2.59,Whiteleg Shrimp - Finisher
+Lysine,%,2.15,Whiteleg Shrimp - Finisher
+Methionine,%,0.65,Whiteleg Shrimp - Finisher
+Phenylalanine,%,1.66,Whiteleg Shrimp - Finisher
+Threonine,%,1.34,Whiteleg Shrimp - Finisher
+Tryptophan,%,0.46,Whiteleg Shrimp - Finisher
+Valine,%,1.72,Whiteleg Shrimp - Finisher
+Cystine,%,0.56,Whiteleg Shrimp - Finisher
+Tyrosine,%,1.11,Whiteleg Shrimp - Finisher
+Taurine,%,0.07,Whiteleg Shrimp - Finisher
+Linoleic 18:2 n-6,%,0.19,Whiteleg Shrimp - Finisher
+EPA 20:5 n-3,%,0.23,Whiteleg Shrimp - Finisher
+DHA 22:6 n-3,%,0.21,Whiteleg Shrimp - Finisher
+EPA+DHA,%,0.45,Whiteleg Shrimp - Finisher
+Sum_n_3,%,0.70,Whiteleg Shrimp - Finisher
+Linolenic 18:3 n-3,%,1.47,Whiteleg Shrimp - Finisher
+Arachidonic 20:4 n-6,%,0.02,Whiteleg Shrimp - Finisher
+Sum n-6,%,1.66,Whiteleg Shrimp - Finisher
+Phospholipids,%,1.19,Whiteleg Shrimp - Finisher
+Cholesterol,mg,693.18,Whiteleg Shrimp - Finisher
+Calcium,%,0.83,Whiteleg Shrimp - Finisher
+Phosphorus,%,0.93,Whiteleg Shrimp - Finisher
+Digestible P,%,0.39,Whiteleg Shrimp - Finisher
+Dry Matter,%,92.85,Atlantic Salmon - Starter
+Crude Protein,%,44.00,Atlantic Salmon - Starter
+Crude Lipid,%,24.00,Atlantic Salmon - Starter
+Crude Fibre,%,1.00,Atlantic Salmon - Starter
+Ash,%,7.55,Atlantic Salmon - Starter
+NFE,%,16.35,Atlantic Salmon - Starter
+Starch,%,11.86,Atlantic Salmon - Starter
+Dig CP -fish,%,39.00,Atlantic Salmon - Starter
+DE Fish Carni MJ,MJ/kg,19.88,Atlantic Salmon - Starter
+DE Fish Carni kcal,kcal/kg,4750,Atlantic Salmon - Starter
+Arginine,%,2.57,Atlantic Salmon - Starter
+Histidine,%,1.30,Atlantic Salmon - Starter
+Isoleucine,%,1.84,Atlantic Salmon - Starter
+Leucine,%,3.99,Atlantic Salmon - Starter
+Lysine,%,3.37,Atlantic Salmon - Starter
+Methionine,%,0.98,Atlantic Salmon - Starter
+Phenylalanine,%,2.25,Atlantic Salmon - Starter
+Threonine,%,1.70,Atlantic Salmon - Starter
+Tryptophan,%,0.43,Atlantic Salmon - Starter
+Valine,%,2.40,Atlantic Salmon - Starter
+Cystine,%,0.48,Atlantic Salmon - Starter
+Tyrosine,%,1.66,Atlantic Salmon - Starter
+Taurine,%,0.10,Atlantic Salmon - Starter
+Linoleic 18:2 n-6,%,1.36,Atlantic Salmon - Starter
+EPA 20:5 n-3,%,1.56,Atlantic Salmon - Starter
+DHA 22:6 n-3,%,0.90,Atlantic Salmon - Starter
+EPA+DHA,%,2.46,Atlantic Salmon - Starter
+Sum_n_3,%,4.24,Atlantic Salmon - Starter
+Linolenic 18:3 n-3,%,4.06,Atlantic Salmon - Starter
+Arachidonic 20:4 n-6,%,0.03,Atlantic Salmon - Starter
+Sum n-6,%,4.55,Atlantic Salmon - Starter
+Phospholipids,%,2.82,Atlantic Salmon - Starter
+Cholesterol,mg,1805.00,Atlantic Salmon - Starter
+Calcium,%,1.50,Atlantic Salmon - Starter
+Phosphorus,%,1.23,Atlantic Salmon - Starter
+Digestible P,%,0.80,Atlantic Salmon - Starter
+Dry Matter,%,93.15,Atlantic Salmon - Grower
+Crude Protein,%,42.00,Atlantic Salmon - Grower
+Crude Lipid,%,28.00,Atlantic Salmon - Grower
+Crude Fibre,%,1.11,Atlantic Salmon - Grower
+Ash,%,6.67,Atlantic Salmon - Grower
+NFE,%,15.37,Atlantic Salmon - Grower
+Starch,%,10.24,Atlantic Salmon - Grower
+Dig CP -fish,%,37.50,Atlantic Salmon - Grower
+DE Fish Carni MJ,MJ/kg,20.76,Atlantic Salmon - Grower
+DE Fish Carni kcal,kcal/kg,4962,Atlantic Salmon - Grower
+Arginine,%,2.49,Atlantic Salmon - Grower
+Histidine,%,1.24,Atlantic Salmon - Grower
+Isoleucine,%,1.76,Atlantic Salmon - Grower
+Leucine,%,3.88,Atlantic Salmon - Grower
+Lysine,%,3.18,Atlantic Salmon - Grower
+Methionine,%,0.89,Atlantic Salmon - Grower
+Phenylalanine,%,2.19,Atlantic Salmon - Grower
+Threonine,%,1.59,Atlantic Salmon - Grower
+Tryptophan,%,0.40,Atlantic Salmon - Grower
+Valine,%,2.29,Atlantic Salmon - Grower
+Cystine,%,0.52,Atlantic Salmon - Grower
+Tyrosine,%,1.56,Atlantic Salmon - Grower
+Taurine,%,0.08,Atlantic Salmon - Grower
+Linoleic 18:2 n-6,%,1.40,Atlantic Salmon - Grower
+EPA 20:5 n-3,%,1.72,Atlantic Salmon - Grower
+DHA 22:6 n-3,%,0.95,Atlantic Salmon - Grower
+EPA+DHA,%,2.67,Atlantic Salmon - Grower
+Sum_n_3,%,4.52,Atlantic Salmon - Grower
+Linolenic 18:3 n-3,%,4.72,Atlantic Salmon - Grower
+Arachidonic 20:4 n-6,%,0.03,Atlantic Salmon - Grower
+Sum n-6,%,5.28,Atlantic Salmon - Grower
+Phospholipids,%,2.84,Atlantic Salmon - Grower
+Cholesterol,mg,1560.00,Atlantic Salmon - Grower
+Calcium,%,1.35,Atlantic Salmon - Grower
+Phosphorus,%,1.12,Atlantic Salmon - Grower
+Digestible P,%,0.70,Atlantic Salmon - Grower
+Dry Matter,%,93.04,Atlantic Salmon - Finisher
+Crude Protein,%,36.90,Atlantic Salmon - Finisher
+Crude Lipid,%,32.00,Atlantic Salmon - Finisher
+Crude Fibre,%,1.13,Atlantic Salmon - Finisher
+Ash,%,5.38,Atlantic Salmon - Finisher
+NFE,%,17.80,Atlantic Salmon - Finisher
+Starch,%,12.22,Atlantic Salmon - Finisher
+Dig CP -fish,%,33.00,Atlantic Salmon - Finisher
+DE Fish Carni MJ,MJ/kg,21.56,Atlantic Salmon - Finisher
+DE Fish Carni kcal,kcal/kg,5153,Atlantic Salmon - Finisher
+Arginine,%,2.24,Atlantic Salmon - Finisher
+Histidine,%,1.15,Atlantic Salmon - Finisher
+Isoleucine,%,1.51,Atlantic Salmon - Finisher
+Leucine,%,3.36,Atlantic Salmon - Finisher
+Lysine,%,2.89,Atlantic Salmon - Finisher
+Methionine,%,0.70,Atlantic Salmon - Finisher
+Phenylalanine,%,1.93,Atlantic Salmon - Finisher
+Threonine,%,1.38,Atlantic Salmon - Finisher
+Tryptophan,%,0.35,Atlantic Salmon - Finisher
+Valine,%,2.04,Atlantic Salmon - Finisher
+Cystine,%,0.55,Atlantic Salmon - Finisher
+Tyrosine,%,1.34,Atlantic Salmon - Finisher
+Taurine,%,0.06,Atlantic Salmon - Finisher
+Linoleic 18:2 n-6,%,1.76,Atlantic Salmon - Finisher
+EPA 20:5 n-3,%,1.93,Atlantic Salmon - Finisher
+DHA 22:6 n-3,%,1.04,Atlantic Salmon - Finisher
+EPA+DHA,%,2.96,Atlantic Salmon - Finisher
+Sum_n_3,%,5.25,Atlantic Salmon - Finisher
+Linolenic 18:3 n-3,%,5.28,Atlantic Salmon - Finisher
+Arachidonic 20:4 n-6,%,0.03,Atlantic Salmon - Finisher
+Sum n-6,%,5.90,Atlantic Salmon - Finisher
+Phospholipids,%,2.60,Atlantic Salmon - Finisher
+Cholesterol,mg,1290.00,Atlantic Salmon - Finisher
+Calcium,%,1.10,Atlantic Salmon - Finisher
+Phosphorus,%,0.94,Atlantic Salmon - Finisher
+Digestible P,%,0.56,Atlantic Salmon - Finisher
+Dry Matter,%,91.79,Rainbow trout - Starter
+Crude Protein,%,42.05,Rainbow trout - Starter
+Crude Lipid,%,20.00,Rainbow trout - Starter
+Crude Fibre,%,2.16,Rainbow trout - Starter
+Ash,%,7.16,Rainbow trout - Starter
+NFE,%,20.41,Rainbow trout - Starter
+Starch,%,10.00,Rainbow trout - Starter
+Dig CP -fish,%,37.60,Rainbow trout - Starter
+DE Fish Carni MJ,MJ/kg,18.36,Rainbow trout - Starter
+DE Fish Carni kcal,kcal/kg,4388,Rainbow trout - Starter
+Arginine,%,2.96,Rainbow trout - Starter
+Histidine,%,1.04,Rainbow trout - Starter
+Isoleucine,%,1.96,Rainbow trout - Starter
+Leucine,%,3.27,Rainbow trout - Starter
+Lysine,%,2.65,Rainbow trout - Starter
+Methionine,%,0.85,Rainbow trout - Starter
+Phenylalanine,%,2.19,Rainbow trout - Starter
+Threonine,%,1.70,Rainbow trout - Starter
+Tryptophan,%,0.51,Rainbow trout - Starter
+Valine,%,2.34,Rainbow trout - Starter
+Cystine,%,0.78,Rainbow trout - Starter
+Tyrosine,%,1.37,Rainbow trout - Starter
+Taurine,%,0.06,Rainbow trout - Starter
+Linoleic 18:2 n-6,%,1.55,Rainbow trout - Starter
+EPA 20:5 n-3,%,0.86,Rainbow trout - Starter
+DHA 22:6 n-3,%,0.61,Rainbow trout - Starter
+EPA+DHA,%,1.50,Rainbow trout - Starter
+Sum_n_3,%,3.39,Rainbow trout - Starter
+Linolenic 18:3 n-3,%,3.29,Rainbow trout - Starter
+Arachidonic 20:4 n-6,%,0.06,Rainbow trout - Starter
+Sum n-6,%,3.73,Rainbow trout - Starter
+Phospholipids,%,1.20,Rainbow trout - Starter
+Cholesterol,mg,856,Rainbow trout - Starter
+Calcium,%,1.27,Rainbow trout - Starter
+Phosphorus,%,1.12,Rainbow trout - Starter
+Digestible P,%,0.68,Rainbow trout - Starter
+Dry Matter,%,91.86,Rainbow trout - Grower
+Crude Protein,%,40.02,Rainbow trout - Grower
+Crude Lipid,%,22.00,Rainbow trout - Grower
+Crude Fibre,%,2.22,Rainbow trout - Grower
+Ash,%,6.90,Rainbow trout - Grower
+NFE,%,20.72,Rainbow trout - Grower
+Starch,%,10.00,Rainbow trout - Grower
+Dig CP -fish,%,35.70,Rainbow trout - Grower
+DE Fish Carni MJ,MJ/kg,19.07,Rainbow trout - Grower
+DE Fish Carni kcal,kcal/kg,4559,Rainbow trout - Grower
+Arginine,%,2.81,Rainbow trout - Grower
+Histidine,%,0.99,Rainbow trout - Grower
+Isoleucine,%,1.85,Rainbow trout - Grower
+Leucine,%,3.10,Rainbow trout - Grower
+Lysine,%,2.50,Rainbow trout - Grower
+Methionine,%,0.82,Rainbow trout - Grower
+Phenylalanine,%,2.08,Rainbow trout - Grower
+Threonine,%,1.61,Rainbow trout - Grower
+Tryptophan,%,0.48,Rainbow trout - Grower
+Valine,%,2.21,Rainbow trout - Grower
+Cystine,%,0.76,Rainbow trout - Grower
+Tyrosine,%,1.30,Rainbow trout - Grower
+Taurine,%,0.06,Rainbow trout - Grower
+Linoleic 18:2 n-6,%,1.85,Rainbow trout - Grower
+EPA 20:5 n-3,%,0.77,Rainbow trout - Grower
+DHA 22:6 n-3,%,0.53,Rainbow trout - Grower
+EPA+DHA,%,1.30,Rainbow trout - Grower
+Sum_n_3,%,3.50,Rainbow trout - Grower
+Linolenic 18:3 n-3,%,3.83,Rainbow trout - Grower
+Arachidonic 20:4 n-6,%,0.05,Rainbow trout - Grower
+Sum n-6,%,4.32,Rainbow trout - Grower
+Phospholipids,%,1.22,Rainbow trout - Grower
+Cholesterol,mg,804,Rainbow trout - Grower
+Calcium,%,1.22,Rainbow trout - Grower
+Phosphorus,%,1.08,Rainbow trout - Grower
+Digestible P,%,0.65,Rainbow trout - Grower
+Dry Matter,%,92.22,Rainbow trout - Finisher
+Crude Protein,%,38.10,Rainbow trout - Finisher
+Crude Lipid,%,26.00,Rainbow trout - Finisher
+Crude Fibre,%,1.94,Rainbow trout - Finisher
+Ash,%,6.50,Rainbow trout - Finisher
+NFE,%,19.69,Rainbow trout - Finisher
+Starch,%,10.00,Rainbow trout - Finisher
+Dig CP -fish,%,34.00,Rainbow trout - Finisher
+DE Fish Carni MJ,MJ/kg,19.66,Rainbow trout - Finisher
+DE Fish Carni kcal,kcal/kg,4700,Rainbow trout - Finisher
+Arginine,%,2.66,Rainbow trout - Finisher
+Histidine,%,0.94,Rainbow trout - Finisher
+Isoleucine,%,1.76,Rainbow trout - Finisher
+Leucine,%,2.95,Rainbow trout - Finisher
+Lysine,%,2.38,Rainbow trout - Finisher
+Methionine,%,0.85,Rainbow trout - Finisher
+Phenylalanine,%,1.98,Rainbow trout - Finisher
+Threonine,%,1.53,Rainbow trout - Finisher
+Tryptophan,%,0.46,Rainbow trout - Finisher
+Valine,%,2.11,Rainbow trout - Finisher
+Cystine,%,0.73,Rainbow trout - Finisher
+Tyrosine,%,1.23,Rainbow trout - Finisher
+Taurine,%,0.06,Rainbow trout - Finisher
+Linoleic 18:2 n-6,%,2.45,Rainbow trout - Finisher
+EPA 20:5 n-3,%,0.60,Rainbow trout - Finisher
+DHA 22:6 n-3,%,0.40,Rainbow trout - Finisher
+EPA+DHA,%,1.00,Rainbow trout - Finisher
+Sum_n_3,%,3.83,Rainbow trout - Finisher
+Linolenic 18:3 n-3,%,4.80,Rainbow trout - Finisher
+Arachidonic 20:4 n-6,%,0.04,Rainbow trout - Finisher
+Sum n-6,%,5.38,Rainbow trout - Finisher
+Phospholipids,%,1.27,Rainbow trout - Finisher
+Cholesterol,mg,759,Rainbow trout - Finisher
+Calcium,%,1.17,Rainbow trout - Finisher
+Phosphorus,%,0.99,Rainbow trout - Finisher
+Digestible P,%,0.60,Rainbow trout - Finisher
+Dry Matter,%,92.25,Asian Seabass - Starter
+Crude Protein,%,49.36,Asian Seabass - Starter
+Crude Lipid,%,11.00,Asian Seabass - Starter
+Crude Fibre,%,2.06,Asian Seabass - Starter
+Ash,%,10.03,Asian Seabass - Starter
+NFE,%,19.80,Asian Seabass - Starter
+Starch,%,10.50,Asian Seabass - Starter
+Dig CP -fish,%,44.00,Asian Seabass - Starter
+DE Fish Carni MJ,MJ/kg,16.38,Asian Seabass - Starter
+DE Fish Carni kcal,kcal/kg,3916,Asian Seabass - Starter
+Arginine,%,3.30,Asian Seabass - Starter
+Histidine,%,1.42,Asian Seabass - Starter
+Isoleucine,%,2.09,Asian Seabass - Starter
+Leucine,%,4.12,Asian Seabass - Starter
+Lysine,%,3.19,Asian Seabass - Starter
+Methionine,%,1.03,Asian Seabass - Starter
+Phenylalanine,%,2.35,Asian Seabass - Starter
+Threonine,%,1.90,Asian Seabass - Starter
+Tryptophan,%,0.77,Asian Seabass - Starter
+Valine,%,2.64,Asian Seabass - Starter
+Cystine,%,0.87,Asian Seabass - Starter
+Tyrosine,%,1.77,Asian Seabass - Starter
+Taurine,%,0.09,Asian Seabass - Starter
+Linoleic 18:2 n-6,%,0.33,Asian Seabass - Starter
+EPA 20:5 n-3,%,0.38,Asian Seabass - Starter
+DHA 22:6 n-3,%,0.30,Asian Seabass - Starter
+EPA+DHA,%,0.68,Asian Seabass - Starter
+Sum_n_3,%,1.12,Asian Seabass - Starter
+Linolenic 18:3 n-3,%,3.01,Asian Seabass - Starter
+Arachidonic 20:4 n-6,%,0.03,Asian Seabass - Starter
+Sum n-6,%,3.37,Asian Seabass - Starter
+Phospholipids,%,2.28,Asian Seabass - Starter
+Cholesterol,mg,1222.59,Asian Seabass - Starter
+Calcium,%,2.46,Asian Seabass - Starter
+Phosphorus,%,1.47,Asian Seabass - Starter
+Digestible P,%,0.88,Asian Seabass - Starter
+Dry Matter,%,91.81,Asian Seabass - Grower
+Crude Protein,%,43.72,Asian Seabass - Grower
+Crude Lipid,%,12.00,Asian Seabass - Grower
+Crude Fibre,%,2.14,Asian Seabass - Grower
+Ash,%,8.40,Asian Seabass - Grower
+NFE,%,25.55,Asian Seabass - Grower
+Starch,%,14.00,Asian Seabass - Grower
+Dig CP -fish,%,39.00,Asian Seabass - Grower
+DE Fish Carni MJ,MJ/kg,16.26,Asian Seabass - Grower
+DE Fish Carni kcal,kcal/kg,3885,Asian Seabass - Grower
+Arginine,%,2.93,Asian Seabass - Grower
+Histidine,%,1.25,Asian Seabass - Grower
+Isoleucine,%,1.80,Asian Seabass - Grower
+Leucine,%,3.59,Asian Seabass - Grower
+Lysine,%,2.77,Asian Seabass - Grower
+Methionine,%,0.91,Asian Seabass - Grower
+Phenylalanine,%,2.12,Asian Seabass - Grower
+Threonine,%,1.67,Asian Seabass - Grower
+Tryptophan,%,0.67,Asian Seabass - Grower
+Valine,%,2.38,Asian Seabass - Grower
+Cystine,%,0.77,Asian Seabass - Grower
+Tyrosine,%,1.52,Asian Seabass - Grower
+Taurine,%,0.07,Asian Seabass - Grower
+Linoleic 18:2 n-6,%,0.48,Asian Seabass - Grower
+EPA 20:5 n-3,%,0.28,Asian Seabass - Grower
+DHA 22:6 n-3,%,0.23,Asian Seabass - Grower
+EPA+DHA,%,0.51,Asian Seabass - Grower
+Sum_n_3,%,1.10,Asian Seabass - Grower
+Linolenic 18:3 n-3,%,4.20,Asian Seabass - Grower
+Arachidonic 20:4 n-6,%,0.02,Asian Seabass - Grower
+Sum n-6,%,4.68,Asian Seabass - Grower
+Phospholipids,%,2.14,Asian Seabass - Grower
+Cholesterol,mg,977.16,Asian Seabass - Grower
+Calcium,%,1.86,Asian Seabass - Grower
+Phosphorus,%,1.22,Asian Seabass - Grower
+Digestible P,%,0.69,Asian Seabass - Grower
+Dry Matter,%,91.86,Asian Seabass - Finisher
+Crude Protein,%,40.27,Asian Seabass - Finisher
+Crude Lipid,%,15.00,Asian Seabass - Finisher
+Crude Fibre,%,2.23,Asian Seabass - Finisher
+Ash,%,7.10,Asian Seabass - Finisher
+NFE,%,27.26,Asian Seabass - Finisher
+Starch,%,14.00,Asian Seabass - Finisher
+Dig CP -fish,%,36.00,Asian Seabass - Finisher
+DE Fish Carni MJ,MJ/kg,16.80,Asian Seabass - Finisher
+DE Fish Carni kcal,kcal/kg,4014,Asian Seabass - Finisher
+Arginine,%,2.75,Asian Seabass - Finisher
+Histidine,%,1.16,Asian Seabass - Finisher
+Isoleucine,%,1.63,Asian Seabass - Finisher
+Leucine,%,3.29,Asian Seabass - Finisher
+Lysine,%,2.53,Asian Seabass - Finisher
+Methionine,%,0.84,Asian Seabass - Finisher
+Phenylalanine,%,2.00,Asian Seabass - Finisher
+Threonine,%,1.55,Asian Seabass - Finisher
+Tryptophan,%,0.60,Asian Seabass - Finisher
+Valine,%,2.23,Asian Seabass - Finisher
+Cystine,%,0.70,Asian Seabass - Finisher
+Tyrosine,%,1.39,Asian Seabass - Finisher
+Taurine,%,0.06,Asian Seabass - Finisher
+Linoleic 18:2 n-6,%,0.75,Asian Seabass - Finisher
+EPA 20:5 n-3,%,0.23,Asian Seabass - Finisher
+DHA 22:6 n-3,%,0.19,Asian Seabass - Finisher
+EPA+DHA,%,0.41,Asian Seabass - Finisher
+Sum_n_3,%,1.30,Asian Seabass - Finisher
+Linolenic 18:3 n-3,%,6.17,Asian Seabass - Finisher
+Arachidonic 20:4 n-6,%,0.01,Asian Seabass - Finisher
+Sum n-6,%,6.87,Asian Seabass - Finisher
+Phospholipids,%,2.04,Asian Seabass - Finisher
+Cholesterol,mg,774.38,Asian Seabass - Finisher
+Calcium,%,1.34,Asian Seabass - Finisher
+Phosphorus,%,1.02,Asian Seabass - Finisher
+Digestible P,%,0.54,Asian Seabass - Finisher
+Dry Matter,%,92.17,European Seabass - Starter
+Crude Protein,%,48.23,European Seabass - Starter
+Crude Lipid,%,16.00,European Seabass - Starter
+Crude Fibre,%,1.84,European Seabass - Starter
+Ash,%,7.08,European Seabass - Starter
+NFE,%,19.01,European Seabass - Starter
+Starch,%,10.00,European Seabass - Starter
+Dig CP -fish,%,42.80,European Seabass - Starter
+DE Fish Carni MJ,MJ/kg,17.95,European Seabass - Starter
+DE Fish Carni kcal,kcal/kg,4291,European Seabass - Starter
+Arginine,%,3.13,European Seabass - Starter
+Histidine,%,1.24,European Seabass - Starter
+Isoleucine,%,2.27,European Seabass - Starter
+Leucine,%,4.38,European Seabass - Starter
+Lysine,%,3.73,European Seabass - Starter
+Methionine,%,1.03,European Seabass - Starter
+Phenylalanine,%,2.43,European Seabass - Starter
+Threonine,%,1.87,European Seabass - Starter
+Tryptophan,%,0.51,European Seabass - Starter
+Valine,%,2.49,European Seabass - Starter
+Cystine,%,0.67,European Seabass - Starter
+Tyrosine,%,1.69,European Seabass - Starter
+Taurine,%,0.30,European Seabass - Starter
+Linoleic 18:2 n-6,%,1.02,European Seabass - Starter
+EPA 20:5 n-3,%,0.88,European Seabass - Starter
+DHA 22:6 n-3,%,0.52,European Seabass - Starter
+EPA+DHA,%,1.40,European Seabass - Starter
+Sum_n_3,%,2.69,European Seabass - Starter
+Linolenic 18:3 n-3,%,2.57,European Seabass - Starter
+Arachidonic 20:4 n-6,%,0.02,European Seabass - Starter
+Sum n-6,%,2.88,European Seabass - Starter
+Phospholipids,%,1.17,European Seabass - Starter
+Cholesterol,mg,1118,European Seabass - Starter
+Calcium,%,1.29,European Seabass - Starter
+Phosphorus,%,1.07,European Seabass - Starter
+Digestible P,%,0.64,European Seabass - Starter
+Dry Matter,%,92.22,European Seabass - Grower
+Crude Protein,%,46.19,European Seabass - Grower
+Crude Lipid,%,18.00,European Seabass - Grower
+Crude Fibre,%,1.80,European Seabass - Grower
+Ash,%,6.86,European Seabass - Grower
+NFE,%,19.38,European Seabass - Grower
+Starch,%,10.00,European Seabass - Grower
+Dig CP -fish,%,41.00,European Seabass - Grower
+DE Fish Carni MJ,MJ/kg,18.30,European Seabass - Grower
+DE Fish Carni kcal,kcal/kg,4374,European Seabass - Grower
+Arginine,%,2.97,European Seabass - Grower
+Histidine,%,1.19,European Seabass - Grower
+Isoleucine,%,2.16,European Seabass - Grower
+Leucine,%,4.21,European Seabass - Grower
+Lysine,%,3.57,European Seabass - Grower
+Methionine,%,0.98,European Seabass - Grower
+Phenylalanine,%,2.33,European Seabass - Grower
+Threonine,%,1.78,European Seabass - Grower
+Tryptophan,%,0.49,European Seabass - Grower
+Valine,%,2.38,European Seabass - Grower
+Cystine,%,0.64,European Seabass - Grower
+Tyrosine,%,1.63,European Seabass - Grower
+Taurine,%,0.20,European Seabass - Grower
+Linoleic 18:2 n-6,%,1.46,European Seabass - Grower
+EPA 20:5 n-3,%,0.62,European Seabass - Grower
+DHA 22:6 n-3,%,0.38,European Seabass - Grower
+EPA+DHA,%,1.00,European Seabass - Grower
+Sum_n_3,%,2.74,European Seabass - Grower
+Linolenic 18:3 n-3,%,3.29,European Seabass - Grower
+Arachidonic 20:4 n-6,%,0.02,European Seabass - Grower
+Sum n-6,%,3.28,European Seabass - Grower
+Phospholipids,%,1.18,European Seabass - Grower
+Cholesterol,mg,1008,European Seabass - Grower
+Calcium,%,1.24,European Seabass - Grower
+Phosphorus,%,1.01,European Seabass - Grower
+Digestible P,%,0.60,European Seabass - Grower
+Dry Matter,%,92.45,European Seabass - Finisher
+Crude Protein,%,45.03,European Seabass - Finisher
+Crude Lipid,%,20.00,European Seabass - Finisher
+Crude Fibre,%,1.77,European Seabass - Finisher
+Ash,%,7.51,European Seabass - Finisher
+NFE,%,18.14,European Seabass - Finisher
+Starch,%,9.00,European Seabass - Finisher
+Dig CP -fish,%,40.00,European Seabass - Finisher
+DE Fish Carni MJ,MJ/kg,18.65,European Seabass - Finisher
+DE Fish Carni kcal,kcal/kg,4458,European Seabass - Finisher
+Arginine,%,2.90,European Seabass - Finisher
+Histidine,%,1.15,European Seabass - Finisher
+Isoleucine,%,2.11,European Seabass - Finisher
+Leucine,%,4.12,European Seabass - Finisher
+Lysine,%,3.46,European Seabass - Finisher
+Methionine,%,0.95,European Seabass - Finisher
+Phenylalanine,%,2.28,European Seabass - Finisher
+Threonine,%,1.74,European Seabass - Finisher
+Tryptophan,%,0.48,European Seabass - Finisher
+Valine,%,2.32,European Seabass - Finisher
+Cystine,%,0.63,European Seabass - Finisher
+Tyrosine,%,1.59,European Seabass - Finisher
+Taurine,%,0.20,European Seabass - Finisher
+Linoleic 18:2 n-6,%,1.71,European Seabass - Finisher
+EPA 20:5 n-3,%,0.62,European Seabass - Finisher
+DHA 22:6 n-3,%,0.38,European Seabass - Finisher
+EPA+DHA,%,1.00,European Seabass - Finisher
+Sum_n_3,%,3.01,European Seabass - Finisher
+Linolenic 18:3 n-3,%,3.70,European Seabass - Finisher
+Arachidonic 20:4 n-6,%,0.02,European Seabass - Finisher
+Sum n-6,%,4.14,European Seabass - Finisher
+Phospholipids,%,1.18,European Seabass - Finisher
+Cholesterol,mg,964,European Seabass - Finisher
+Calcium,%,1.53,European Seabass - Finisher
+Phosphorus,%,0.98,European Seabass - Finisher
+Digestible P,%,0.58,European Seabass - Finisher
+Dry Matter,%,90.67,Pangasius (Striped) Catfish - Starter
+Crude Protein,%,38.00,Pangasius (Striped) Catfish - Starter
+Crude Lipid,%,6.00,Pangasius (Striped) Catfish - Starter
+Crude Fibre,%,4.84,Pangasius (Striped) Catfish - Starter
+Ash,%,7.46,Pangasius (Striped) Catfish - Starter
+NFE,%,34.37,Pangasius (Striped) Catfish - Starter
+Starch,%,16.00,Pangasius (Striped) Catfish - Starter
+Dig CP -fish,%,33.60,Pangasius (Striped) Catfish - Starter
+DE Fish Carni MJ,MJ/kg,13.63,Pangasius (Striped) Catfish - Starter
+DE Fish Carni kcal,kcal/kg,3257,Pangasius (Striped) Catfish - Starter
+Arginine,%,2.40,Pangasius (Striped) Catfish - Starter
+Histidine,%,1.14,Pangasius (Striped) Catfish - Starter
+Isoleucine,%,1.53,Pangasius (Striped) Catfish - Starter
+Leucine,%,3.48,Pangasius (Striped) Catfish - Starter
+Lysine,%,2.16,Pangasius (Striped) Catfish - Starter
+Methionine,%,0.66,Pangasius (Striped) Catfish - Starter
+Phenylalanine,%,1.92,Pangasius (Striped) Catfish - Starter
+Threonine,%,1.41,Pangasius (Striped) Catfish - Starter
+Tryptophan,%,0.49,Pangasius (Striped) Catfish - Starter
+Valine,%,2.03,Pangasius (Striped) Catfish - Starter
+Cystine,%,0.60,Pangasius (Striped) Catfish - Starter
+Tyrosine,%,1.52,Pangasius (Striped) Catfish - Starter
+Taurine,%,0.22,Pangasius (Striped) Catfish - Starter
+Linoleic 18:2 n-6,%,0.21,Pangasius (Striped) Catfish - Starter
+EPA 20:5 n-3,%,0.11,Pangasius (Striped) Catfish - Starter
+DHA 22:6 n-3,%,0.08,Pangasius (Striped) Catfish - Starter
+EPA+DHA,%,0.18,Pangasius (Striped) Catfish - Starter
+Sum_n_3,%,0.44,Pangasius (Striped) Catfish - Starter
+Linolenic 18:3 n-3,%,1.97,Pangasius (Striped) Catfish - Starter
+Arachidonic 20:4 n-6,%,0.01,Pangasius (Striped) Catfish - Starter
+Sum n-6,%,2.20,Pangasius (Striped) Catfish - Starter
+Phospholipids,%,1.74,Pangasius (Striped) Catfish - Starter
+Cholesterol,mg,404.74,Pangasius (Striped) Catfish - Starter
+Calcium,%,0.95,Pangasius (Striped) Catfish - Starter
+Phosphorus,%,1.10,Pangasius (Striped) Catfish - Starter
+Digestible P,%,0.64,Pangasius (Striped) Catfish - Starter
+Dry Matter,%,90.25,Pangasius (Striped) Catfish - Grower
+Crude Protein,%,31.58,Pangasius (Striped) Catfish - Grower
+Crude Lipid,%,6.50,Pangasius (Striped) Catfish - Grower
+Crude Fibre,%,4.83,Pangasius (Striped) Catfish - Grower
+Ash,%,6.81,Pangasius (Striped) Catfish - Grower
+NFE,%,40.53,Pangasius (Striped) Catfish - Grower
+Starch,%,20.00,Pangasius (Striped) Catfish - Grower
+Dig CP -fish,%,28.00,Pangasius (Striped) Catfish - Grower
+DE Fish Carni MJ,MJ/kg,13.30,Pangasius (Striped) Catfish - Grower
+DE Fish Carni kcal,kcal/kg,3179,Pangasius (Striped) Catfish - Grower
+Arginine,%,2.09,Pangasius (Striped) Catfish - Grower
+Histidine,%,0.99,Pangasius (Striped) Catfish - Grower
+Isoleucine,%,1.27,Pangasius (Striped) Catfish - Grower
+Leucine,%,2.57,Pangasius (Striped) Catfish - Grower
+Lysine,%,1.96,Pangasius (Striped) Catfish - Grower
+Methionine,%,0.57,Pangasius (Striped) Catfish - Grower
+Phenylalanine,%,1.59,Pangasius (Striped) Catfish - Grower
+Threonine,%,1.22,Pangasius (Striped) Catfish - Grower
+Tryptophan,%,0.43,Pangasius (Striped) Catfish - Grower
+Valine,%,1.76,Pangasius (Striped) Catfish - Grower
+Cystine,%,0.50,Pangasius (Striped) Catfish - Grower
+Tyrosine,%,1.13,Pangasius (Striped) Catfish - Grower
+Taurine,%,0.11,Pangasius (Striped) Catfish - Grower
+Linoleic 18:2 n-6,%,0.20,Pangasius (Striped) Catfish - Grower
+EPA 20:5 n-3,%,0.06,Pangasius (Striped) Catfish - Grower
+DHA 22:6 n-3,%,0.04,Pangasius (Striped) Catfish - Grower
+EPA+DHA,%,0.11,Pangasius (Striped) Catfish - Grower
+Sum_n_3,%,0.35,Pangasius (Striped) Catfish - Grower
+Linolenic 18:3 n-3,%,1.93,Pangasius (Striped) Catfish - Grower
+Arachidonic 20:4 n-6,%,0.01,Pangasius (Striped) Catfish - Grower
+Sum n-6,%,2.15,Pangasius (Striped) Catfish - Grower
+Phospholipids,%,1.64,Pangasius (Striped) Catfish - Grower
+Cholesterol,mg,222.25,Pangasius (Striped) Catfish - Grower
+Calcium,%,0.60,Pangasius (Striped) Catfish - Grower
+Phosphorus,%,0.99,Pangasius (Striped) Catfish - Grower
+Digestible P,%,0.57,Pangasius (Striped) Catfish - Grower
+Dry Matter,%,89.84,Pangasius (Striped) Catfish - Finisher
+Crude Protein,%,26.50,Pangasius (Striped) Catfish - Finisher
+Crude Lipid,%,7.50,Pangasius (Striped) Catfish - Finisher
+Crude Fibre,%,5.37,Pangasius (Striped) Catfish - Finisher
+Ash,%,6.45,Pangasius (Striped) Catfish - Finisher
+NFE,%,44.03,Pangasius (Striped) Catfish - Finisher
+Starch,%,22.00,Pangasius (Striped) Catfish - Finisher
+Dig CP -fish,%,23.00,Pangasius (Striped) Catfish - Finisher
+DE Fish Carni MJ,MJ/kg,12.91,Pangasius (Striped) Catfish - Finisher
+DE Fish Carni kcal,kcal/kg,3085,Pangasius (Striped) Catfish - Finisher
+Arginine,%,1.83,Pangasius (Striped) Catfish - Finisher
+Histidine,%,0.70,Pangasius (Striped) Catfish - Finisher
+Isoleucine,%,1.15,Pangasius (Striped) Catfish - Finisher
+Leucine,%,1.95,Pangasius (Striped) Catfish - Finisher
+Lysine,%,1.51,Pangasius (Striped) Catfish - Finisher
+Methionine,%,0.55,Pangasius (Striped) Catfish - Finisher
+Phenylalanine,%,1.27,Pangasius (Striped) Catfish - Finisher
+Threonine,%,1.02,Pangasius (Striped) Catfish - Finisher
+Tryptophan,%,0.36,Pangasius (Striped) Catfish - Finisher
+Valine,%,1.37,Pangasius (Striped) Catfish - Finisher
+Cystine,%,0.47,Pangasius (Striped) Catfish - Finisher
+Tyrosine,%,0.99,Pangasius (Striped) Catfish - Finisher
+Taurine,%,0.12,Pangasius (Striped) Catfish - Finisher
+Linoleic 18:2 n-6,%,0.22,Pangasius (Striped) Catfish - Finisher
+EPA 20:5 n-3,%,0.04,Pangasius (Striped) Catfish - Finisher
+DHA 22:6 n-3,%,0.03,Pangasius (Striped) Catfish - Finisher
+EPA+DHA,%,0.08,Pangasius (Striped) Catfish - Finisher
+Sum_n_3,%,0.34,Pangasius (Striped) Catfish - Finisher
+Linolenic 18:3 n-3,%,2.14,Pangasius (Striped) Catfish - Finisher
+Arachidonic 20:4 n-6,%,-,Pangasius (Striped) Catfish - Finisher
+Sum n-6,%,2.38,Pangasius (Striped) Catfish - Finisher
+Phospholipids,%,1.66,Pangasius (Striped) Catfish - Finisher
+Cholesterol,mg,32.64,Pangasius (Striped) Catfish - Finisher
+Calcium,%,0.52,Pangasius (Striped) Catfish - Finisher
+Phosphorus,%,0.96,Pangasius (Striped) Catfish - Finisher
+Digestible P,%,0.53,Pangasius (Striped) Catfish - Finisher
+Dry Matter,%,90.79,Common Carp - Starter
+Crude Protein,%,39.12,Common Carp - Starter
+Crude Lipid,%,6.00,Common Carp - Starter
+Crude Fibre,%,3.10,Common Carp - Starter
+Ash,%,9.20,Common Carp - Starter
+NFE,%,33.38,Common Carp - Starter
+Starch,%,16.00,Common Carp - Starter
+Dig CP -fish,%,34.70,Common Carp - Starter
+DE Fish Carni MJ,MJ/kg,14.12,Common Carp - Starter
+DE Fish Carni kcal,kcal/kg,3375,Common Carp - Starter
+Arginine,%,2.74,Common Carp - Starter
+Histidine,%,0.93,Common Carp - Starter
+Isoleucine,%,1.74,Common Carp - Starter
+Leucine,%,3.10,Common Carp - Starter
+Lysine,%,3.11,Common Carp - Starter
+Methionine,%,0.78,Common Carp - Starter
+Phenylalanine,%,1.89,Common Carp - Starter
+Threonine,%,1.55,Common Carp - Starter
+Tryptophan,%,0.61,Common Carp - Starter
+Valine,%,2.11,Common Carp - Starter
+Cystine,%,0.81,Common Carp - Starter
+Tyrosine,%,1.39,Common Carp - Starter
+Taurine,%,0.03,Common Carp - Starter
+Linoleic 18:2 n-6,%,0.11,Common Carp - Starter
+EPA 20:5 n-3,%,0.07,Common Carp - Starter
+DHA 22:6 n-3,%,0.05,Common Carp - Starter
+EPA+DHA,%,0.12,Common Carp - Starter
+Sum_n_3,%,0.26,Common Carp - Starter
+Linolenic 18:3 n-3,%,1.50,Common Carp - Starter
+Arachidonic 20:4 n-6,%,-,Common Carp - Starter
+Sum n-6,%,1.67,Common Carp - Starter
+Phospholipids,%,1.42,Common Carp - Starter
+Cholesterol,mg,426.28,Common Carp - Starter
+Calcium,%,1.81,Common Carp - Starter
+Phosphorus,%,1.36,Common Carp - Starter
+Digestible P,%,0.60,Common Carp - Starter
+Dry Matter,%,90.41,Common Carp - Grower
+Crude Protein,%,32.68,Common Carp - Grower
+Crude Lipid,%,7.50,Common Carp - Grower
+Crude Fibre,%,3.94,Common Carp - Grower
+Ash,%,6.86,Common Carp - Grower
+NFE,%,39.43,Common Carp - Grower
+Starch,%,19.00,Common Carp - Grower
+Dig CP -fish,%,29.00,Common Carp - Grower
+DE Fish Carni MJ,MJ/kg,14.06,Common Carp - Grower
+DE Fish Carni kcal,kcal/kg,3359,Common Carp - Grower
+Arginine,%,2.30,Common Carp - Grower
+Histidine,%,0.81,Common Carp - Grower
+Isoleucine,%,1.45,Common Carp - Grower
+Leucine,%,2.65,Common Carp - Grower
+Lysine,%,2.17,Common Carp - Grower
+Methionine,%,0.69,Common Carp - Grower
+Phenylalanine,%,1.64,Common Carp - Grower
+Threonine,%,1.30,Common Carp - Grower
+Tryptophan,%,0.51,Common Carp - Grower
+Valine,%,1.80,Common Carp - Grower
+Cystine,%,0.69,Common Carp - Grower
+Tyrosine,%,1.20,Common Carp - Grower
+Taurine,%,0.01,Common Carp - Grower
+Linoleic 18:2 n-6,%,0.12,Common Carp - Grower
+EPA 20:5 n-3,%,0.04,Common Carp - Grower
+DHA 22:6 n-3,%,0.03,Common Carp - Grower
+EPA+DHA,%,0.07,Common Carp - Grower
+Sum_n_3,%,0.22,Common Carp - Grower
+Linolenic 18:3 n-3,%,2.10,Common Carp - Grower
+Arachidonic 20:4 n-6,%,-,Common Carp - Grower
+Sum n-6,%,2.34,Common Carp - Grower
+Phospholipids,%,1.83,Common Carp - Grower
+Cholesterol,mg,142.59,Common Carp - Grower
+Calcium,%,0.71,Common Carp - Grower
+Phosphorus,%,1.06,Common Carp - Grower
+Digestible P,%,0.53,Common Carp - Grower
+Dry Matter,%,90.26,Common Carp - Finisher
+Crude Protein,%,29.34,Common Carp - Finisher
+Crude Lipid,%,8.50,Common Carp - Finisher
+Crude Fibre,%,4.79,Common Carp - Finisher
+Ash,%,7.20,Common Carp - Finisher
+NFE,%,40.44,Common Carp - Finisher
+Starch,%,19.00,Common Carp - Finisher
+Dig CP -fish,%,26.00,Common Carp - Finisher
+DE Fish Carni MJ,MJ/kg,13.83,Common Carp - Finisher
+DE Fish Carni kcal,kcal/kg,3304,Common Carp - Finisher
+Arginine,%,2.00,Common Carp - Finisher
+Histidine,%,0.74,Common Carp - Finisher
+Isoleucine,%,1.26,Common Carp - Finisher
+Leucine,%,2.34,Common Carp - Finisher
+Lysine,%,2.01,Common Carp - Finisher
+Methionine,%,0.65,Common Carp - Finisher
+Phenylalanine,%,1.43,Common Carp - Finisher
+Threonine,%,1.16,Common Carp - Finisher
+Tryptophan,%,0.44,Common Carp - Finisher
+Valine,%,1.57,Common Carp - Finisher
+Cystine,%,0.58,Common Carp - Finisher
+Tyrosine,%,1.06,Common Carp - Finisher
+Taurine,%,-,Common Carp - Finisher
+Linoleic 18:2 n-6,%,0.15,Common Carp - Finisher
+EPA 20:5 n-3,%,0.04,Common Carp - Finisher
+DHA 22:6 n-3,%,0.03,Common Carp - Finisher
+EPA+DHA,%,0.06,Common Carp - Finisher
+Sum_n_3,%,0.24,Common Carp - Finisher
+Linolenic 18:3 n-3,%,2.12,Common Carp - Finisher
+Arachidonic 20:4 n-6,%,-,Common Carp - Finisher
+Sum n-6,%,2.36,Common Carp - Finisher
+Phospholipids,%,1.75,Common Carp - Finisher
+Cholesterol,mg,45.51,Common Carp - Finisher
+Calcium,%,0.86,Common Carp - Finisher
+Phosphorus,%,0.96,Common Carp - Finisher
+Digestible P,%,0.46,Common Carp - Finisher
+Dry Matter,%,89.40,IMC-Rohu
+Crude Protein,%,30.29,IMC-Rohu
+Crude Lipid,%,6.00,IMC-Rohu
+Crude Fibre,%,5.02,IMC-Rohu
+Ash,%,5.76,IMC-Rohu
+NFE,%,42.32,IMC-Rohu
+Starch,%,19.00,IMC-Rohu
+Dig CP -fish,%,27.00,IMC-Rohu
+DE Fish Carni MJ,MJ/kg,13.29,IMC-Rohu
+DE Fish Carni kcal,kcal/kg,3177,IMC-Rohu
+Arginine,%,2.08,IMC-Rohu
+Histidine,%,0.78,IMC-Rohu
+Isoleucine,%,1.29,IMC-Rohu
+Leucine,%,2.34,IMC-Rohu
+Lysine,%,1.77,IMC-Rohu
+Methionine,%,0.60,IMC-Rohu
+Phenylalanine,%,1.46,IMC-Rohu
+Threonine,%,1.17,IMC-Rohu
+Tryptophan,%,0.45,IMC-Rohu
+Valine,%,1.54,IMC-Rohu
+Cystine,%,0.53,IMC-Rohu
+Tyrosine,%,1.07,IMC-Rohu
+Taurine,%,0.00,IMC-Rohu
+Linoleic 18:2 n-6,%,0.17,IMC-Rohu
+EPA 20:5 n-3,%,0.04,IMC-Rohu
+DHA 22:6 n-3,%,0.03,IMC-Rohu
+EPA+DHA,%,0.07,IMC-Rohu
+Sum_n_3,%,0.27,IMC-Rohu
+Linolenic 18:3 n-3,%,1.82,IMC-Rohu
+Arachidonic 20:4 n-6,%,-,IMC-Rohu
+Sum n-6,%,2.03,IMC-Rohu
+Phospholipids,%,1.81,IMC-Rohu
+Cholesterol,mg,38.00,IMC-Rohu
+Calcium,%,0.39,IMC-Rohu
+Phosphorus,%,0.78,IMC-Rohu
+Digestible P,%,0.28,IMC-Rohu
+Dry Matter,%,90.69,African Catfish
+Crude Protein,%,35.74,African Catfish
+Crude Lipid,%,7.67,African Catfish
+Crude Fibre,%,4.11,African Catfish
+Ash,%,7.04,African Catfish
+NFE,%,36.13,African Catfish
+Starch,%,17.00,African Catfish
+Dig CP -fish,%,31.85,African Catfish
+DE Fish Carni MJ,MJ/kg,14.08,African Catfish
+DE Fish Carni kcal,kcal/kg,3372,African Catfish
+Arginine,%,2.36,African Catfish
+Histidine,%,1.02,African Catfish
+Isoleucine,%,1.47,African Catfish
+Leucine,%,2.84,African Catfish
+Lysine,%,2.10,African Catfish
+Methionine,%,0.67,African Catfish
+Phenylalanine,%,1.82,African Catfish
+Threonine,%,1.40,African Catfish
+Tryptophan,%,0.41,African Catfish
+Valine,%,1.97,African Catfish
+Cystine,%,0.57,African Catfish
+Tyrosine,%,1.29,African Catfish
+Taurine,%,0.04,African Catfish
+Linoleic 18:2 n-6,%,0.39,African Catfish
+EPA 20:5 n-3,%,0.09,African Catfish
+DHA 22:6 n-3,%,0.06,African Catfish
+EPA+DHA,%,0.15,African Catfish
+Sum_n_3,%,0.60,African Catfish
+Linolenic 18:3 n-3,%,3.15,African Catfish
+Arachidonic 20:4 n-6,%,0.01,African Catfish
+Sum n-6,%,3.51,African Catfish
+Phospholipids,%,0.50,African Catfish
+Cholesterol,mg,353.42,African Catfish
+Calcium,%,0.95,African Catfish
+Phosphorus,%,1.16,African Catfish
+Digestible P,%,0.69,African Catfish
+Dry Matter,%,90.28,Largemouth Bass
+Crude Protein,%,46.00,Largemouth Bass
+Crude Lipid,%,14.54,Largemouth Bass
+Crude Fibre,%,1.40,Largemouth Bass
+Ash,%,8.73,Largemouth Bass
+NFE,%,19.62,Largemouth Bass
+Starch,%,12.00,Largemouth Bass
+Dig CP -fish,%,41.17,Largemouth Bass
+DE Fish Carni MJ,MJ/kg,17.10,Largemouth Bass
+DE Fish Carni kcal,kcal/kg,4135,Largemouth Bass
+Arginine,%,2.98,Largemouth Bass
+Histidine,%,1.20,Largemouth Bass
+Isoleucine,%,1.96,Largemouth Bass
+Leucine,%,3.40,Largemouth Bass
+Lysine,%,2.55,Largemouth Bass
+Methionine,%,0.93,Largemouth Bass
+Phenylalanine,%,2.11,Largemouth Bass
+Threonine,%,1.67,Largemouth Bass
+Tryptophan,%,0.50,Largemouth Bass
+Valine,%,2.28,Largemouth Bass
+Cystine,%,0.62,Largemouth Bass
+Tyrosine,%,1.43,Largemouth Bass
+Taurine,%,0.08,Largemouth Bass
+Linoleic 18:2 n-6,%,0.63,Largemouth Bass
+EPA 20:5 n-3,%,0.36,Largemouth Bass
+DHA 22:6 n-3,%,0.30,Largemouth Bass
+EPA+DHA,%,0.66,Largemouth Bass
+Sum_n_3,%,1.43,Largemouth Bass
+Linolenic 18:3 n-3,%,4.46,Largemouth Bass
+Arachidonic 20:4 n-6,%,0.05,Largemouth Bass
+Sum n-6,%,5.01,Largemouth Bass
+Phospholipids,%,1.17,Largemouth Bass
+Cholesterol,mg,1312.35,Largemouth Bass
+Calcium,%,2.33,Largemouth Bass
+Phosphorus,%,1.66,Largemouth Bass
+Digestible P,%,1.02,Largemouth Bass
+Dry Matter,%,89.79,Snakehead
+Crude Protein,%,42.99,Snakehead
+Crude Lipid,%,10.28,Snakehead
+Crude Fibre,%,1.98,Snakehead
+Ash,%,5.86,Snakehead
+NFE,%,28.68,Snakehead
+Starch,%,18.00,Snakehead
+Dig CP -fish,%,38.69,Snakehead
+DE Fish Carni MJ,MJ/kg,16.21,Snakehead
+DE Fish Carni kcal,kcal/kg,3896,Snakehead
+Arginine,%,2.73,Snakehead
+Histidine,%,1.16,Snakehead
+Isoleucine,%,1.81,Snakehead
+Leucine,%,3.71,Snakehead
+Lysine,%,2.44,Snakehead
+Methionine,%,0.84,Snakehead
+Phenylalanine,%,2.35,Snakehead
+Threonine,%,1.66,Snakehead
+Tryptophan,%,0.43,Snakehead
+Valine,%,2.40,Snakehead
+Cystine,%,0.63,Snakehead
+Tyrosine,%,1.54,Snakehead
+Taurine,%,0.05,Snakehead
+Linoleic 18:2 n-6,%,0.48,Snakehead
+EPA 20:5 n-3,%,0.36,Snakehead
+DHA 22:6 n-3,%,0.28,Snakehead
+EPA+DHA,%,0.64,Snakehead
+Sum_n_3,%,1.24,Snakehead
+Linolenic 18:3 n-3,%,3.06,Snakehead
+Arachidonic 20:4 n-6,%,0.03,Snakehead
+Sum n-6,%,3.43,Snakehead
+Phospholipids,%,0.80,Snakehead
+Cholesterol,mg,995.10,Snakehead
+Calcium,%,0.88,Snakehead
+Phosphorus,%,0.98,Snakehead
+Digestible P,%,0.58,Snakehead
+Dry Matter,%,90.35,Grass Carp
+Crude Protein,%,32.75,Grass Carp
+Crude Lipid,%,8.84,Grass Carp
+Crude Fibre,%,4.12,Grass Carp
+Ash,%,6.16,Grass Carp
+NFE,%,38.47,Grass Carp
+Starch,%,17.05,Grass Carp
+Dig CP -fish,%,29.00,Grass Carp
+DE Fish Carni MJ,MJ/kg,13.90,Grass Carp
+DE Fish Carni kcal,kcal/kg,3325,Grass Carp
+Arginine,%,2.16,Grass Carp
+Histidine,%,0.83,Grass Carp
+Isoleucine,%,1.38,Grass Carp
+Leucine,%,2.31,Grass Carp
+Lysine,%,1.78,Grass Carp
+Methionine,%,0.57,Grass Carp
+Phenylalanine,%,1.47,Grass Carp
+Threonine,%,1.21,Grass Carp
+Tryptophan,%,0.40,Grass Carp
+Valine,%,1.59,Grass Carp
+Cystine,%,0.57,Grass Carp
+Tyrosine,%,1.04,Grass Carp
+Taurine,%,0.01,Grass Carp
+Linoleic 18:2 n-6,%,0.45,Grass Carp
+EPA 20:5 n-3,%,0.00,Grass Carp
+DHA 22:6 n-3,%,-,Grass Carp
+EPA+DHA,%,0.00,Grass Carp
+Sum_n_3,%,0.50,Grass Carp
+Linolenic 18:3 n-3,%,4.33,Grass Carp
+Arachidonic 20:4 n-6,%,-,Grass Carp
+Sum n-6,%,4.81,Grass Carp
+Phospholipids,%,0.90,Grass Carp
+Cholesterol,mg,104.94,Grass Carp
+Calcium,%,0.53,Grass Carp
+Phosphorus,%,1.02,Grass Carp
+Digestible P,%,0.66,Grass Carp
+Dry Matter,%,90.57,Channel Catfish
+Crude Protein,%,37.21,Channel Catfish
+Crude Lipid,%,8.00,Channel Catfish
+Crude Fibre,%,4.12,Channel Catfish
+Ash,%,6.15,Channel Catfish
+NFE,%,35.07,Channel Catfish
+Starch,%,17.17,Channel Catfish
+Dig CP -fish,%,33.00,Channel Catfish
+DE Fish Carni MJ,MJ/kg,14.49,Channel Catfish
+DE Fish Carni kcal,kcal/kg,3454,Channel Catfish
+Arginine,%,2.41,Channel Catfish
+Histidine,%,0.93,Channel Catfish
+Isoleucine,%,1.64,Channel Catfish
+Leucine,%,3.18,Channel Catfish
+Lysine,%,1.95,Channel Catfish
+Methionine,%,0.65,Channel Catfish
+Phenylalanine,%,1.92,Channel Catfish
+Threonine,%,1.37,Channel Catfish
+Tryptophan,%,0.41,Channel Catfish
+Valine,%,1.93,Channel Catfish
+Cystine,%,0.63,Channel Catfish
+Tyrosine,%,1.34,Channel Catfish
+Taurine,%,0.03,Channel Catfish
+Linoleic 18:2 n-6,%,0.45,Channel Catfish
+EPA 20:5 n-3,%,0.11,Channel Catfish
+DHA 22:6 n-3,%,0.07,Channel Catfish
+EPA+DHA,%,0.17,Channel Catfish
+Sum_n_3,%,0.69,Channel Catfish
+Linolenic 18:3 n-3,%,2.75,Channel Catfish
+Arachidonic 20:4 n-6,%,0.02,Channel Catfish
+Sum n-6,%,3.08,Channel Catfish
+Phospholipids,%,0.57,Channel Catfish
+Cholesterol,mg,251.63,Channel Catfish
+Calcium,%,0.88,Channel Catfish
+Phosphorus,%,0.99,Channel Catfish
+Digestible P,%,0.56,Channel Catfish
+Dry Matter,%,90.71,Black Carp
+Crude Protein,%,34.31,Black Carp
+Crude Lipid,%,10.32,Black Carp
+Crude Fibre,%,4.16,Black Carp
+Ash,%,6.91,Black Carp
+NFE,%,35.00,Black Carp
+Starch,%,18.19,Black Carp
+Dig CP -fish,%,30.13,Black Carp
+DE Fish Carni MJ,MJ/kg,14.77,Black Carp
+DE Fish Carni kcal,kcal/kg,3516,Black Carp
+Arginine,%,2.32,Black Carp
+Histidine,%,0.84,Black Carp
+Isoleucine,%,1.48,Black Carp
+Leucine,%,2.50,Black Carp
+Lysine,%,1.86,Black Carp
+Methionine,%,0.59,Black Carp
+Phenylalanine,%,1.65,Black Carp
+Threonine,%,1.26,Black Carp
+Tryptophan,%,0.39,Black Carp
+Valine,%,1.75,Black Carp
+Cystine,%,0.57,Black Carp
+Tyrosine,%,1.16,Black Carp
+Taurine,%,0.03,Black Carp
+Linoleic 18:2 n-6,%,0.58,Black Carp
+EPA 20:5 n-3,%,0.12,Black Carp
+DHA 22:6 n-3,%,0.07,Black Carp
+EPA+DHA,%,0.20,Black Carp
+Sum_n_3,%,0.87,Black Carp
+Linolenic 18:3 n-3,%,3.77,Black Carp
+Arachidonic 20:4 n-6,%,0.02,Black Carp
+Sum n-6,%,4.21,Black Carp
+Phospholipids,%,0.64,Black Carp
+Cholesterol,mg,304.32,Black Carp
+Calcium,%,1.10,Black Carp
+Phosphorus,%,1.18,Black Carp
+Digestible P,%,0.72,Black Carp
+Dry Matter,%,90.00,IMC catla
+Crude Protein,%,32.34,IMC catla
+Crude Lipid,%,7.13,IMC catla
+Crude Fibre,%,6.77,IMC catla
+Ash,%,5.98,IMC catla
+NFE,%,37.77,IMC catla
+Starch,%,18.79,IMC catla
+Dig CP -fish,%,28.00,IMC catla
+DE Fish Carni MJ,MJ/kg,13.44,IMC catla
+DE Fish Carni kcal,kcal/kg,3211,IMC catla
+Arginine,%,2.21,IMC catla
+Histidine,%,0.80,IMC catla
+Isoleucine,%,1.28,IMC catla
+Leucine,%,2.23,IMC catla
+Lysine,%,1.77,IMC catla
+Methionine,%,0.64,IMC catla
+Phenylalanine,%,1.34,IMC catla
+Threonine,%,1.21,IMC catla
+Tryptophan,%,0.46,IMC catla
+Valine,%,1.59,IMC catla
+Cystine,%,0.56,IMC catla
+Tyrosine,%,1.27,IMC catla
+Taurine,%,0.03,IMC catla
+Linoleic 18:2 n-6,%,0.15,IMC catla
+EPA 20:5 n-3,%,0.25,IMC catla
+DHA 22:6 n-3,%,0.22,IMC catla
+EPA+DHA,%,0.48,IMC catla
+Sum_n_3,%,0.70,IMC catla
+Linolenic 18:3 n-3,%,1.63,IMC catla
+Arachidonic 20:4 n-6,%,0.03,IMC catla
+Sum n-6,%,1.85,IMC catla
+Phospholipids,%,0.62,IMC catla
+Cholesterol,mg,386.24,IMC catla
+Calcium,%,0.74,IMC catla
+Phosphorus,%,0.85,IMC catla
+Digestible P,%,0.46,IMC catla
+Dry Matter,%,89.47,IMC Mrigal
+Crude Protein,%,30.32,IMC Mrigal
+Crude Lipid,%,7.00,IMC Mrigal
+Crude Fibre,%,4.62,IMC Mrigal
+Ash,%,5.50,IMC Mrigal
+NFE,%,42.02,IMC Mrigal
+Starch,%,20.00,IMC Mrigal
+Dig CP -fish,%,27.00,IMC Mrigal
+DE Fish Carni MJ,MJ/kg,13.60,IMC Mrigal
+DE Fish Carni kcal,kcal/kg,3251,IMC Mrigal
+Arginine,%,2.06,IMC Mrigal
+Histidine,%,0.75,IMC Mrigal
+Isoleucine,%,1.26,IMC Mrigal
+Leucine,%,2.36,IMC Mrigal
+Lysine,%,1.73,IMC Mrigal
+Methionine,%,0.56,IMC Mrigal
+Phenylalanine,%,1.46,IMC Mrigal
+Threonine,%,1.11,IMC Mrigal
+Tryptophan,%,0.41,IMC Mrigal
+Valine,%,1.50,IMC Mrigal
+Cystine,%,0.49,IMC Mrigal
+Tyrosine,%,1.13,IMC Mrigal
+Taurine,%,0.09,IMC Mrigal
+Linoleic 18:2 n-6,%,0.18,IMC Mrigal
+EPA 20:5 n-3,%,0.05,IMC Mrigal
+DHA 22:6 n-3,%,0.03,IMC Mrigal
+EPA+DHA,%,0.08,IMC Mrigal
+Sum_n_3,%,0.29,IMC Mrigal
+Linolenic 18:3 n-3,%,1.88,IMC Mrigal
+Arachidonic 20:4 n-6,%,0.00,IMC Mrigal
+Sum n-6,%,2.10,IMC Mrigal
+Phospholipids,%,1.84,IMC Mrigal
+Cholesterol,mg,58.00,IMC Mrigal
+Calcium,%,0.43,IMC Mrigal
+Phosphorus,%,0.79,IMC Mrigal
+Digestible P,%,0.33,IMC Mrigal
+Dry Matter,%,90.13,Milkfish
+Crude Protein,%,33.35,Milkfish
+Crude Lipid,%,8.00,Milkfish
+Crude Fibre,%,5.56,Milkfish
+Ash,%,6.50,Milkfish
+NFE,%,36.72,Milkfish
+Starch,%,19.86,Milkfish
+Dig CP -fish,%,29.01,Milkfish
+DE Fish Carni MJ,MJ/kg,13.92,Milkfish
+DE Fish Carni kcal,kcal/kg,3327,Milkfish
+Arginine,%,2.29,Milkfish
+Histidine,%,0.96,Milkfish
+Isoleucine,%,1.36,Milkfish
+Leucine,%,2.54,Milkfish
+Lysine,%,1.86,Milkfish
+Methionine,%,0.65,Milkfish
+Phenylalanine,%,1.61,Milkfish
+Threonine,%,1.35,Milkfish
+Tryptophan,%,0.41,Milkfish
+Valine,%,1.85,Milkfish
+Cystine,%,0.60,Milkfish
+Tyrosine,%,1.19,Milkfish
+Taurine,%,0.04,Milkfish
+Linoleic 18:2 n-6,%,0.21,Milkfish
+EPA 20:5 n-3,%,0.18,Milkfish
+DHA 22:6 n-3,%,0.15,Milkfish
+EPA+DHA,%,0.33,Milkfish
+Sum_n_3,%,0.60,Milkfish
+Linolenic 18:3 n-3,%,1.56,Milkfish
+Arachidonic 20:4 n-6,%,0.05,Milkfish
+Sum n-6,%,1.79,Milkfish
+Phospholipids,%,0.75,Milkfish
+Cholesterol,mg,539.45,Milkfish
+Calcium,%,0.68,Milkfish
+Phosphorus,%,0.89,Milkfish
+Digestible P,%,0.48,Milkfish
+Dry Matter,%,92.55,Japanese eel
+Crude Protein,%,45.50,Japanese eel
+Crude Lipid,%,20.89,Japanese eel
+Crude Fibre,%,0.75,Japanese eel
+Ash,%,5.77,Japanese eel
+NFE,%,19.63,Japanese eel
+Starch,%,15.02,Japanese eel
+Dig CP -fish,%,39.80,Japanese eel
+DE Fish Carni MJ,MJ/kg,19.39,Japanese eel
+DE Fish Carni kcal,kcal/kg,4636,Japanese eel
+Arginine,%,2.66,Japanese eel
+Histidine,%,0.97,Japanese eel
+Isoleucine,%,1.95,Japanese eel
+Leucine,%,3.96,Japanese eel
+Lysine,%,2.65,Japanese eel
+Methionine,%,1.03,Japanese eel
+Phenylalanine,%,2.18,Japanese eel
+Threonine,%,1.81,Japanese eel
+Tryptophan,%,0.42,Japanese eel
+Valine,%,2.61,Japanese eel
+Cystine,%,0.70,Japanese eel
+Tyrosine,%,1.44,Japanese eel
+Taurine,%,0.17,Japanese eel
+Linoleic 18:2 n-6,%,0.79,Japanese eel
+EPA 20:5 n-3,%,0.66,Japanese eel
+DHA 22:6 n-3,%,0.43,Japanese eel
+EPA+DHA,%,1.09,Japanese eel
+Sum_n_3,%,2.09,Japanese eel
+Linolenic 18:3 n-3,%,6.06,Japanese eel
+Arachidonic 20:4 n-6,%,0.05,Japanese eel
+Sum n-6,%,6.79,Japanese eel
+Phospholipids,%,1.59,Japanese eel
+Cholesterol,mg,1440.20,Japanese eel
+Calcium,%,1.78,Japanese eel
+Phosphorus,%,1.10,Japanese eel
+Digestible P,%,0.70,Japanese eel
+Dry Matter,%,91.31,Korean rockfish
+Crude Protein,%,41.90,Korean rockfish
+Crude Lipid,%,13.51,Korean rockfish
+Crude Fibre,%,2.69,Korean rockfish
+Ash,%,8.21,Korean rockfish
+NFE,%,25.00,Korean rockfish
+Starch,%,12.56,Korean rockfish
+Dig CP -fish,%,37.45,Korean rockfish
+DE Fish Carni MJ,MJ/kg,16.40,Korean rockfish
+DE Fish Carni kcal,kcal/kg,3920,Korean rockfish
+Arginine,%,2.68,Korean rockfish
+Histidine,%,1.14,Korean rockfish
+Isoleucine,%,1.59,Korean rockfish
+Leucine,%,3.55,Korean rockfish
+Lysine,%,2.43,Korean rockfish
+Methionine,%,0.83,Korean rockfish
+Phenylalanine,%,1.88,Korean rockfish
+Threonine,%,1.64,Korean rockfish
+Tryptophan,%,0.40,Korean rockfish
+Valine,%,2.19,Korean rockfish
+Cystine,%,0.61,Korean rockfish
+Tyrosine,%,1.54,Korean rockfish
+Taurine,%,0.05,Korean rockfish
+Linoleic 18:2 n-6,%,0.27,Korean rockfish
+EPA 20:5 n-3,%,0.63,Korean rockfish
+DHA 22:6 n-3,%,0.46,Korean rockfish
+EPA+DHA,%,1.09,Korean rockfish
+Sum_n_3,%,1.51,Korean rockfish
+Linolenic 18:3 n-3,%,2.06,Korean rockfish
+Arachidonic 20:4 n-6,%,0.07,Korean rockfish
+Sum n-6,%,2.37,Korean rockfish
+Phospholipids,%,1.41,Korean rockfish
+Cholesterol,mg,919.73,Korean rockfish
+Calcium,%,1.71,Korean rockfish
+Phosphorus,%,1.26,Korean rockfish
+Digestible P,%,0.72,Korean rockfish

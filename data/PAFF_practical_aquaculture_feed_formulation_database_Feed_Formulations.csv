@@ -1,0 +1,620 @@
+species,iaffd_code,ingredient,inclusion_percent
+Nile Tilapia - Starter,10018,"Fish meal, sardine, 66% CP",5
+Nile Tilapia - Starter,23002,"Poultry by-product meal, feed-grade, 60% CP",10
+Nile Tilapia - Starter,30346,"Corn gluten meal, 62% CP",7
+Nile Tilapia - Starter,30355,"Corn, grain",6.54
+Nile Tilapia - Starter,30505,"Distillers dried grains with solubles, DDGS",9.54
+Nile Tilapia - Starter,30944,"Rice, broken",15
+Nile Tilapia - Starter,31218,"Soy protein concentrate, 65% CP",8.29
+Nile Tilapia - Starter,31252,"Soybean meal, USA, dehulled, Standard, 48% CP",35
+Nile Tilapia - Starter,50116,"Fish oil, sardine, Pacific-California",0.56
+Nile Tilapia - Starter,52105,Canola oil,0.76
+Nile Tilapia - Starter,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Nile Tilapia - Starter,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Nile Tilapia - Starter,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.47
+Nile Tilapia - Starter,70146,"BHT, powder, 0.1%",0.1
+Nile Tilapia - Grower,10019,"Fish meal, tuna, mechanically extracted, 58% CP",3
+Nile Tilapia - Grower,23002,"Poultry by-product meal, feed-grade, 60% CP",7
+Nile Tilapia - Grower,30307,"Cassava, tuber, meal",6
+Nile Tilapia - Grower,30346,"Corn gluten meal, 62% CP",5
+Nile Tilapia - Grower,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",8
+Nile Tilapia - Grower,30944,"Rice, broken",7.8
+Nile Tilapia - Grower,30937,Rice bran,6.77
+Nile Tilapia - Grower,31252,"Soybean meal, USA, dehulled, Standard, 48% CP",40
+Nile Tilapia - Grower,31610,"Wheat, flour",10.11
+Nile Tilapia - Grower,50116,"Fish oil, sardine, Pacific-California",0.81
+Nile Tilapia - Grower,52113,Palm oil,2.78
+Nile Tilapia - Grower,52117,Soybean oil,0.81
+Nile Tilapia - Grower,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Nile Tilapia - Grower,61111,DL-Methionine,0.09
+Nile Tilapia - Grower,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Nile Tilapia - Grower,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.99
+Nile Tilapia - Grower,70146,"BHT, powder, 0.1%",0.1
+Nile Tilapia - Finisher,10032,"Fish meal, mixed fish, SEA, 60% CP",1
+Nile Tilapia - Finisher,23002,"Poultry by-product meal, feed-grade, 60% CP",4
+Nile Tilapia - Finisher,30307,"Cassava, tuber, meal",6
+Nile Tilapia - Finisher,30355,"Corn, grain",10
+Nile Tilapia - Finisher,30505,"Distillers dried grains with solubles, DDGS",3.56
+Nile Tilapia - Finisher,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",7
+Nile Tilapia - Finisher,30944,"Rice, broken",4.05
+Nile Tilapia - Finisher,30937,Rice bran,9.95
+Nile Tilapia - Finisher,31252,"Soybean meal, USA, dehulled, Standard, 48% CP",29.11
+Nile Tilapia - Finisher,31617,Wheat pollard,20.52
+Nile Tilapia - Finisher,52117,Soybean oil,3.01
+Nile Tilapia - Finisher,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Nile Tilapia - Finisher,61111,DL-Methionine,0.21
+Nile Tilapia - Finisher,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Nile Tilapia - Finisher,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.74
+Nile Tilapia - Finisher,70146,"BHT, powder, 0.1%",0.1
+Whiteleg Shrimp - Starter,10002,"Fish meal, anchoveta, South America, 67% CP",5
+Whiteleg Shrimp - Starter,10018,"Fish meal, sardine, 66% CP",7
+Whiteleg Shrimp - Starter,11001,"Fish solubles, condensed, 31% CP",1.5
+Whiteleg Shrimp - Starter,15001,Squid liver meal,3
+Whiteleg Shrimp - Starter,23002,"Poultry by-product meal, feed-grade, 60% CP",11.84
+Whiteleg Shrimp - Starter,30346,"Corn gluten meal, 62% CP",7.17
+Whiteleg Shrimp - Starter,31252,"Soybean meal, USA, dehulled, Standard, 48% CP",34
+Whiteleg Shrimp - Starter,31610,"Wheat, flour",27.52
+Whiteleg Shrimp - Starter,50112,"Fish oil, Atlantic salmon, farmed by product",1
+Whiteleg Shrimp - Starter,54105,Soy lecithin,0.72
+Whiteleg Shrimp - Starter,60113,"Vitamin premix IAFFD Standard, FW shrimp grower, 0.4%",0.4
+Whiteleg Shrimp - Starter,61111,DL-Methionine,0.09
+Whiteleg Shrimp - Starter,61108,L-Lysine,0.41
+Whiteleg Shrimp - Starter,62119,"Mineral premix IAFFD Standard, SW shrimp grower, 0.25%",0.25
+Whiteleg Shrimp - Starter,70146,"BHT, powder, 0.1%",0.1
+Whiteleg Shrimp - Grower,10002,"Fish meal, anchoveta, South America, 67% CP",3
+Whiteleg Shrimp - Grower,10009,"Fish meal, anchovy, 67% CP",9
+Whiteleg Shrimp - Grower,11116,"Tuna liquid hydrolysate w tuna oil, Actipal EM1, Diana Aqua",1.5
+Whiteleg Shrimp - Grower,15001,Squid liver meal,4
+Whiteleg Shrimp - Grower,23002,"Poultry by-product meal, feed-grade, 60% CP",12
+Whiteleg Shrimp - Grower,31218,"Soy protein concentrate, 65% CP",3.4
+Whiteleg Shrimp - Grower,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",35
+Whiteleg Shrimp - Grower,31610,"Wheat, flour",27.84
+Whiteleg Shrimp - Grower,50116,"Fish oil, sardine, Pacific-California",0.92
+Whiteleg Shrimp - Grower,52105,Canola oil,0.81
+Whiteleg Shrimp - Grower,54105,Soy lecithin,0.1
+Whiteleg Shrimp - Grower,60113,"Vitamin premix IAFFD Standard, FW shrimp grower, 0.4%",0.4
+Whiteleg Shrimp - Grower,60132,"Choline chloride, 60% choline",0.1
+Whiteleg Shrimp - Grower,61111,DL-Methionine,0.08
+Whiteleg Shrimp - Grower,62119,"Mineral premix IAFFD Standard, SW shrimp grower, 0.25%",0.25
+Whiteleg Shrimp - Grower,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.5
+Whiteleg Shrimp - Grower,70146,"BHT, powder, 0.1%",0.1
+Whiteleg Shrimp - Finisher,10002,"Fish meal, anchoveta, South America, 67% CP",3
+Whiteleg Shrimp - Finisher,11001,"Fish solubles, condensed, 31% CP",3
+Whiteleg Shrimp - Finisher,10032,"Fish meal, mixed fish, SEA, 60% CP",5
+Whiteleg Shrimp - Finisher,15001,Squid liver meal,3
+Whiteleg Shrimp - Finisher,23005,"Poultry by-product meal, low ash, 62% CP",5.28
+Whiteleg Shrimp - Finisher,30505,"Distillers dried grains with solubles, DDGS",6
+Whiteleg Shrimp - Finisher,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",5
+Whiteleg Shrimp - Finisher,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",35
+Whiteleg Shrimp - Finisher,31610,"Wheat, flour",32
+Whiteleg Shrimp - Finisher,50112,"Fish oil, Atlantic salmon, farmed by product",1
+Whiteleg Shrimp - Finisher,54105,Soy lecithin,0.83
+Whiteleg Shrimp - Finisher,60113,"Vitamin premix IAFFD Standard, FW shrimp grower, 0.4%",0.4
+Whiteleg Shrimp - Finisher,61108,L-Lysine,0.13
+Whiteleg Shrimp - Finisher,62119,"Mineral premix IAFFD Standard, SW shrimp grower, 0.25%",0.25
+Whiteleg Shrimp - Finisher,70146,"BHT, powder, 0.1%",0.1
+Atlantic Salmon - Starter,10002,"Fish meal, anchoveta, South America, 67% CP",22
+Atlantic Salmon - Starter,14004,Krill meal,5
+Atlantic Salmon - Starter,20003,"Blood meal, whole, spray-dried",5
+Atlantic Salmon - Starter,21001,"Feather meal A, 77% CP",3
+Atlantic Salmon - Starter,23005,"Poultry by-product meal, low ash, 62% CP",10
+Atlantic Salmon - Starter,30347,"Corn gluten meal, 68% CP",7.5
+Atlantic Salmon - Starter,31218,"Soy protein concentrate, 65% CP",4.72
+Atlantic Salmon - Starter,31607,"Wheat gluten meal, 78% CP",3
+Atlantic Salmon - Starter,31610,"Wheat, flour",18.65
+Atlantic Salmon - Starter,50105,"Fish oil, anchovy",6.5
+Atlantic Salmon - Starter,52105,Canola oil,10
+Atlantic Salmon - Starter,54105,Soy lecithin,2
+Atlantic Salmon - Starter,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Atlantic Salmon - Starter,61108,L-Lysine,0.92
+Atlantic Salmon - Starter,61107,L-Histidine,0.19
+Atlantic Salmon - Starter,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Atlantic Salmon - Starter,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.69
+Atlantic Salmon - Starter,70146,"BHT, powder, 0.1%",0.1
+Atlantic Salmon - Grower,10002,"Fish meal, anchoveta, South America, 67% CP",16
+Atlantic Salmon - Grower,14004,Krill meal,3
+Atlantic Salmon - Grower,20003,"Blood meal, whole, spray-dried",5
+Atlantic Salmon - Grower,21001,"Feather meal A, 77% CP",3
+Atlantic Salmon - Grower,23005,"Poultry by-product meal, low ash, 62% CP",12
+Atlantic Salmon - Grower,30347,"Corn gluten meal, 68% CP",8
+Atlantic Salmon - Grower,31218,"Soy protein concentrate, 65% CP",5.7
+Atlantic Salmon - Grower,31252,"Soybean meal, USA, dehulled, Standard, 48% CP",3
+Atlantic Salmon - Grower,31607,"Wheat gluten meal, 78% CP",3
+Atlantic Salmon - Grower,31610,"Wheat, flour",15.66
+Atlantic Salmon - Grower,50105,"Fish oil, anchovy",8.26
+Atlantic Salmon - Grower,51106,Poultry fat,3
+Atlantic Salmon - Grower,52105,Canola oil,10
+Atlantic Salmon - Grower,54105,Soy lecithin,2
+Atlantic Salmon - Grower,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Atlantic Salmon - Grower,61108,L-Lysine,0.9
+Atlantic Salmon - Grower,61107,L-Histidine,0.17
+Atlantic Salmon - Grower,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Atlantic Salmon - Grower,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.46
+Atlantic Salmon - Grower,70146,"BHT, powder, 0.1%",0.1
+Atlantic Salmon - Finisher,10002,"Fish meal, anchoveta, South America, 67% CP",10
+Atlantic Salmon - Finisher,14004,Krill meal,1
+Atlantic Salmon - Finisher,20003,"Blood meal, whole, spray-dried",5
+Atlantic Salmon - Finisher,21001,"Feather meal A, 77% CP",4
+Atlantic Salmon - Finisher,23005,"Poultry by-product meal, low ash, 62% CP",12
+Atlantic Salmon - Finisher,30347,"Corn gluten meal, 68% CP",6.12
+Atlantic Salmon - Finisher,31218,"Soy protein concentrate, 65% CP",7
+Atlantic Salmon - Finisher,31252,"Soybean meal, USA, dehulled, Standard, 48% CP",3
+Atlantic Salmon - Finisher,31607,"Wheat gluten meal, 78% CP",2
+Atlantic Salmon - Finisher,31610,"Wheat, flour",19.25
+Atlantic Salmon - Finisher,50105,"Fish oil, anchovy",10.34
+Atlantic Salmon - Finisher,51106,Poultry fat,3
+Atlantic Salmon - Finisher,52105,Canola oil,13
+Atlantic Salmon - Finisher,54105,Soy lecithin,2
+Atlantic Salmon - Finisher,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Atlantic Salmon - Finisher,61108,L-Lysine,1.01
+Atlantic Salmon - Finisher,61107,L-Histidine,0.2
+Atlantic Salmon - Finisher,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Atlantic Salmon - Finisher,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.24
+Atlantic Salmon - Finisher,70146,"BHT, powder, 0.1%",0.1
+Rainbow trout - Starter,10002,"Fish meal, anchoveta, South America, 67% CP",9
+Rainbow trout - Starter,14004,Krill meal,3
+Rainbow trout - Starter,21001,"Feather meal A, 77% CP",4.5
+Rainbow trout - Starter,22002,"Meat and bone meal, 50% CP",5
+Rainbow trout - Starter,23005,"Poultry by-product meal, low ash, 62% CP",10
+Rainbow trout - Starter,31218,"Soy protein concentrate, 65% CP",18.78
+Rainbow trout - Starter,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",10
+Rainbow trout - Starter,31607,"Wheat gluten meal, 78% CP",3
+Rainbow trout - Starter,31610,"Wheat, flour",14.63
+Rainbow trout - Starter,31605,Wheat bran,5.05
+Rainbow trout - Starter,50116,"Fish oil, sardine, Pacific-California",3.76
+Rainbow trout - Starter,52105,Canola oil,11.57
+Rainbow trout - Starter,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Rainbow trout - Starter,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.1
+Rainbow trout - Starter,60132,"Choline chloride, 60% choline",0.3
+Rainbow trout - Starter,61111,DL-Methionine,0.04
+Rainbow trout - Starter,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Rainbow trout - Starter,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.41
+Rainbow trout - Starter,70146,"BHT, powder, 0.1%",0.1
+Rainbow trout - Grower,10002,"Fish meal, anchoveta, South America, 67% CP",8
+Rainbow trout - Grower,14004,Krill meal,3
+Rainbow trout - Grower,21001,"Feather meal A, 77% CP",4.5
+Rainbow trout - Grower,22002,"Meat and bone meal, 50% CP",5
+Rainbow trout - Grower,23005,"Poultry by-product meal, low ash, 62% CP",10
+Rainbow trout - Grower,31218,"Soy protein concentrate, 65% CP",16.29
+Rainbow trout - Grower,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",10
+Rainbow trout - Grower,31607,"Wheat gluten meal, 78% CP",3
+Rainbow trout - Grower,31610,"Wheat, flour",14.63
+Rainbow trout - Grower,31605,Wheat bran,6.56
+Rainbow trout - Grower,50116,"Fish oil, sardine, Pacific-California",3.18
+Rainbow trout - Grower,52105,Canola oil,14.14
+Rainbow trout - Grower,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Rainbow trout - Grower,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.1
+Rainbow trout - Grower,60132,"Choline chloride, 60% choline",0.3
+Rainbow trout - Grower,61111,DL-Methionine,0.07
+Rainbow trout - Grower,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Rainbow trout - Grower,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.37
+Rainbow trout - Grower,70146,"BHT, powder, 0.1%",0.1
+Rainbow trout - Finisher,10002,"Fish meal, anchoveta, South America, 67% CP",7.5
+Rainbow trout - Finisher,14004,Krill meal,3
+Rainbow trout - Finisher,21001,"Feather meal A, 77% CP",4.5
+Rainbow trout - Finisher,22002,"Meat and bone meal, 50% CP",5
+Rainbow trout - Finisher,23005,"Poultry by-product meal, low ash, 62% CP",10
+Rainbow trout - Finisher,31218,"Soy protein concentrate, 65% CP",14.26
+Rainbow trout - Finisher,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",10
+Rainbow trout - Finisher,31607,"Wheat gluten meal, 78% CP",3
+Rainbow trout - Finisher,31610,"Wheat, flour",14.99
+Rainbow trout - Finisher,31605,Wheat bran,4.58
+Rainbow trout - Finisher,50116,"Fish oil, sardine, Pacific-California",2.24
+Rainbow trout - Finisher,52105,Canola oil,19.26
+Rainbow trout - Finisher,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Rainbow trout - Finisher,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.1
+Rainbow trout - Finisher,60132,"Choline chloride, 60% choline",0.3
+Rainbow trout - Finisher,61111,DL-Methionine,0.17
+Rainbow trout - Finisher,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Rainbow trout - Finisher,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.24
+Rainbow trout - Finisher,70146,"BHT, powder, 0.1%",0.1
+Asian Seabass - Starter,10009,"Fish meal, anchovy, 67% CP",2
+Asian Seabass - Starter,10018,"Fish meal, sardine, 66% CP",13
+Asian Seabass - Starter,15001,Squid liver meal,3
+Asian Seabass - Starter,20003,"Blood meal, whole, spray-dried",4
+Asian Seabass - Starter,21002,"Feather meal, 81% CP",3
+Asian Seabass - Starter,22002,"Meat and bone meal, 50% CP",10
+Asian Seabass - Starter,23005,"Poultry by-product meal, low ash, 62% CP",14
+Asian Seabass - Starter,31217,"Soy protein concentrate, 60% CP",12.46
+Asian Seabass - Starter,31291,"Soybean meal, USA, dehulled, Standard, 46% CP",11.65
+Asian Seabass - Starter,31607,"Wheat gluten meal, 78% CP",4
+Asian Seabass - Starter,31610,"Wheat, flour",16.42
+Asian Seabass - Starter,50112,"Fish oil, Atlantic salmon, farmed by product",1.5
+Asian Seabass - Starter,52117,Soybean oil,1.76
+Asian Seabass - Starter,54105,Soy lecithin,2
+Asian Seabass - Starter,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Asian Seabass - Starter,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.05
+Asian Seabass - Starter,60132,"Choline chloride, 60% choline",0.3
+Asian Seabass - Starter,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Asian Seabass - Starter,70146,"BHT, powder, 0.1%",0.1
+Asian Seabass - Grower,10009,"Fish meal, anchovy, 67% CP",2
+Asian Seabass - Grower,10018,"Fish meal, sardine, 66% CP",8
+Asian Seabass - Grower,15001,Squid liver meal,3
+Asian Seabass - Grower,20003,"Blood meal, whole, spray-dried",4
+Asian Seabass - Grower,21002,"Feather meal, 81% CP",3
+Asian Seabass - Grower,22002,"Meat and bone meal, 50% CP",8
+Asian Seabass - Grower,23005,"Poultry by-product meal, low ash, 62% CP",10
+Asian Seabass - Grower,31217,"Soy protein concentrate, 60% CP",9.67
+Asian Seabass - Grower,31291,"Soybean meal, USA, dehulled, Standard, 46% CP",19.49
+Asian Seabass - Grower,31607,"Wheat gluten meal, 78% CP",2
+Asian Seabass - Grower,31610,"Wheat, flour",22.21
+Asian Seabass - Grower,50112,"Fish oil, Atlantic salmon, farmed by product",1
+Asian Seabass - Grower,52117,Soybean oil,4.34
+Asian Seabass - Grower,54105,Soy lecithin,2
+Asian Seabass - Grower,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Asian Seabass - Grower,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.05
+Asian Seabass - Grower,60132,"Choline chloride, 60% choline",0.3
+Asian Seabass - Grower,61111,DL-Methionine,0.09
+Asian Seabass - Grower,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Asian Seabass - Grower,70146,"BHT, powder, 0.1%",0.1
+Asian Seabass - Finisher,10009,"Fish meal, anchovy, 67% CP",2
+Asian Seabass - Finisher,10018,"Fish meal, sardine, 66% CP",5
+Asian Seabass - Finisher,15001,Squid liver meal,2.5
+Asian Seabass - Finisher,20003,"Blood meal, whole, spray-dried",4
+Asian Seabass - Finisher,21002,"Feather meal, 81% CP",3
+Asian Seabass - Finisher,22002,"Meat and bone meal, 50% CP",6
+Asian Seabass - Finisher,23005,"Poultry by-product meal, low ash, 62% CP",6
+Asian Seabass - Finisher,31217,"Soy protein concentrate, 60% CP",11.41
+Asian Seabass - Finisher,31291,"Soybean meal, USA, dehulled, Standard, 46% CP",25.3
+Asian Seabass - Finisher,31610,"Wheat, flour",21.94
+Asian Seabass - Finisher,50112,"Fish oil, Atlantic salmon, farmed by product",1
+Asian Seabass - Finisher,52117,Soybean oil,8.44
+Asian Seabass - Finisher,54105,Soy lecithin,2
+Asian Seabass - Finisher,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Asian Seabass - Finisher,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.05
+Asian Seabass - Finisher,60132,"Choline chloride, 60% choline",0.3
+Asian Seabass - Finisher,61111,DL-Methionine,0.2
+Asian Seabass - Finisher,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Asian Seabass - Finisher,70146,"BHT, powder, 0.1%",0.1
+European Seabass - Starter,10002,"Fish meal, anchoveta, South America, 67% CP",16
+European Seabass - Starter,14004,Krill meal,3
+European Seabass - Starter,23002,"Poultry by-product meal, feed-grade, 60% CP",11.61
+European Seabass - Starter,30347,"Corn gluten meal, 68% CP",10
+European Seabass - Starter,31218,"Soy protein concentrate, 65% CP",16.72
+European Seabass - Starter,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",12.1
+European Seabass - Starter,31607,"Wheat gluten meal, 78% CP",3
+European Seabass - Starter,31610,"Wheat, flour",14.15
+European Seabass - Starter,50105,"Fish oil, anchovy",3.33
+European Seabass - Starter,52105,Canola oil,7.6
+European Seabass - Starter,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+European Seabass - Starter,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.1
+European Seabass - Starter,60132,"Choline chloride, 60% choline",0.3
+European Seabass - Starter,61108,L-Lysine,1
+European Seabass - Starter,61117,L-Taurine,0.23
+European Seabass - Starter,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+European Seabass - Starter,70146,"BHT, powder, 0.1%",0.1
+European Seabass - Grower,10002,"Fish meal, anchoveta, South America, 67% CP",15
+European Seabass - Grower,14004,Krill meal,3
+European Seabass - Grower,23002,"Poultry by-product meal, feed-grade, 60% CP",10.61
+European Seabass - Grower,30347,"Corn gluten meal, 68% CP",10
+European Seabass - Grower,31218,"Soy protein concentrate, 65% CP",13.56
+European Seabass - Grower,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",15
+European Seabass - Grower,31607,"Wheat gluten meal, 78% CP",3
+European Seabass - Grower,31610,"Wheat, flour",14.16
+European Seabass - Grower,50105,"Fish oil, anchovy",1.88
+European Seabass - Grower,52105,Canola oil,11.31
+European Seabass - Grower,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+European Seabass - Grower,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.1
+European Seabass - Grower,60132,"Choline chloride, 60% choline",0.3
+European Seabass - Grower,61108,L-Lysine,1
+European Seabass - Grower,61117,L-Taurine,0.13
+European Seabass - Grower,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+European Seabass - Grower,62138,Limestone (Calcium Carbonate),0.09
+European Seabass - Grower,70146,"BHT, powder, 0.1%",0.1
+European Seabass - Finisher,10002,"Fish meal, anchoveta, South America, 67% CP",14
+European Seabass - Finisher,14004,Krill meal,3
+European Seabass - Finisher,23002,"Poultry by-product meal, feed-grade, 60% CP",10.52
+European Seabass - Finisher,30347,"Corn gluten meal, 68% CP",10
+European Seabass - Finisher,31218,"Soy protein concentrate, 65% CP",13.29
+European Seabass - Finisher,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",15
+European Seabass - Finisher,31607,"Wheat gluten meal, 78% CP",3
+European Seabass - Finisher,31610,"Wheat, flour",12.47
+European Seabass - Finisher,50105,"Fish oil, anchovy",1.98
+European Seabass - Finisher,52105,Canola oil,13.4
+European Seabass - Finisher,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+European Seabass - Finisher,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.1
+European Seabass - Finisher,60132,"Choline chloride, 60% choline",0.3
+European Seabass - Finisher,61108,L-Lysine,0.96
+European Seabass - Finisher,61117,L-Taurine,0.14
+European Seabass - Finisher,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+European Seabass - Finisher,62138,Limestone (Calcium Carbonate),1
+European Seabass - Finisher,70146,"BHT, powder, 0.1%",0.1
+Pangasius (Striped) Catfish - Starter,10019,"Fish meal, tuna, mechanically extracted, 58% CP",5
+Pangasius (Striped) Catfish - Starter,20003,"Blood meal, whole, spray-dried",4
+Pangasius (Striped) Catfish - Starter,23002,"Poultry by-product meal, feed-grade, 60% CP",5.1
+Pangasius (Striped) Catfish - Starter,30307,"Cassava, tuber, meal",8.28
+Pangasius (Striped) Catfish - Starter,30345,"Corn gluten meal, 60% CP",6
+Pangasius (Striped) Catfish - Starter,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",10
+Pangasius (Striped) Catfish - Starter,30937,Rice bran,8
+Pangasius (Striped) Catfish - Starter,31291,"Soybean meal, USA, dehulled, Standard, 46% CP",39.14
+Pangasius (Striped) Catfish - Starter,31622,Wheat,9.05
+Pangasius (Striped) Catfish - Starter,50112,"Fish oil, Atlantic salmon, farmed by product",0.57
+Pangasius (Striped) Catfish - Starter,52113,Palm oil,0.86
+Pangasius (Striped) Catfish - Starter,54105,Soy lecithin,2
+Pangasius (Striped) Catfish - Starter,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Pangasius (Striped) Catfish - Starter,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.03
+Pangasius (Striped) Catfish - Starter,60132,"Choline chloride, 60% choline",0.1
+Pangasius (Striped) Catfish - Starter,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Pangasius (Striped) Catfish - Starter,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.02
+Pangasius (Striped) Catfish - Starter,70146,"BHT, powder, 0.1%",0.1
+Pangasius (Striped) Catfish - Grower,10019,"Fish meal, tuna, mechanically extracted, 58% CP",2
+Pangasius (Striped) Catfish - Grower,20003,"Blood meal, whole, spray-dried",3.64
+Pangasius (Striped) Catfish - Grower,30307,"Cassava, tuber, meal",14.41
+Pangasius (Striped) Catfish - Grower,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",10
+Pangasius (Striped) Catfish - Grower,30937,Rice bran,8
+Pangasius (Striped) Catfish - Grower,31291,"Soybean meal, USA, dehulled, Standard, 46% CP",45
+Pangasius (Striped) Catfish - Grower,31622,Wheat,9.59
+Pangasius (Striped) Catfish - Grower,50112,"Fish oil, Atlantic salmon, farmed by product",0.5
+Pangasius (Striped) Catfish - Grower,52113,Palm oil,2.5
+Pangasius (Striped) Catfish - Grower,54105,Soy lecithin,2
+Pangasius (Striped) Catfish - Grower,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Pangasius (Striped) Catfish - Grower,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.03
+Pangasius (Striped) Catfish - Grower,60132,"Choline chloride, 60% choline",0.1
+Pangasius (Striped) Catfish - Grower,61111,DL-Methionine,0.16
+Pangasius (Striped) Catfish - Grower,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Pangasius (Striped) Catfish - Grower,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.22
+Pangasius (Striped) Catfish - Grower,70146,"BHT, powder, 0.1%",0.1
+Pangasius (Striped) Catfish - Finisher,10019,"Fish meal, tuna, mechanically extracted, 58% CP",0.5
+Pangasius (Striped) Catfish - Finisher,30307,"Cassava, tuber, meal",15
+Pangasius (Striped) Catfish - Finisher,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",10
+Pangasius (Striped) Catfish - Finisher,30937,Rice bran,8
+Pangasius (Striped) Catfish - Finisher,31291,"Soybean meal, USA, dehulled, Standard, 46% CP",40.45
+Pangasius (Striped) Catfish - Finisher,31622,Wheat,11.68
+Pangasius (Striped) Catfish - Finisher,31605,Wheat bran,6.05
+Pangasius (Striped) Catfish - Finisher,50112,"Fish oil, Atlantic salmon, farmed by product",0.5
+Pangasius (Striped) Catfish - Finisher,52113,Palm oil,3.44
+Pangasius (Striped) Catfish - Finisher,54105,Soy lecithin,2
+Pangasius (Striped) Catfish - Finisher,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Pangasius (Striped) Catfish - Finisher,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.03
+Pangasius (Striped) Catfish - Finisher,60132,"Choline chloride, 60% choline",0.1
+Pangasius (Striped) Catfish - Finisher,61111,DL-Methionine,0.24
+Pangasius (Striped) Catfish - Finisher,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Pangasius (Striped) Catfish - Finisher,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.14
+Pangasius (Striped) Catfish - Finisher,70146,"BHT, powder, 0.1%",0.1
+Common Carp - Starter,10021,"Fish meal, Pangasius (basa), 60% CP",3.73
+Common Carp - Starter,21002,"Feather meal, 81% CP",5
+Common Carp - Starter,22002,"Meat and bone meal, 50% CP",7
+Common Carp - Starter,23005,"Poultry by-product meal, low ash, 62% CP",8
+Common Carp - Starter,30355,"Corn, grain",5
+Common Carp - Starter,30505,"Distillers dried grains with solubles, DDGS",7.96
+Common Carp - Starter,30944,"Rice, broken",16.12
+Common Carp - Starter,31291,"Soybean meal, USA, dehulled, Standard, 46% CP",42
+Common Carp - Starter,50112,"Fish oil, Atlantic salmon, farmed by product",0.5
+Common Carp - Starter,54105,Soy lecithin,1.03
+Common Carp - Starter,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Common Carp - Starter,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.03
+Common Carp - Starter,60132,"Choline chloride, 60% choline",0.1
+Common Carp - Starter,61111,DL-Methionine,0.12
+Common Carp - Starter,61108,L-Lysine,1
+Common Carp - Starter,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Common Carp - Starter,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.56
+Common Carp - Starter,70146,"BHT, powder, 0.1%",0.1
+Common Carp - Grower,10021,"Fish meal, Pangasius (basa), 60% CP",0.5
+Common Carp - Grower,21002,"Feather meal, 81% CP",4
+Common Carp - Grower,23005,"Poultry by-product meal, low ash, 62% CP",3.33
+Common Carp - Grower,30355,"Corn, grain",5
+Common Carp - Grower,30505,"Distillers dried grains with solubles, DDGS",10
+Common Carp - Grower,30944,"Rice, broken",16.52
+Common Carp - Grower,30937,Rice bran,8
+Common Carp - Grower,31291,"Soybean meal, USA, dehulled, Standard, 46% CP",44.87
+Common Carp - Grower,50112,"Fish oil, Atlantic salmon, farmed by product",0.5
+Common Carp - Grower,52113,Palm oil,2.05
+Common Carp - Grower,54105,Soy lecithin,2
+Common Carp - Grower,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Common Carp - Grower,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.03
+Common Carp - Grower,60132,"Choline chloride, 60% choline",0.1
+Common Carp - Grower,61111,DL-Methionine,0.24
+Common Carp - Grower,61108,L-Lysine,0.42
+Common Carp - Grower,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Common Carp - Grower,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.57
+Common Carp - Grower,70146,"BHT, powder, 0.1%",0.1
+Common Carp - Finisher,21002,"Feather meal, 81% CP",2.05
+Common Carp - Finisher,30355,"Corn, grain",5
+Common Carp - Finisher,30505,"Distillers dried grains with solubles, DDGS",10
+Common Carp - Finisher,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",10
+Common Carp - Finisher,30944,"Rice, broken",16.02
+Common Carp - Finisher,30937,Rice bran,8
+Common Carp - Finisher,31291,"Soybean meal, USA, dehulled, Standard, 46% CP",38.78
+Common Carp - Finisher,50112,"Fish oil, Atlantic salmon, farmed by product",0.5
+Common Carp - Finisher,52113,Palm oil,3.59
+Common Carp - Finisher,54105,Soy lecithin,2
+Common Carp - Finisher,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Common Carp - Finisher,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.03
+Common Carp - Finisher,60132,"Choline chloride, 60% choline",0.1
+Common Carp - Finisher,61111,DL-Methionine,0.28
+Common Carp - Finisher,61108,L-Lysine,0.5
+Common Carp - Finisher,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Common Carp - Finisher,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.3
+Common Carp - Finisher,62138,Limestone (Calcium Carbonate),1
+Common Carp - Finisher,70146,"BHT, powder, 0.1%",0.1
+IMC-Rohu,10021,"Fish meal, Pangasius (basa), 60% CP",0.5
+IMC-Rohu,30307,"Cassava, tuber, meal",7
+IMC-Rohu,30505,"Distillers dried grains with solubles, DDGS",10
+IMC-Rohu,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",8.96
+IMC-Rohu,30937,Rice bran,6.67
+IMC-Rohu,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",45
+IMC-Rohu,31610,"Wheat, flour",16.35
+IMC-Rohu,50116,"Fish oil, sardine, Pacific-California",0.5
+IMC-Rohu,52113,Palm oil,1.26
+IMC-Rohu,54105,Soy lecithin,2
+IMC-Rohu,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+IMC-Rohu,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.03
+IMC-Rohu,61111,DL-Methionine,0.18
+IMC-Rohu,61108,L-Lysine,0.1
+IMC-Rohu,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.5
+IMC-Rohu,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.39
+IMC-Rohu,70146,"BHT, powder, 0.1%",0.1
+African Catfish,10012,"Fish meal, herring, 70% CP",3
+African Catfish,20003,"Blood meal, whole, spray-dried",4
+African Catfish,23002,"Poultry by-product meal, feed-grade, 60% CP",7.27
+African Catfish,30307,"Cassava, tuber, meal",6
+African Catfish,30505,"Distillers dried grains with solubles, DDGS",10
+African Catfish,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",9.44
+African Catfish,30944,"Rice, broken",5.84
+African Catfish,30937,Rice bran,2.27
+African Catfish,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",36
+African Catfish,31610,"Wheat, flour",10
+African Catfish,50116,"Fish oil, sardine, Pacific-California",0.37
+African Catfish,52117,Soybean oil,3.78
+African Catfish,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+African Catfish,61111,DL-Methionine,0.05
+African Catfish,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+African Catfish,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.14
+African Catfish,70146,"BHT, powder, 0.1%",0.1
+Largemouth Bass,10002,"Fish meal, anchoveta, South America, 67% CP",5
+Largemouth Bass,11116,"Tuna liquid hydrolysate w tuna oil, Actipal EM1, Diana Aqua",2
+Largemouth Bass,10032,"Fish meal, mixed fish, SEA, 60% CP",20
+Largemouth Bass,23005,"Poultry by-product meal, low ash, 62% CP",13.85
+Largemouth Bass,30307,"Cassava, tuber, meal",6.61
+Largemouth Bass,31218,"Soy protein concentrate, 65% CP",8
+Largemouth Bass,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",14.98
+Largemouth Bass,31607,"Wheat gluten meal, 78% CP",10.04
+Largemouth Bass,31610,"Wheat, flour",9.96
+Largemouth Bass,50112,"Fish oil, Atlantic salmon, farmed by product",2
+Largemouth Bass,52117,Soybean oil,6.71
+Largemouth Bass,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Largemouth Bass,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Largemouth Bass,70146,"BHT, powder, 0.1%",0.1
+Snakehead,10001,"Fish meal, anchoveta, South America, 64% CP",10
+Snakehead,11116,"Tuna liquid hydrolysate w tuna oil, Actipal EM1, Diana Aqua",3
+Snakehead,20003,"Blood meal, whole, spray-dried",4
+Snakehead,21002,"Feather meal, 81% CP",3
+Snakehead,23002,"Poultry by-product meal, feed-grade, 60% CP",9.32
+Snakehead,30307,"Cassava, tuber, meal",7.8
+Snakehead,30348,"Corn protein concentrate, 77% CP",2.46
+Snakehead,31218,"Soy protein concentrate, 65% CP",8
+Snakehead,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",20.18
+Snakehead,31607,"Wheat gluten meal, 78% CP",6.77
+Snakehead,31610,"Wheat, flour",18.23
+Snakehead,50112,"Fish oil, Atlantic salmon, farmed by product",2
+Snakehead,52117,Soybean oil,4.34
+Snakehead,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Snakehead,61111,DL-Methionine,0.05
+Snakehead,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Snakehead,70146,"BHT, powder, 0.1%",0.1
+Grass Carp,23005,"Poultry by-product meal, low ash, 62% CP",5.21
+Grass Carp,30505,"Distillers dried grains with solubles, DDGS",10
+Grass Carp,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",14
+Grass Carp,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",38
+Grass Carp,31610,"Wheat, flour",24.82
+Grass Carp,52117,Soybean oil,3.62
+Grass Carp,54105,Soy lecithin,1.98
+Grass Carp,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Grass Carp,61111,DL-Methionine,0.03
+Grass Carp,61108,L-Lysine,0.09
+Grass Carp,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.5
+Grass Carp,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",1.15
+Grass Carp,70146,"BHT, powder, 0.1%",0.1
+Channel Catfish,10012,"Fish meal, herring, 70% CP",3.5
+Channel Catfish,23002,"Poultry by-product meal, feed-grade, 60% CP",8.72
+Channel Catfish,30345,"Corn gluten meal, 60% CP",6
+Channel Catfish,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",14
+Channel Catfish,30937,Rice bran,4.37
+Channel Catfish,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",36
+Channel Catfish,31610,"Wheat, flour",22
+Channel Catfish,50112,"Fish oil, Atlantic salmon, farmed by product",1
+Channel Catfish,52117,Soybean oil,3.55
+Channel Catfish,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Channel Catfish,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Channel Catfish,70146,"BHT, powder, 0.1%",0.1
+Black Carp,10009,"Fish meal, anchovy, 67% CP",3
+Black Carp,23002,"Poultry by-product meal, feed-grade, 60% CP",12.92
+Black Carp,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",14
+Black Carp,30937,Rice bran,5.52
+Black Carp,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",32
+Black Carp,31610,"Wheat, flour",25
+Black Carp,50112,"Fish oil, Atlantic salmon, farmed by product",1
+Black Carp,52117,Soybean oil,5.42
+Black Carp,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Black Carp,61111,DL-Methionine,0.01
+Black Carp,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Black Carp,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.28
+Black Carp,70146,"BHT, powder, 0.1%",0.1
+IMC catla,10021,"Fish meal, Pangasius (basa), 60% CP",3.58
+IMC catla,30505,"Distillers dried grains with solubles, DDGS",10
+IMC catla,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",8.32
+IMC catla,30944,"Rice, broken",5.98
+IMC catla,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",45
+IMC catla,31622,Wheat,20
+IMC catla,50116,"Fish oil, sardine, Pacific-California",0.5
+IMC catla,52113,Palm oil,1.98
+IMC catla,54105,Soy lecithin,2
+IMC catla,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+IMC catla,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.03
+IMC catla,60132,"Choline chloride, 60% choline",0.1
+IMC catla,61111,DL-Methionine,0.18
+IMC catla,61108,L-Lysine,0.5
+IMC catla,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+IMC catla,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.99
+IMC catla,70146,"BHT, powder, 0.1%",0.1
+IMC Mrigal,10021,"Fish meal, Pangasius (basa), 60% CP",1
+IMC Mrigal,30307,"Cassava, tuber, meal",8.38
+IMC Mrigal,30505,"Distillers dried grains with solubles, DDGS",10
+IMC Mrigal,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",8.66
+IMC Mrigal,31269,"Soybean meal, USA, dehulled, Standard, 47% CP",45
+IMC Mrigal,31610,"Wheat, flour",20.12
+IMC Mrigal,50112,"Fish oil, Atlantic salmon, farmed by product",0.5
+IMC Mrigal,52113,Palm oil,2.3
+IMC Mrigal,54105,Soy lecithin,2
+IMC Mrigal,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+IMC Mrigal,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.03
+IMC Mrigal,60132,"Choline chloride, 60% choline",0.1
+IMC Mrigal,61111,DL-Methionine,0.18
+IMC Mrigal,61108,L-Lysine,0.2
+IMC Mrigal,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+IMC Mrigal,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.68
+IMC Mrigal,70146,"BHT, powder, 0.1%",0.1
+Milkfish,10020,"Fish meal, white, mechanically extracted, 65% CP",2
+Milkfish,15001,Squid liver meal,2
+Milkfish,20003,"Blood meal, whole, spray-dried",3
+Milkfish,21002,"Feather meal, 81% CP",3
+Milkfish,23005,"Poultry by-product meal, low ash, 62% CP",8
+Milkfish,30307,"Cassava, tuber, meal",7.83
+Milkfish,30806,"Palm kernel meal, expeller",5
+Milkfish,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",12
+Milkfish,30937,Rice bran,14.14
+Milkfish,31252,"Soybean meal, USA, dehulled, Standard, 48% CP",23.94
+Milkfish,31610,"Wheat, flour",15
+Milkfish,50116,"Fish oil, sardine, Pacific-California",0.69
+Milkfish,51106,Poultry fat,1.83
+Milkfish,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Milkfish,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.05
+Milkfish,60132,"Choline chloride, 60% choline",0.3
+Milkfish,61111,DL-Methionine,0.05
+Milkfish,61108,L-Lysine,0.04
+Milkfish,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Milkfish,62132,"Mono calcium phosphate, MCP, Ca(H2PO4)2.H2O",0.27
+Milkfish,70146,"BHT, powder, 0.1%",0.1
+Japanese eel,10009,"Fish meal, anchovy, 67% CP",6.54
+Japanese eel,10012,"Fish meal, herring, 70% CP",29.32
+Japanese eel,10032,"Fish meal, mixed fish, SEA, 60% CP",1.14
+Japanese eel,20003,"Blood meal, whole, spray-dried",1.58
+Japanese eel,21002,"Feather meal, 81% CP",10
+Japanese eel,30348,"Corn protein concentrate, 77% CP",7.24
+Japanese eel,31252,"Soybean meal, USA, dehulled, Standard, 48% CP",3
+Japanese eel,31610,"Wheat, flour",24.15
+Japanese eel,50116,"Fish oil, sardine, Pacific-California",1.83
+Japanese eel,51106,Poultry fat,5
+Japanese eel,52117,Soybean oil,8.99
+Japanese eel,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Japanese eel,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.05
+Japanese eel,60132,"Choline chloride, 60% choline",0.3
+Japanese eel,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Japanese eel,70146,"BHT, powder, 0.1%",0.1
+Korean rockfish,10018,"Fish meal, sardine, 66% CP",10
+Korean rockfish,20003,"Blood meal, whole, spray-dried",5
+Korean rockfish,22002,"Meat and bone meal, 50% CP",10
+Korean rockfish,23005,"Poultry by-product meal, low ash, 62% CP",10
+Korean rockfish,30345,"Corn gluten meal, 60% CP",4.41
+Korean rockfish,30355,"Corn, grain",2.96
+Korean rockfish,30907,"Rapeseed/Canola meal, solvent extracted, 39% CP",10
+Korean rockfish,31252,"Soybean meal, USA, dehulled, Standard, 48% CP",22.63
+Korean rockfish,31610,"Wheat, flour",15
+Korean rockfish,50116,"Fish oil, sardine, Pacific-California",2.83
+Korean rockfish,51106,Poultry fat,5.91
+Korean rockfish,60107,"Vitamin premix, USSEC standard, fish grower, 0.5%",0.5
+Korean rockfish,60128,"Rovimix-stay-C 35, ascorbyl-monophosphate, DSM",0.05
+Korean rockfish,60132,"Choline chloride, 60% choline",0.3
+Korean rockfish,61111,DL-Methionine,0.05
+Korean rockfish,62106,"Mineral premix, USSEC Standard, fish, 0.25%",0.25
+Korean rockfish,70146,"BHT, powder, 0.1%",0.1
