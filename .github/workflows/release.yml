@@ -31,7 +31,7 @@ jobs:
 
           changelog = pathlib.Path("CHANGELOG.md").read_text()
           section_pattern = re.compile(
-              rf"^## \[{re.escape(version)}\] - .*$\n(.*?)(?=^## \[|\Z)",
+              rf"^## \[{re.escape(version)}\] - [^\n]*\n(.*?)(?=^## \[|\Z)",
               re.MULTILINE | re.DOTALL,
           )
           match = section_pattern.search(changelog)

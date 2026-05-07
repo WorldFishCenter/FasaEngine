@@ -33,3 +33,6 @@ pytest-cache-files-*/
 
 # AI
 .claude/
+
+# Environment variables
+.env
