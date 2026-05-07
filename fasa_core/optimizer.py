@@ -21,6 +21,8 @@ effects on digestibility, chance-constrained variability handling):
 
 from __future__ import annotations
 
+import logging
+import time
 from typing import Optional
 
 import pulp
@@ -43,6 +45,8 @@ from .models import (
     IngredientLine,
     NutrientLine,
 )
+
+LOGGER = logging.getLogger("fasa_core.optimizer")
 
 
 # =========================================================================== #
@@ -236,13 +240,23 @@ def _build_pulp_problem(
 
 def _solve(prob: pulp.LpProblem) -> int:
     """Try in-process HiGHS first; fall back to bundled CBC. Time-limited."""
+    started_at = time.perf_counter()
+    backend = DEFAULT_SOLVER
     # `HiGHS` = PuLP's in-process highspy binding (no separate binary needed).
     # `HiGHS_CMD` would need a `highs` executable on $PATH; we don't rely on that.
     try:
         solver = pulp.HiGHS(msg=False, timeLimit=SOLVER_TIME_LIMIT_SECONDS)
         prob.solve(solver)
     except Exception:
+        backend = "CBC"
         prob.solve(pulp.PULP_CBC_CMD(msg=False, timeLimit=SOLVER_TIME_LIMIT_SECONDS))
+    elapsed_ms = (time.perf_counter() - started_at) * 1000.0
+    LOGGER.info(
+        "solver.result backend=%s status=%s elapsed_ms=%.2f",
+        backend,
+        pulp.LpStatus.get(prob.status, prob.status),
+        elapsed_ms,
+    )
     return prob.status
 
 

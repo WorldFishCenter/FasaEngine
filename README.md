@@ -12,6 +12,31 @@ Optimization core for the FASA digital application: low-cost, digestibility-awar
 
 This repository is an **MVP**. The public surface is stable enough for demos and integration experiments, but expect breaking changes as the data model and constraint set evolve.
 
+## Architecture at a glance
+
+The project has two main parts:
+
+- `fasa_api`: the API interface
+- `fasa_core`: the formulation and validation logic
+
+Reference data is currently stored in `data/` CSV files.
+
+For a simple high-level overview, see [`docs/architecture.md`](docs/architecture.md).
+For integration details, see [`docs/integration.md`](docs/integration.md).
+
+## API stability policy (pragmatic)
+
+To keep this project easy to plug into web/mobile/desktop clients without overengineering:
+
+- Current public contract is the OpenAPI schema exposed by the running API (`/docs` and `/openapi.json`).
+- Backward-compatible changes (new optional fields, new endpoints) may happen at any time.
+- Breaking changes are avoided by default; when needed, they are called out in `CHANGELOG.md` and integration docs.
+- Target routing convention is `/v1/*` for long-term stability. Current unversioned routes remain supported for now to avoid forcing immediate client rewrites.
+- Integrators should pin to a deployed environment and test against the current `openapi.json` before upgrading.
+
+For versioning and release process, see [`docs/versioning.md`](docs/versioning.md).
+Project changes are tracked in [`CHANGELOG.md`](CHANGELOG.md).
+
 ## What's in this MVP
 
 - **Linear programming engine** (PuLP + HiGHS) that solves a digestibility-aware least-cost feed formulation against the active ASNS constraints for a chosen species/stage/production-system tuple.
@@ -87,6 +112,7 @@ pytest -q
 python -m examples.tilapia_starter_demo
 
 # 3. Spin up the API
+export FASA_REQUIRE_AUTH=false
 uvicorn fasa_api.main:app --reload --port 8000
 # then open docs at http://127.0.0.1:8000/docs
 ```
@@ -96,6 +122,7 @@ uvicorn fasa_api.main:app --reload --port 8000
 The API is self-documented at `GET /docs`. Endpoints:
 
 - `GET /health` liveness probe
+- `GET /ready` readiness probe (validates data files + FICD preload)
 - `GET /supported` discover valid `species`, `production_system`, and `stage` strings
 - `POST /formulate` run the optimization
 - `POST /validate-recipe` recompute composition for an explicit recipe
@@ -103,6 +130,11 @@ The API is self-documented at `GET /docs`. Endpoints:
 Notes:
 - Browsers issue **GET** requests; `GET /formulate` will return **405 Method Not Allowed** because `/formulate` is **POST-only**.
 - `stage` must match the ASNS `stage_weight` label exactly. Use `/supported` to discover valid values.
+- Unless `FASA_REQUIRE_AUTH=false`, all endpoints except `/health` require either:
+  - `Authorization: Bearer <token>`, or
+  - `X-API-Key: <token>`
+
+For external teams integrating this API into other systems, see [`docs/integration.md`](docs/integration.md).
 
 ### POST /formulate (example body)
 
@@ -126,6 +158,15 @@ Notes:
 }
 ```
 
+Example call with auth:
+
+```bash
+curl -X POST "http://127.0.0.1:8000/formulate" \
+  -H "Authorization: Bearer ${FASA_API_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d @payload.json
+```
+
 ### Reading the response (high level)
 
 - **`recipe`**: ingredient inclusions (percent of final feed) + cost breakdown.
@@ -133,6 +174,80 @@ Notes:
 - **`status`**:
   - `optimal`: solution exists and is least-cost under constraints
   - `infeasible`: no solution; see `infeasibility.iis_codes` / `iis_explanations` for why
+
+### Error envelope
+
+Business/auth errors are returned with:
+
+```json
+{
+  "detail": {
+    "code": "unauthorized",
+    "message": "Invalid or missing API token.",
+    "details": null
+  }
+}
+```
+
+## Cloud Run deployment (test environment)
+
+### Runtime contract
+
+- Container command binds to `0.0.0.0:$PORT`.
+- Required data files are bundled under `data/`.
+- `/health` is liveness and public.
+- `/ready` verifies data artifacts and FICD preload.
+- Auth is controlled by:
+  - `FASA_REQUIRE_AUTH` (default: `true`)
+  - `FASA_API_TOKEN` (required when auth enabled)
+
+### Build locally
+
+```bash
+docker build -t fasa-engine-api:local .
+docker run --rm -p 8080:8080 \
+  -e FASA_REQUIRE_AUTH=true \
+  -e FASA_API_TOKEN=local-dev-token \
+  fasa-engine-api:local
+```
+
+### Manual gcloud deploy (fallback)
+
+```bash
+gcloud run deploy fasa-engine-api-test \
+  --project "$GCP_PROJECT_ID" \
+  --region "$GCP_REGION" \
+  --source . \
+  --allow-unauthenticated \
+  --memory 2Gi \
+  --cpu 2 \
+  --concurrency 2 \
+  --timeout 120 \
+  --max-instances 10 \
+  --set-env-vars FASA_REQUIRE_AUTH=true \
+  --set-secrets FASA_API_TOKEN=fasa-api-token:latest
+```
+
+### CI deploy (recommended)
+
+GitHub Actions workflow [`.github/workflows/deploy-cloud-run.yml`](.github/workflows/deploy-cloud-run.yml) deploys on `main` push or manual dispatch.
+
+Configure:
+- **Repository variables**:
+  - `GCP_REGION`
+  - `GCP_ARTIFACT_REGISTRY_REPO`
+  - `CLOUD_RUN_SERVICE`
+- **Repository secrets**:
+  - `GCP_PROJECT_ID`
+  - `GCP_WORKLOAD_IDENTITY_PROVIDER`
+  - `GCP_DEPLOY_SERVICE_ACCOUNT`
+  - `FASA_API_TOKEN_SECRET_NAME`
+
+### Colleague testing checklist
+
+- Share Cloud Run base URL and API token through a secure channel.
+- Ask colleagues to test `/supported`, `/formulate`, and `/validate-recipe` with `Authorization: Bearer <token>`.
+- For production-like tests, keep request payloads below the current guard rails (`prices` and list fields max ~300 items).
 
 ## Modeling notes
 

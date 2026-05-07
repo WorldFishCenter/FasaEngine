@@ -1,0 +1,59 @@
+name: Deploy Cloud Run
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+env:
+  REGION: ${{ vars.GCP_REGION }}
+  GAR_REPOSITORY: ${{ vars.GCP_ARTIFACT_REGISTRY_REPO }}
+  SERVICE_NAME: ${{ vars.CLOUD_RUN_SERVICE }}
+  IMAGE_NAME: fasa-engine-api
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_DEPLOY_SERVICE_ACCOUNT }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker auth for Artifact Registry
+        run: gcloud auth configure-docker "${{ env.REGION }}-docker.pkg.dev" --quiet
+
+      - name: Build and push image
+        run: |
+          IMAGE_URI="${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+          docker build -t "${IMAGE_URI}" .
+          docker push "${IMAGE_URI}"
+          echo "IMAGE_URI=${IMAGE_URI}" >> "$GITHUB_ENV"
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy "${{ env.SERVICE_NAME }}" \
+            --project "${{ secrets.GCP_PROJECT_ID }}" \
+            --region "${{ env.REGION }}" \
+            --image "${IMAGE_URI}" \
+            --platform managed \
+            --service-account "${{ secrets.GCP_RUNTIME_SERVICE_ACCOUNT }}" \
+            --allow-unauthenticated \
+            --port 8080 \
+            --memory 2Gi \
+            --cpu 2 \
+            --concurrency 2 \
+            --timeout 120 \
+            --min-instances 0 \
+            --max-instances 10 \
+            --set-env-vars "FASA_REQUIRE_AUTH=true" \
+            --set-secrets "FASA_API_TOKEN=${{ secrets.FASA_API_TOKEN_SECRET_NAME }}:latest"

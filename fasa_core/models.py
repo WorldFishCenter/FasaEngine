@@ -34,6 +34,8 @@ class FormulateRequest(BaseModel):
             "local currency. Only ingredients present in this mapping AND in the "
             "configured availability pool are eligible."
         ),
+        min_length=1,
+        max_length=300,
     )
 
     processing_method: Literal["pelleted", "extruded"] = "pelleted"
@@ -49,6 +51,25 @@ class FormulateRequest(BaseModel):
             "Override the default premix mask. If provided, replaces the default "
             "list of ASNS spec codes whose constraints will be skipped."
         ),
+        max_length=200,
+    )
+
+
+class ValidateRecipeRequest(BaseModel):
+    """JSON payload accepted by POST /validate-recipe."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    fractions: Dict[str, float] = Field(
+        ...,
+        description="FICD ingredient code -> mass fraction in [0, 1].",
+        min_length=1,
+        max_length=300,
+    )
+    parameters: List[str] | None = Field(
+        default=None,
+        description="FICD parameter names to report; null means all parameters.",
+        max_length=300,
     )
 
 
@@ -98,3 +119,24 @@ class FormulateResponse(BaseModel):
     # always echoed back so the API client can display them
     premix_enabled: bool
     premix_rate: float
+
+
+class HealthResponse(BaseModel):
+    status: Literal["ok"]
+    version: str
+
+
+class SupportedResponse(BaseModel):
+    species: List[str]
+    production_systems: List[str]
+    stages_by_species_and_system: Dict[str, Dict[str, List[str]]]
+
+
+class ValidateRecipeResponse(BaseModel):
+    composition: Dict[str, float]
+
+
+class ErrorResponse(BaseModel):
+    code: str
+    message: str
+    details: str | None = None

@@ -1,0 +1,83 @@
+name: Release from Changelog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version and release notes
+        id: release_meta
+        run: |
+          python - <<'PY'
+          import os
+          import pathlib
+          import re
+          import tomllib
+
+          pyproject = tomllib.loads(pathlib.Path("pyproject.toml").read_text())
+          version = pyproject["project"]["version"]
+          tag_name = f"v{version}"
+
+          changelog = pathlib.Path("CHANGELOG.md").read_text()
+          section_pattern = re.compile(
+              rf"^## \[{re.escape(version)}\] - .*$\n(.*?)(?=^## \[|\Z)",
+              re.MULTILINE | re.DOTALL,
+          )
+          match = section_pattern.search(changelog)
+          if not match:
+              raise SystemExit(
+                  f"CHANGELOG.md does not contain a section for version {version}."
+              )
+
+          body = match.group(1).strip()
+          if not body:
+              raise SystemExit(
+                  f"CHANGELOG.md section for version {version} is empty."
+              )
+
+          out = pathlib.Path(os.environ["GITHUB_OUTPUT"])
+          with out.open("a") as f:
+              f.write(f"version={version}\n")
+              f.write(f"tag_name={tag_name}\n")
+              f.write("changelog<<EOF\n")
+              f.write(body + "\n")
+              f.write("EOF\n")
+          print(f"Prepared release metadata for {tag_name}")
+          PY
+
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          if git rev-parse "${{ steps.release_meta.outputs.tag_name }}" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Tag already exists: ${{ steps.release_meta.outputs.tag_name }}"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "Tag does not exist yet: ${{ steps.release_meta.outputs.tag_name }}"
+          fi
+
+      - name: Create GitHub Release
+        if: steps.check_tag.outputs.exists == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.release_meta.outputs.tag_name }}
+          name: FASA Engine ${{ steps.release_meta.outputs.version }}
+          body: ${{ steps.release_meta.outputs.changelog }}
+          draft: false
+          prerelease: false
+
+      - name: Skip release creation
+        if: steps.check_tag.outputs.exists == 'true'
+        run: |
+          echo "Release for ${{ steps.release_meta.outputs.tag_name }} already exists. Skipping."

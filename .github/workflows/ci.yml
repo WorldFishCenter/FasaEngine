@@ -24,6 +24,58 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
 
+      - name: Verify version references are in sync
+        if: matrix.python-version == '3.11'
+        run: |
+          python - <<'PY'
+          import pathlib
+          import re
+          import tomllib
+
+          pyproject = tomllib.loads(pathlib.Path("pyproject.toml").read_text())
+          project_version = pyproject["project"]["version"]
+
+          init_text = pathlib.Path("fasa_core/__init__.py").read_text()
+          m = re.search(r'__version__\s*=\s*"([^"]+)"', init_text)
+          if not m:
+              raise SystemExit("Could not find __version__ in fasa_core/__init__.py")
+          runtime_version = m.group(1)
+
+          if project_version != runtime_version:
+              raise SystemExit(
+                  f"Version mismatch: pyproject.toml={project_version} "
+                  f"!= fasa_core.__version__={runtime_version}"
+              )
+
+          changelog = pathlib.Path("CHANGELOG.md").read_text()
+          section_pattern = re.compile(
+              rf"^## \[{re.escape(project_version)}\] - \d{{4}}-\d{{2}}-\d{{2}}\s*$",
+              re.MULTILINE,
+          )
+          if not section_pattern.search(changelog):
+              raise SystemExit(
+                  "CHANGELOG.md is missing a version section like "
+                  f"'## [{project_version}] - YYYY-MM-DD'"
+              )
+
+          print(
+              "Version consistency check passed for "
+              f"pyproject.toml, fasa_core/__init__.py, and CHANGELOG.md ({project_version})"
+          )
+          PY
+
       - name: Run tests
         run: |
           pytest -q
+
+      - name: Export OpenAPI schema
+        if: matrix.python-version == '3.11'
+        run: |
+          python -c "import json; from fasa_api.main import app; print(json.dumps(app.openapi(), indent=2))" > openapi.json
+
+      - name: Upload OpenAPI artifact
+        if: matrix.python-version == '3.11'
+        uses: actions/upload-artifact@v4
+        with:
+          name: openapi-schema
+          path: openapi.json
