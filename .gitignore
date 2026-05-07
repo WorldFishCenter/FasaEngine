@@ -30,3 +30,6 @@ env/
 # OS / tooling
 pip-wheel-metadata/
 pytest-cache-files-*/
+
+# AI
+.claude/
