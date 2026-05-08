@@ -5,6 +5,37 @@ It covers the model rationale, data structure, API usage, and interpretation of 
 
 ---
 
+## Contents
+
+1. [What the Tool Does](#1-what-the-tool-does)
+2. [Nutritional Framework — the ASNS Database](#2-nutritional-framework--the-asns-database)
+   - 2.1 [Production Systems](#21-production-systems)
+   - 2.2 [Supported Species and Stages](#22-supported-species-and-stages)
+   - 2.3 [Constraint Categories](#23-constraint-categories)
+3. [Ingredient Composition Database — FICD](#3-ingredient-composition-database--ficd)
+4. [Ingredient Pool](#4-ingredient-pool)
+5. [How the Optimizer Works](#5-how-the-optimizer-works)
+   - 5.1 [Premix Masking](#51-premix-masking)
+6. [Endpoint Reference](#6-endpoint-reference)
+   - 6.1 [`GET /supported`](#61-get-supported)
+   - 6.2 [`POST /formulate` — Request Schema](#62-post-formulate--request-schema)
+   - 6.3 [`POST /formulate` — Response Schema and Interpretation](#63-post-formulate--response-schema-and-interpretation)
+   - 6.4 [`POST /validate-recipe` — Request and Response](#64-post-validate-recipe--request-and-response)
+7. [Possible Outcomes](#7-possible-outcomes)
+   - 7.1 [Optimal](#71-optimal)
+   - 7.2 [Infeasible](#72-infeasible)
+   - 7.3 [Error](#73-error)
+8. [Warnings](#8-warnings)
+9. [Known Limitations](#9-known-limitations)
+   - 9.1 [No Country-Localised Ingredient Pools](#91-no-country-localised-ingredient-pools)
+   - 9.2 [No Ingredient Price Book](#92-no-ingredient-price-book)
+   - 9.3 [No Maximum Inclusion Limits for Most Ingredients](#93-no-maximum-inclusion-limits-for-most-ingredients)
+   - 9.4 [Premix Nutrient Contribution Not Modelled](#94-premix-nutrient-contribution-not-modelled)
+   - 9.5 [Anti-Nutritional Interactions Not Modelled](#95-anti-nutritional-interactions-not-modelled)
+   - 9.6 [No Non-Additive Energy Interactions](#96-no-non-additive-energy-interactions)
+
+---
+
 ## 1. What the Tool Does
 
 FASA solves a **least-cost feed formulation problem**: given a set of locally available ingredients with known prices and nutritional composition, it finds the ingredient combination that meets a set of nutritional requirements at the lowest possible cost per kilogram of feed.
@@ -12,6 +43,8 @@ FASA solves a **least-cost feed formulation problem**: given a set of locally av
 The approach is equivalent to the classical linear programming (LP) diet formulation method used in animal nutrition. The objective function minimises the weighted sum of ingredient prices. The constraints encode nutritional minima, maxima, and structural rules (see §3).
 
 The tool does **not** optimise for palatability, pellet quality, or any criterion beyond cost and nutritional compliance.
+
+[↑ Contents](#contents)
 
 ---
 
@@ -81,6 +114,8 @@ The engine currently supports two species. Valid `stage` strings are listed belo
 
 Energy constraints (`ED01–ED04`) are species-specific: Nile Tilapia uses the omnivore model (`ED02`); African Catfish uses the carnivore model (`ED01`). Only the constraint with a non-blank value for a given species/stage combination is active.
 
+[↑ Contents](#contents)
+
 ---
 
 ## 3. Ingredient Composition Database — FICD
@@ -92,6 +127,8 @@ Each ingredient is identified by a numeric `code` and a `description`. The compo
 The crosswalk between ASNS constraint codes and FICD parameter names is maintained internally. When a constraint cannot be mapped to a FICD parameter (e.g. no FICD column exists for that nutrient), the constraint is **silently dropped** and a warning is appended to the response.
 
 Energy columns are selected by processing method: for `pelleted` feeds, the engine reads `de_*_pelleted_kcal_kg` columns; for `extruded` feeds, it reads `de_*_extruded_kcal_kg` columns.
+
+[↑ Contents](#contents)
 
 ---
 
@@ -147,7 +184,9 @@ The current pool (with ingredient class):
 
 Blood meal is the only ingredient with a hard maximum inclusion limit in the pool (5% of feed mass). All other ingredients are bounded only by collective caps (binder, fish-meal cost-share) or nutritional constraints.
 
-Ingredients with `is_fishmeal = true` (sardine, Mauritanian, and tilapia by-product fish meals) are subject to the fish-meal cost-share cap (see §5.2). Ingredients with `is_binder = true` (cassava products, wheat flour) are subject to the binder inclusion cap.
+Ingredients with `is_fishmeal = true` (sardine, Mauritanian, and tilapia by-product fish meals) are subject to the fish-meal cost-share cap (see §5). Ingredients with `is_binder = true` (cassava products, wheat flour) are subject to the binder inclusion cap.
+
+[↑ Contents](#contents)
 
 ---
 
@@ -162,7 +201,7 @@ The LP is formulated as follows.
 **Constraints:**
 
 1. **Mass balance:** `Σ x_i = 1 − premix_rate`
-  If `premix_enabled = true`, a fixed mass fraction (default 0.5%) is reserved for a vitamin/mineral premix. The premix mass is excluded from the LP decision variables; its nutritional contribution is **not modelled** (see §7).
+  If `premix_enabled = true`, a fixed mass fraction (default 0.5%) is reserved for a vitamin/mineral premix. The premix mass is excluded from the LP decision variables; its nutritional contribution is **not modelled** (see §10.4).
 2. **Nutritional constraints:** For each active ASNS row with a mapped FICD parameter:
   `Σ composition_ij × x_i ≥ target_j` (Minimum)  
    `Σ composition_ij × x_i ≤ target_j` (Maximum)
@@ -172,47 +211,21 @@ The LP is formulated as follows.
 
 The solver used is HiGHS (via PuLP), with a fallback to CBC. The time limit is 30 seconds per request. The solution is exact (continuous LP) and globally optimal within the model's assumptions.
 
-### Premix masking
+### 5.1 Premix Masking
 
 When `premix_enabled = true`, ASNS constraints for vitamins (V01–V15) and trace minerals (M08–M13) are **excluded from the LP** on the assumption that these micronutrients are supplied by the premix. Toxin constraints (TX01–TX16) are **always enforced**, regardless of premix settings.
 
 For brood stock stages, Vitamin C (V09) is re-activated even when premix masking is enabled (it is removed from the default mask for the `Brood` stage).
 
-Custom masking can be specified per request via `custom_premix_mask_codes` (see §6.2).
+Custom masking can be specified per request via `custom_premix_mask_codes` (see §7.2).
+
+[↑ Contents](#contents)
 
 ---
 
-## 6. API Access
+## 6. Endpoint Reference
 
-### 6.1 Authentication
-
-All API endpoints (except `/health` and `/ready`) require authentication. Include the token in one of two ways:
-
-```
-Authorization: Bearer <token>
-```
-
-or
-
-```
-X-Api-Key: <token>
-```
-
-### 6.2 Swagger Interface
-
-The interactive documentation is available at:
-
-```
-<base_url>/docs
-```
-
-All endpoints can be tested directly from the browser interface. Click **Authorize** (top right), enter the token, and submit requests using the **Try it out** button on each endpoint.
-
----
-
-## 7. Endpoint Reference
-
-### 7.1 `GET /supported`
+### 6.1 `GET /supported`
 
 Returns the complete list of supported species, production systems, and valid stage labels.
 
@@ -239,7 +252,7 @@ Returns the complete list of supported species, production systems, and valid st
 
 ---
 
-### 7.2 `POST /formulate` — Request Schema
+### 6.2 `POST /formulate` — Request Schema
 
 All field definitions and defaults:
 
@@ -284,7 +297,7 @@ Prices are in the currency of your choice; the returned `cost_per_kg` will be ex
 
 ---
 
-### 7.3 `POST /formulate` — Response Schema and Interpretation
+### 6.3 `POST /formulate` — Response Schema and Interpretation
 
 
 | Field               | Type            | Meaning                                                                                                                 |
@@ -333,7 +346,7 @@ The `composition` list includes only constraints that were active in the LP (i.e
 
 ---
 
-### 7.4 `POST /validate-recipe` — Request and Response
+### 6.4 `POST /validate-recipe` — Request and Response
 
 This endpoint recomputes the nutritional composition of a **user-defined recipe** without running the optimiser. It is useful for checking an existing formulation against the FICD composition data.
 
@@ -360,17 +373,19 @@ This endpoint recomputes the nutritional composition of a **user-defined recipe*
 
 Each value is the weighted sum `Σ composition_ij × fraction_i` across the supplied ingredients, rounded to 6 decimal places. No nutritional constraints are checked; this is a pure composition calculation.
 
+[↑ Contents](#contents)
+
 ---
 
-## 8. Possible Outcomes
+## 7. Possible Outcomes
 
-### 8.1 Optimal
+### 7.1 Optimal
 
 The LP found a feasible solution and the solver converged to a global minimum. All nutritional constraints are satisfied by the returned recipe. The `cost_per_kg` field contains the minimised feed cost.
 
 A soft warning is generated (but the solution remains optimal) if any single ingredient exceeds 40% of total feed mass. High single-ingredient inclusion may indicate an undersupplied ingredient set or a very restrictive constraint profile.
 
-### 8.2 Infeasible
+### 7.2 Infeasible
 
 No combination of the supplied ingredients can simultaneously satisfy all active nutritional constraints within the structural limits (mass balance, binder cap, fish-meal cost-share cap, maximum inclusions).
 
@@ -392,13 +407,15 @@ The `infeasibility` object contains:
 
 **Diagnostic approach:** Examine the `iis_codes` returned. If, for example, the IIS contains `AA05` (Lysine) and `max_fishmeal_cost_share`, consider adding a synthetic lysine source (code `61109`) or relaxing the fish-meal cost cap.
 
-### 8.3 Error
+### 7.3 Error
 
 An internal processing failure. HTTP 400 errors indicate an invalid request (unsupported species, production system, or malformed body). HTTP 500 errors indicate a server-side failure.
 
+[↑ Contents](#contents)
+
 ---
 
-## 9. Warnings
+## 8. Warnings
 
 Warnings are non-fatal messages appended to any response (including optimal solutions). They do not invalidate the result but indicate model limitations or data gaps.
 
@@ -408,33 +425,36 @@ Warnings are non-fatal messages appended to any response (including optimal solu
 | Unmapped specification  | An ASNS constraint has no corresponding FICD parameter column; the constraint was dropped and not enforced by the LP |
 | Single ingredient > 40% | One ingredient exceeds 40% of total mass in the optimal solution; may warrant inspection                             |
 
+[↑ Contents](#contents)
 
 ---
 
-## 10. Known Limitations
+## 9. Known Limitations
 
 The following limitations reflect the current MVP implementation and should be considered when interpreting results.
 
-### 10.1 No Country-Localised Ingredient Pools
+### 9.1 No Country-Localised Ingredient Pools
 
 A single Africa-wide ingredient pool is used for all requests. There is no mechanism to restrict the ingredient set to a specific country or region (e.g. Kenya, Nigeria, Zambia). Per-country pool splits are planned for a future version.
 
-### 10.2 No Ingredient Price Book
+### 9.2 No Ingredient Price Book
 
 The engine has no internal price reference. Prices must be supplied by the user in every request. There is no validation of price plausibility or currency consistency. Results are directly sensitive to the price values provided.
 
-### 10.3 No Maximum Inclusion Limits for Most Ingredients
+### 9.3 No Maximum Inclusion Limits for Most Ingredients
 
 The Africa pool defines a maximum inclusion limit for only one ingredient (blood meal: 5%). For all other ingredients, the LP has no per-ingredient upper bound. Practically, nutritional constraints and the collective binder/fish-meal caps impose implicit upper limits, but there are no ingredient-specific agronomic or processing ceilings for the remaining 38 ingredients.
 
-### 10.4 Premix Nutrient Contribution Not Modelled
+### 9.4 Premix Nutrient Contribution Not Modelled
 
 When `premix_enabled = true`, the LP reserves `premix_rate` of the feed mass for a premix and skips vitamin and trace mineral constraints. However, the nutritional content of the premix itself is **not added** to the composition output. The `composition` response reflects only the contribution of the optimised ingredient fraction. Achieved values for vitamins and trace minerals are not reported.
 
-### 10.5 Anti-Nutritional Interactions Not Modelled
+### 9.5 Anti-Nutritional Interactions Not Modelled
 
 The LP treats ingredient composition as strictly additive. Digestibility penalties from anti-nutritional factors (e.g. phytate reducing phosphorus bioavailability, tannins reducing protein digestibility, gossypol interacting with lysine) are not modelled. Toxin constraints (TX01–TX16) are enforced as hard ceilings on total dietary concentration, but interaction effects between anti-nutritional factors are not captured.
 
-### 10.6 No Non-Additive Energy Interactions
+### 9.6 No Non-Additive Energy Interactions
 
 Digestible energy values in FICD are ingredient-specific and additive in the LP. Interactions between energy substrates (e.g. protein-sparing by lipid) are not accounted for beyond what is inherent in the digestible energy coefficients.
+
+[↑ Contents](#contents)
