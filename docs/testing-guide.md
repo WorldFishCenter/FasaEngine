@@ -1,7 +1,6 @@
-# FASA Feed Formulation Engine — Testing Guide for Scientists
+# FASA Feed Formulation Engine — Testing Guide
 
-This guide is intended for aquaculture scientists evaluating the FASA feed formulation API.
-It covers the model rationale, data structure, API usage, and interpretation of results.
+This guide covers the model rationale, data structure, API usage, and interpretation of results.
 
 ---
 
