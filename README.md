@@ -32,7 +32,7 @@ To keep this project easy to plug into web/mobile/desktop clients without overen
 - Backward-compatible changes (new optional fields, new endpoints) may happen at any time.
 - Breaking changes are avoided by default; when needed, they are called out in `CHANGELOG.md` and integration docs.
 - Target routing convention is `/v1/*` for long-term stability. Current unversioned routes remain supported for now to avoid forcing immediate client rewrites.
-- Integrators should pin to a deployed environment and test against the current `openapi.json` before upgrading.
+- Integrations should pin to a deployed environment and test against the current `openapi.json` before upgrading.
 
 For versioning and release process, see [`docs/versioning.md`](docs/versioning.md).
 Project changes are tracked in [`CHANGELOG.md`](CHANGELOG.md).
@@ -93,14 +93,14 @@ Filenames are currently **expected to match exactly** (see `fasa_core/config/def
 ```bash
 cd fasa_engine
 
-# Recommended: create an isolated environment
+# Create an isolated environment
 python3 -m venv .venv
 source .venv/bin/activate
 
 # Option A (simple): install dependencies only
 pip install -r requirements.txt
 
-# Option B (recommended for dev): install the project in editable mode
+# Option B (development): install the project in editable mode
 pip install -e ".[dev]"
 
 # Data files are expected in ./data by default.
@@ -228,7 +228,7 @@ gcloud run deploy fasa-engine-api-test \
   --set-secrets FASA_API_TOKEN=fasa-api-token:latest
 ```
 
-### CI deploy (recommended)
+### CI deployment
 
 GitHub Actions workflow [`.github/workflows/deploy-cloud-run.yml`](.github/workflows/deploy-cloud-run.yml) deploys on `main` push or manual dispatch.
 
@@ -243,10 +243,10 @@ Configure:
   - `GCP_DEPLOY_SERVICE_ACCOUNT`
   - `FASA_API_TOKEN_SECRET_NAME`
 
-### Colleague testing checklist
+### API testing checklist
 
-- Share Cloud Run base URL and API token through a secure channel.
-- Ask colleagues to test `/supported`, `/formulate`, and `/validate-recipe` with `Authorization: Bearer <token>`.
+- Provide Cloud Run base URL and API token through a secure channel.
+- Test `/supported`, `/formulate`, and `/validate-recipe` using `Authorization: Bearer <token>`.
 - For production-like tests, keep request payloads below the current guard rails (`prices` and list fields max ~300 items).
 
 ## Modeling notes

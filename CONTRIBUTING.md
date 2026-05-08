@@ -3,7 +3,7 @@
 ### Development setup
 
 Prerequisites:
-- Python 3.10+ recommended
+- Python 3.10+
 
 Create a virtual environment and install dependencies:
 

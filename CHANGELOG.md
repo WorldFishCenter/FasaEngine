@@ -8,14 +8,14 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 ## [Unreleased]
 
 ### Added
-- Cloud Run deployment workflow with branch-aware dev/prod target selection.
-- API token-based protection via `Authorization: Bearer` or `X-API-Key`.
-- Readiness probe endpoint (`/ready`) and structured solver/request logging.
-- API integration guide for external teams in `docs/integration.md`.
+- Cloud Run deployment workflow for automated deployments.
+- API token protection via `Authorization: Bearer` or `X-API-Key`.
+- Readiness probe endpoint (`/ready`) and structured request/solver logging.
+- Integration, architecture, and versioning documentation under `docs/`.
 
 ### Changed
 - Expanded API schema modeling and OpenAPI metadata coverage.
-- Improved README with Cloud Run setup, auth, and integration guidance.
+- Updated README with Cloud Run setup and API testing instructions.
 
 ## [0.1.0] - 2026-05-07
 

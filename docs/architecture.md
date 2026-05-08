@@ -45,7 +45,7 @@ The project provides an API that helps formulate fish feed recipes based on:
 - Release notes are tracked in `CHANGELOG.md`.
 - More details are in `docs/versioning.md`.
 
-## Where to start if you are new
+## Where to start
 
 - Product/integration overview: `README.md`
 - API usage and integration notes: `docs/integration.md`

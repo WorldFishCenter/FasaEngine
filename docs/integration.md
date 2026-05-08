@@ -31,7 +31,7 @@ curl -X GET "${BASE_URL}/supported" \
 - Swagger UI: `${BASE_URL}/docs`
 - OpenAPI JSON: `${BASE_URL}/openapi.json`
 
-Use the OpenAPI contract for generated clients and payload validation in your app.
+Use the OpenAPI contract for generated clients and payload validation.
 
 ## 4) Error handling contract
 
@@ -68,12 +68,12 @@ Recommended client behavior:
 - Call `/supported` first to fetch valid `species`, `production_system`, and `stage`.
 - Build `/formulate` payload from those discovered values.
 - Handle `status` in response (`optimal`, `infeasible`, `error`).
-- Log request IDs on your side (if your client/service adds them) for easier debugging.
+- Log request IDs (if the calling client or service provides them) for easier debugging.
 
 ## 7) Upgrade playbook
 
 - Before upgrading environments:
   - compare old vs new `openapi.json`
-  - run your client integration tests against the target deployment
+  - run integration tests against the target deployment
 - Avoid hardcoding enum-like values outside `/supported` when possible.
 - Track README release notes for contract-impacting changes.
