@@ -26,8 +26,11 @@ DEFAULT_PREMIX_RATE = 0.005   # 0.5 % of total feed mass (industry-typical for v
 DEFAULT_PROCESSING_METHOD = "pelleted"   # "pelleted" | "extruded"
 
 # --- safety / sanity caps ---
-DEFAULT_MAX_FISHMEAL_COST_SHARE = 0.20   # fish-meal ingredients ≤ 20 % of total recipe cost
-DEFAULT_MAX_BINDER_INCLUSION    = 0.25   # binders combined ≤ 25 % of total mass
+# Both caps default to None (no constraint applied) — they are opt-in advisory
+# inputs surfaced through the API for callers that want to force a ceiling.
+# Toxicity (TX01–TX16) and ASNS nutrient limits remain the only fixed constraints.
+DEFAULT_MAX_FISHMEAL_COST_SHARE: float | None = None
+DEFAULT_MAX_BINDER_INCLUSION:    float | None = None
 WARN_INGREDIENT_INCLUSION_THRESHOLD = 0.40   # log a soft warning above 40 % single-ingredient inclusion
 
 # --- numerical tolerances ---

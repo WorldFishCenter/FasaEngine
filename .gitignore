@@ -36,3 +36,6 @@ pytest-cache-files-*/
 
 # Environment variables
 .env
+
+# Other
+start.txt

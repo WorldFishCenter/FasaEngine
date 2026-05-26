@@ -42,7 +42,7 @@ Project changes are tracked in [`CHANGELOG.md`](CHANGELOG.md).
 - **Linear programming engine** (PuLP + HiGHS) that solves a digestibility-aware least-cost feed formulation against the active ASNS constraints for a chosen species/stage/production-system tuple.
 - **Premix-aware constraint masking**: vitamins and trace minerals are assumed satisfied by a fixed-rate vitamin/mineral premix (default 0.5%), keeping the LP focused on macros, amino acids, digestible energy, Ca, P, fatty acids, and toxin ceilings.
 - **Hard ceilings on toxins / anti-nutrients**: aflatoxin B, gossypol, phytic acid, glucosinolates, tannins, etc. are enforced as Maximum constraints regardless of premix or override settings.
-- **Safety caps**: collective binder cap (default ≤ 25 % mass) and fish-meal cost-share cap (default ≤ 20 % of recipe cost), aligning with the FASA goal of reducing reliance on imported marine ingredients.
+- **Opt-in advisory caps**: collective binder mass cap and fish-meal cost-share cap are available as optional inputs but are *not* applied by default. Toxicity and ASNS nutrient limits remain the only fixed constraints; callers that want to force a sustainability or pellet-quality ceiling can pass `max_fishmeal_cost_share` and/or `max_binder_inclusion` explicitly.
 - **Hard-fail with IIS reporting**: when the constraint set is infeasible at the supplied prices/pool, a deletion-filter algorithm extracts a minimal Irreducible Inconsistent Subset of constraints and returns it to the caller so the miller knows exactly why the recipe could not be built.
 - **PAFF benchmark gate**: independent recomputation of PAFF reference recipes' nutrient composition acts as the correctness test for the data-loading and crosswalk pipeline.
 - **FastAPI surface** with `/formulate`, `/supported`, `/validate-recipe`, and `/health` endpoints.
@@ -146,8 +146,6 @@ For external teams integrating this API into other systems, see [`docs/integrati
   "processing_method": "pelleted",
   "premix_enabled": true,
   "premix_rate": 0.005,
-  "max_fishmeal_cost_share": 0.20,
-  "max_binder_inclusion": 0.25,
   "prices": {
     "30355": 0.30,
     "31237": 0.55,

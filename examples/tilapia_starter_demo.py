@@ -35,7 +35,7 @@ DEMO_PRICES = {
     "30557": 0.60,   # Groundnut meal, 45% CP
     # insect & animal
     "27002": 1.20,   # BSF larvae meal, defatted
-    "10018": 1.50,   # Fish meal, sardine, 66% CP   (capped by cost-share)
+    "10018": 1.50,   # Fish meal, sardine, 66% CP
     "10073": 1.40,   # Fish meal, mixed, Mauritania, 66% CP
     "20002": 0.90,   # Blood meal, ring dried
     "23002": 1.10,   # Poultry by-product meal, 60% CP
@@ -68,25 +68,23 @@ def _run(label: str, **overrides):
 
 
 def main() -> int:
-    # Scenario A — strict defaults (FM cost-share ≤ 20 %, binder ≤ 25 %).
-    # Tilapia STARTER diets are biologically demanding; on this priced pool
-    # the two caps are *jointly* infeasible. The engine returns an IIS report
-    # naming PA02/PA11/ADPXF09/FA14 so the miller learns *why* and can choose
-    # which relaxation to take. This is the diagnostic value of the LP gate.
-    a = _run("STRICT defaults — 20 % FM cost-share + 25 % binder")
+    # Scenario A — defaults (no fish-meal cost-share cap, no binder cap).
+    # Toxicity and ASNS nutrient limits remain the only hard constraints;
+    # cost alone drives fish-meal inclusion.
+    a = _run("DEFAULTS — no FM cost-share cap, no binder cap")
 
-    # Scenario B — keep low FM cost-share (sustainability story), but allow
-    # more wheat flour / cassava as a binder. Realistic for cost-conscious
-    # smallholder mills that have access to cheap local starch.
-    b = _run("Relax BINDER → 20 % FM cost-share + 40 % binder",
+    # Scenario B — opt in to a 20 % fish-meal cost-share cap as a sustainability
+    # ceiling, while allowing generous binder use (40 %). Demonstrates that the
+    # caps are still wired up for callers that want them.
+    b = _run("Opt-in: 20 % FM cost-share + 40 % binder",
              max_fishmeal_cost_share=0.20, max_binder_inclusion=0.40)
 
-    # Scenario C — keep tight binder cap, but lift FM cost-share. Realistic
-    # for premium mills that prioritize compact pellets over fish-meal frugality.
-    c = _run("Relax FM   → 40 % FM cost-share + 25 % binder",
+    # Scenario C — opt in to a stricter binder cap (25 %) but a looser fish-meal
+    # cost-share (40 %). Mirrors a premium mill that prioritises pellet quality.
+    c = _run("Opt-in: 40 % FM cost-share + 25 % binder",
              max_fishmeal_cost_share=0.40, max_binder_inclusion=0.25)
 
-    # Success if any of the relaxation scenarios solved.
+    # Success if any scenario produced an optimal solution.
     return 0 if "optimal" in {a.status, b.status, c.status} else 1
 
 

@@ -8,30 +8,30 @@ This guide covers the model rationale, data structure, API usage, and interpreta
 
 1. [What the Tool Does](#1-what-the-tool-does)
 2. [Nutritional Framework — the ASNS Database](#2-nutritional-framework--the-asns-database)
-   - 2.1 [Production Systems](#21-production-systems)
-   - 2.2 [Supported Species and Stages](#22-supported-species-and-stages)
-   - 2.3 [Constraint Categories](#23-constraint-categories)
+  - 2.1 [Production Systems](#21-production-systems)
+  - 2.2 [Supported Species and Stages](#22-supported-species-and-stages)
+  - 2.3 [Constraint Categories](#23-constraint-categories)
 3. [Ingredient Composition Database — FICD](#3-ingredient-composition-database--ficd)
 4. [Ingredient Pool](#4-ingredient-pool)
 5. [How the Optimizer Works](#5-how-the-optimizer-works)
-   - 5.1 [Premix Masking](#51-premix-masking)
+  - 5.1 [Premix Masking](#51-premix-masking)
 6. [Endpoint Reference](#6-endpoint-reference)
-   - 6.1 [`GET /supported`](#61-get-supported)
-   - 6.2 [`POST /formulate` — Request Schema](#62-post-formulate--request-schema)
-   - 6.3 [`POST /formulate` — Response Schema and Interpretation](#63-post-formulate--response-schema-and-interpretation)
-   - 6.4 [`POST /validate-recipe` — Request and Response](#64-post-validate-recipe--request-and-response)
+  - 6.1 `[GET /supported](#61-get-supported)`
+  - 6.2 `[POST /formulate` — Request Schema](#62-post-formulate--request-schema)
+  - 6.3 `[POST /formulate` — Response Schema and Interpretation](#63-post-formulate--response-schema-and-interpretation)
+  - 6.4 `[POST /validate-recipe` — Request and Response](#64-post-validate-recipe--request-and-response)
 7. [Possible Outcomes](#7-possible-outcomes)
-   - 7.1 [Optimal](#71-optimal)
-   - 7.2 [Infeasible](#72-infeasible)
-   - 7.3 [Error](#73-error)
+  - 7.1 [Optimal](#71-optimal)
+  - 7.2 [Infeasible](#72-infeasible)
+  - 7.3 [Error](#73-error)
 8. [Warnings](#8-warnings)
 9. [Known Limitations](#9-known-limitations)
-   - 9.1 [No Country-Localised Ingredient Pools](#91-no-country-localised-ingredient-pools)
-   - 9.2 [No Ingredient Price Book](#92-no-ingredient-price-book)
-   - 9.3 [No Maximum Inclusion Limits for Most Ingredients](#93-no-maximum-inclusion-limits-for-most-ingredients)
-   - 9.4 [Premix Nutrient Contribution Not Modelled](#94-premix-nutrient-contribution-not-modelled)
-   - 9.5 [Anti-Nutritional Interactions Not Modelled](#95-anti-nutritional-interactions-not-modelled)
-   - 9.6 [No Non-Additive Energy Interactions](#96-no-non-additive-energy-interactions)
+  - 9.1 [No Country-Localised Ingredient Pools](#91-no-country-localised-ingredient-pools)
+  - 9.2 [No Ingredient Price Book](#92-no-ingredient-price-book)
+  - 9.3 [No Maximum Inclusion Limits for Most Ingredients](#93-no-maximum-inclusion-limits-for-most-ingredients)
+  - 9.4 [Premix Nutrient Contribution Not Modelled](#94-premix-nutrient-contribution-not-modelled)
+  - 9.5 [Anti-Nutritional Interactions Not Modelled](#95-anti-nutritional-interactions-not-modelled)
+  - 9.6 [No Non-Additive Energy Interactions](#96-no-non-additive-energy-interactions)
 
 ---
 
@@ -423,6 +423,7 @@ Warnings are non-fatal messages appended to any response (including optimal solu
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Unmapped specification  | An ASNS constraint has no corresponding FICD parameter column; the constraint was dropped and not enforced by the LP |
 | Single ingredient > 40% | One ingredient exceeds 40% of total mass in the optimal solution; may warrant inspection                             |
+
 
 [↑ Contents](#contents)
 

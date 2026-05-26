@@ -42,8 +42,27 @@ class FormulateRequest(BaseModel):
     premix_enabled: bool = True
     premix_rate: float = Field(0.005, ge=0.0, lt=0.10)
 
-    max_fishmeal_cost_share: float = Field(0.20, ge=0.0, le=1.0)
-    max_binder_inclusion:    float = Field(0.25, ge=0.0, le=1.0)
+    max_fishmeal_cost_share: Optional[float] = Field(
+        default=None,
+        ge=0.0,
+        le=1.0,
+        description=(
+            "Optional cap on fish-meal cost share (fraction of total recipe cost). "
+            "Omit (or send null) to apply no cap — cost alone then drives fish-meal "
+            "inclusion. Kept as an opt-in advisory input for callers that want to "
+            "force a sustainability ceiling."
+        ),
+    )
+    max_binder_inclusion: Optional[float] = Field(
+        default=None,
+        ge=0.0,
+        le=1.0,
+        description=(
+            "Optional cap on collective binder mass fraction. Omit (or send null) "
+            "to apply no cap — appropriate when the binder product's manufacturer-"
+            "recommended inclusion rate is unknown. Kept as an opt-in advisory input."
+        ),
+    )
 
     custom_premix_mask_codes: Optional[List[str]] = Field(
         default=None,
@@ -119,6 +138,8 @@ class FormulateResponse(BaseModel):
     # always echoed back so the API client can display them
     premix_enabled: bool
     premix_rate: float
+    max_fishmeal_cost_share: Optional[float] = None
+    max_binder_inclusion: Optional[float] = None
 
 
 class HealthResponse(BaseModel):
