@@ -68,10 +68,11 @@ def _run(label: str, **overrides):
 
 
 def main() -> int:
-    # Scenario A — defaults (no fish-meal cost-share cap, no binder cap).
-    # Toxicity and ASNS nutrient limits remain the only hard constraints;
-    # cost alone drives fish-meal inclusion.
-    a = _run("DEFAULTS — no FM cost-share cap, no binder cap")
+    # Scenario A — defaults (no fish-meal cost-share cap, no binder cap),
+    # with batch_size_kg=100 so the response also reports per-ingredient kg,
+    # premix kg, and total batch cost. Toxicity and ASNS nutrient limits
+    # remain the only hard constraints; cost alone drives fish-meal inclusion.
+    a = _run("DEFAULTS — no caps, batch_size_kg=100", batch_size_kg=100.0)
 
     # Scenario B — opt in to a 20 % fish-meal cost-share cap as a sustainability
     # ceiling, while allowing generous binder use (40 %). Demonstrates that the

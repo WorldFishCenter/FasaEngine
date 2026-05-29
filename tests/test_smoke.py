@@ -118,6 +118,70 @@ def test_formulate_tilapia_starter_returns_a_status():
         assert 99.0 <= total <= 100.0
 
 
+def test_formulate_batch_size_kg_populates_absolute_quantities():
+    """When batch_size_kg is supplied, recipe carries kg per line and
+    response reports premix kg + total batch cost. Sum of kg ≈ batch size."""
+    batch = 100.0
+    res = formulate(
+        species="Nile Tilapia",
+        stage="< 5g (Starter)",
+        production_system="General-LowCost",
+        prices=DEMO_PRICES,
+        batch_size_kg=batch,
+    )
+    if res.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal on this priced pool (status={res.status})")
+
+    # echoed
+    assert res.batch_size_kg == batch
+    # premix_enabled defaults to True, so premix kg = batch * premix_rate
+    assert res.premix_quantity_kg == round(batch * res.premix_rate, 3)
+    assert res.total_cost == round(res.cost_per_kg * batch, 2)
+
+    # every recipe line has quantity_kg populated and consistent with inclusion_percent.
+    # tolerance accounts for independent rounding of inclusion_percent (4 dp) and
+    # quantity_kg (3 dp) from the same LP fraction.
+    for line in res.recipe:
+        assert line.quantity_kg is not None
+        assert abs(line.quantity_kg - line.inclusion_percent / 100.0 * batch) < 0.001
+
+    # mass-balance sanity: sum(qty_kg) + premix_kg ≈ batch (within per-line rounding)
+    total_kg = sum(line.quantity_kg for line in res.recipe) + res.premix_quantity_kg
+    assert abs(total_kg - batch) < 0.05
+
+
+def test_formulate_without_batch_size_omits_absolute_quantities():
+    """Default (no batch_size_kg) returns percent-only output."""
+    res = formulate(
+        species="Nile Tilapia",
+        stage="< 5g (Starter)",
+        production_system="General-LowCost",
+        prices=DEMO_PRICES,
+    )
+    if res.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal on this priced pool (status={res.status})")
+    assert res.batch_size_kg is None
+    assert res.premix_quantity_kg is None
+    assert res.total_cost is None
+    assert all(line.quantity_kg is None for line in res.recipe)
+
+
+def test_formulate_request_rejects_non_positive_batch_size():
+    """Pydantic must reject batch_size_kg ≤ 0."""
+    from pydantic import ValidationError
+
+    from fasa_core.models import FormulateRequest
+
+    for bad in (0, -1, -100.5):
+        with pytest.raises(ValidationError):
+            FormulateRequest(
+                species="Nile Tilapia",
+                stage="< 5g (Starter)",
+                prices={"30355": 0.30},
+                batch_size_kg=bad,
+            )
+
+
 def test_formulate_catfish_uses_carni_track():
     """African Catfish should bind ED01 (DE-Carni), not ED02."""
     from fasa_core.constraint_builder import build_constraints

@@ -1,9 +1,12 @@
 code,description,class,is_fishmeal,is_binder,max_inclusion,note
 # FASA MVP "plausibly-African" ingredient pool.
 # Per-country splits (Kenya / Nigeria / Zambia) deferred to v2.
-# `max_inclusion` blank = no upper bound (LP picks); fish meal cost-share + binder caps applied separately.
-# `is_binder` flag participates in the collective binder cap (default 25% of mass).
-# `is_fishmeal` flag participates in the fish-meal cost-share cap (default 20% of total cost).
+# `max_inclusion` blank = no upper bound (LP picks). Per-ingredient ceilings are
+# intentionally left blank: FASA has not run feeding trials to justify caps, and
+# blanket commercial-industry rules-of-thumb can push small-scale millers out of
+# affordable formulations. Only toxin (TX*) and ASNS nutrient limits are fixed.
+# `is_binder` and `is_fishmeal` flags participate in the optional advisory caps
+# `max_binder_inclusion` and `max_fishmeal_cost_share` (opt-in via API request).
 30354,"Corn, ear, ground, dent yellow",cereal,0,0,,
 30355,"Corn, grain",cereal,0,0,,
 30372,"Corn, feed, flour",cereal,0,0,,
@@ -32,7 +35,7 @@ code,description,class,is_fishmeal,is_binder,max_inclusion,note
 10018,"Fish meal, sardine, 66% CP",animal_protein,1,0,,Cost-share cap applied
 10073,"Fish meal, mixed fish, Mauritania, 66% CP",animal_protein,1,0,,Africa-coast sourcing
 10040,"Fish meal, tilapia, processing by-product, 42%",animal_protein,1,0,,Local by-product alternative
-20002,"Blood meal, ring dried",animal_protein,0,0,0.05,Palatability ceiling (industry default 5%)
+20002,"Blood meal, ring dried",animal_protein,0,0,,
 23002,"Poultry by-product meal, feed-grade, 60% CP",animal_protein,0,0,,
 40205,"Yeast, Brewers yeast, 25% CP",functional,0,0,,
 52113,"Palm oil",lipid,0,0,,

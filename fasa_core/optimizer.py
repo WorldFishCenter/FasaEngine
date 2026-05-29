@@ -66,6 +66,7 @@ def formulate(
     max_fishmeal_cost_share: Optional[float] = DEFAULT_MAX_FISHMEAL_COST_SHARE,
     max_binder_inclusion: Optional[float] = DEFAULT_MAX_BINDER_INCLUSION,
     custom_premix_mask_codes: Optional[list[str]] = None,
+    batch_size_kg: Optional[float] = None,
 ) -> FormulateResponse:
     """Run the LP and return a structured response.
 
@@ -80,6 +81,7 @@ def formulate(
             species, stage, production_system, processing_method,
             premix_enabled, premix_rate,
             max_fishmeal_cost_share, max_binder_inclusion,
+            batch_size_kg,
             "No priced ingredients overlap with the configured pool.",
         )
 
@@ -142,6 +144,7 @@ def formulate(
             premix_rate=premix_rate,
             max_fishmeal_cost_share=max_fishmeal_cost_share,
             max_binder_inclusion=max_binder_inclusion,
+            batch_size_kg=batch_size_kg,
         )
 
     # ---------- 4. extract & decorate solution ------------------------------ #
@@ -155,12 +158,14 @@ def formulate(
         if frac < SOLUTION_FRACTION_TOL:
             continue
         rec = pool_by_code[code]
+        qty_kg = round(frac * batch_size_kg, 3) if batch_size_kg is not None else None
         recipe.append(IngredientLine(
             code=code,
             description=rec.description,
             inclusion_percent=round(frac * 100.0, 4),
             cost_per_kg=prices[code],
             cost_contribution=round(frac * prices[code], 6),
+            quantity_kg=qty_kg,
         ))
         if frac > WARN_INGREDIENT_INCLUSION_THRESHOLD:
             warnings.append(
@@ -174,6 +179,14 @@ def formulate(
     )
 
     recipe.sort(key=lambda r: -r.inclusion_percent)
+
+    total_cost = round(cost * batch_size_kg, 2) if batch_size_kg is not None else None
+    premix_qty_kg = (
+        round(batch_size_kg * premix_rate, 3)
+        if batch_size_kg is not None and premix_enabled
+        else None
+    )
+
     return FormulateResponse(
         status="optimal",
         species=species, stage=stage, production_system=production_system,
@@ -186,6 +199,9 @@ def formulate(
         premix_rate=premix_rate,
         max_fishmeal_cost_share=max_fishmeal_cost_share,
         max_binder_inclusion=max_binder_inclusion,
+        batch_size_kg=batch_size_kg,
+        premix_quantity_kg=premix_qty_kg,
+        total_cost=total_cost,
     )
 
 
@@ -368,6 +384,7 @@ def _err_response(
     species, stage, system, method,
     premix_enabled, premix_rate,
     max_fishmeal_cost_share, max_binder_inclusion,
+    batch_size_kg,
     msg,
 ):
     return FormulateResponse(
@@ -377,4 +394,5 @@ def _err_response(
         premix_enabled=premix_enabled, premix_rate=premix_rate,
         max_fishmeal_cost_share=max_fishmeal_cost_share,
         max_binder_inclusion=max_binder_inclusion,
+        batch_size_kg=batch_size_kg,
     )

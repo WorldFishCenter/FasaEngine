@@ -168,7 +168,7 @@ The current pool (with ingredient class):
 | 10018 | Fish meal, sardine, 66% CP                        | animal_protein      | is_fishmeal = true          |
 | 10073 | Fish meal, mixed fish, Mauritania, 66% CP         | animal_protein      | is_fishmeal = true          |
 | 10040 | Fish meal, tilapia processing by-product, 42%     | animal_protein      | is_fishmeal = true          |
-| 20002 | Blood meal, ring dried                            | animal_protein      | max_inclusion = 5%          |
+| 20002 | Blood meal, ring dried                            | animal_protein      |                             |
 | 23002 | Poultry by-product meal, 60% CP                   | animal_protein      |                             |
 | 40205 | Yeast, Brewers yeast, 25% CP                      | functional          |                             |
 | 52113 | Palm oil                                          | lipid               |                             |
@@ -181,9 +181,9 @@ The current pool (with ingredient class):
 | 61111 | DL-Methionine                                     | synthetic_aa        |                             |
 
 
-Blood meal is the only ingredient with a hard maximum inclusion limit in the pool (5% of feed mass). All other ingredients are bounded only by collective caps (binder, fish-meal cost-share) or nutritional constraints.
+No ingredient in the pool currently carries a hard per-ingredient inclusion limit. FASA has not run feeding trials to justify blanket caps, and the prior 5% blood meal ceiling was an industry rule-of-thumb that has been removed. All ingredients are bounded only by nutritional constraints, toxin ceilings, and (optionally) the advisory binder/fish-meal caps.
 
-Ingredients with `is_fishmeal = true` (sardine, Mauritanian, and tilapia by-product fish meals) are subject to the fish-meal cost-share cap (see §5). Ingredients with `is_binder = true` (cassava products, wheat flour) are subject to the binder inclusion cap.
+Ingredients with `is_fishmeal = true` (sardine, Mauritanian, and tilapia by-product fish meals) participate in the optional `max_fishmeal_cost_share` cap when the caller opts in (see §5). Ingredients with `is_binder = true` (cassava products, wheat flour) participate in the optional `max_binder_inclusion` cap on the same opt-in basis.
 
 [↑ Contents](#contents)
 
@@ -205,8 +205,8 @@ The LP is formulated as follows.
   `Σ composition_ij × x_i ≥ target_j` (Minimum)  
    `Σ composition_ij × x_i ≤ target_j` (Maximum)
 3. **DP/DE ratio:** Linearised to a single minimum inequality: `Σ (dCP_i − rhs × dDE_i) × x_i ≥ 0`.
-4. **Binder cap:** `Σ_{i ∈ binders} x_i ≤ max_binder_inclusion` (default 0.25).
-5. **Fish-meal cost-share cap:** `Σ_{FM} price_i × x_i ≤ max_fishmeal_cost_share × Σ price_i × x_i` (default 0.20; linearised).
+4. **Binder cap (opt-in):** `Σ_{i ∈ binders} x_i ≤ max_binder_inclusion`. Not applied by default; only emitted when the caller supplies a value in `[0, 1)`.
+5. **Fish-meal cost-share cap (opt-in):** `Σ_{FM} price_i × x_i ≤ max_fishmeal_cost_share × Σ price_i × x_i` (linearised). Not applied by default; only emitted when the caller supplies a value in `[0, 1)`.
 
 The solver used is HiGHS (via PuLP), with a fallback to CBC. The time limit is 30 seconds per request. The solution is exact (continuous LP) and globally optimal within the model's assumptions.
 
@@ -265,8 +265,9 @@ All field definitions and defaults:
 | `processing_method`        | string          | No       | `"pelleted"`        | Feed manufacturing method. Selects the corresponding digestible energy column from FICD. Allowed: `"pelleted"` or `"extruded"`                                                                                         |
 | `premix_enabled`           | boolean         | No       | `true`              | If `true`, vitamin and trace mineral constraints are excluded from the LP (assumed covered by premix). Toxin constraints are always active                                                                             |
 | `premix_rate`              | float           | No       | `0.005`             | Mass fraction of the feed reserved for the premix (0–0.10 exclusive). Default 0.005 = 0.5%. This mass is subtracted from the ingredient budget before the LP runs                                                      |
-| `max_fishmeal_cost_share`  | float           | No       | `0.20`              | Maximum fraction of total ingredient cost attributable to fish-meal ingredients (is_fishmeal = true). Range [0, 1]                                                                                                     |
-| `max_binder_inclusion`     | float           | No       | `0.25`              | Maximum combined mass fraction of binder-flagged ingredients (is_binder = true). Range [0, 1]                                                                                                                          |
+| `batch_size_kg`            | float or null   | No       | `null`              | Total batch size in kg (0 exclusive, max 1 000 000). When supplied, the response includes per-ingredient `quantity_kg`, `premix_quantity_kg`, and `total_cost`. Omit to receive percent-only output                    |
+| `max_fishmeal_cost_share`  | float or null   | No       | `null`              | Optional cap on fish-meal cost share (is_fishmeal = true). Range [0, 1]. Omit (or send `null`) to apply no cap — cost alone then drives fish-meal inclusion                                                            |
+| `max_binder_inclusion`     | float or null   | No       | `null`              | Optional cap on collective binder mass fraction (is_binder = true). Range [0, 1]. Omit (or send `null`) to apply no cap                                                                                                |
 | `custom_premix_mask_codes` | list of strings | No       | `null`              | If provided, **replaces** the default premix mask entirely. List of ASNS specification codes (e.g. `["V01","V02","M08"]`) to exclude from the LP. Toxin codes (TX*) in this list are still enforced. Maximum 200 codes |
 
 
@@ -308,6 +309,11 @@ Prices are in the currency of your choice; the returned `cost_per_kg` will be ex
 | `processing_method` | string          | Echo of input                                                                                                           |
 | `premix_enabled`    | boolean         | Echo of input                                                                                                           |
 | `premix_rate`       | float           | Echo of input                                                                                                           |
+| `max_fishmeal_cost_share` | float or null | Echo of input (null when no cap was applied)                                                                          |
+| `max_binder_inclusion`    | float or null | Echo of input (null when no cap was applied)                                                                          |
+| `batch_size_kg`     | float or null   | Echo of input (null when omitted)                                                                                       |
+| `premix_quantity_kg`| float or null   | `batch_size_kg × premix_rate`, rounded to 3 decimals. Populated only when `batch_size_kg` is supplied and `premix_enabled = true` |
+| `total_cost`        | float or null   | `cost_per_kg × batch_size_kg`, rounded to 2 decimals. Populated only when `batch_size_kg` is supplied and status is `"optimal"`   |
 | `cost_per_kg`       | float or null   | Minimised feed cost per kg (priced ingredients only; excludes the premix fraction). Null when status is not `"optimal"` |
 | `recipe`            | list            | Ingredient lines (see below). Empty when not optimal                                                                    |
 | `composition`       | list            | Nutritional constraint lines (see below). Empty when not optimal                                                        |
@@ -322,9 +328,10 @@ Prices are in the currency of your choice; the returned `cost_per_kg` will be ex
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `code`              | FICD ingredient code                                                                                                                                                               |
 | `description`       | Ingredient name                                                                                                                                                                    |
-| `inclusion_percent` | Mass fraction in the feed, expressed as a percentage. The sum of all `inclusion_percent` values equals `(1 − premix_rate) × 100`. The remaining share (default 0.5%) is the premix |
+| `inclusion_percent` | Mass fraction in the feed, expressed as a percentage. When `premix_enabled = true`, the sum of all `inclusion_percent` values equals `(1 − premix_rate) × 100` and the remaining share (default 0.5%) is the premix; when `premix_enabled = false`, the sum equals 100 |
 | `cost_per_kg`       | Price as supplied in the request                                                                                                                                                   |
 | `cost_contribution` | This ingredient's contribution to the total feed cost (fraction × price). Summing all `cost_contribution` values gives `cost_per_kg`                                               |
+| `quantity_kg`       | Absolute mass of this ingredient in kg, rounded to 3 decimals. Populated only when `batch_size_kg` is supplied on the request; otherwise `null`                                    |
 
 
 **Composition lines** (`composition` list):
@@ -386,7 +393,7 @@ A soft warning is generated (but the solution remains optimal) if any single ing
 
 ### 7.2 Infeasible
 
-No combination of the supplied ingredients can simultaneously satisfy all active nutritional constraints within the structural limits (mass balance, binder cap, fish-meal cost-share cap, maximum inclusions).
+No combination of the supplied ingredients can simultaneously satisfy all active nutritional constraints within the structural limits (mass balance, toxin ceilings, and — when the caller opted in — the binder or fish-meal cost-share caps).
 
 The `infeasibility` object contains:
 
@@ -400,11 +407,11 @@ The `infeasibility` object contains:
 
 **Common causes of infeasibility:**
 
-- The ingredient set is too small or nutritionally inadequate to meet one or more active constraints simultaneously (e.g. insufficient amino acid sources to satisfy both a protein minimum and a cost-share cap on fish meal).
+- The ingredient set is too small or nutritionally inadequate to meet one or more active constraints simultaneously (e.g. insufficient amino acid sources to satisfy a protein minimum, especially when an opt-in fish-meal cost-share cap is also being applied).
 - A constraint requires a nutrient for which no supplied ingredient contains that nutrient in the FICD database (composition value is zero or absent for all included ingredients).
 - Conflicting constraints: e.g. a high protein minimum combined with a low crude fibre maximum may require ingredients that simultaneously violate another constraint.
 
-**Diagnostic approach:** Examine the `iis_codes` returned. If, for example, the IIS contains `AA05` (Lysine) and `max_fishmeal_cost_share`, consider adding a synthetic lysine source (code `61109`) or relaxing the fish-meal cost cap.
+**Diagnostic approach:** Examine the `iis_codes` returned. If, for example, the IIS names amino-acid codes (e.g. `AA05` Lysine) and you opted into `max_fishmeal_cost_share`, consider adding a synthetic lysine source (code `61109`) or removing/relaxing the fish-meal cost cap. If no opt-in cap is in play, the conflict lies entirely between the ingredient set and the ASNS targets.
 
 ### 7.3 Error
 
@@ -441,9 +448,9 @@ A single Africa-wide ingredient pool is used for all requests. There is no mecha
 
 The engine has no internal price reference. Prices must be supplied by the user in every request. There is no validation of price plausibility or currency consistency. Results are directly sensitive to the price values provided.
 
-### 9.3 No Maximum Inclusion Limits for Most Ingredients
+### 9.3 No Per-Ingredient Maximum Inclusion Limits
 
-The Africa pool defines a maximum inclusion limit for only one ingredient (blood meal: 5%). For all other ingredients, the LP has no per-ingredient upper bound. Practically, nutritional constraints and the collective binder/fish-meal caps impose implicit upper limits, but there are no ingredient-specific agronomic or processing ceilings for the remaining 38 ingredients.
+No ingredient in the Africa pool currently carries a hard per-ingredient maximum inclusion limit. FASA has not run feeding trials to justify blanket commercial-industry rules-of-thumb (e.g. a 5 % palatability ceiling on blood meal), and applying such caps without evidence can make diets unnecessarily expensive for small-scale millers. The CSV's `max_inclusion` column is kept for future use should trial evidence become available. In the meantime, ingredient inclusions are bounded only by the ASNS nutritional constraints, the TX01–TX16 toxin ceilings, and — when the caller opts in — the collective binder or fish-meal cost-share caps.
 
 ### 9.4 Premix Nutrient Contribution Not Modelled
 

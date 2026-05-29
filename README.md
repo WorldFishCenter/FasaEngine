@@ -146,6 +146,7 @@ For external teams integrating this API into other systems, see [`docs/integrati
   "processing_method": "pelleted",
   "premix_enabled": true,
   "premix_rate": 0.005,
+  "batch_size_kg": 100,
   "prices": {
     "30355": 0.30,
     "31237": 0.55,
@@ -167,7 +168,8 @@ curl -X POST "http://127.0.0.1:8000/formulate" \
 
 ### Reading the response (high level)
 
-- **`recipe`**: ingredient inclusions (percent of final feed) + cost breakdown.
+- **`recipe`**: ingredient inclusions (percent of final feed) + cost breakdown. If `batch_size_kg` was supplied on the request, each line also carries `quantity_kg`.
+- **`batch_size_kg` / `premix_quantity_kg` / `total_cost`**: echoed only when `batch_size_kg` was supplied; otherwise `null`.
 - **`composition`**: per-spec achieved vs target, including toxin ceilings.
 - **`status`**:
   - `optimal`: solution exists and is least-cost under constraints

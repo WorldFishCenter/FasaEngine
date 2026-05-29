@@ -38,6 +38,17 @@ class FormulateRequest(BaseModel):
         max_length=300,
     )
 
+    batch_size_kg: Optional[float] = Field(
+        default=None,
+        gt=0,
+        le=1_000_000,
+        description=(
+            "Optional total batch size in kg. When supplied, the response includes "
+            "per-ingredient quantity_kg, premix_quantity_kg, and total_cost. "
+            "Omit to receive percent-only output."
+        ),
+    )
+
     processing_method: Literal["pelleted", "extruded"] = "pelleted"
     premix_enabled: bool = True
     premix_rate: float = Field(0.005, ge=0.0, lt=0.10)
@@ -101,6 +112,7 @@ class IngredientLine(BaseModel):
     inclusion_percent: float
     cost_per_kg: float
     cost_contribution: float
+    quantity_kg: Optional[float] = None
 
 
 class NutrientLine(BaseModel):
@@ -140,6 +152,11 @@ class FormulateResponse(BaseModel):
     premix_rate: float
     max_fishmeal_cost_share: Optional[float] = None
     max_binder_inclusion: Optional[float] = None
+
+    # populated only when batch_size_kg was supplied on the request
+    batch_size_kg: Optional[float] = None
+    premix_quantity_kg: Optional[float] = None
+    total_cost: Optional[float] = None
 
 
 class HealthResponse(BaseModel):

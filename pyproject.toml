@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fasa-engine"
-version = "0.1.0"
+version = "0.2.0"
 description = "Least-cost, digestibility-aware aquaculture feed formulation engine (FASA MVP)."
 readme = "README.md"
 requires-python = ">=3.10"

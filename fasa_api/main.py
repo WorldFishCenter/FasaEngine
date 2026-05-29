@@ -210,6 +210,7 @@ def formulate_endpoint(
             max_fishmeal_cost_share=req.max_fishmeal_cost_share,
             max_binder_inclusion=req.max_binder_inclusion,
             custom_premix_mask_codes=req.custom_premix_mask_codes,
+            batch_size_kg=req.batch_size_kg,
         )
         elapsed_ms = (time.perf_counter() - started_at) * 1000.0
         LOGGER.info(
