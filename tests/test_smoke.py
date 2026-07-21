@@ -201,6 +201,160 @@ def test_formulate_catfish_uses_carni_track():
 
 
 # --------------------------------------------------------------------------- #
+# country-tagged pool + local-availability highlighting                       #
+# --------------------------------------------------------------------------- #
+
+
+def test_pool_carries_country_tags_and_every_code_resolves_in_ficd():
+    """The expanded pool tags ingredients by ISO-2 country, and every code it
+    references must have FICD composition (codes without data are excluded)."""
+    from fasa_core.ingredient_pool import attach_ficd_rows, load_pool
+
+    pool = load_pool()
+    assert len(pool) >= 300
+    attach_ficd_rows(pool)  # raises if any pool code is missing from FICD
+
+    by_code = {r.code: r for r in pool}
+    # locally available across all three tracked countries
+    assert by_code["30355"].countries == frozenset({"KE", "NG", "ZM"})
+    # import-only variant: not locally available anywhere tracked
+    assert by_code["10073"].countries == frozenset()
+
+
+def test_formulate_country_flags_locally_available():
+    """With a country, each recipe line's locally_available reflects the pool tag."""
+    from fasa_core.ingredient_pool import load_pool
+
+    by_code = {r.code: r for r in load_pool(only_codes=set(DEMO_PRICES.keys()))}
+    res = formulate(
+        species="Nile Tilapia",
+        stage="< 5g (Starter)",
+        production_system="General-LowCost",
+        prices=DEMO_PRICES,
+        country="ZM",
+    )
+    if res.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal (status={res.status})")
+
+    assert res.country == "ZM"
+    for line in res.recipe:
+        assert isinstance(line.locally_available, bool)
+        assert line.locally_available == ("ZM" in by_code[line.code].countries)
+    # a normal least-cost recipe draws on at least one locally available ingredient
+    assert any(line.locally_available for line in res.recipe)
+
+
+def test_formulate_without_country_leaves_locally_available_none():
+    """Omitting country yields null locally_available (no local context)."""
+    res = formulate(
+        species="Nile Tilapia",
+        stage="< 5g (Starter)",
+        production_system="General-LowCost",
+        prices=DEMO_PRICES,
+    )
+    if res.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal (status={res.status})")
+    assert res.country is None
+    assert all(line.locally_available is None for line in res.recipe)
+
+
+def test_formulate_request_normalizes_and_validates_country():
+    """country is upper-cased before validation; unsupported values are rejected."""
+    from pydantic import ValidationError
+
+    from fasa_core.models import FormulateRequest
+
+    req = FormulateRequest(
+        species="Nile Tilapia",
+        stage="< 5g (Starter)",
+        prices={"30355": 0.30},
+        country="ke",
+    )
+    assert req.country == "KE"
+
+    with pytest.raises(ValidationError):
+        FormulateRequest(
+            species="Nile Tilapia",
+            stage="< 5g (Starter)",
+            prices={"30355": 0.30},
+            country="US",
+        )
+
+
+def test_parse_countries_normalizes_and_handles_blanks():
+    """The pool cell parser upper-cases, strips, and drops empty tokens."""
+    import math
+
+    from fasa_core.ingredient_pool import _parse_countries
+
+    assert _parse_countries("KE,NG,ZM") == frozenset({"KE", "NG", "ZM"})
+    assert _parse_countries(" ke , ng ") == frozenset({"KE", "NG"})
+    assert _parse_countries("KE,,ZM,") == frozenset({"KE", "ZM"})
+    assert _parse_countries("") == frozenset()
+    assert _parse_countries(None) == frozenset()
+    assert _parse_countries(math.nan) == frozenset()
+
+
+def test_formulate_core_normalizes_country_for_direct_callers():
+    """Core formulate() upper-cases country itself, so a lowercase direct call still flags."""
+    res = formulate(
+        species="Nile Tilapia",
+        stage="< 5g (Starter)",
+        production_system="General-LowCost",
+        prices=DEMO_PRICES,
+        country="zm",
+    )
+    if res.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal (status={res.status})")
+    assert res.country == "ZM"
+    assert all(isinstance(line.locally_available, bool) for line in res.recipe)
+
+
+def test_country_never_changes_the_lp():
+    """The country tag is advisory: identical prices must yield an identical recipe/cost."""
+    common = dict(
+        species="Nile Tilapia",
+        stage="< 5g (Starter)",
+        production_system="General-LowCost",
+        prices=DEMO_PRICES,
+    )
+    base = formulate(**common)
+    tagged = formulate(**common, country="ZM")
+    if base.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal (status={base.status})")
+    assert base.cost_per_kg == tagged.cost_per_kg
+    assert (
+        {(l.code, l.inclusion_percent) for l in base.recipe}
+        == {(l.code, l.inclusion_percent) for l in tagged.recipe}
+    )
+
+
+def test_formulate_error_path_echoes_country():
+    """Non-optimal responses still echo the requested country."""
+    res = formulate(
+        species="Nile Tilapia",
+        stage="< 5g (Starter)",
+        production_system="General-LowCost",
+        prices={"00000000": 1.0},  # no overlap with the pool -> error status
+        country="NG",
+    )
+    assert res.status == "error"
+    assert res.country == "NG"
+
+
+def test_supported_countries_match_request_literal():
+    """Guard against drift between SUPPORTED_COUNTRIES and the FormulateRequest Literal."""
+    from typing import get_args
+
+    from fasa_core.config.defaults import SUPPORTED_COUNTRIES
+    from fasa_core.models import FormulateRequest
+
+    annotation = FormulateRequest.model_fields["country"].annotation
+    literal = next(a for a in get_args(annotation) if a is not type(None))
+    assert set(get_args(literal)) == set(SUPPORTED_COUNTRIES)
+
+
+# --------------------------------------------------------------------------- #
 # PAFF benchmark gate                                                         #
 # --------------------------------------------------------------------------- #
 

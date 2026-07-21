@@ -36,6 +36,7 @@ from .config.defaults import (
     SOLUTION_FRACTION_TOL,
     SOLVER_TIME_LIMIT_SECONDS,
     WARN_INGREDIENT_INCLUSION_THRESHOLD,
+    normalize_country,
 )
 from .constraint_builder import LinearConstraint, build_constraints
 from .ingredient_pool import IngredientRecord, load_pool
@@ -67,12 +68,18 @@ def formulate(
     max_binder_inclusion: Optional[float] = DEFAULT_MAX_BINDER_INCLUSION,
     custom_premix_mask_codes: Optional[list[str]] = None,
     batch_size_kg: Optional[float] = None,
+    country: Optional[str] = None,
 ) -> FormulateResponse:
     """Run the LP and return a structured response.
 
     On infeasibility we run a deletion-filter to extract an Irreducible
     Inconsistent Subset (IIS) of constraint codes and return that to the caller.
     """
+    # Normalize the (advisory) country tag here so the core is self-contained:
+    # direct callers get the same case/whitespace handling as the API layer, and
+    # `locally_available` is compared against the pool's upper-cased ISO-2 tags.
+    country = normalize_country(country)
+
     # ---------- 1. pool & coefficient assembly ------------------------------ #
 
     pool = load_pool(only_codes=set(prices.keys()))
@@ -81,7 +88,7 @@ def formulate(
             species, stage, production_system, processing_method,
             premix_enabled, premix_rate,
             max_fishmeal_cost_share, max_binder_inclusion,
-            batch_size_kg,
+            batch_size_kg, country,
             "No priced ingredients overlap with the configured pool.",
         )
 
@@ -126,6 +133,7 @@ def formulate(
             status="infeasible",
             species=species, stage=stage, production_system=production_system,
             processing_method=processing_method,
+            country=country,
             warnings=build_warnings,
             infeasibility=InfeasibilityReport(
                 iis_codes=[c.spec_code for c in iis],
@@ -166,6 +174,7 @@ def formulate(
             cost_per_kg=prices[code],
             cost_contribution=round(frac * prices[code], 6),
             quantity_kg=qty_kg,
+            locally_available=(country in rec.countries) if country is not None else None,
         ))
         if frac > WARN_INGREDIENT_INCLUSION_THRESHOLD:
             warnings.append(
@@ -191,6 +200,7 @@ def formulate(
         status="optimal",
         species=species, stage=stage, production_system=production_system,
         processing_method=processing_method,
+        country=country,
         cost_per_kg=round(cost, 6),
         recipe=recipe,
         composition=composition,
@@ -384,13 +394,13 @@ def _err_response(
     species, stage, system, method,
     premix_enabled, premix_rate,
     max_fishmeal_cost_share, max_binder_inclusion,
-    batch_size_kg,
+    batch_size_kg, country,
     msg,
 ):
     return FormulateResponse(
         status="error",
         species=species, stage=stage, production_system=system,
-        processing_method=method, warnings=[msg],
+        processing_method=method, country=country, warnings=[msg],
         premix_enabled=premix_enabled, premix_rate=premix_rate,
         max_fishmeal_cost_share=max_fishmeal_cost_share,
         max_binder_inclusion=max_binder_inclusion,

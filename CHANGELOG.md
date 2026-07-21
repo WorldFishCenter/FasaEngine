@@ -7,6 +7,21 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-21
+
+### Added
+- Country-aware ingredient pool. `fasa_core/config/ingredient_pool_africa.csv` gains a `countries` column (comma-separated ISO-2 codes: `KE`/`NG`/`ZM`) tagging where each ingredient is locally available.
+- Optional `country` input on `/formulate` (ISO-2, case-insensitive). When supplied, each `recipe[]` line carries `locally_available` (`true`/`false`); it is `null` when no `country` is requested. `FormulateResponse` echoes the requested `country`.
+- `/supported` now returns a `countries` list so clients can discover valid values.
+- `scripts/build_ingredient_pool.py` regenerates the pool CSV from the source country list (`scripts/data/countries_pool.csv`) and FICD.
+
+### Changed
+- Expanded the ingredient pool from the original 39-item shortlist to 330 ingredients (the FICD-backed subset of the country list, plus the retained import variants). Descriptions come from FICD; `class` and the `is_fishmeal`/`is_binder` flags are auto-derived from the description (fishmeal only for "Fish meal ..."; binder for starch/flour/cassava). Existing formulations are unaffected — the LP still only uses priced ingredients, every previously priced code is retained, and the derived flags reproduce the prior curated flags exactly.
+
+### Notes
+- The optimizer is **never** restricted to local ingredients; `country` is an advisory highlight only, consistent with millers buying imported soy, premix, etc.
+- 141 Zambia-only codes from the source list have no composition rows in FICD and are excluded from the pool until FICD gains their data.
+
 ## [0.2.0] - 2026-05-29
 
 ### Added

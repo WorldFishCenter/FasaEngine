@@ -35,6 +35,31 @@ def test_supported_accepts_bearer_token():
     assert "stages_by_species_and_system" in body
 
 
+def test_supported_lists_countries():
+    client = _client(auth_required=True, token="abc123")
+    r = client.get("/supported", headers={"Authorization": "Bearer abc123"})
+    assert r.status_code == 200
+    assert r.json()["countries"] == ["KE", "NG", "ZM"]
+
+
+def test_formulate_rejects_unsupported_country():
+    client = _client(auth_required=True, token="abc123")
+    payload = {
+        "species": "Nile Tilapia",
+        "stage": "< 5g (Starter)",
+        "prices": {"30355": 0.30},
+        "country": "US",
+    }
+    r = client.post(
+        "/formulate",
+        json=payload,
+        headers={"Authorization": "Bearer abc123"},
+    )
+    # "US" is a well-formed ISO-2 string but not a supported country -> 422 from the
+    # Literal on FormulateRequest (Pydantic validates before the endpoint guard runs).
+    assert r.status_code == 422
+
+
 def test_validate_recipe_rejects_invalid_fraction_range():
     client = _client(auth_required=True, token="abc123")
     payload = {"fractions": {"30355": 1.2}, "parameters": ["crude_protein_percent"]}

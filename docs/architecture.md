@@ -38,6 +38,11 @@ The project provides an API that helps formulate fish feed recipes based on:
 - Core data is kept in repository CSV files under `data/`.
 - This keeps the setup simple and reproducible.
 - The current data changes infrequently.
+- The ingredient pool (`fasa_core/config/ingredient_pool_africa.csv`) is country-aware:
+  each ingredient carries a `countries` tag (ISO-2: KE/NG/ZM). An optional `country` on
+  `/formulate` flags which ingredients are *locally available* in the response; it never
+  restricts the optimization. The pool is regenerated from source lists by
+  `scripts/build_ingredient_pool.py`.
 
 ## Versioning and changes
 

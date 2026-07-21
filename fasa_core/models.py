@@ -8,7 +8,9 @@ from __future__ import annotations
 
 from typing import Dict, List, Literal, Optional
 
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict, field_validator
+
+from .config.defaults import normalize_country
 
 
 # ---------- request --------------------------------------------------------- #
@@ -26,6 +28,22 @@ class FormulateRequest(BaseModel):
         examples=["< 5g (Starter)"],
     )
     production_system: Literal["General-LowCost", "General"] = "General-LowCost"
+
+    country: Optional[Literal["KE", "NG", "ZM"]] = Field(
+        default=None,
+        description=(
+            "Optional ISO-2 country code (KE/NG/ZM). When supplied, each recipe line is "
+            "flagged `locally_available` according to the pool's country tags. The LP is "
+            "never restricted to local ingredients — this is an advisory highlight only."
+        ),
+        examples=["ZM"],
+    )
+
+    @field_validator("country", mode="before")
+    @classmethod
+    def _normalize_country(cls, v):
+        """Accept lower/mixed-case ISO-2 codes (e.g. 'ke') by normalizing before validation."""
+        return normalize_country(v) if isinstance(v, str) else v
 
     prices: Dict[str, float] = Field(
         ...,
@@ -113,6 +131,8 @@ class IngredientLine(BaseModel):
     cost_per_kg: float
     cost_contribution: float
     quantity_kg: Optional[float] = None
+    # True/False when a `country` was requested; None when no country context was given.
+    locally_available: Optional[bool] = None
 
 
 class NutrientLine(BaseModel):
@@ -141,6 +161,9 @@ class FormulateResponse(BaseModel):
     production_system: str
     processing_method: str
 
+    # echoed back when a country was requested; null otherwise
+    country: Optional[str] = None
+
     cost_per_kg: Optional[float] = None
     recipe: List[IngredientLine] = []
     composition: List[NutrientLine] = []
@@ -167,6 +190,7 @@ class HealthResponse(BaseModel):
 class SupportedResponse(BaseModel):
     species: List[str]
     production_systems: List[str]
+    countries: List[str]
     stages_by_species_and_system: Dict[str, Dict[str, List[str]]]
 
 

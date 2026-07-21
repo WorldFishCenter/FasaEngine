@@ -65,8 +65,11 @@ Recommended client behavior:
 ## 6) Integration checklist
 
 - Validate connectivity with `/health` and `/ready`.
-- Call `/supported` first to fetch valid `species`, `production_system`, and `stage`.
+- Call `/supported` first to fetch valid `species`, `production_system`, `stage`, and `countries`.
 - Build `/formulate` payload from those discovered values.
+- Optionally send `country` (ISO-2: `KE`/`NG`/`ZM`) to have each recipe line flagged
+  `locally_available` (`true`/`false`; `null` when no `country` is sent). This is an
+  advisory highlight only — the optimizer is never restricted to local ingredients.
 - Handle `status` in response (`optimal`, `infeasible`, `error`).
 - Log request IDs (if the calling client or service provides them) for easier debugging.
 

@@ -19,6 +19,20 @@ PAFF_COMPOSITION_FILENAME = (
 SUPPORTED_SPECIES = ("Nile Tilapia", "African Catfish")
 SUPPORTED_PRODUCTION_SYSTEMS = ("General-LowCost", "General")
 
+# Countries with local-availability tags in the ingredient pool (ISO-2). Used to
+# validate the optional `/formulate` `country` field and surfaced via `/supported`.
+# The LP is never restricted by country — the tag only flags `locally_available`.
+SUPPORTED_COUNTRIES = ("KE", "NG", "ZM")
+
+
+def normalize_country(value: "str | None") -> "str | None":
+    """Canonicalize an ISO-2 country code: strip + upper-case; blank/None → None.
+
+    Single source of truth for country-code normalization, shared by the API
+    request validator, the core `formulate()` entry point, and the pool loader.
+    """
+    return ((value or "").strip().upper() or None)
+
 # --- premix ---
 DEFAULT_PREMIX_RATE = 0.005   # 0.5 % of total feed mass (industry-typical for vit/min premix)
 

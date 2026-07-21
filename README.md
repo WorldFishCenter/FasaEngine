@@ -61,7 +61,7 @@ fasa_engine/
 │   ├── config/
 │   │   ├── crosswalk.json              ASNS spec code -> FICD parameter (+ unit factor)
 │   │   ├── premix_mask.json            which spec codes the premix covers
-│   │   ├── ingredient_pool_africa.csv  curated, plausibly-African ingredient shortlist
+│   │   ├── ingredient_pool_africa.csv  country-tagged ingredient pool (KE/NG/ZM)
 │   │   └── defaults.py                 numeric defaults (premix rate, caps, etc.)
 │   ├── data_loader.py                  ASNS / FICD / PAFF loaders (cached)
 │   ├── crosswalk.py                    spec → FICD parameter resolver
@@ -72,6 +72,9 @@ fasa_engine/
 │   └── models.py                       pydantic request/response schemas
 ├── fasa_api/
 │   └── main.py                         FastAPI app
+├── scripts/
+│   ├── build_ingredient_pool.py        regenerates the country-tagged pool CSV
+│   └── data/countries_pool.csv         source country list (builder input)
 ├── tests/test_smoke.py                 pytest smoke + PAFF reproduction
 ├── examples/tilapia_starter_demo.py    runnable end-to-end demo
 └── requirements.txt
@@ -144,6 +147,7 @@ For external teams integrating this API into other systems, see [`docs/integrati
   "stage": "< 5g (Starter)",
   "production_system": "General-LowCost",
   "processing_method": "pelleted",
+  "country": "ZM",
   "premix_enabled": true,
   "premix_rate": 0.005,
   "batch_size_kg": 100,
@@ -157,6 +161,8 @@ For external teams integrating this API into other systems, see [`docs/integrati
 }
 ```
 
+`country` is optional (ISO-2: `KE`, `NG`, `ZM`; discover valid values via `/supported`). When supplied, each recipe line is flagged `locally_available`. It is an advisory highlight only — the optimizer always draws on the full pool (millers routinely buy imported soy, premix, etc.), so a country is **never** a hard filter.
+
 Example call with auth:
 
 ```bash
@@ -168,7 +174,7 @@ curl -X POST "http://127.0.0.1:8000/formulate" \
 
 ### Reading the response (high level)
 
-- **`recipe`**: ingredient inclusions (percent of final feed) + cost breakdown. If `batch_size_kg` was supplied on the request, each line also carries `quantity_kg`.
+- **`recipe`**: ingredient inclusions (percent of final feed) + cost breakdown. If `batch_size_kg` was supplied on the request, each line also carries `quantity_kg`. If `country` was supplied, each line carries `locally_available` (`true`/`false`); it is `null` when no `country` was requested.
 - **`batch_size_kg` / `premix_quantity_kg` / `total_cost`**: echoed only when `batch_size_kg` was supplied; otherwise `null`.
 - **`composition`**: per-spec achieved vs target, including toxin ceilings.
 - **`status`**:
@@ -268,7 +274,8 @@ Configure:
 - `optimizer._apply_interaction_corrections` — non-additive ingredient interaction terms (e.g., phytate × Ca → reduced P digestibility), per Hua & Bureau (2012).
 - `optimizer._apply_anti_nutrient_digestibility_penalties` — anti-nutrient concentrations downgrade digestible-protein/AA coefficients.
 - `optimizer._solve_chance_constrained` — stochastic LP using ingredient nutrient CV.
-- Country-specific availability tags (Kenya / Nigeria / Zambia) replacing the single Africa pool.
+
+Country-specific availability tags (Kenya / Nigeria / Zambia) are now **implemented**: the pool carries per-ingredient `countries` tags and `/formulate` accepts an optional `country` that flags `locally_available` in the response (without restricting the LP).
 
 ## References
 

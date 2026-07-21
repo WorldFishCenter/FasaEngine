@@ -27,6 +27,7 @@ from fasa_core.config.defaults import (
     FICD_FILENAME,
     PAFF_COMPOSITION_FILENAME,
     PAFF_FORMULATIONS_FILENAME,
+    SUPPORTED_COUNTRIES,
     SUPPORTED_PRODUCTION_SYSTEMS,
     SUPPORTED_SPECIES,
 )
@@ -155,6 +156,7 @@ def supported(_: None = Depends(_require_auth)) -> SupportedResponse:
                 out[sp][sys] = []
     return {"species": SUPPORTED_SPECIES,
             "production_systems": SUPPORTED_PRODUCTION_SYSTEMS,
+            "countries": SUPPORTED_COUNTRIES,
             "stages_by_species_and_system": out}
 
 
@@ -176,10 +178,11 @@ def formulate_endpoint(
 ) -> FormulateResponse:
     started_at = time.perf_counter()
     LOGGER.info(
-        "formulate.request species=%s stage=%s system=%s prices=%d premix_enabled=%s",
+        "formulate.request species=%s stage=%s system=%s country=%s prices=%d premix_enabled=%s",
         req.species,
         req.stage,
         req.production_system,
+        req.country,
         len(req.prices),
         req.premix_enabled,
     )
@@ -197,6 +200,8 @@ def formulate_endpoint(
                 req.production_system,
             ),
         )
+    # `country` is validated by the FormulateRequest Literal (unsupported values 422
+    # before this handler runs); the supported set is echoed via /supported.
 
     try:
         result = formulate(
@@ -211,6 +216,7 @@ def formulate_endpoint(
             max_binder_inclusion=req.max_binder_inclusion,
             custom_premix_mask_codes=req.custom_premix_mask_codes,
             batch_size_kg=req.batch_size_kg,
+            country=req.country,
         )
         elapsed_ms = (time.perf_counter() - started_at) * 1000.0
         LOGGER.info(
