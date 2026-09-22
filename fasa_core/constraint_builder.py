@@ -20,6 +20,14 @@ The premix mask is applied here: masked spec codes never make it into the
 output. Toxin (TX*) maximums are NEVER masked even if the user passes a custom
 mask that includes them — the premix doesn't add toxins, and the safety
 ceilings on aflatoxin/gossypol/etc. are non-negotiable per the FASA brief.
+
+The nutrient inclusion-limit layer (`inclusion_limits`) is folded into the ASNS
+row set before emission, so the limits inherit the whole existing pipeline —
+crosswalk resolution, unit conversion, coefficients, the composition report and
+the deletion-filter IIS. A row the layer created or tightened is exempt from the
+premix mask — an explicit operator bound always binds — while a plain ASNS row
+for the same code stays masked, so capping zinc does not also resurrect the zinc
+minimum the premix supplies.
 """
 
 from __future__ import annotations
@@ -30,8 +38,11 @@ from typing import Optional
 import pandas as pd
 
 from . import crosswalk
+from .config.defaults import IN_SPEC_ABS_TOL, IN_SPEC_INPUT_TOL, IN_SPEC_REL_TOL
 from .data_loader import get_active_constraints
+from .inclusion_limits import Bound
 from .ingredient_pool import IngredientRecord, attach_ficd_rows
+from .models import NutrientLine
 
 
 @dataclass
@@ -43,6 +54,7 @@ class LinearConstraint:
     coeffs: dict[str, float]
     constant: float
     unit: str
+    source: str = "asns"    # "asns" | "asns+<layer>" | "<layer>"; see inclusion_limits
 
     def __repr__(self) -> str:                                                # pragma: no cover
         op = {"Minimum": ">=", "Maximum": "<=", "Ratio": "="}[self.restriction_type]
@@ -58,6 +70,7 @@ def build_constraints(
     premix_enabled: bool = True,
     premix_rate: float = 0.005,
     premix_mask_override: Optional[list[str]] = None,
+    nutrient_limits: Optional[dict[str, Bound]] = None,
 ) -> tuple[list[LinearConstraint], list[str]]:
     """Materialize the active constraint set.
 
@@ -67,6 +80,7 @@ def build_constraints(
     warnings    : list[str] — non-fatal notes (unmappable specs, etc.)
     """
     asns_active = get_active_constraints(species, stage, production_system)
+    asns_active, warnings = _apply_nutrient_limits(asns_active, nutrient_limits or {})
     ficd_pool = attach_ficd_rows(pool).set_index("code")
 
     mask = (
@@ -76,18 +90,19 @@ def build_constraints(
     )
 
     out: list[LinearConstraint] = []
-    warnings: list[str] = []
 
     for _, row in asns_active.iterrows():
         code = row["code"]
         rtype = row["restriction_type"]
+        source = row["source"]
 
         # --- masking rules -------------------------------------------------- #
-        if code in mask and not code.startswith("TX"):
+        if code in mask and not code.startswith("TX") and source == "asns":
             # vit/trace-mineral satisfied by premix; skip silently
             continue
-        # toxins are NEVER masked, even via override
-        # (we've already short-circuited above for non-TX masked codes)
+        # toxins are NEVER masked, even via override. Neither is a row the limit layer
+        # created or tightened — but a plain ASNS row for the same code stays masked,
+        # so bounding zinc's maximum never resurrects the minimum the premix supplies.
 
         ficd_param, factor = crosswalk.resolve(code, processing_method)
         unit = row["unit"] or crosswalk.spec_unit(code)
@@ -121,6 +136,7 @@ def build_constraints(
                     coeffs=coeffs,
                     constant=constant,
                     unit=unit,
+                    source=source,
                 )
             )
             continue
@@ -156,9 +172,117 @@ def build_constraints(
                 coeffs=coeffs,
                 constant=0.0,
                 unit=unit,
+                source=source,
             )
         )
     return out, warnings
+
+
+def _apply_nutrient_limits(
+    asns_active: pd.DataFrame,
+    bounds: dict[str, Bound],
+) -> tuple[pd.DataFrame, list[str]]:
+    """Fold the nutrient inclusion-limit layer into the active ASNS rows.
+
+    Where ASNS already states the same direction for a spec code, the tighter value
+    replaces the target; where it does not, a row is appended. Either way the result
+    is an ordinary ASNS-shaped frame, so the emission loop below stays unchanged.
+    """
+    df = asns_active.copy()
+    df["source"] = "asns"
+    if not bounds:
+        return df, []
+
+    warnings: list[str] = []
+    present = {(r["code"], r["restriction_type"]): i for i, r in df.iterrows()}
+    appended: list[dict] = []
+
+    for code, bound in bounds.items():
+        for rtype, value in (("Minimum", bound.minimum), ("Maximum", bound.maximum)):
+            if value is None:
+                continue
+
+            idx = present.get((code, rtype))
+            if idx is not None:
+                current = float(df.at[idx, "value_numeric"])
+                tighter = max(current, value) if rtype == "Minimum" else min(current, value)
+                if tighter != current:
+                    df.at[idx, "value_numeric"] = tighter
+                    df.at[idx, "source"] = f"asns+{bound.source}"
+                continue
+
+            ficd_param, _ = crosswalk.resolve(code)
+            if ficd_param is None:
+                warnings.append(
+                    f"[skip] nutrient limit for {code} has no FICD mapping; ignored."
+                )
+                continue
+            if ficd_param == "__ratio__":
+                warnings.append(
+                    f"[skip] nutrient limit for {code} targets a ratio spec "
+                    f"({crosswalk.spec_label(code)}); not supported by this layer."
+                )
+                continue
+
+            appended.append({
+                "code": code,
+                "specification": crosswalk.spec_label(code),
+                "unit": crosswalk.spec_unit(code),
+                "restriction_type": rtype,
+                "value_numeric": float(value),
+                "source": bound.source,
+            })
+
+    if appended:
+        df = pd.concat([df, pd.DataFrame(appended)], ignore_index=True)
+    return df, warnings
+
+
+# =========================================================================== #
+# scoring                                                                      #
+# =========================================================================== #
+
+
+def score_constraints(
+    constraints: list[LinearConstraint],
+    fractions: dict[str, float],
+) -> list[NutrientLine]:
+    """Recompute Σ a_i x_i + constant per constraint and label it against the target.
+
+    Shared by `/formulate` (scoring the LP solution) and `/validate-recipe` (scoring
+    a recipe the caller supplies), so both answer the achieved-vs-target question
+    through exactly the same arithmetic.
+    """
+    out: list[NutrientLine] = []
+    for con in constraints:
+        weights = [con.coeffs.get(code, 0.0) for code in fractions]
+        achieved = sum(w * f for w, f in zip(weights, fractions.values())) + con.constant
+
+        # Scale the tolerance to the row's own coefficients rather than to an absolute
+        # epsilon; the dominant term budgets for quantization of the caller's
+        # fractions. See IN_SPEC_INPUT_TOL for why.
+        tol = (
+            IN_SPEC_ABS_TOL
+            + IN_SPEC_REL_TOL * abs(con.rhs)
+            + IN_SPEC_INPUT_TOL * sum(abs(w) for w in weights)
+        )
+
+        in_spec = (
+            (con.restriction_type == "Minimum" and achieved >= con.rhs - tol) or
+            (con.restriction_type == "Maximum" and achieved <= con.rhs + tol) or
+            (con.restriction_type == "Ratio"   and abs(achieved - con.rhs) <= tol)
+        )
+        out.append(NutrientLine(
+            code=con.spec_code,
+            spec_label=con.spec_label,
+            restriction_type=con.restriction_type,
+            target=con.rhs,
+            achieved=round(achieved, 6),
+            unit=con.unit,
+            in_spec=bool(in_spec),
+            source=con.source,
+        ))
+    return out
 
 
 def _ingredient_coefficients(ficd_pool: pd.DataFrame, param: str) -> dict[str, float]:

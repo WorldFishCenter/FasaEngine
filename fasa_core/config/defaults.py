@@ -33,6 +33,15 @@ def normalize_country(value: "str | None") -> "str | None":
     """
     return ((value or "").strip().upper() or None)
 
+def as_percent(value: "float | None") -> "float | None":
+    """Mass fraction → percent of feed, at the precision the API reports inclusions.
+
+    Single source of truth for the fraction→percent rule, shared by the optimizer's
+    recipe lines and the validator's inclusion checks; None passes through.
+    """
+    return None if value is None else round(value * 100.0, 4)
+
+
 # --- premix ---
 DEFAULT_PREMIX_RATE = 0.005   # 0.5 % of total feed mass (industry-typical for vit/min premix)
 
@@ -49,6 +58,22 @@ WARN_INGREDIENT_INCLUSION_THRESHOLD = 0.40   # log a soft warning above 40 % sin
 
 # --- numerical tolerances ---
 SOLUTION_FRACTION_TOL  = 1e-6   # ingredients below this fraction are dropped from the reported recipe
+
+# `in_spec` tolerance for achieved-vs-target:
+#     tol = ABS + REL*|target| + INPUT*Σ|a_i|
+# An absolute epsilon alone is wrong for two reasons. A linearized ratio (DP/DE) has
+# target = 0 with coefficients in the hundreds, and energy rows carry coefficients in
+# the thousands — so the meaningful error scale is the row's own coefficients, not 1e-6.
+# The INPUT term is the dominant one: it budgets for quantization of the caller's
+# fractions, which matters because the API publishes inclusion_percent at 4 decimals
+# (a 1e-6 quantum in fraction terms) and /validate-recipe accepts those values back.
+# Without it, a recipe that /formulate just returned reads as out of spec on any
+# exactly-binding constraint. 2e-6 is 4x the 5e-7 worst-case half-quantum per
+# ingredient; even on the largest rows the resulting tolerance stays physically
+# negligible (~0.07 kcal on a 3243 kcal/kg energy minimum).
+IN_SPEC_ABS_TOL        = 1e-6
+IN_SPEC_REL_TOL        = 1e-9
+IN_SPEC_INPUT_TOL      = 2e-6
 VALIDATION_REL_TOL     = 0.02   # 2 % — relaxed from 0.1 % because PAFF Calculated_Composition is
                                 # published with 2-decimal precision; rounding alone consumes
                                 # ~0.5 % at our 5-7 % ash / fibre values. 2 % rejects real

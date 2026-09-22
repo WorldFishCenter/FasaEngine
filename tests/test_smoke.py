@@ -368,3 +368,339 @@ def test_paff_reproduction(paff_label):
         pytest.skip("no comparable parameters in PAFF")
     # Tight tolerance is a stretch goal; loose tolerance must hold.
     assert (rep_clean["rel_diff"] < 0.10).all(), rep_clean.to_string()
+
+
+# --------------------------------------------------------------------------- #
+# min/max inclusion layer                                                     #
+# --------------------------------------------------------------------------- #
+
+
+BASE = dict(
+    species="Nile Tilapia",
+    stage="< 5g (Starter)",
+    production_system="General-LowCost",
+    prices=DEMO_PRICES,
+)
+
+
+def _spec(res, code):
+    return next(line for line in res.composition if line.code == code)
+
+
+def test_limits_config_files_ship_without_data_rows():
+    """The layer is wired but empty, so today's formulations are unchanged."""
+    from fasa_core.inclusion_limits import ingredient_limit_rows, nutrient_limit_rows
+
+    assert nutrient_limit_rows() == ()
+    assert ingredient_limit_rows() == ()
+
+
+def test_nutrient_limit_tighter_than_asns_replaces_the_target():
+    """ASNS caps starter crude fibre at 7%; a 3% practice limit must bind instead."""
+    res = formulate(**BASE, nutrient_limits={"PA05": {"max": 3.0}})
+    fibre = _spec(res, "PA05")
+    assert fibre.restriction_type == "Maximum"
+    assert fibre.target == 3.0
+    assert fibre.source == "asns+request"
+
+
+def test_nutrient_limit_looser_than_asns_never_loosens_it():
+    """A commercial 8% fibre ceiling must not relax the 7% ASNS requirement."""
+    res = formulate(**BASE, nutrient_limits={"PA05": {"max": 8.0}})
+    fibre = _spec(res, "PA05")
+    assert fibre.target == 7.0
+    assert fibre.source == "asns"
+
+
+def test_nutrient_limit_adds_a_bound_asns_does_not_state():
+    """ASNS has no ash ceiling for this stage; the limit layer supplies one."""
+    res = formulate(**BASE, nutrient_limits={"PA06": {"max": 8.0}})
+    ash = _spec(res, "PA06")
+    assert (ash.restriction_type, ash.target, ash.source) == ("Maximum", 8.0, "request")
+
+
+def test_nutrient_limit_on_a_ratio_spec_is_skipped_with_a_warning():
+    res = formulate(**BASE, nutrient_limits={"ADPXF09": {"min": 30.0}})
+    assert any("ratio spec" in w for w in res.warnings)
+
+
+def test_nutrient_limit_is_not_masked_by_the_premix():
+    """Zinc is premix-masked, but an explicit operator bound must still bind."""
+    res = formulate(**BASE, premix_enabled=True, nutrient_limits={"M12": {"max": 250.0}})
+    zinc = _spec(res, "M12")
+    assert (zinc.restriction_type, zinc.target, zinc.source) == ("Maximum", 250.0, "request")
+
+
+def test_ingredient_limit_floor_is_honored_and_echoed():
+    """A minimum forces the ingredient in and the line reports the applied box."""
+    res = formulate(**BASE, ingredient_limits={"10018": {"min": 0.05}})
+    if res.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal (status={res.status})")
+    line = next(l for l in res.recipe if l.code == "10018")
+    assert line.inclusion_percent >= 5.0 - 1e-3
+    assert line.min_inclusion_percent == 5.0
+    assert line.limit_source == "request"
+
+
+def test_ingredient_limit_ceiling_is_honored():
+    res = formulate(**BASE, ingredient_limits={"31621": {"max": 0.15}})
+    if res.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal (status={res.status})")
+    line = next((l for l in res.recipe if l.code == "31621"), None)
+    if line is not None:
+        assert line.inclusion_percent <= 15.0 + 1e-3
+        assert line.max_inclusion_percent == 15.0
+
+
+def test_ingredient_zero_ceiling_excludes_a_priced_ingredient_and_warns():
+    """'Do not recommend this, full stop' — the exclusion must be visible."""
+    res = formulate(**BASE, ingredient_limits={"31605": {"max": 0.0}})
+    assert all(line.code != "31605" for line in res.recipe)
+    assert any("31605" in w or "Wheat bran" in w for w in res.warnings)
+
+
+def test_ceilings_that_cannot_fill_the_feed_report_a_bound_conflict():
+    """Bounds are variable boxes, not constraint rows, so the IIS cannot see them."""
+    res = formulate(**BASE, ingredient_limits={c: {"max": 0.01} for c in DEMO_PRICES})
+    assert res.status == "infeasible"
+    assert res.infeasibility.iis_codes == []
+    assert len(res.infeasibility.bound_conflicts) == 1
+    assert "below" in res.infeasibility.bound_conflicts[0]
+
+
+def test_floors_above_the_available_feed_mass_report_a_bound_conflict():
+    limits = {c: {"min": 0.10} for c in list(DEMO_PRICES)[:12]}
+    res = formulate(**BASE, ingredient_limits=limits)
+    assert res.status == "infeasible"
+    assert len(res.infeasibility.bound_conflicts) == 1
+    assert "above" in res.infeasibility.bound_conflicts[0]
+
+
+def test_a_binding_nutrient_limit_is_named_in_the_iis():
+    """An infeasibility the limit layer caused must be attributable to it."""
+    res = formulate(**BASE, nutrient_limits={"PA03": {"max": 20.0}})
+    assert res.status == "infeasible"
+    assert "PA03" in res.infeasibility.iis_codes
+    assert any("[request]" in e for e in res.infeasibility.iis_explanations)
+
+
+def test_limits_absent_leaves_the_recipe_and_the_box_untouched():
+    """Wiring the layer in must not move today's baseline result."""
+    base = formulate(**BASE)
+    if base.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal (status={base.status})")
+    assert all(line.limit_source is None for line in base.recipe)
+    assert all(line.max_inclusion_percent is None for line in base.recipe)
+    assert all(line.source == "asns" for line in base.composition)
+
+
+def test_scope_resolution_prefers_the_most_specific_row(tmp_path):
+    """A stage-scoped row beats a blanket one; ties fall to the tighter bound."""
+    from fasa_core.inclusion_limits import LimitScope, _load, _resolve
+
+    csv = tmp_path / "limits.csv"
+    csv.write_text(
+        "code,species,production_system,stage_weight,processing_method,"
+        "min_inclusion,max_inclusion\n"
+        "31605,,,,,,0.30\n"                       # blanket ceiling
+        "31605,,,Starter,,,0.10\n"                # stage-specific: substring match
+        "31605,Nile Tilapia,,,,,0.20\n"           # equally specific as the stage row
+        "30355,,,,,0.05,\n"                       # floor only
+    )
+    rows = _load(csv, "code", "min_inclusion", "max_inclusion")
+    resolved = _resolve(rows, LimitScope("Nile Tilapia", "< 5g (Starter)", "General-LowCost"))
+
+    # two rows tie at specificity 1; the tighter ceiling wins
+    assert resolved["31605"].maximum == 0.10
+    assert resolved["31605"].minimum is None
+    assert (resolved["30355"].minimum, resolved["30355"].maximum) == (0.05, None)
+
+
+def test_scope_filters_exclude_non_matching_rows(tmp_path):
+    from fasa_core.inclusion_limits import LimitScope, _load, _resolve
+
+    csv = tmp_path / "limits.csv"
+    csv.write_text(
+        "code,species,production_system,stage_weight,processing_method,"
+        "min_inclusion,max_inclusion\n"
+        "31605,African Catfish,,,,,0.10\n"
+        "30355,,,,extruded,,0.10\n"
+    )
+    rows = _load(csv, "code", "min_inclusion", "max_inclusion")
+    tilapia = LimitScope("Nile Tilapia", "< 5g (Starter)", "General-LowCost")
+    catfish = LimitScope("African Catfish", "< 5g (Starter)", "General", "extruded")
+    assert _resolve(rows, tilapia) == {}
+    assert set(_resolve(rows, catfish)) == {"31605", "30355"}
+
+
+def test_limits_csv_rejects_an_inverted_bound(tmp_path):
+    from fasa_core.inclusion_limits import _load
+
+    csv = tmp_path / "limits.csv"
+    csv.write_text(
+        "code,species,production_system,stage_weight,processing_method,"
+        "min_inclusion,max_inclusion\n"
+        "31605,,,,,0.40,0.10\n"
+    )
+    with pytest.raises(ValueError, match="above maximum"):
+        _load(csv, "code", "min_inclusion", "max_inclusion")
+
+
+def test_request_limit_models_reject_invalid_pairs():
+    from pydantic import ValidationError
+
+    from fasa_core.models import IngredientInclusionLimit, NutrientLimit
+
+    with pytest.raises(ValidationError):
+        IngredientInclusionLimit(max=1.5)          # above 100% of feed
+    with pytest.raises(ValidationError):
+        IngredientInclusionLimit(min=0.4, max=0.1)  # inverted
+    with pytest.raises(ValidationError):
+        NutrientLimit(min=-1.0)                     # negative nutrient level
+
+
+# --------------------------------------------------------------------------- #
+# /validate-recipe: composition + inclusion-rate checks                       #
+# --------------------------------------------------------------------------- #
+
+
+def _lp_fractions(**overrides):
+    """The LP's own recipe as a fractions dict, via the 4-dp percentages it publishes."""
+    res = formulate(**{**BASE, **overrides})
+    if res.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal (status={res.status})")
+    return {line.code: line.inclusion_percent / 100.0 for line in res.recipe}
+
+
+def test_validate_recipe_accepts_the_lp_solution_as_in_spec():
+    """A recipe /formulate just returned must not read as non-compliant.
+
+    Guards the `in_spec` tolerance: constraints the LP drives to exactly binding
+    (and the DP/DE ratio, whose linearized target is 0) lose ~1e-5 when the
+    published 4-decimal inclusion_percent values are fed back in.
+    """
+    from fasa_core.validator import validate_recipe
+
+    res = validate_recipe(
+        _lp_fractions(),
+        parameters=["crude_protein_percent"],
+        species=BASE["species"],
+        stage=BASE["stage"],
+        production_system=BASE["production_system"],
+    )
+    off_spec = [line.code for line in res.nutrient_checks if not line.in_spec]
+    assert off_spec == []
+    assert res.in_limits is True
+    assert res.nutrient_checks, "nutrient checks should run when the full scope is given"
+    assert 99.0 <= res.total_inclusion_percent <= 100.0
+
+
+def test_validate_recipe_still_catches_a_real_nutrient_violation():
+    """The tolerance must not be loose enough to pass an implausible diet."""
+    from fasa_core.validator import validate_recipe
+
+    res = validate_recipe(
+        {"31621": 0.995},  # all wheat flour: nowhere near the protein/energy targets
+        parameters=[],
+        species=BASE["species"],
+        stage=BASE["stage"],
+        production_system=BASE["production_system"],
+    )
+    violations = {line.code for line in res.nutrient_checks if not line.in_spec}
+    assert {"PA03", "ED02"} <= violations
+    assert res.in_limits is False
+
+
+def test_validate_recipe_flags_an_inclusion_above_its_ceiling():
+    """The colleague's case: 40% bran against a 15% ceiling."""
+    from fasa_core.validator import validate_recipe
+
+    fractions = {"31605": 0.40, "31621": 0.595}
+    res = validate_recipe(fractions, parameters=[], ingredient_limits={"31605": {"max": 0.15}})
+
+    bran = next(line for line in res.inclusion_checks if line.code == "31605")
+    assert bran.inclusion_percent == 40.0
+    assert bran.max_inclusion_percent == 15.0
+    assert bran.limit_source == "request"
+    assert bran.in_limits is False
+    assert res.in_limits is False
+    # the unbounded ingredient is reported too, and passes
+    other = next(line for line in res.inclusion_checks if line.code == "31621")
+    assert (other.max_inclusion_percent, other.limit_source, other.in_limits) == (None, None, True)
+
+
+def test_validate_recipe_flags_an_inclusion_below_its_floor():
+    from fasa_core.validator import validate_recipe
+
+    res = validate_recipe(
+        {"10018": 0.01, "31621": 0.985},
+        parameters=[],
+        ingredient_limits={"10018": {"min": 0.05}},
+    )
+    line = next(c for c in res.inclusion_checks if c.code == "10018")
+    assert (line.min_inclusion_percent, line.in_limits) == (5.0, False)
+
+
+def test_validate_recipe_applies_a_nutrient_limit_tighter_than_asns():
+    from fasa_core.validator import validate_recipe
+
+    res = validate_recipe(
+        _lp_fractions(),
+        parameters=[],
+        species=BASE["species"],
+        stage=BASE["stage"],
+        production_system=BASE["production_system"],
+        nutrient_limits={"PA05": {"max": 0.5}},  # far below the achieved ~1.5%
+    )
+    fibre = next(line for line in res.nutrient_checks if line.code == "PA05")
+    assert (fibre.target, fibre.source, fibre.in_spec) == (0.5, "asns+request", False)
+    assert res.in_limits is False
+
+
+def test_validate_recipe_without_scope_checks_inclusions_only():
+    """Backward compatible: the original payload still returns composition."""
+    from fasa_core.validator import validate_recipe
+
+    res = validate_recipe({"30355": 0.5, "31237": 0.495},
+                          parameters=["crude_protein_percent"])
+    assert set(res.composition) == {"crude_protein_percent"}
+    assert res.nutrient_checks == []
+    assert len(res.inclusion_checks) == 2
+    assert res.in_limits is True
+    assert res.warnings == []
+
+
+def test_validate_recipe_warns_when_the_scope_is_incomplete():
+    from fasa_core.validator import validate_recipe
+
+    res = validate_recipe({"30355": 0.995}, parameters=[], species=BASE["species"])
+    assert res.nutrient_checks == []
+    assert any("nutrient checks need" in w for w in res.warnings)
+
+
+def test_validate_recipe_warns_when_inclusions_do_not_form_a_diet():
+    from fasa_core.validator import validate_recipe
+
+    res = validate_recipe({"30355": 0.5}, parameters=[])
+    assert res.total_inclusion_percent == 50.0
+    assert any(w.startswith("[mass]") for w in res.warnings)
+
+
+def test_validate_recipe_warns_on_codes_outside_the_ingredient_pool():
+    """Such codes still reach `composition` but can hold no limit — say so."""
+    from fasa_core.validator import validate_recipe
+
+    res = validate_recipe({"30355": 0.5, "31621": 0.495, "10073": 0.0},
+                          parameters=[], ingredient_limits={"30355": {"max": 0.4}})
+    assert not any(w.startswith("[skip]") for w in res.warnings)
+
+    res = validate_recipe({"99999": 0.995}, parameters=[])
+    assert any("99999" in w and w.startswith("[skip]") for w in res.warnings)
+
+
+def test_validate_recipe_rejects_an_unknown_stage():
+    from fasa_core.validator import validate_recipe
+
+    with pytest.raises(ValueError, match="No ASNS constraints"):
+        validate_recipe({"30355": 0.995}, parameters=[], species="Nile Tilapia",
+                        stage="not-a-stage", production_system="General")

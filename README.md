@@ -42,10 +42,11 @@ Project changes are tracked in [`CHANGELOG.md`](CHANGELOG.md).
 - **Linear programming engine** (PuLP + HiGHS) that solves a digestibility-aware least-cost feed formulation against the active ASNS constraints for a chosen species/stage/production-system tuple.
 - **Premix-aware constraint masking**: vitamins and trace minerals are assumed satisfied by a fixed-rate vitamin/mineral premix (default 0.5%), keeping the LP focused on macros, amino acids, digestible energy, Ca, P, fatty acids, and toxin ceilings.
 - **Hard ceilings on toxins / anti-nutrients**: aflatoxin B, gossypol, phytic acid, glucosinolates, tannins, etc. are enforced as Maximum constraints regardless of premix or override settings.
+- **Min/max inclusion layer**: a second layer of bounds on top of composition data, because nutrient tables alone let the LP build diets that pass every target yet cannot be extruded or grown on. `fasa_core/config/nutrient_limits.csv` adds Minimum/Maximum bounds on dietary nutrient levels (the tighter of ASNS and the limit binds); `fasa_core/config/ingredient_limits.csv` bounds how much of any single ingredient may go in. Both ship empty pending the data — filling the columns activates them with no code change — and either can be supplied per request via `nutrient_limits` / `ingredient_limits`.
 - **Opt-in advisory caps**: collective binder mass cap and fish-meal cost-share cap are available as optional inputs but are *not* applied by default. Toxicity and ASNS nutrient limits remain the only fixed constraints; callers that want to force a sustainability or pellet-quality ceiling can pass `max_fishmeal_cost_share` and/or `max_binder_inclusion` explicitly.
 - **Hard-fail with IIS reporting**: when the constraint set is infeasible at the supplied prices/pool, a deletion-filter algorithm extracts a minimal Irreducible Inconsistent Subset of constraints and returns it to the caller so the miller knows exactly why the recipe could not be built.
 - **PAFF benchmark gate**: independent recomputation of PAFF reference recipes' nutrient composition acts as the correctness test for the data-loading and crosswalk pipeline.
-- **FastAPI surface** with `/formulate`, `/supported`, `/validate-recipe`, and `/health` endpoints.
+- **FastAPI surface** with `/formulate`, `/supported`, `/validate-recipe`, and `/health` endpoints. `/validate-recipe` scores a caller-supplied recipe against the same inclusion limits and constraint set the optimizer uses, so a hand-edited formulation can be checked without re-running the LP.
 - **Architectural hooks** (no-ops in MVP) for the post-MVP non-additive interaction layer (Hua & Bureau 2012) and chance-constrained variability handling.
 
 ## Layout
@@ -62,13 +63,16 @@ fasa_engine/
 │   │   ├── crosswalk.json              ASNS spec code -> FICD parameter (+ unit factor)
 │   │   ├── premix_mask.json            which spec codes the premix covers
 │   │   ├── ingredient_pool_africa.csv  country-tagged ingredient pool (KE/NG/ZM)
+│   │   ├── nutrient_limits.csv         min/max bounds on dietary nutrient levels
+│   │   ├── ingredient_limits.csv       min/max bounds on single-ingredient inclusion
 │   │   └── defaults.py                 numeric defaults (premix rate, caps, etc.)
 │   ├── data_loader.py                  ASNS / FICD / PAFF loaders (cached)
 │   ├── crosswalk.py                    spec → FICD parameter resolver
 │   ├── ingredient_pool.py              pool filter
+│   ├── inclusion_limits.py             min/max inclusion layer (nutrient + ingredient)
 │   ├── constraint_builder.py           solver-agnostic LP constraint emission
 │   ├── optimizer.py                    PuLP+HiGHS solve, IIS via deletion filter
-│   ├── validator.py                    independent composition recompute + PAFF gate
+│   ├── validator.py                    recipe scoring (composition + inclusion limits) + PAFF gate
 │   └── models.py                       pydantic request/response schemas
 ├── fasa_api/
 │   └── main.py                         FastAPI app
@@ -125,10 +129,10 @@ uvicorn fasa_api.main:app --reload --port 8000
 The API is self-documented at `GET /docs`. Endpoints:
 
 - `GET /health` liveness probe
-- `GET /ready` readiness probe (validates data files + FICD preload)
+- `GET /ready` readiness probe (validates data files, FICD preload, and the inclusion-limit tables)
 - `GET /supported` discover valid `species`, `production_system`, and `stage` strings
 - `POST /formulate` run the optimization
-- `POST /validate-recipe` recompute composition for an explicit recipe
+- `POST /validate-recipe` score an explicit recipe: recompute composition and check its inclusion rates against the limit layer
 
 Notes:
 - Browsers issue **GET** requests; `GET /formulate` will return **405 Method Not Allowed** because `/formulate` is **POST-only**.
@@ -157,9 +161,18 @@ For external teams integrating this API into other systems, see [`docs/integrati
     "10018": 1.50,
     "62134": 0.80,
     "62138": 0.10
-  }
+  },
+  "nutrient_limits": { "PA05": { "max": 8.0 } },
+  "ingredient_limits": { "31605": { "max": 0.15 } }
 }
 ```
+
+`nutrient_limits` (ASNS spec code → bound in that code's ASNS unit, e.g. `%` for fibre,
+`kcal/kg` for energy) and `ingredient_limits` (FICD code → mass **fraction** of total feed
+in `[0, 1]`, so `0.15` = 15%) are optional per-request overrides of the inclusion-limit
+layer. They override the configured CSVs for the codes they name. Where ASNS already
+states the same bound, the tighter value binds. Note that the response echoes an
+ingredient bound as a **percentage** (`max_inclusion_percent: 15.0`), not a fraction.
 
 `country` is optional (ISO-2: `KE`, `NG`, `ZM`; discover valid values via `/supported`). When supplied, each recipe line is flagged `locally_available`. It is an advisory highlight only — the optimizer always draws on the full pool (millers routinely buy imported soy, premix, etc.), so a country is **never** a hard filter.
 
@@ -174,12 +187,12 @@ curl -X POST "http://127.0.0.1:8000/formulate" \
 
 ### Reading the response (high level)
 
-- **`recipe`**: ingredient inclusions (percent of final feed) + cost breakdown. If `batch_size_kg` was supplied on the request, each line also carries `quantity_kg`. If `country` was supplied, each line carries `locally_available` (`true`/`false`); it is `null` when no `country` was requested.
+- **`recipe`**: ingredient inclusions (percent of final feed) + cost breakdown. If `batch_size_kg` was supplied on the request, each line also carries `quantity_kg`. If `country` was supplied, each line carries `locally_available` (`true`/`false`); it is `null` when no `country` was requested. Each line also echoes the inclusion box that was applied (`min_inclusion_percent`, `max_inclusion_percent`, `limit_source`).
 - **`batch_size_kg` / `premix_quantity_kg` / `total_cost`**: echoed only when `batch_size_kg` was supplied; otherwise `null`.
-- **`composition`**: per-spec achieved vs target, including toxin ceilings.
+- **`composition`**: per-spec achieved vs target, including toxin ceilings. `source` says whether the target came from ASNS alone or from the inclusion-limit layer.
 - **`status`**:
   - `optimal`: solution exists and is least-cost under constraints
-  - `infeasible`: no solution; see `infeasibility.iis_codes` / `iis_explanations` for why
+  - `infeasible`: no solution; see `infeasibility.iis_codes` / `iis_explanations` for why, or `infeasibility.bound_conflicts` when the ingredient inclusion limits alone cannot add up to the feed mass
 
 ### Error envelope
 
@@ -202,7 +215,7 @@ Business/auth errors are returned with:
 - Container command binds to `0.0.0.0:$PORT`.
 - Required data files are bundled under `data/`.
 - `/health` is liveness and public.
-- `/ready` verifies data artifacts and FICD preload.
+- `/ready` verifies data artifacts, FICD preload, and that the inclusion-limit tables parse.
 - Auth is controlled by:
   - `FASA_REQUIRE_AUTH` (default: `true`)
   - `FASA_API_TOKEN` (required when auth enabled)
@@ -257,7 +270,7 @@ Configure:
 
 ## Modeling notes
 
-1. **Decision variables** `x_i ∈ [0, max_inclusion_i]` = mass fraction of each priced+available ingredient.
+1. **Decision variables** `x_i ∈ [min_inclusion_i, max_inclusion_i]` = mass fraction of each priced+available ingredient; the box comes from the inclusion-limit layer and defaults to `[0, 1]`.
 2. **Objective** `min Σ price_i × x_i` (USD/kg or local currency, supplied at runtime).
 3. **Mass balance** `Σ x_i = 1 − premix_rate` so the premix takes a fixed slice.
 4. **Nutritional constraints** generated 1:1 from active ASNS rows for the given (species, system, stage):
@@ -266,8 +279,9 @@ Configure:
    - The `dig_*_fish_percent` and `dig_p_*_percent` FICD columns are bound directly to the corresponding ASNS digestible-nutrient codes — *digestibility is baked into the constraint LHS, not bolted on after*.
 5. **Energy column selection** is data-driven: ASNS itself carries the species-appropriate energy code (Tilapia ⇒ ED02 DE-Omni, African Catfish ⇒ ED01 DE-Carni). The crosswalk then maps that code to the pelleted vs. extruded FICD variant per the request's `processing_method`.
 6. **Hard toxin ceilings** are NEVER masked, even via override (TX01–TX16 always emit Maximum constraints).
-7. **Soft warnings** are appended (not enforced) when any single ingredient exceeds 40 % inclusion.
-8. **On infeasibility**, a deletion-filter IIS is returned so the user can see which constraints conflict.
+7. **Nutrient inclusion limits** join the ASNS row set before emission, so they inherit unit conversion, the composition report, and IIS reporting. Where ASNS states the same direction the tighter value binds; a code the layer bounds is never masked by the premix.
+8. **Soft warnings** are appended (not enforced) when any single ingredient exceeds 40 % inclusion.
+9. **On infeasibility**, a deletion-filter IIS is returned so the user can see which constraints conflict. Ingredient bounds that cannot sum to the feed mass are caught before the solve and reported separately as `bound_conflicts`.
 
 ## Post-MVP roadmap (hooks already in place)
 

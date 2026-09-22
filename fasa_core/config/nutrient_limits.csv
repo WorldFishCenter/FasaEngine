@@ -1,0 +1,40 @@
+# FASA nutrient inclusion limits — commercial-practice bounds on DIETARY NUTRIENT levels.
+#
+# This layer sits on top of ASNS. ASNS states what the fish *requires*; this file states
+# what a feed mill can actually *formulate and process* (e.g. crude fibre is commonly
+# held below ~8 % because higher-fibre mashes do not extrude and depress growth).
+#
+# Resolution against ASNS, per (spec_code, direction):
+#   - direction already in ASNS for the requested stage -> the TIGHTER value wins
+#     (max of minimums, min of maximums); the constraint is reported with
+#     source = "asns+limits".
+#   - direction absent from ASNS -> a new constraint is emitted (source = "limits").
+#   - a spec code named here is NEVER masked by the premix: an explicit bound always binds.
+#
+# Columns:
+#   spec_code           ASNS specification code (must exist in crosswalk.json). Ratio
+#                       specs (DP/DE) are not supported by this layer and are skipped
+#                       with a warning.
+#   species             blank = all. Exact match ("Nile Tilapia" | "African Catfish").
+#   production_system   blank = all. Exact match ("General-LowCost" | "General").
+#   stage_weight        blank = all. SUBSTRING match against the ASNS stage label, so
+#                       "Starter" covers "< 5g (Starter)" (same convention as
+#                       premix_mask.json stage_overrides).
+#   processing_method   blank = all. Exact match ("pelleted" | "extruded").
+#   min / max           bound value in the ASNS unit for that spec code (% for proximates
+#                       and amino acids, kcal/kg for energy, mg/kg for trace minerals,
+#                       ppb for mycotoxins — the `unit` column of the ASNS CSV is the
+#                       authority). Blank = no bound from this layer in that direction.
+#                       These are NOT rescaled: they go in and come back in that unit.
+#   unit                optional guard: when filled it must equal the crosswalk's ASNS
+#                       unit for the code, otherwise loading fails. Catches unit slips.
+#   note                free text, not read by the engine.
+#
+# When several rows match a request, the most specific row wins (most non-blank scope
+# columns); ties are resolved toward the tighter bound. Each direction resolves
+# independently.
+#
+# NO ROWS YET — the limits are still being compiled. While this file holds no data rows
+# the engine behaves exactly as before (ASNS alone). Fill the columns to activate the
+# layer; callers can also pass `nutrient_limits` per request in the meantime.
+spec_code,species,production_system,stage_weight,processing_method,min,max,unit,note

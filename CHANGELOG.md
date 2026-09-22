@@ -5,7 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.4.0] - 2026-09-22
+
+### Added
+- Minimum/maximum inclusion layer. Nutrient composition alone is not enough to formulate on: the optimizer could return diets that met every nutrient target yet could not be extruded or produce growth, such as bran-heavy rations. Two new tables carry the limits a formulator would otherwise apply by hand — `fasa_core/config/nutrient_limits.csv` (bounds on dietary nutrient levels, by ASNS spec code) and `fasa_core/config/ingredient_limits.csv` (bounds on how much of a single ingredient may go in, by FICD code).
+- Optional `nutrient_limits` and `ingredient_limits` inputs on `/formulate`, for callers that already know the bounds they want. An entry overrides the table for the code it names.
+- `recipe[]` lines now carry the limit applied to each ingredient (`min_inclusion_percent`, `max_inclusion_percent`, `limit_source`), and `composition[]` lines carry `source`, saying whether a target came from the species requirement or from the limit layer.
+- `infeasibility.bound_conflicts` explains, in plain language, ingredient limits that cannot add up to a full batch — the one failure the existing conflict report cannot describe.
+- `/validate-recipe` now checks a recipe's inclusion rates, not only its composition. Optional `species`, `stage`, `production_system`, `processing_method`, `premix_enabled` and the two limit inputs scope the check; `in_limits`, `inclusion_checks`, `nutrient_checks`, `total_inclusion_percent` and `warnings` report the result. Existing payloads are unaffected.
+- `/ready` also loads the two limit tables, so a malformed table is caught at deploy time rather than on the first request.
+
+### Changed
+- An ingredient given a `0` maximum is left out of the recipe even when it is priced, and the response names it in a warning — so "we should not recommend this at all" is distinguishable from "too expensive today".
+- Where a limit and the species requirement bound the same nutrient, the tighter of the two applies. A limit can never relax an ASNS requirement.
+
+### Fixed
+- A recipe returned by `/formulate` no longer reads as out of spec when sent straight back to `/validate-recipe`. Both endpoints now score achieved-versus-target through the same code, with a tolerance that allows for the rounding in the published inclusion percentages.
+
+### Notes
+- Both tables ship with documented headers and **no data rows** — the values are still being compiled, so formulations are unchanged until the columns are filled. Activating them needs no code change.
+- Ingredient limits are written and sent as a mass fraction of total feed (`0.15` = 15%) but reported back as a percentage (`max_inclusion_percent: 15.0`). Nutrient limits use the ASNS unit of their spec code and are not rescaled.
 
 ## [0.3.0] - 2026-07-21
 
