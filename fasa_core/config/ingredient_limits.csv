@@ -1,0 +1,43 @@
+# FASA ingredient inclusion limits — safe/practical bounds on SINGLE-INGREDIENT inclusion.
+#
+# Nutrient composition alone is not enough to formulate on: an ingredient can satisfy every
+# nutrient constraint and still be unusable at the level the LP picked (pellet durability,
+# extrudability, palatability, bulk density, rancidity, anti-nutrient load). This file
+# carries the per-ingredient ceiling/floor a formulator would apply by hand.
+#
+# Effect on the LP: the bounds become the decision variable's box, i.e.
+#   min_inclusion <= x_code <= max_inclusion
+# A max of 0 removes the ingredient from consideration entirely, even when it is priced
+# (the response then carries a "[limit]" warning naming it). A min only applies to
+# ingredients the caller actually priced — the engine cannot force in an ingredient it has
+# no price for.
+#
+# Columns:
+#   code                FICD ingredient code (must be present in the ingredient pool).
+#   species             blank = all. Exact match ("Nile Tilapia" | "African Catfish").
+#   production_system   blank = all. Exact match ("General-LowCost" | "General").
+#   stage_weight        blank = all. SUBSTRING match against the ASNS stage label, so
+#                       "Starter" covers "< 5g (Starter)" (same convention as
+#                       premix_mask.json stage_overrides).
+#   processing_method   blank = all. Exact match ("pelleted" | "extruded") — the same
+#                       ingredient often tolerates a higher rate in a pellet than in an
+#                       extrudate, or vice versa.
+#   min_inclusion       mass FRACTION of total feed in [0, 1] — write 0.15 for 15%, NOT 15.
+#                       Blank = 0 (no floor).
+#   max_inclusion       mass FRACTION of total feed in [0, 1] — write 0.15 for 15%, NOT 15.
+#                       Blank = no ceiling. A value outside [0, 1] fails at load time.
+#   note                free text, not read by the engine.
+#
+# The API reports these bounds back as PERCENTAGES (max_inclusion_percent: 15.0); only
+# this file and the request payload use fractions.
+#
+# When several rows match a request, the most specific row wins (most non-blank scope
+# columns); ties are resolved toward the tighter bound. Each direction resolves
+# independently. A row here supersedes the pool CSV's generated `max_inclusion` column
+# for that ingredient.
+#
+# NO ROWS YET — the limits are still being compiled. While this file holds no data rows
+# the engine behaves exactly as before (ingredients bounded only by nutrient, toxin and
+# opt-in advisory constraints). Fill the columns to activate the layer; callers can also
+# pass `ingredient_limits` per request in the meantime.
+code,species,production_system,stage_weight,processing_method,min_inclusion,max_inclusion,note

@@ -15,7 +15,7 @@ The project provides an API that helps formulate fish feed recipes based on:
 ## Main building blocks
 
 - `fasa_api/`: API layer (receives requests and returns responses)
-- `fasa_core/`: core logic (data loading, constraints, optimization, validation)
+- `fasa_core/`: core logic (data loading, constraints, inclusion limits, optimization, validation)
 - `data/`: reference CSV files used by the core logic
 - `.github/workflows/`: CI, deployment, and release automation
 
@@ -43,6 +43,13 @@ The project provides an API that helps formulate fish feed recipes based on:
   `/formulate` flags which ingredients are *locally available* in the response; it never
   restricts the optimization. The pool is regenerated from source lists by
   `scripts/build_ingredient_pool.py`.
+- Two hand-maintained tables hold the min/max inclusion layer:
+  `fasa_core/config/nutrient_limits.csv` (bounds on dietary nutrient levels) and
+  `fasa_core/config/ingredient_limits.csv` (bounds on single-ingredient inclusion).
+  They express what a mill can actually formulate and process, which composition data
+  alone does not. Both ship without data rows pending the values; filling the columns
+  activates the layer with no code change, and clients can supply bounds per request
+  in the meantime.
 
 ## Versioning and changes
 

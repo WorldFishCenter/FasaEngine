@@ -70,7 +70,27 @@ Recommended client behavior:
 - Optionally send `country` (ISO-2: `KE`/`NG`/`ZM`) to have each recipe line flagged
   `locally_available` (`true`/`false`; `null` when no `country` is sent). This is an
   advisory highlight only — the optimizer is never restricted to local ingredients.
+- Optionally send `nutrient_limits` and/or `ingredient_limits` to bound dietary nutrient
+  levels (ASNS spec code -> `{min, max}` in that code's ASNS unit) or single-ingredient
+  inclusion (FICD code -> `{min, max}` as a mass fraction of feed). These override the
+  engine's configured limit tables for the codes they name; where ASNS already states the
+  same bound, the tighter value binds. Each `recipe` line echoes the box applied
+  (`min_inclusion_percent`, `max_inclusion_percent`, `limit_source`) and each
+  `composition` line carries a `source` naming where its target came from.
+- **Watch the units on ingredient limits:** you send a **fraction** (`{"max": 0.15}`) and
+  get back a **percentage** (`"max_inclusion_percent": 15.0`). Out-of-range request values
+  are rejected with 422, so `15` sent for 15% fails loudly, but rendering `0.15` as "0.15%"
+  fails silently — convert in both directions. Nutrient limits are not rescaled: they go in
+  and come back in that spec code's ASNS unit.
 - Handle `status` in response (`optimal`, `infeasible`, `error`).
+- On `infeasible`, check `infeasibility.bound_conflicts` before `iis_codes`: when it is
+  non-empty the ingredient inclusion limits alone cannot add up to the feed mass and no
+  IIS was computed.
+- To check a recipe the user edited (or one from elsewhere) without re-running the LP,
+  post it to `/validate-recipe` with the same `species`/`stage`/`production_system` and
+  any limit overrides. It returns `in_limits`, per-ingredient `inclusion_checks`, and
+  `nutrient_checks` in the same shape as `/formulate`'s `composition`. All fields other
+  than `fractions` are optional, so existing callers are unaffected.
 - Log request IDs (if the calling client or service provides them) for easier debugging.
 
 ## 7) Upgrade playbook

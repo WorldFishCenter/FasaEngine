@@ -27,6 +27,7 @@ from typing import Optional
 
 import pulp
 
+from . import inclusion_limits
 from .config.defaults import (
     DEFAULT_MAX_BINDER_INCLUSION,
     DEFAULT_MAX_FISHMEAL_COST_SHARE,
@@ -36,15 +37,16 @@ from .config.defaults import (
     SOLUTION_FRACTION_TOL,
     SOLVER_TIME_LIMIT_SECONDS,
     WARN_INGREDIENT_INCLUSION_THRESHOLD,
+    as_percent,
     normalize_country,
 )
-from .constraint_builder import LinearConstraint, build_constraints
+from .constraint_builder import LinearConstraint, build_constraints, score_constraints
+from .inclusion_limits import Bound, LimitScope
 from .ingredient_pool import IngredientRecord, load_pool
 from .models import (
     FormulateResponse,
     InfeasibilityReport,
     IngredientLine,
-    NutrientLine,
 )
 
 LOGGER = logging.getLogger("fasa_core.optimizer")
@@ -69,6 +71,8 @@ def formulate(
     custom_premix_mask_codes: Optional[list[str]] = None,
     batch_size_kg: Optional[float] = None,
     country: Optional[str] = None,
+    nutrient_limits: Optional[dict] = None,
+    ingredient_limits: Optional[dict] = None,
 ) -> FormulateResponse:
     """Run the LP and return a structured response.
 
@@ -95,6 +99,21 @@ def formulate(
     pool_by_code = {r.code: r for r in pool}
     ingr_codes = list(pool_by_code.keys())
 
+    # The min/max inclusion layer: nutrient bounds join the ASNS constraint set,
+    # ingredient bounds become the decision variables' box.
+    scope = LimitScope(
+        species=species,
+        stage=stage,
+        production_system=production_system,
+        processing_method=processing_method,
+    )
+    nutrient_box = inclusion_limits.nutrient_bounds(
+        scope, overrides=inclusion_limits.from_request(nutrient_limits)
+    )
+    ingredient_box = inclusion_limits.ingredient_bounds(
+        scope, pool, overrides=inclusion_limits.from_request(ingredient_limits)
+    )
+
     constraints, build_warnings = build_constraints(
         species=species,
         stage=stage,
@@ -104,50 +123,30 @@ def formulate(
         premix_enabled=premix_enabled,
         premix_rate=premix_rate,
         premix_mask_override=custom_premix_mask_codes,
+        nutrient_limits=nutrient_box,
     )
+    build_warnings += inclusion_limits.zero_cap_warnings(ingredient_box, pool_by_code)
 
     # MVP placeholder hook (no-op). Wire in non-additive interaction corrections
     # here when empirical pairwise data becomes available (Hua & Bureau 2012).
     constraints = _apply_anti_nutrient_digestibility_penalties(constraints)
 
-    # ---------- 2. build & solve the LP ------------------------------------- #
-
-    prob, x = _build_pulp_problem(
-        ingr_codes, pool_by_code, prices, constraints,
+    target_mass = 1.0 - (premix_rate if premix_enabled else 0.0)
+    solver_kwargs = dict(
         premix_rate=premix_rate if premix_enabled else 0.0,
         max_fishmeal_cost_share=max_fishmeal_cost_share,
         max_binder_inclusion=max_binder_inclusion,
+        bounds=ingredient_box,
     )
-    status = _solve(prob)
 
-    # ---------- 3. infeasibility path --------------------------------------- #
-
-    if status != pulp.LpStatusOptimal:
-        iis = _deletion_filter_iis(
-            ingr_codes, pool_by_code, prices, constraints,
-            premix_rate=premix_rate if premix_enabled else 0.0,
-            max_fishmeal_cost_share=max_fishmeal_cost_share,
-            max_binder_inclusion=max_binder_inclusion,
-        )
+    def _infeasible(report: InfeasibilityReport) -> FormulateResponse:
         return FormulateResponse(
             status="infeasible",
             species=species, stage=stage, production_system=production_system,
             processing_method=processing_method,
             country=country,
             warnings=build_warnings,
-            infeasibility=InfeasibilityReport(
-                iis_codes=[c.spec_code for c in iis],
-                iis_explanations=[
-                    f"{c.spec_code} ({c.spec_label}): {c.restriction_type} "
-                    f"{c.rhs:g} {c.unit} cannot be met from the priced pool."
-                    for c in iis
-                ],
-                suggestion=(
-                    "Consider adding alternative ingredients (e.g., synthetic Lys/Met, "
-                    "fish meal, soybean meal), increasing the premix rate, or relaxing "
-                    "the production-system tier (General-LowCost ↔ General)."
-                ),
-            ),
+            infeasibility=report,
             premix_enabled=premix_enabled,
             premix_rate=premix_rate,
             max_fishmeal_cost_share=max_fishmeal_cost_share,
@@ -155,7 +154,53 @@ def formulate(
             batch_size_kg=batch_size_kg,
         )
 
-    # ---------- 4. extract & decorate solution ------------------------------ #
+    # ---------- 2. bound-feasibility pre-check ------------------------------ #
+    # Inclusion bounds that cannot sum to the feed mass make every subset of the
+    # constraint list infeasible, so the deletion filter would spend a solve per
+    # nutrient and then blame the nutrients. Report the real cause instead.
+
+    conflicts = inclusion_limits.bound_conflicts(ingredient_box, ingr_codes, target_mass)
+    if conflicts:
+        return _infeasible(InfeasibilityReport(
+            iis_codes=[],
+            iis_explanations=[],
+            bound_conflicts=conflicts,
+            suggestion=(
+                "Adjust the ingredient inclusion limits so their range spans the "
+                "required feed mass, or price additional ingredients."
+            ),
+        ))
+
+    # ---------- 3. build & solve the LP ------------------------------------- #
+
+    prob, x = _build_pulp_problem(
+        ingr_codes, pool_by_code, prices, constraints, **solver_kwargs
+    )
+    status = _solve(prob)
+
+    # ---------- 4. infeasibility path --------------------------------------- #
+
+    if status != pulp.LpStatusOptimal:
+        iis = _deletion_filter_iis(
+            ingr_codes, pool_by_code, prices, constraints, **solver_kwargs
+        )
+        return _infeasible(InfeasibilityReport(
+            iis_codes=[c.spec_code for c in iis],
+            iis_explanations=[
+                f"{c.spec_code} ({c.spec_label}): {c.restriction_type} "
+                f"{c.rhs:g} {c.unit} cannot be met from the priced pool "
+                f"[{c.source}]."
+                for c in iis
+            ],
+            suggestion=(
+                "Consider adding alternative ingredients (e.g., synthetic Lys/Met, "
+                "fish meal, soybean meal), increasing the premix rate, relaxing an "
+                "inclusion limit, or relaxing the production-system tier "
+                "(General-LowCost ↔ General)."
+            ),
+        ))
+
+    # ---------- 5. extract & decorate solution ------------------------------ #
 
     solution_fractions = {c: float(v.value() or 0.0) for c, v in x.items()}
     cost = float(pulp.value(prob.objective))
@@ -167,14 +212,18 @@ def formulate(
             continue
         rec = pool_by_code[code]
         qty_kg = round(frac * batch_size_kg, 3) if batch_size_kg is not None else None
+        bound = ingredient_box.get(code)
         recipe.append(IngredientLine(
             code=code,
             description=rec.description,
-            inclusion_percent=round(frac * 100.0, 4),
+            inclusion_percent=as_percent(frac),
             cost_per_kg=prices[code],
             cost_contribution=round(frac * prices[code], 6),
             quantity_kg=qty_kg,
             locally_available=(country in rec.countries) if country is not None else None,
+            min_inclusion_percent=as_percent(bound.minimum) if bound else None,
+            max_inclusion_percent=as_percent(bound.maximum) if bound else None,
+            limit_source=bound.source if bound else None,
         ))
         if frac > WARN_INGREDIENT_INCLUSION_THRESHOLD:
             warnings.append(
@@ -183,9 +232,7 @@ def formulate(
                 f"single-ingredient guard threshold."
             )
 
-    composition = _build_composition_report(
-        constraints, solution_fractions, premix_enabled
-    )
+    composition = score_constraints(constraints, solution_fractions)
 
     recipe.sort(key=lambda r: -r.inclusion_percent)
 
@@ -228,13 +275,16 @@ def _build_pulp_problem(
     premix_rate: float,
     max_fishmeal_cost_share: Optional[float],
     max_binder_inclusion: Optional[float],
+    bounds: dict[str, Bound],
 ):
     prob = pulp.LpProblem("FASA_FeedFormulation", pulp.LpMinimize)
 
+    # `bounds` is the resolved inclusion-limit box (it already folds in the pool
+    # CSV's generated max_inclusion); unbounded ingredients get the full [0, 1].
     x: dict[str, pulp.LpVariable] = {}
     for code in ingr_codes:
-        ub = pool_by_code[code].max_inclusion if pool_by_code[code].max_inclusion is not None else 1.0
-        x[code] = pulp.LpVariable(f"x_{code}", lowBound=0.0, upBound=ub, cat="Continuous")
+        lb, ub = inclusion_limits.box(bounds.get(code))
+        x[code] = pulp.LpVariable(f"x_{code}", lowBound=lb, upBound=ub, cat="Continuous")
 
     # objective
     prob += pulp.lpSum(prices[c] * x[c] for c in ingr_codes), "TotalCost_per_kg"
@@ -298,7 +348,7 @@ def _solve(prob: pulp.LpProblem) -> int:
 
 def _deletion_filter_iis(
     ingr_codes, pool_by_code, prices, constraints, *,
-    premix_rate, max_fishmeal_cost_share, max_binder_inclusion,
+    premix_rate, max_fishmeal_cost_share, max_binder_inclusion, bounds,
 ) -> list[LinearConstraint]:
     """Greedy deletion-filter: returns a minimal infeasible subset.
 
@@ -314,6 +364,7 @@ def _deletion_filter_iis(
             premix_rate=premix_rate,
             max_fishmeal_cost_share=max_fishmeal_cost_share,
             max_binder_inclusion=max_binder_inclusion,
+            bounds=bounds,
         )
         st = _solve(prob)
         return st != pulp.LpStatusOptimal
@@ -331,38 +382,6 @@ def _deletion_filter_iis(
         else:
             i += 1
     return keep
-
-
-# =========================================================================== #
-# composition report                                                          #
-# =========================================================================== #
-
-
-def _build_composition_report(
-    constraints: list[LinearConstraint],
-    fractions: dict[str, float],
-    premix_enabled: bool,
-) -> list[NutrientLine]:
-    """For each emitted constraint, recompute Σ a_i x_i + constant and label it."""
-    out: list[NutrientLine] = []
-    for con in constraints:
-        achieved = sum(con.coeffs.get(c, 0.0) * fractions.get(c, 0.0)
-                       for c in fractions) + con.constant
-        in_spec = (
-            (con.restriction_type == "Minimum" and achieved >= con.rhs - 1e-6) or
-            (con.restriction_type == "Maximum" and achieved <= con.rhs + 1e-6) or
-            (con.restriction_type == "Ratio"   and abs(achieved - con.rhs) < 1e-6)
-        )
-        out.append(NutrientLine(
-            code=con.spec_code,
-            spec_label=con.spec_label,
-            restriction_type=con.restriction_type,
-            target=con.rhs,
-            achieved=round(achieved, 6),
-            unit=con.unit,
-            in_spec=bool(in_spec),
-        ))
-    return out
 
 
 # =========================================================================== #

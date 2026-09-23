@@ -88,8 +88,18 @@ def main() -> int:
     c = _run("Opt-in: 40 % FM cost-share + 25 % binder",
              max_fishmeal_cost_share=0.40, max_binder_inclusion=0.25)
 
+    # Scenario D — the min/max inclusion layer, passed per request. Composition data
+    # alone lets the LP load up on bran: it satisfies every nutrient target yet the
+    # mash will not extrude and the fish will not grow on it. Here a dietary fibre
+    # ceiling joins the ASNS set (the tighter of the two binds) and the two brans get
+    # per-ingredient ceilings. The same bounds normally come from
+    # `fasa_core/config/{nutrient,ingredient}_limits.csv`.
+    d = _run("Inclusion limits: fibre ≤ 8 % of diet, wheat/rice bran ≤ 15 % each",
+             nutrient_limits={"PA05": {"max": 8.0}},
+             ingredient_limits={"31605": {"max": 0.15}, "30937": {"max": 0.15}})
+
     # Success if any scenario produced an optimal solution.
-    return 0 if "optimal" in {a.status, b.status, c.status} else 1
+    return 0 if "optimal" in {a.status, b.status, c.status, d.status} else 1
 
 
 if __name__ == "__main__":
