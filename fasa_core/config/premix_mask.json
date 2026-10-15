@@ -2,11 +2,10 @@
   "_doc": [
     "Premix mask: ASNS specification codes whose nutritional requirement is assumed",
     "to be satisfied by a fixed-rate vitamin/trace-mineral premix added to the feed.",
-    "When premix_enabled = true (default), constraints with these codes are SKIPPED",
+    "Every feed carries the premix, so constraints with these codes are always SKIPPED",
     "by the LP; everything else (macros, AAs, energy, Ca, P, fatty acids, toxins) stays.",
     "",
-    "FASA scientists can override per stage via the API by passing a custom mask;",
-    "the keys here are simply defaults sourced from common smallholder-feed-mill practice.",
+    "The codes here are defaults sourced from common smallholder-feed-mill practice.",
     "",
     "Toxins (TX*) are NEVER masked — they are hard ceilings driven by raw-ingredient",
     "selection, regardless of premix presence."

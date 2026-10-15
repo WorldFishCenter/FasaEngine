@@ -62,21 +62,15 @@ def resolve(spec_code: str, processing_method: str = "pelleted") -> Tuple[Any, A
     return (entry.get("ficd_param"), factor)
 
 
-def premix_mask_codes(stage: str | None = None,
-                      override: list[str] | None = None) -> set[str]:
-    """Return the set of ASNS spec codes whose constraints are skipped when
-    premix_enabled = True.
+def premix_mask_codes(stage: str | None = None) -> set[str]:
+    """Return the set of ASNS spec codes whose constraints are skipped because
+    the premix supplies them.
 
     Parameters
     ----------
     stage    : optional ASNS stage_weight label; consulted for stage-specific
                add/remove tweaks declared in premix_mask.json
-    override : optional explicit list of codes; if supplied, used wholesale
-               (no additive merging with defaults).
     """
-    if override is not None:
-        return set(override)
-
     raw = _premix_raw()
     base = set(raw.get("default_mask_codes", []))
 

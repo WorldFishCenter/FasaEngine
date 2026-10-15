@@ -49,6 +49,7 @@ DEMO_PRICES = {
     "61109": 3.00,   # L-Lysine HCl
     "61111": 4.50,   # DL-Methionine
 }
+PREMIX_PRICE = 2.50  # USD/kg for the vitamin/mineral premix, always included
 
 
 def _run(label: str, **overrides):
@@ -59,8 +60,7 @@ def _run(label: str, **overrides):
         production_system="General-LowCost",
         prices=DEMO_PRICES,
         processing_method="pelleted",
-        premix_enabled=True,
-        premix_rate=0.005,
+        premix_price=PREMIX_PRICE,
         **overrides,
     )
     print(json.dumps(res.model_dump(), indent=2, default=str))
@@ -68,38 +68,25 @@ def _run(label: str, **overrides):
 
 
 def main() -> int:
-    # Scenario A — defaults (no fish-meal cost-share cap, no binder cap),
-    # with batch_size_kg=100 so the response also reports per-ingredient kg,
-    # premix kg, and total batch cost. Toxicity and ASNS nutrient limits
-    # remain the only hard constraints; cost alone drives fish-meal inclusion.
+    # Scenario A — defaults, with batch_size_kg=100 so the response also reports
+    # per-ingredient kg, premix kg, and total batch cost (premix included).
     # `country="ZM"` flags each recipe line's `locally_available` without changing
     # the LP (the optimizer always sees the full pool).
-    a = _run("DEFAULTS — no caps, batch_size_kg=100, country=ZM",
+    a = _run("DEFAULTS — 2 % premix, batch_size_kg=100, country=ZM",
              batch_size_kg=100.0, country="ZM")
 
-    # Scenario B — opt in to a 20 % fish-meal cost-share cap as a sustainability
-    # ceiling, while allowing generous binder use (40 %). Demonstrates that the
-    # caps are still wired up for callers that want them.
-    b = _run("Opt-in: 20 % FM cost-share + 40 % binder",
-             max_fishmeal_cost_share=0.20, max_binder_inclusion=0.40)
-
-    # Scenario C — opt in to a stricter binder cap (25 %) but a looser fish-meal
-    # cost-share (40 %). Mirrors a premium mill that prioritises pellet quality.
-    c = _run("Opt-in: 40 % FM cost-share + 25 % binder",
-             max_fishmeal_cost_share=0.40, max_binder_inclusion=0.25)
-
-    # Scenario D — the min/max inclusion layer, passed per request. Composition data
+    # Scenario B — the min/max inclusion layer, passed per request. Composition data
     # alone lets the LP load up on bran: it satisfies every nutrient target yet the
     # mash will not extrude and the fish will not grow on it. Here a dietary fibre
     # ceiling joins the ASNS set (the tighter of the two binds) and the two brans get
     # per-ingredient ceilings. The same bounds normally come from
     # `fasa_core/config/{nutrient,ingredient}_limits.csv`.
-    d = _run("Inclusion limits: fibre ≤ 8 % of diet, wheat/rice bran ≤ 15 % each",
+    b = _run("Inclusion limits: fibre ≤ 8 % of diet, wheat/rice bran ≤ 15 % each",
              nutrient_limits={"PA05": {"max": 8.0}},
              ingredient_limits={"31605": {"max": 0.15}, "30937": {"max": 0.15}})
 
     # Success if any scenario produced an optimal solution.
-    return 0 if "optimal" in {a.status, b.status, c.status, d.status} else 1
+    return 0 if "optimal" in {a.status, b.status} else 1
 
 
 if __name__ == "__main__":

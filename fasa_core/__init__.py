@@ -6,7 +6,8 @@ Public entry point:
     ...                    stage="< 5g (Starter)",
     ...                    production_system="General-LowCost",
     ...                    prices={"30355": 0.30, "31237": 0.55, ...},
+    ...                    premix_price=2.50,
     ...                    processing_method="pelleted")
 """
 
-__version__ = "0.5.0"
+__version__ = "1.0.0"

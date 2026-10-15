@@ -43,17 +43,29 @@ def as_percent(value: "float | None") -> "float | None":
 
 
 # --- premix ---
-DEFAULT_PREMIX_RATE = 0.005   # 0.5 % of total feed mass (industry-typical for vit/min premix)
+# Every feed carries a vitamin/mineral premix. It is modelled as a fixed slice of the
+# feed that supplies the vitamins and trace minerals listed in premix_mask.json (their
+# constraints are skipped) and adds nothing else: its own nutrients are not counted.
+# Moving to a real premix with a known composition means crediting its nutrients in
+# constraint_builder (the `constant` term) and trimming the mask to what it covers.
+PREMIX_RATES = (0.01, 0.015, 0.02)   # the rates a caller may choose: 1, 1.5 or 2 % of feed
+DEFAULT_PREMIX_RATE = 0.02
+
+
+def check_premix_rate(rate: float) -> float:
+    """Return `rate` if it is one of PREMIX_RATES, else raise ValueError.
+
+    Single source of truth for the premix-rate rule, shared by the API request
+    validator and the core `formulate()` entry point.
+    """
+    if rate not in PREMIX_RATES:
+        raise ValueError(f"premix_rate must be one of {list(PREMIX_RATES)}")
+    return rate
 
 # --- processing ---
 DEFAULT_PROCESSING_METHOD = "pelleted"   # "pelleted" | "extruded"
 
-# --- safety / sanity caps ---
-# Both caps default to None (no constraint applied) — they are opt-in advisory
-# inputs surfaced through the API for callers that want to force a ceiling.
-# Toxicity (TX01–TX16) and ASNS nutrient limits remain the only fixed constraints.
-DEFAULT_MAX_FISHMEAL_COST_SHARE: float | None = None
-DEFAULT_MAX_BINDER_INCLUSION:    float | None = None
+# --- soft warnings ---
 WARN_INGREDIENT_INCLUSION_THRESHOLD = 0.40   # log a soft warning above 40 % single-ingredient inclusion
 
 # --- numerical tolerances ---

@@ -29,8 +29,6 @@ import pulp
 
 from . import inclusion_limits
 from .config.defaults import (
-    DEFAULT_MAX_BINDER_INCLUSION,
-    DEFAULT_MAX_FISHMEAL_COST_SHARE,
     DEFAULT_PREMIX_RATE,
     DEFAULT_PROCESSING_METHOD,
     DEFAULT_SOLVER,
@@ -38,11 +36,12 @@ from .config.defaults import (
     SOLVER_TIME_LIMIT_SECONDS,
     WARN_INGREDIENT_INCLUSION_THRESHOLD,
     as_percent,
+    check_premix_rate,
     normalize_country,
 )
 from .constraint_builder import LinearConstraint, build_constraints, score_constraints
 from .inclusion_limits import Bound, LimitScope
-from .ingredient_pool import IngredientRecord, load_pool
+from .ingredient_pool import load_pool
 from .models import (
     FormulateResponse,
     InfeasibilityReport,
@@ -63,18 +62,18 @@ def formulate(
     production_system: str,
     prices: dict[str, float],
     *,
+    premix_price: float,
     processing_method: str = DEFAULT_PROCESSING_METHOD,
-    premix_enabled: bool = True,
     premix_rate: float = DEFAULT_PREMIX_RATE,
-    max_fishmeal_cost_share: Optional[float] = DEFAULT_MAX_FISHMEAL_COST_SHARE,
-    max_binder_inclusion: Optional[float] = DEFAULT_MAX_BINDER_INCLUSION,
-    custom_premix_mask_codes: Optional[list[str]] = None,
     batch_size_kg: Optional[float] = None,
     country: Optional[str] = None,
     nutrient_limits: Optional[dict] = None,
     ingredient_limits: Optional[dict] = None,
 ) -> FormulateResponse:
     """Run the LP and return a structured response.
+
+    The premix always takes `premix_rate` of the feed; its cost
+    (`premix_rate * premix_price`) is a constant added to the LP's cost per kg.
 
     On infeasibility we run a deletion-filter to extract an Irreducible
     Inconsistent Subset (IIS) of constraint codes and return that to the caller.
@@ -83,17 +82,23 @@ def formulate(
     # direct callers get the same case/whitespace handling as the API layer, and
     # `locally_available` is compared against the pool's upper-cased ISO-2 tags.
     country = normalize_country(country)
+    check_premix_rate(premix_rate)
+
+    # request fields every response echoes back, whatever its status
+    echoed = dict(
+        species=species, stage=stage, production_system=production_system,
+        processing_method=processing_method, country=country,
+        premix_rate=premix_rate, premix_price=premix_price, batch_size_kg=batch_size_kg,
+    )
 
     # ---------- 1. pool & coefficient assembly ------------------------------ #
 
     pool = load_pool(only_codes=set(prices.keys()))
     if not pool:
-        return _err_response(
-            species, stage, production_system, processing_method,
-            premix_enabled, premix_rate,
-            max_fishmeal_cost_share, max_binder_inclusion,
-            batch_size_kg, country,
-            "No priced ingredients overlap with the configured pool.",
+        return FormulateResponse(
+            status="error",
+            warnings=["No priced ingredients overlap with the configured pool."],
+            **echoed,
         )
 
     pool_by_code = {r.code: r for r in pool}
@@ -120,9 +125,6 @@ def formulate(
         production_system=production_system,
         pool=pool,
         processing_method=processing_method,
-        premix_enabled=premix_enabled,
-        premix_rate=premix_rate,
-        premix_mask_override=custom_premix_mask_codes,
         nutrient_limits=nutrient_box,
     )
     build_warnings += inclusion_limits.zero_cap_warnings(ingredient_box, pool_by_code)
@@ -131,27 +133,11 @@ def formulate(
     # here when empirical pairwise data becomes available (Hua & Bureau 2012).
     constraints = _apply_anti_nutrient_digestibility_penalties(constraints)
 
-    target_mass = 1.0 - (premix_rate if premix_enabled else 0.0)
-    solver_kwargs = dict(
-        premix_rate=premix_rate if premix_enabled else 0.0,
-        max_fishmeal_cost_share=max_fishmeal_cost_share,
-        max_binder_inclusion=max_binder_inclusion,
-        bounds=ingredient_box,
-    )
+    target_mass = 1.0 - premix_rate
 
     def _infeasible(report: InfeasibilityReport) -> FormulateResponse:
         return FormulateResponse(
-            status="infeasible",
-            species=species, stage=stage, production_system=production_system,
-            processing_method=processing_method,
-            country=country,
-            warnings=build_warnings,
-            infeasibility=report,
-            premix_enabled=premix_enabled,
-            premix_rate=premix_rate,
-            max_fishmeal_cost_share=max_fishmeal_cost_share,
-            max_binder_inclusion=max_binder_inclusion,
-            batch_size_kg=batch_size_kg,
+            status="infeasible", warnings=build_warnings, infeasibility=report, **echoed,
         )
 
     # ---------- 2. bound-feasibility pre-check ------------------------------ #
@@ -173,17 +159,13 @@ def formulate(
 
     # ---------- 3. build & solve the LP ------------------------------------- #
 
-    prob, x = _build_pulp_problem(
-        ingr_codes, pool_by_code, prices, constraints, **solver_kwargs
-    )
+    prob, x = _build_pulp_problem(ingr_codes, prices, constraints, target_mass, ingredient_box)
     status = _solve(prob)
 
     # ---------- 4. infeasibility path --------------------------------------- #
 
     if status != pulp.LpStatusOptimal:
-        iis = _deletion_filter_iis(
-            ingr_codes, pool_by_code, prices, constraints, **solver_kwargs
-        )
+        iis = _deletion_filter_iis(ingr_codes, prices, constraints, target_mass, ingredient_box)
         return _infeasible(InfeasibilityReport(
             iis_codes=[c.spec_code for c in iis],
             iis_explanations=[
@@ -194,7 +176,7 @@ def formulate(
             ],
             suggestion=(
                 "Consider adding alternative ingredients (e.g., synthetic Lys/Met, "
-                "fish meal, soybean meal), increasing the premix rate, relaxing an "
+                "fish meal, soybean meal), a lower premix rate, relaxing an "
                 "inclusion limit, or relaxing the production-system tier "
                 "(General-LowCost ↔ General)."
             ),
@@ -203,7 +185,7 @@ def formulate(
     # ---------- 5. extract & decorate solution ------------------------------ #
 
     solution_fractions = {c: float(v.value() or 0.0) for c, v in x.items()}
-    cost = float(pulp.value(prob.objective))
+    cost = float(pulp.value(prob.objective)) + premix_rate * premix_price
 
     recipe = []
     warnings = list(build_warnings)
@@ -237,28 +219,17 @@ def formulate(
     recipe.sort(key=lambda r: -r.inclusion_percent)
 
     total_cost = round(cost * batch_size_kg, 2) if batch_size_kg is not None else None
-    premix_qty_kg = (
-        round(batch_size_kg * premix_rate, 3)
-        if batch_size_kg is not None and premix_enabled
-        else None
-    )
+    premix_qty_kg = round(batch_size_kg * premix_rate, 3) if batch_size_kg is not None else None
 
     return FormulateResponse(
         status="optimal",
-        species=species, stage=stage, production_system=production_system,
-        processing_method=processing_method,
-        country=country,
         cost_per_kg=round(cost, 6),
         recipe=recipe,
         composition=composition,
         warnings=warnings,
-        premix_enabled=premix_enabled,
-        premix_rate=premix_rate,
-        max_fishmeal_cost_share=max_fishmeal_cost_share,
-        max_binder_inclusion=max_binder_inclusion,
-        batch_size_kg=batch_size_kg,
         premix_quantity_kg=premix_qty_kg,
         total_cost=total_cost,
+        **echoed,
     )
 
 
@@ -269,12 +240,9 @@ def formulate(
 
 def _build_pulp_problem(
     ingr_codes: list[str],
-    pool_by_code: dict[str, IngredientRecord],
     prices: dict[str, float],
     constraints: list[LinearConstraint],
-    premix_rate: float,
-    max_fishmeal_cost_share: Optional[float],
-    max_binder_inclusion: Optional[float],
+    target_mass: float,
     bounds: dict[str, Bound],
 ):
     prob = pulp.LpProblem("FASA_FeedFormulation", pulp.LpMinimize)
@@ -289,8 +257,8 @@ def _build_pulp_problem(
     # objective
     prob += pulp.lpSum(prices[c] * x[c] for c in ingr_codes), "TotalCost_per_kg"
 
-    # mass balance — note the premix takes a fixed slice
-    prob += pulp.lpSum(x[c] for c in ingr_codes) == 1.0 - premix_rate, "MassBalance"
+    # mass balance — the ingredients fill what the premix leaves (1 - premix_rate)
+    prob += pulp.lpSum(x[c] for c in ingr_codes) == target_mass, "MassBalance"
 
     # nutritional constraints
     for k, con in enumerate(constraints):
@@ -302,19 +270,6 @@ def _build_pulp_problem(
             prob += lhs <= con.rhs, name
         elif con.restriction_type == "Ratio":
             prob += lhs == con.rhs, name
-
-    # binder cap — opt-in; skipped when None or 1.0
-    binders = [c for c in ingr_codes if pool_by_code[c].is_binder]
-    if binders and max_binder_inclusion is not None and max_binder_inclusion < 1.0:
-        prob += pulp.lpSum(x[c] for c in binders) <= max_binder_inclusion, "BinderCap"
-
-    # fish-meal cost-share cap — opt-in; skipped when None or 1.0
-    #   Σ_{i ∈ FM} price_i * x_i  <=  share *  Σ_i price_i * x_i
-    fishmeals = [c for c in ingr_codes if pool_by_code[c].is_fishmeal]
-    if fishmeals and max_fishmeal_cost_share is not None and max_fishmeal_cost_share < 1.0:
-        fm_cost = pulp.lpSum(prices[c] * x[c] for c in fishmeals)
-        all_cost = pulp.lpSum(prices[c] * x[c] for c in ingr_codes)
-        prob += fm_cost <= max_fishmeal_cost_share * all_cost, "FishMealCostShareCap"
 
     return prob, x
 
@@ -347,8 +302,7 @@ def _solve(prob: pulp.LpProblem) -> int:
 
 
 def _deletion_filter_iis(
-    ingr_codes, pool_by_code, prices, constraints, *,
-    premix_rate, max_fishmeal_cost_share, max_binder_inclusion, bounds,
+    ingr_codes, prices, constraints, target_mass, bounds,
 ) -> list[LinearConstraint]:
     """Greedy deletion-filter: returns a minimal infeasible subset.
 
@@ -359,13 +313,7 @@ def _deletion_filter_iis(
     keep = list(constraints)
 
     def _is_infeasible(subset):
-        prob, _ = _build_pulp_problem(
-            ingr_codes, pool_by_code, prices, subset,
-            premix_rate=premix_rate,
-            max_fishmeal_cost_share=max_fishmeal_cost_share,
-            max_binder_inclusion=max_binder_inclusion,
-            bounds=bounds,
-        )
+        prob, _ = _build_pulp_problem(ingr_codes, prices, subset, target_mass, bounds)
         st = _solve(prob)
         return st != pulp.LpStatusOptimal
 
@@ -407,21 +355,3 @@ def _apply_anti_nutrient_digestibility_penalties(
     of ingredients that co-occur with high tannin / ANF / lectin content.
     """
     return constraints
-
-
-def _err_response(
-    species, stage, system, method,
-    premix_enabled, premix_rate,
-    max_fishmeal_cost_share, max_binder_inclusion,
-    batch_size_kg, country,
-    msg,
-):
-    return FormulateResponse(
-        status="error",
-        species=species, stage=stage, production_system=system,
-        processing_method=method, country=country, warnings=[msg],
-        premix_enabled=premix_enabled, premix_rate=premix_rate,
-        max_fishmeal_cost_share=max_fishmeal_cost_share,
-        max_binder_inclusion=max_binder_inclusion,
-        batch_size_kg=batch_size_kg,
-    )

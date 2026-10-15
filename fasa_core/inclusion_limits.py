@@ -19,9 +19,9 @@ all". `stage_weight` matches as a substring of the ASNS stage label (the convent
 match, the most specific row wins; ties resolve toward the tighter bound, and each
 direction resolves independently.
 
-Precedence per code: a request-supplied limit replaces the CSV-resolved one wholesale
-(the `custom_premix_mask_codes` precedent), and for ingredients the pool CSV's generated
-`max_inclusion` is the fallback when neither layer names the ingredient.
+Precedence per code: a request-supplied limit replaces the CSV-resolved one wholesale,
+and for ingredients the pool CSV's generated `max_inclusion` is the fallback when
+neither layer names the ingredient.
 """
 
 from __future__ import annotations

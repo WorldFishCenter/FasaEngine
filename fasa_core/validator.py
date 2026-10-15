@@ -23,6 +23,7 @@ import pandas as pd
 from . import inclusion_limits
 from .config.defaults import (
     DEFAULT_PROCESSING_METHOD,
+    PREMIX_RATES,
     SOLUTION_FRACTION_TOL,
     VALIDATION_REL_TOL,
     as_percent,
@@ -33,10 +34,9 @@ from .inclusion_limits import LimitScope
 from .ingredient_pool import load_pool
 from .models import IngredientLimitLine, NutrientLine, ValidateRecipeResponse
 
-# A complete diet sums to 100% of feed mass, or a little less when a vitamin/mineral
-# premix takes the remainder (the LP returns 1 - premix_rate, default 99.5%). Same
-# band the smoke tests assert on the LP's own output.
-MIN_TOTAL_INCLUSION = 0.99
+# A complete diet sums to 100% of feed mass, or a little less when the vitamin/mineral
+# premix takes the remainder (the LP returns 1 - premix_rate, 98-99%).
+MIN_TOTAL_INCLUSION = 1.0 - max(PREMIX_RATES)
 MAX_TOTAL_INCLUSION = 1.0
 
 
@@ -84,7 +84,6 @@ def validate_recipe(
     stage: Optional[str] = None,
     production_system: Optional[str] = None,
     processing_method: str = DEFAULT_PROCESSING_METHOD,
-    premix_enabled: bool = True,
     nutrient_limits: Optional[dict] = None,
     ingredient_limits: Optional[dict] = None,
 ) -> ValidateRecipeResponse:
@@ -152,7 +151,6 @@ def validate_recipe(
             production_system=production_system,
             pool=pool,
             processing_method=processing_method,
-            premix_enabled=premix_enabled,
             nutrient_limits=inclusion_limits.nutrient_bounds(
                 scope, overrides=inclusion_limits.from_request(nutrient_limits)
             ),

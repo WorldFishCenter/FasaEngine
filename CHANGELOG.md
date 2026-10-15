@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [1.0.0] - 2026-10-15
+
+### Changed
+- Every feed now includes the vitamin/mineral premix, as agreed with the FASA team on 15 October 2026. Callers choose its rate from 1%, 1.5% or 2% (`premix_rate` `0.01`, `0.015` or `0.02`; default 2%, previously 0.5%) and send its price per kg as the new required `premix_price`. The premix cost is now part of `cost_per_kg` and `total_cost`, which rise by `premix_rate × premix_price`.
+- The premix is still assumed to supply the vitamins and trace minerals, and its own nutrients are not counted, so a larger premix leaves less room for the other ingredients. With the test prices, 10 of the 28 pelleted species and stage combinations have no solution at 2%, against 6 at the old 0.5%.
+- Python callers of `fasa_core.formulate` get the same rule as the API: a `premix_rate` other than 0.01, 0.015 or 0.02 raises an error.
+
+### Removed
+- The premix on/off switch (`premix_enabled`, on `/formulate` and `/validate-recipe`), the fish-meal cost-share cap (`max_fishmeal_cost_share`) and the binder cap (`max_binder_inclusion`); responses no longer echo them. Stop sending these fields: requests that include them are now rejected (422).
+- The option to change which vitamins and trace minerals the premix is assumed to supply (`custom_premix_mask_codes`): as agreed on 15 October, the premix composition is fixed. Stop sending this field: requests that include it are now rejected (422).
+- The 32 IAFFD vitamin and mineral premix products from the ingredient pool (331 to 299 ingredients), so a premix cannot be priced in on top of the fixed one. Vitamin C (Rovimix Stay-C 35, code 60128) stays and can be added at a fixed rate through `ingredient_limits`.
+
 ## [0.5.0] - 2026-10-14
 
 ### Added

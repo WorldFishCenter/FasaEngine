@@ -7,15 +7,17 @@ Combines two static inputs into ``fasa_core/config/ingredient_pool_africa.csv``:
   2. ``data/FICD_…csv``                   — ingredient composition DB; source of
      descriptions and the authority on which codes the LP can actually use.
 
-Output pool rows = ``(countries ∩ FICD) ∪ EXTRA_IMPORT_CODES``. Codes present in the
-country list but ABSENT from FICD have no nutrient coefficients and cannot enter the LP,
-so they are excluded (the count and range are logged at build time).
+Output pool rows = ``(countries ∩ FICD) ∪ EXTRA_IMPORT_CODES``, minus the vitamin and
+mineral premix products (``EXCLUDED_PREFIXES``). Codes present in the country list but
+ABSENT from FICD have no nutrient coefficients and cannot enter the LP, so they are
+excluded (the count and range are logged at build time).
 
 Per-ingredient metadata is derived from the description: ``class`` (informational),
 ``is_fishmeal`` (1 only for "Fish meal ..."), and ``is_binder`` (1 for starch/flour/
-cassava binders). ``is_fishmeal``/``is_binder`` feed only the opt-in, off-by-default
-advisory caps. Country membership is emitted as a comma-separated ISO-2 ``countries``
-column; an empty value means "not locally available in any tracked country".
+cassava binders). ``is_fishmeal``/``is_binder`` are ingredient-group tags; the LP does
+not use them since the fish-meal and binder caps were removed (1.0.0). Country
+membership is emitted as a comma-separated ISO-2 ``countries`` column; an empty value
+means "not locally available in any tracked country".
 
 Run from the repo root:
     python scripts/build_ingredient_pool.py
@@ -52,6 +54,11 @@ ISO3_TO_ISO2 = {"KEN": "KE", "NGA": "NG", "ZMB": "ZM"}
 #   30410 Cottonseed meal, degossypoled
 EXTRA_IMPORT_CODES = ("10073", "23002", "30410", "31252", "31621")
 
+# The premix is not a pool ingredient: every feed carries one at a fixed `premix_rate`,
+# priced through `premix_price`. The IAFFD vitamin and mineral premix products are
+# therefore left out so a caller cannot price one in on top of it.
+EXCLUDED_PREFIXES = ("Vitamin premix", "Mineral premix")
+
 OUTPUT_COLUMNS = [
     "code", "description", "class",
     "is_fishmeal", "is_binder", "max_inclusion", "countries",
@@ -67,13 +74,14 @@ HEADER_COMMENT = """\
 #                  import-only variants). Used ONLY to flag `locally_available` in the API
 #                  response — the LP is NEVER restricted to local ingredients.
 #   is_binder /    auto-derived from the description (fishmeal=1 only for "Fish meal ...";
-#   is_fishmeal    binder=1 for starch/flour/cassava binders). These feed only the opt-in,
-#                  off-by-default advisory caps.
+#   is_fishmeal    binder=1 for starch/flour/cassava binders). Group tags only; not used
+#                  by the LP.
 #   max_inclusion  blank = no per-ingredient cap (LP decides). Only toxin (TX*) and ASNS
 #                  nutrient limits are fixed.
 #
 # Country-pool codes absent from FICD (no composition data) are excluded and cannot be
-# formulated until FICD gains their rows.
+# formulated until FICD gains their rows. Vitamin and mineral premix products are
+# excluded too: the premix is a fixed slice of every feed, not a pool ingredient.
 """
 
 BINDER_KEYWORDS = ("starch", "wheat flour")
@@ -158,9 +166,10 @@ def main() -> int:
     if missing_imports:
         raise SystemExit(f"EXTRA_IMPORT_CODES absent from FICD: {missing_imports}")
 
-    # pool = (country codes present in FICD) ∪ (retained import variants)
+    # pool = (country codes present in FICD) ∪ (retained import variants) − premixes
+    premixes = {c for c in ficd_codes if str(ficd_desc[c]).startswith(EXCLUDED_PREFIXES)}
     pool_codes = sorted(
-        (attached_codes & ficd_codes) | set(EXTRA_IMPORT_CODES),
+        ((attached_codes & ficd_codes) | set(EXTRA_IMPORT_CODES)) - premixes,
         key=lambda c: int(c) if c.isdigit() else c,
     )
 
@@ -187,13 +196,14 @@ def main() -> int:
 
     # ---- summary ----
     # The is_fishmeal/is_binder lists are printed in full so a human can audit the
-    # heuristic on every regeneration (these flags feed the opt-in advisory caps).
+    # heuristic on every regeneration.
     fishmeal_codes = out.loc[out["is_fishmeal"] == 1, "code"].tolist()
     binder_codes = out.loc[out["is_binder"] == 1, "code"].tolist()
     print(f"wrote {POOL_OUT.relative_to(REPO_ROOT)}: {len(out)} rows")
     print(f"  is_fishmeal=1 ({len(fishmeal_codes)}): {', '.join(fishmeal_codes)}")
     print(f"  is_binder=1   ({len(binder_codes)}): {', '.join(binder_codes)}")
     print(f"  retained import variants (empty countries): {len(EXTRA_IMPORT_CODES)}")
+    print(f"  premix products EXCLUDED: {len(premixes & attached_codes)}")
     print(f"  country-pool codes EXCLUDED (absent from FICD): {len(excluded)}")
     if excluded:
         print(f"    range: {excluded[0]}..{excluded[-1]}")

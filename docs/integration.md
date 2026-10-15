@@ -67,6 +67,11 @@ Recommended client behavior:
 - Validate connectivity with `/health` and `/ready`.
 - Call `/supported` first to fetch valid `species`, `production_system`, `stage`, and `countries`.
 - Build `/formulate` payload from those discovered values.
+- Always send `premix_price` (premix price per kg, same currency as `prices`). Every feed
+  carries the premix; `premix_rate` is `0.01`, `0.015` or `0.02` (default `0.02`), and
+  `cost_per_kg` includes `premix_rate × premix_price`. Premix products cannot be priced in
+  `prices`. Since 1.0.0 `premix_enabled`, `max_fishmeal_cost_share`,
+  `max_binder_inclusion` and `custom_premix_mask_codes` are gone; sending them returns 422.
 - Optionally send `country` (ISO-2: `KE`/`NG`/`ZM`) to have each recipe line flagged
   `locally_available` (`true`/`false`; `null` when no `country` is sent). This is an
   advisory highlight only — the optimizer is never restricted to local ingredients.

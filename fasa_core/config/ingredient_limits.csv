@@ -41,7 +41,7 @@
 # pool code that is the same ingredient as its sample name; `note` names the source row.
 # Table rows whose ingredient has no FICD composition are not listed here: the engine
 # cannot formulate with them, so a limit would have no effect. Ingredients not named
-# below stay bounded only by nutrient, toxin and opt-in advisory constraints.
+# below stay bounded only by nutrient and toxin constraints.
 code,species,production_system,stage_weight,processing_method,min_inclusion,max_inclusion,note
 31408,Nile Tilapia,,,,,0.1,table row 9: Sunflower cake
 31408,African Catfish,,,,,0.1,table row 9: Sunflower cake

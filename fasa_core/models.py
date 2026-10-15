@@ -10,7 +10,12 @@ from typing import Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field, ConfigDict, field_validator, model_validator
 
-from .config.defaults import normalize_country
+from .config.defaults import (
+    DEFAULT_PREMIX_RATE,
+    PREMIX_RATES,
+    check_premix_rate,
+    normalize_country,
+)
 
 
 # ---------- inclusion limits (shared by request and response) --------------- #
@@ -115,39 +120,29 @@ class FormulateRequest(BaseModel):
     )
 
     processing_method: Literal["pelleted", "extruded"] = "pelleted"
-    premix_enabled: bool = True
-    premix_rate: float = Field(0.005, ge=0.0, lt=0.10)
 
-    max_fishmeal_cost_share: Optional[float] = Field(
-        default=None,
-        ge=0.0,
-        le=1.0,
+    # The premix is always included; the caller picks its rate and price.
+    premix_rate: float = Field(
+        DEFAULT_PREMIX_RATE,
         description=(
-            "Optional cap on fish-meal cost share (fraction of total recipe cost). "
-            "Omit (or send null) to apply no cap — cost alone then drives fish-meal "
-            "inclusion. Kept as an opt-in advisory input for callers that want to "
-            "force a sustainability ceiling."
+            "Share of the feed taken by the vitamin/mineral premix, as a mass fraction: "
+            "0.01, 0.015 or 0.02 (1, 1.5 or 2%)."
         ),
+        json_schema_extra={"enum": list(PREMIX_RATES)},
     )
-    max_binder_inclusion: Optional[float] = Field(
-        default=None,
+    premix_price: float = Field(
+        ...,
         ge=0.0,
-        le=1.0,
         description=(
-            "Optional cap on collective binder mass fraction. Omit (or send null) "
-            "to apply no cap — appropriate when the binder product's manufacturer-"
-            "recommended inclusion rate is unknown. Kept as an opt-in advisory input."
+            "Premix price per kg, in the same currency as `prices`. Counted in "
+            "`cost_per_kg` and `total_cost`."
         ),
     )
 
-    custom_premix_mask_codes: Optional[List[str]] = Field(
-        default=None,
-        description=(
-            "Override the default premix mask. If provided, replaces the default "
-            "list of ASNS spec codes whose constraints will be skipped."
-        ),
-        max_length=200,
-    )
+    @field_validator("premix_rate")
+    @classmethod
+    def _premix_rate_is_offered(cls, v):
+        return check_premix_rate(v)
 
     nutrient_limits: Optional[Dict[str, NutrientLimit]] = Field(
         default=None,
@@ -213,15 +208,8 @@ class ValidateRecipeRequest(BaseModel):
         default="pelleted",
         description=(
             "Scopes the inclusion limits and selects the digestible-energy column "
-            "used by the nutrient checks."
-        ),
-    )
-    premix_enabled: bool = Field(
-        default=True,
-        description=(
-            "Mirrors /formulate: when true the vitamin and trace-mineral specs the "
-            "premix covers are excluded from the nutrient checks, since the premix's "
-            "own contribution is not modelled."
+            "used by the nutrient checks. As in /formulate, the vitamin and "
+            "trace-mineral specs the premix covers are not checked."
         ),
     )
 
@@ -329,11 +317,10 @@ class FormulateResponse(BaseModel):
     warnings: List[str] = []
     infeasibility: Optional[InfeasibilityReport] = None
 
-    # always echoed back so the API client can display them
-    premix_enabled: bool
+    # always echoed back so the API client can display them; `cost_per_kg` includes
+    # premix_rate × premix_price on top of the recipe lines' cost_contribution
     premix_rate: float
-    max_fishmeal_cost_share: Optional[float] = None
-    max_binder_inclusion: Optional[float] = None
+    premix_price: float
 
     # populated only when batch_size_kg was supplied on the request
     batch_size_kg: Optional[float] = None
@@ -392,7 +379,7 @@ class ValidateRecipeResponse(BaseModel):
         default=0.0,
         description=(
             "Sum of the supplied fractions, as a percentage of feed mass. A complete "
-            "diet sums to 100%, or 99-100% when a premix takes the remainder."
+            "diet sums to 100%, or 98-100% when a premix takes the remainder."
         ),
     )
     in_limits: bool = Field(

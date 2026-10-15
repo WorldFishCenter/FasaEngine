@@ -7,13 +7,14 @@
 #                  import-only variants). Used ONLY to flag `locally_available` in the API
 #                  response — the LP is NEVER restricted to local ingredients.
 #   is_binder /    auto-derived from the description (fishmeal=1 only for "Fish meal ...";
-#   is_fishmeal    binder=1 for starch/flour/cassava binders). These feed only the opt-in,
-#                  off-by-default advisory caps.
+#   is_fishmeal    binder=1 for starch/flour/cassava binders). Group tags only; not used
+#                  by the LP.
 #   max_inclusion  blank = no per-ingredient cap (LP decides). Only toxin (TX*) and ASNS
 #                  nutrient limits are fixed.
 #
 # Country-pool codes absent from FICD (no composition data) are excluded and cannot be
-# formulated until FICD gains their rows.
+# formulated until FICD gains their rows. Vitamin and mineral premix products are
+# excluded too: the premix is a fixed slice of every feed, not a pool ingredient.
 code,description,class,is_fishmeal,is_binder,max_inclusion,countries
 10009,"Fish meal, anchovy, 67% CP",animal_protein,1,0,,"KE,NG,ZM"
 10011,"Fish meal, freshwater alewife, 65% CP",animal_protein,1,0,,"KE,NG,ZM"
@@ -45,22 +46,6 @@ code,description,class,is_fishmeal,is_binder,max_inclusion,countries
 23002,"Poultry by-product meal, feed-grade, 60% CP",animal_protein,0,0,,
 23012,"Poultry bone meal, China, 45% CP",animal_protein,0,0,,"KE,NG,ZM"
 51106,Poultry fat,animal_protein,0,0,,"KE,NG"
-60112,"Vitamin premix IAFFD Standard, FW shrimp starter, 0.4%",animal_protein,0,0,,"KE,NG"
-60113,"Vitamin premix IAFFD Standard, FW shrimp grower, 0.4%",animal_protein,0,0,,"KE,NG"
-60114,"Vitamin premix IAFFD Standard, FW shrimp finisher, 0.4%",animal_protein,0,0,,"KE,NG"
-60115,"Vitamin premix IAFFD Standard, FW shrimp broodstock, 0.4%",animal_protein,0,0,,"KE,NG"
-60116,"Vitamin premix IAFFD Standard, SW shrimp starter, 0.4%",animal_protein,0,0,,"KE,NG"
-60117,"Vitamin premix IAFFD Standard, SW shrimp grower, 0.4%",animal_protein,0,0,,"KE,NG"
-60118,"Vitamin premix IAFFD Standard, SW shrimp finisher, 0.4%",animal_protein,0,0,,"KE,NG"
-60119,"Vitamin premix IAFFD Standard, SW shrimp brood, 0.4%",animal_protein,0,0,,"KE,NG"
-62114,"Mineral premix IAFFD Standard, FW shrimp starter, 0.25%",animal_protein,0,0,,"KE,NG"
-62115,"Mineral premix IAFFD Standard, FW shrimp grower, 0.25%",animal_protein,0,0,,"KE,NG"
-62116,"Mineral premix IAFFD Standard, FW shrimp finisher, 0.25%",animal_protein,0,0,,"KE,NG"
-62117,"Mineral premix IAFFD Standard, FW shrimp brood, 0.25%",animal_protein,0,0,,"KE,NG"
-62118,"Mineral premix IAFFD Standard, SW shrimp starter, 0.25%",animal_protein,0,0,,"KE,NG"
-62119,"Mineral premix IAFFD Standard, SW shrimp grower, 0.25%",animal_protein,0,0,,"KE,NG"
-62120,"Mineral premix IAFFD Standard, SW shrimp finisher, 0.25%",animal_protein,0,0,,"KE,NG"
-62121,"Mineral premix IAFFD Standard, SW shrimp broodstock, 0.25%",animal_protein,0,0,,"KE,NG"
 30307,"Cassava, tuber, meal",binder,0,1,,"KE,NG,ZM"
 30310,"Cassava, chips",binder,0,1,,"KE,NG,ZM"
 30311,"Cassava, starch 75%",binder,0,1,,"KE,NG,ZM"
@@ -195,23 +180,7 @@ code,description,class,is_fishmeal,is_binder,max_inclusion,countries
 62157,Sodium Bicarbonate,mineral,0,0,,"KE,NG"
 70125,Mold inhibitor (calcium propionate),mineral,0,0,,"KE,NG"
 70132,Mycotoxin binder (Mineral clay product: zeolites),mineral,0,0,,"KE,NG"
-60120,"Vitamin premix IAFFD Standard, FW fish starter, 0.5%",premix,0,0,,"KE,NG"
-60121,"Vitamin premix IAFFD Standard, FW fish grower, 0.5%",premix,0,0,,"KE,NG"
-60122,"Vitamin premix IAFFD Standard, FW fish finisher, 0.5%",premix,0,0,,"KE,NG"
-60123,"Vitamin premix IAFFD Standard, FW fish broodstock, 0.5%",premix,0,0,,"KE,NG"
-60124,"Vitamin premix IAFFD Standard, SW fish starter, 0.5%",premix,0,0,,"KE,NG"
-60125,"Vitamin premix IAFFD Standard, SW fish grower, 0.5%",premix,0,0,,"KE,NG"
-60126,"Vitamin premix IAFFD Standard, SW fish finisher, 0.5%",premix,0,0,,"KE,NG"
-60127,"Vitamin premix IAFFD Standard, SW fish brood, 0.5%",premix,0,0,,"KE,NG"
 61105,Amino acid premix,premix,0,0,,"KE,NG"
-62122,"Mineral premix IAFFD Standard, FW fish starter, 0.25%",premix,0,0,,"KE,NG"
-62123,"Mineral premix IAFFD Standard, FW fish grower, 0.25%",premix,0,0,,"KE,NG"
-62124,"Mineral premix IAFFD Standard, FW fish finisher, 0.25%",premix,0,0,,"KE,NG"
-62125,"Mineral premix IAFFD Standard, FW fish broodstock, 0.25%",premix,0,0,,"KE,NG"
-62126,"Mineral premix IAFFD Standard, SW fish starter, 0.25%",premix,0,0,,"KE,NG"
-62127,"Mineral premix IAFFD Standard, SW fish grower, 0.25%",premix,0,0,,"KE,NG"
-62128,"Mineral premix IAFFD Standard, SW fish finisher, 0.25%",premix,0,0,,"KE,NG"
-62129,"Mineral premix IAFFD Standard, SW fish brood, 0.25%",premix,0,0,,"KE,NG"
 13001,"Fish bone meal, fish processing byproduct",protein_meal,0,0,,"KE,NG,ZM"
 27001,"Maggot meal, MagMeal, AgriProtein",protein_meal,0,0,,"KE,NG,ZM"
 30105,"Banana meal, 4% CP",protein_meal,0,0,,"KE,NG,ZM"

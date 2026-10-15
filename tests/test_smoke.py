@@ -89,8 +89,9 @@ def test_resolve_vitamin_unit_conversion():
 
 
 def test_duplicate_vitamin_codes_are_skipped_without_a_warning():
-    """V101/V111 restate V10/V11 in mg/kg and ug/kg; only V10/V11 may reach the LP."""
-    res = formulate(**BASE, premix_enabled=False)
+    """V101/V111 restate V10/V11 in mg/kg and ug/kg and are not premix-masked, so only
+    the duplicate rule keeps them out of the LP."""
+    res = formulate(**BASE)
     assert not any("V101" in w or "V111" in w for w in res.warnings)
     assert not {"V101", "V111"} & {line.code for line in res.composition}
 
@@ -128,40 +129,39 @@ DEMO_PRICES = {
     "62138": 0.10, "62134": 0.80, "62135": 0.15,
     "61109": 3.00, "61111": 4.50,
 }
+PREMIX_PRICE = 2.50  # per kg; every formulation carries the premix
+
+# the request most tests start from; vary one field with `formulate(**BASE, field=...)`
+BASE = dict(
+    species="Nile Tilapia",
+    stage="< 5g (Starter)",
+    production_system="General-LowCost",
+    prices=DEMO_PRICES,
+    premix_price=PREMIX_PRICE,
+)
 
 
 def test_formulate_tilapia_starter_returns_a_status():
-    res = formulate(
-        species="Nile Tilapia",
-        stage="< 5g (Starter)",
-        production_system="General-LowCost",
-        prices=DEMO_PRICES,
-    )
+    res = formulate(**BASE)
     assert res.status in {"optimal", "infeasible", "error"}
     assert res.species == "Nile Tilapia"
     if res.status == "optimal":
-        # mass balance honored (≤ 100% because premix takes 0.5%)
+        # mass balance honored: the premix takes the rest
         total = sum(line.inclusion_percent for line in res.recipe)
-        assert 99.0 <= total <= 100.0
+        assert abs(total - (1 - res.premix_rate) * 100) < 1e-3
 
 
 def test_formulate_batch_size_kg_populates_absolute_quantities():
     """When batch_size_kg is supplied, recipe carries kg per line and
     response reports premix kg + total batch cost. Sum of kg ≈ batch size."""
     batch = 100.0
-    res = formulate(
-        species="Nile Tilapia",
-        stage="< 5g (Starter)",
-        production_system="General-LowCost",
-        prices=DEMO_PRICES,
-        batch_size_kg=batch,
-    )
+    res = formulate(**BASE, batch_size_kg=batch)
     if res.status != "optimal":
         pytest.skip(f"LP did not solve to optimal on this priced pool (status={res.status})")
 
     # echoed
     assert res.batch_size_kg == batch
-    # premix_enabled defaults to True, so premix kg = batch * premix_rate
+    # the premix is always in, so premix kg = batch * premix_rate
     assert res.premix_quantity_kg == round(batch * res.premix_rate, 3)
     assert res.total_cost == round(res.cost_per_kg * batch, 2)
 
@@ -177,14 +177,37 @@ def test_formulate_batch_size_kg_populates_absolute_quantities():
     assert abs(total_kg - batch) < 0.05
 
 
+def test_premix_cost_is_counted_in_the_feed_cost():
+    """cost_per_kg = recipe lines' cost_contribution + premix_rate * premix_price."""
+    res = formulate(**BASE, premix_rate=0.015)
+    if res.status != "optimal":
+        pytest.skip(f"LP did not solve to optimal (status={res.status})")
+    lines = sum(line.cost_contribution for line in res.recipe)
+    assert (res.premix_rate, res.premix_price) == (0.015, PREMIX_PRICE)
+    assert abs(res.cost_per_kg - (lines + 0.015 * PREMIX_PRICE)) < 1e-5
+
+
+def test_formulate_request_accepts_only_the_offered_premix_rates():
+    """Rate is 1, 1.5 or 2% (default 2%); the premix price is required."""
+    from pydantic import ValidationError
+
+    from fasa_core.models import FormulateRequest
+
+    assert FormulateRequest(**BASE).premix_rate == 0.02
+    for rate in (0.01, 0.015, 0.02):
+        FormulateRequest(**BASE, premix_rate=rate)
+    for bad in (0.005, 0.0, 2):
+        with pytest.raises(ValidationError):
+            FormulateRequest(**BASE, premix_rate=bad)
+    with pytest.raises(ValidationError):
+        FormulateRequest(**{k: v for k, v in BASE.items() if k != "premix_price"})
+    with pytest.raises(ValueError):
+        formulate(**BASE, premix_rate=0.005)  # direct callers get the same rule
+
+
 def test_formulate_without_batch_size_omits_absolute_quantities():
     """Default (no batch_size_kg) returns percent-only output."""
-    res = formulate(
-        species="Nile Tilapia",
-        stage="< 5g (Starter)",
-        production_system="General-LowCost",
-        prices=DEMO_PRICES,
-    )
+    res = formulate(**BASE)
     if res.status != "optimal":
         pytest.skip(f"LP did not solve to optimal on this priced pool (status={res.status})")
     assert res.batch_size_kg is None
@@ -201,12 +224,7 @@ def test_formulate_request_rejects_non_positive_batch_size():
 
     for bad in (0, -1, -100.5):
         with pytest.raises(ValidationError):
-            FormulateRequest(
-                species="Nile Tilapia",
-                stage="< 5g (Starter)",
-                prices={"30355": 0.30},
-                batch_size_kg=bad,
-            )
+            FormulateRequest(**BASE, batch_size_kg=bad)
 
 
 def test_formulate_catfish_uses_carni_track():
@@ -236,10 +254,13 @@ def test_pool_carries_country_tags_and_every_code_resolves_in_ficd():
     """The expanded pool tags ingredients by ISO-2 country, and every code it
     references must have FICD composition (codes without data are excluded)."""
     from fasa_core.ingredient_pool import attach_ficd_rows, load_pool
+    from scripts.build_ingredient_pool import EXCLUDED_PREFIXES
 
     pool = load_pool()
-    assert len(pool) >= 300
+    assert len(pool) >= 290
     attach_ficd_rows(pool)  # raises if any pool code is missing from FICD
+    # the premix is a fixed slice of every feed, so no premix product can be priced in
+    assert not [r.code for r in pool if r.description.startswith(EXCLUDED_PREFIXES)]
 
     by_code = {r.code: r for r in pool}
     # locally available across all three tracked countries
@@ -253,13 +274,7 @@ def test_formulate_country_flags_locally_available():
     from fasa_core.ingredient_pool import load_pool
 
     by_code = {r.code: r for r in load_pool(only_codes=set(DEMO_PRICES.keys()))}
-    res = formulate(
-        species="Nile Tilapia",
-        stage="< 5g (Starter)",
-        production_system="General-LowCost",
-        prices=DEMO_PRICES,
-        country="ZM",
-    )
+    res = formulate(**BASE, country="ZM")
     if res.status != "optimal":
         pytest.skip(f"LP did not solve to optimal (status={res.status})")
 
@@ -273,12 +288,7 @@ def test_formulate_country_flags_locally_available():
 
 def test_formulate_without_country_leaves_locally_available_none():
     """Omitting country yields null locally_available (no local context)."""
-    res = formulate(
-        species="Nile Tilapia",
-        stage="< 5g (Starter)",
-        production_system="General-LowCost",
-        prices=DEMO_PRICES,
-    )
+    res = formulate(**BASE)
     if res.status != "optimal":
         pytest.skip(f"LP did not solve to optimal (status={res.status})")
     assert res.country is None
@@ -291,21 +301,11 @@ def test_formulate_request_normalizes_and_validates_country():
 
     from fasa_core.models import FormulateRequest
 
-    req = FormulateRequest(
-        species="Nile Tilapia",
-        stage="< 5g (Starter)",
-        prices={"30355": 0.30},
-        country="ke",
-    )
+    req = FormulateRequest(**BASE, country="ke")
     assert req.country == "KE"
 
     with pytest.raises(ValidationError):
-        FormulateRequest(
-            species="Nile Tilapia",
-            stage="< 5g (Starter)",
-            prices={"30355": 0.30},
-            country="US",
-        )
+        FormulateRequest(**BASE, country="US")
 
 
 def test_parse_countries_normalizes_and_handles_blanks():
@@ -324,13 +324,7 @@ def test_parse_countries_normalizes_and_handles_blanks():
 
 def test_formulate_core_normalizes_country_for_direct_callers():
     """Core formulate() upper-cases country itself, so a lowercase direct call still flags."""
-    res = formulate(
-        species="Nile Tilapia",
-        stage="< 5g (Starter)",
-        production_system="General-LowCost",
-        prices=DEMO_PRICES,
-        country="zm",
-    )
+    res = formulate(**BASE, country="zm")
     if res.status != "optimal":
         pytest.skip(f"LP did not solve to optimal (status={res.status})")
     assert res.country == "ZM"
@@ -339,14 +333,8 @@ def test_formulate_core_normalizes_country_for_direct_callers():
 
 def test_country_never_changes_the_lp():
     """The country tag is advisory: identical prices must yield an identical recipe/cost."""
-    common = dict(
-        species="Nile Tilapia",
-        stage="< 5g (Starter)",
-        production_system="General-LowCost",
-        prices=DEMO_PRICES,
-    )
-    base = formulate(**common)
-    tagged = formulate(**common, country="ZM")
+    base = formulate(**BASE)
+    tagged = formulate(**BASE, country="ZM")
     if base.status != "optimal":
         pytest.skip(f"LP did not solve to optimal (status={base.status})")
     assert base.cost_per_kg == tagged.cost_per_kg
@@ -358,13 +346,8 @@ def test_country_never_changes_the_lp():
 
 def test_formulate_error_path_echoes_country():
     """Non-optimal responses still echo the requested country."""
-    res = formulate(
-        species="Nile Tilapia",
-        stage="< 5g (Starter)",
-        production_system="General-LowCost",
-        prices={"00000000": 1.0},  # no overlap with the pool -> error status
-        country="NG",
-    )
+    # no overlap with the pool -> error status
+    res = formulate(**{**BASE, "prices": {"00000000": 1.0}}, country="NG")
     assert res.status == "error"
     assert res.country == "NG"
 
@@ -400,14 +383,6 @@ def test_paff_reproduction(paff_label):
 # --------------------------------------------------------------------------- #
 # min/max inclusion layer                                                     #
 # --------------------------------------------------------------------------- #
-
-
-BASE = dict(
-    species="Nile Tilapia",
-    stage="< 5g (Starter)",
-    production_system="General-LowCost",
-    prices=DEMO_PRICES,
-)
 
 
 def _spec(res, code):
@@ -466,7 +441,7 @@ def test_nutrient_limit_on_a_ratio_spec_is_skipped_with_a_warning():
 
 def test_nutrient_limit_is_not_masked_by_the_premix():
     """Zinc is premix-masked, but an explicit operator bound must still bind."""
-    res = formulate(**BASE, premix_enabled=True, nutrient_limits={"M12": {"max": 250.0}})
+    res = formulate(**BASE, nutrient_limits={"M12": {"max": 250.0}})
     zinc = _spec(res, "M12")
     assert (zinc.restriction_type, zinc.target, zinc.source) == ("Maximum", 250.0, "request")
 
@@ -637,7 +612,7 @@ def test_validate_recipe_accepts_the_lp_solution_as_in_spec():
     assert off_spec == []
     assert res.in_limits is True
     assert res.nutrient_checks, "nutrient checks should run when the full scope is given"
-    assert 99.0 <= res.total_inclusion_percent <= 100.0
+    assert 98.0 <= res.total_inclusion_percent <= 100.0
 
 
 def test_validate_recipe_still_catches_a_real_nutrient_violation():
