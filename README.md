@@ -321,7 +321,7 @@ Configure:
 
 - `optimizer._apply_interaction_corrections` — non-additive ingredient interaction terms (e.g., phytate × Ca → reduced P digestibility), per Hua & Bureau (2012).
 - `optimizer._apply_anti_nutrient_digestibility_penalties` — anti-nutrient concentrations downgrade digestible-protein/AA coefficients.
-- `optimizer._solve_chance_constrained` — stochastic LP using ingredient nutrient CV.
+- Chance-constrained solve — stochastic LP using ingredient nutrient CV (planned; no hook in the code yet).
 
 Country-specific availability tags (Kenya / Nigeria / Zambia) are now **implemented**: the pool carries per-ingredient `countries` tags and `/formulate` accepts an optional `country` that flags `locally_available` in the response (without restricting the LP).
 
