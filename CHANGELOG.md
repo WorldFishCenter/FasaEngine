@@ -18,8 +18,10 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - An ash maximum, from WorldFish's feed formulation constraints: 10% for tilapia, 10% for catfish under 5 g and 8% from 500 g (none yet for catfish 5-500 g). IAFFD's own ash maximum is blank, so feeds had no ash limit before; with real prices, ash reached 16%.
 - A saponin maximum (`TX15F`) for the FASA lab saponin values, equal to the ASNS soyasaponin maximum for the stage.
 - A range for crude protein of 2 points either side of the requirement, and 1 point for crude lipid: the minimum comes down by that much and a maximum is added (African Catfish 50-200g: 34-38% protein).
+- `/formulate` warns when a priced code is not in the ingredient pool (it is still ignored, as before), and when a request leaves out `production_system`, which then defaults to General-LowCost.
 
 ### Changed
+- `/formulate` refuses a negative price: the API returns 422 and `fasa_core.formulate` raises an error. A price of 0 stays allowed, for a free by-product. Before, a negative price was accepted and made `cost_per_kg` wrong. Migration: send prices of 0 or more.
 - These rules are dropped for every feed, as the FASA team decided: digestible protein and digestible protein per unit of energy, digestible amino acids, digestible phosphorus, phospholipids, cholesterol, sodium, chlorine, potassium, magnesium, and the 10% moisture minimum. Without the moisture minimum, all 19 General stages have a recipe with the 24 test prices (9 before).
 - African Catfish crude protein follows the FASA requirements table: 36.0% at 50-200g (ASNS 35.6%) and 31.5% at 800-1000g (ASNS 31.7%).
 - The 5% / 2.5% caps on IAFFD shrimp meal (14002) and broken dried shrimp (14007) are removed; the FASA Ochonga lines carry them instead.

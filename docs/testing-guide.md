@@ -570,6 +570,8 @@ Warnings are non-fatal messages appended to any response (including optimal solu
 | `[skip]` nutrient limit | A nutrient inclusion limit (§5.2) names a code with no FICD mapping, or a ratio spec; the limit was ignored          |
 | `[limit]` excluded      | A priced ingredient was removed from consideration by a 0% maximum inclusion limit (§5.2)                            |
 | `[limit]` group minimum | A group minimum (e.g. fishmeals for tilapia) was not applied because none of the group's ingredients is priced        |
+| `[skip]` priced code    | A priced code is not in the ingredient pool (a typo, or an ingredient the engine doesn't have); it was ignored        |
+| `[default]` system      | The request left out `production_system`, so the engine formulated for `General-LowCost` (API only)                  |
 
 
 [↑ Contents](#contents)

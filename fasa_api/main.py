@@ -237,6 +237,11 @@ def formulate_endpoint(
             nutrient_limits=req.nutrient_limits,
             ingredient_limits=req.ingredient_limits,
         )
+        if "production_system" not in req.model_fields_set:
+            result.warnings.append(
+                f"[default] production_system was not sent; formulated for "
+                f"'{req.production_system}'."
+            )
         elapsed_ms = (time.perf_counter() - started_at) * 1000.0
         LOGGER.info(
             "formulate.result status=%s elapsed_ms=%.2f warnings=%d",

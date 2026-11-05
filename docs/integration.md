@@ -77,7 +77,11 @@ Recommended client behavior:
 - `prices` takes IAFFD (FICD) codes and the 43 FASA ingredient codes (`FASA-KE-01` …
   `FASA-ZM-11`; names and lab samples in `scripts/data/fasa_ingredients.csv`, and the pool
   rows with class `fasa` in `fasa_core/config/ingredient_pool_africa.csv`). A FASA code
-  never changes once given.
+  never changes once given. Prices must be 0 or more (0 for a free by-product); a negative
+  price returns 422. A code that is not in the ingredient pool is ignored, with a `[skip]`
+  warning naming it.
+- Always send `production_system`. When it is left out the engine formulates for
+  `General-LowCost` and adds a `[default]` warning.
 - Optionally send `country` (ISO-2: `KE`/`NG`/`ZM`) to have each recipe line flagged
   `locally_available` (`true`/`false`; `null` when no `country` is sent). This is an
   advisory highlight only — the optimizer is never restricted to local ingredients.

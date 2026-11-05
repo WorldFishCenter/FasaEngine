@@ -62,6 +62,18 @@ def check_premix_rate(rate: float) -> float:
         raise ValueError(f"premix_rate must be one of {list(PREMIX_RATES)}")
     return rate
 
+
+def check_prices(prices: dict[str, float]) -> dict[str, float]:
+    """Return `prices` if none is negative, else raise ValueError.
+
+    Shared by the API request validator and the core `formulate()` entry point. A price
+    of 0 is allowed (a free by-product); a negative one would make the feed cost wrong.
+    """
+    negative = sorted(code for code, price in prices.items() if price < 0)
+    if negative:
+        raise ValueError(f"prices must not be negative: {', '.join(negative)}")
+    return prices
+
 # --- FASA team's rule decisions (decisions workbook returned 5 November 2026) ---
 # ASNS rules removed from every feed. Choline (V14) and inositol (V15), also dropped
 # (tab 2), are skipped through premix_mask.json instead.

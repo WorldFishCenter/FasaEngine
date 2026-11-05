@@ -14,6 +14,7 @@ from .config.defaults import (
     DEFAULT_PREMIX_RATE,
     PREMIX_RATES,
     check_premix_rate,
+    check_prices,
     normalize_country,
 )
 
@@ -144,6 +145,11 @@ class FormulateRequest(BaseModel):
     @classmethod
     def _premix_rate_is_offered(cls, v):
         return check_premix_rate(v)
+
+    @field_validator("prices")
+    @classmethod
+    def _prices_are_not_negative(cls, v):
+        return check_prices(v)
 
     nutrient_limits: Optional[Dict[str, NutrientLimit]] = Field(
         default=None,
