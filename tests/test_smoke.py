@@ -529,7 +529,8 @@ def test_ingredients_without_a_limit_row_keep_an_open_box():
     base = formulate(**BASE)
     if base.status != "optimal":
         pytest.skip(f"LP did not solve to optimal (status={base.status})")
-    named = ingredient_bounds(LimitScope(BASE["species"]), [])
+    named = ingredient_bounds(LimitScope(BASE["species"], BASE["stage"],
+                                         BASE["production_system"]), [])
     unnamed = [line for line in base.recipe if line.code not in named]
     assert unnamed
     assert all(line.limit_source is None for line in unnamed)
