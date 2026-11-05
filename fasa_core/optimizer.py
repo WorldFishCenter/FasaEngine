@@ -124,6 +124,7 @@ def formulate(
         stage=stage,
         production_system=production_system,
         pool=pool,
+        premix_rate=premix_rate,
         processing_method=processing_method,
         nutrient_limits=nutrient_box,
     )
@@ -176,9 +177,10 @@ def formulate(
             ],
             suggestion=(
                 "Consider adding alternative ingredients (e.g., synthetic Lys/Met, "
-                "fish meal, soybean meal), a lower premix rate, relaxing an "
-                "inclusion limit, or relaxing the production-system tier "
-                "(General-LowCost ↔ General)."
+                "fish meal, soybean meal), another premix rate (a lower one leaves "
+                "more room for the other ingredients, a higher one adds more of the "
+                "premix's vitamins and trace minerals), relaxing an inclusion limit, "
+                "or relaxing the production-system tier (General-LowCost ↔ General)."
             ),
         ))
 

@@ -116,6 +116,7 @@
   "TX14": {"ficd_param": "dioxins_ng_whoteq_kg",     "unit_factor": 1.0, "spec_label": "Dioxins",              "unit_asns": "ngWHOTEQ/kg",     "unit_ficd": "ngWHOTEQ/kg"},
   "TX15": {"ficd_param": "soyasaponins_mg_kg",       "unit_factor": 1.0, "spec_label": "Soyasaponins",         "unit_asns": "mg/kg",           "unit_ficd": "mg/kg"},
   "TX16": {"ficd_param": "isoflavones_mg_kg",        "unit_factor": 1.0, "spec_label": "Isoflavones",          "unit_asns": "mg/kg",           "unit_ficd": "mg/kg"},
+  "TX15F": {"ficd_param": "saponin_mg_kg",           "unit_factor": 1.0, "spec_label": "Saponins (FASA)",      "unit_asns": "mg/kg",           "unit_ficd": "mg/kg", "note": "Not in ASNS: the FASA team's rule, TX15's maximum read against the FASA lab saponin. IAFFD ingredients have no saponin value."},
 
   "V01": {"ficd_param": "biotin_b7_mg_kg",           "unit_factor": 1.0,    "spec_label": "Biotin (B7)",        "unit_asns": "mg/kg", "unit_ficd": "mg/kg"},
   "V02": {"ficd_param": "folic_acid_b9_mg_kg",       "unit_factor": 1.0,    "spec_label": "Folic acid (B9)",    "unit_asns": "mg/kg", "unit_ficd": "mg/kg"},

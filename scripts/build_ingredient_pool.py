@@ -6,16 +6,21 @@ Combines two static inputs into ``fasa_core/config/ingredient_pool_africa.csv``:
      (``code;country``, ISO-3, one row per code/country pair) supplied by the FASA team.
   2. ``data/FICD_…csv``                   — ingredient composition DB; source of
      descriptions and the authority on which codes the LP can actually use.
+  3. ``scripts/data/fasa_ingredients.csv`` and ``data/FASA_…csv`` — the FASA ingredients
+     and their composition (``scripts/build_fasa_ingredients.py``), tagged with their lab
+     sample's country and their ingredient ``group``.
 
 Output pool rows = ``(countries ∩ FICD) ∪ EXTRA_IMPORT_CODES``, minus the vitamin and
-mineral premix products (``EXCLUDED_PREFIXES``). Codes present in the country list but
+mineral premix products (``EXCLUDED_PREFIXES``), plus the FASA ingredients. Codes present in the country list but
 ABSENT from FICD have no nutrient coefficients and cannot enter the LP, so they are
 excluded (the count and range are logged at build time).
 
 Per-ingredient metadata is derived from the description: ``class`` (informational),
 ``is_fishmeal`` (1 only for "Fish meal ..."), and ``is_binder`` (1 for starch/flour/
 cassava binders). ``is_fishmeal``/``is_binder`` are ingredient-group tags; the LP does
-not use them since the fish-meal and binder caps were removed (1.0.0). Country
+not use them since the fish-meal and binder caps were removed (1.0.0). An IAFFD
+ingredient's ``group`` (config/group_limits.csv) is derived from it too: fish and shrimp
+meals count as ``Fishmeal``, brans and wheat pollard as ``All brans``. Country
 membership is emitted as a comma-separated ISO-2 ``countries`` column; an empty value
 means "not locally available in any tracked country".
 
@@ -25,6 +30,7 @@ Run from the repo root:
 
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -34,17 +40,18 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))  # allow `import fasa_core` without installing the package
 
 from fasa_core.config.defaults import (  # noqa: E402  (after sys.path bootstrap)
-    DEFAULT_DATA_DIR,
-    FICD_FILENAME,
+    FASA_FICD_FILENAME,
     SUPPORTED_COUNTRIES,
 )
+from fasa_core.data_loader import load_ficd_wide  # noqa: E402
 from fasa_core.ingredient_pool import POOL_PATH  # noqa: E402
 
 COUNTRIES_SRC = REPO_ROOT / "scripts" / "data" / "countries_pool.csv"
-FICD_SRC = DEFAULT_DATA_DIR / FICD_FILENAME
+FASA_LINES_SRC = REPO_ROOT / "scripts" / "data" / "fasa_ingredients.csv"
 POOL_OUT = POOL_PATH
 
 ISO3_TO_ISO2 = {"KEN": "KE", "NGA": "NG", "ZMB": "ZM"}
+COUNTRY_TO_ISO2 = {"Kenya": "KE", "Nigeria": "NG", "Zambia": "ZM"}  # FASA lab sample countries
 
 # Import/non-local variants kept in the pool even though they are not tagged for any
 # tracked country: millers buy them, and the LP must never be limited to local items.
@@ -61,7 +68,7 @@ EXCLUDED_PREFIXES = ("Vitamin premix", "Mineral premix")
 
 OUTPUT_COLUMNS = [
     "code", "description", "class",
-    "is_fishmeal", "is_binder", "max_inclusion", "countries",
+    "is_fishmeal", "is_binder", "max_inclusion", "countries", "group",
 ]
 
 HEADER_COMMENT = """\
@@ -78,10 +85,13 @@ HEADER_COMMENT = """\
 #                  by the LP.
 #   max_inclusion  blank = no per-ingredient cap (LP decides). Only toxin (TX*) and ASNS
 #                  nutrient limits are fixed.
+#   group          ingredient group sharing a limit in config/group_limits.csv; blank = none.
 #
 # Country-pool codes absent from FICD (no composition data) are excluded and cannot be
 # formulated until FICD gains their rows. Vitamin and mineral premix products are
 # excluded too: the premix is a fixed slice of every feed, not a pool ingredient.
+# FASA ingredients (class fasa, codes FASA-<country>-<nn>) come from
+# scripts/data/fasa_ingredients.csv; their countries tag is their lab sample's country.
 """
 
 BINDER_KEYWORDS = ("starch", "wheat flour")
@@ -122,6 +132,17 @@ def _derive_is_fishmeal(description: str) -> int:
     return int(description.strip().lower().startswith("fish meal"))
 
 
+def _derive_group(description: str) -> str:
+    # Same kinds as the FASA groups, which hold shrimp meals and wheat pollard too.
+    # Fish oil, fish bone meal and fish silage are not meals of whole fish: no group.
+    low = description.strip().lower()
+    if low.startswith("fish meal") or "shrimp" in low:
+        return "Fishmeal"
+    if re.search(r"\bbran\b|pollard", low):
+        return "All brans"
+    return ""
+
+
 def _derive_is_binder(description: str) -> int:
     low = description.lower()
     if any(k in low for k in BINDER_KEYWORDS):
@@ -143,13 +164,8 @@ def main() -> int:
     countries["code"] = countries["code"].str.strip()
     countries["country"] = countries["country"].str.strip()
 
-    ficd = pd.read_csv(FICD_SRC, dtype=str, encoding="utf-8-sig")
-    ficd["code"] = ficd["code"].str.strip()
-    ficd_desc = (
-        ficd.dropna(subset=["code"])
-        .drop_duplicates("code")
-        .set_index("code")["description"]
-    )
+    fasa = pd.read_csv(FASA_LINES_SRC, comment="#", dtype=str, keep_default_na=False)
+    ficd_desc = load_ficd_wide().set_index("code")["description"]   # FICD + FASA, as the engine reads them
     ficd_codes = set(ficd_desc.index)
 
     # ISO-2 country membership per code
@@ -173,6 +189,10 @@ def main() -> int:
         key=lambda c: int(c) if c.isdigit() else c,
     )
 
+    missing_fasa = sorted(set(fasa["code"]) - ficd_codes)
+    if missing_fasa:
+        raise SystemExit(f"FASA codes absent from {FASA_FICD_FILENAME}: {missing_fasa}")
+
     rows = []
     for code in pool_codes:
         description = ficd_desc.get(code, "")
@@ -184,6 +204,18 @@ def main() -> int:
             "is_binder": _derive_is_binder(description),
             "max_inclusion": "",
             "countries": ",".join(sorted(membership.get(code, set()))),
+            "group": _derive_group(description),
+        })
+    for line in fasa.itertuples():
+        rows.append({
+            "code": line.code,
+            "description": ficd_desc[line.code],
+            "class": "fasa",
+            "is_fishmeal": 0,
+            "is_binder": 0,
+            "max_inclusion": "",
+            "countries": COUNTRY_TO_ISO2[line.country],
+            "group": line.group,
         })
 
     out = pd.DataFrame(rows, columns=OUTPUT_COLUMNS)
@@ -203,6 +235,7 @@ def main() -> int:
     print(f"  is_fishmeal=1 ({len(fishmeal_codes)}): {', '.join(fishmeal_codes)}")
     print(f"  is_binder=1   ({len(binder_codes)}): {', '.join(binder_codes)}")
     print(f"  retained import variants (empty countries): {len(EXTRA_IMPORT_CODES)}")
+    print(f"  FASA ingredients: {len(fasa)}")
     print(f"  premix products EXCLUDED: {len(premixes & attached_codes)}")
     print(f"  country-pool codes EXCLUDED (absent from FICD): {len(excluded)}")
     if excluded:

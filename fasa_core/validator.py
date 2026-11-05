@@ -22,11 +22,13 @@ import pandas as pd
 
 from . import inclusion_limits
 from .config.defaults import (
+    DEFAULT_PREMIX_RATE,
     DEFAULT_PROCESSING_METHOD,
     PREMIX_RATES,
     SOLUTION_FRACTION_TOL,
     VALIDATION_REL_TOL,
     as_percent,
+    check_premix_rate,
 )
 from .constraint_builder import build_constraints, score_constraints
 from .data_loader import load_ficd_wide, load_paff
@@ -84,6 +86,7 @@ def validate_recipe(
     stage: Optional[str] = None,
     production_system: Optional[str] = None,
     processing_method: str = DEFAULT_PROCESSING_METHOD,
+    premix_rate: float = DEFAULT_PREMIX_RATE,
     nutrient_limits: Optional[dict] = None,
     ingredient_limits: Optional[dict] = None,
 ) -> ValidateRecipeResponse:
@@ -93,8 +96,10 @@ def validate_recipe(
     limit rows with a blank scope column apply to every request, so they bind even
     when no species/stage is given. The nutrient checks need the full
     (species, stage, production_system) triple to resolve an ASNS row set, and are
-    omitted with a warning when it is incomplete.
+    omitted with a warning when it is incomplete. They count the premix at
+    `premix_rate`, as /formulate does.
     """
+    check_premix_rate(premix_rate)
     fractions = {str(code): float(frac) for code, frac in fractions.items()}
     composition = compute_composition(fractions, parameters=parameters)
     scope = LimitScope(
@@ -149,7 +154,10 @@ def validate_recipe(
             species=species,
             stage=stage,
             production_system=production_system,
-            pool=pool,
+            # the whole pool, so a group limit is checked even when the recipe holds
+            # none of its members (it then scores 0); only the recipe's codes are scored
+            pool=load_pool(),
+            premix_rate=premix_rate,
             processing_method=processing_method,
             nutrient_limits=inclusion_limits.nutrient_bounds(
                 scope, overrides=inclusion_limits.from_request(nutrient_limits)

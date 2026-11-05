@@ -16,6 +16,7 @@ import pandas as pd
 from .config.defaults import (
     ASNS_FILENAME,
     DEFAULT_DATA_DIR,
+    FASA_FICD_FILENAME,
     FICD_FILENAME,
     PAFF_COMPOSITION_FILENAME,
     PAFF_FORMULATIONS_FILENAME,
@@ -69,13 +70,17 @@ def get_active_constraints(
 
 @lru_cache(maxsize=4)
 def load_ficd_wide(data_dir: Optional[Path] = None) -> pd.DataFrame:
-    """Pivot FICD from long to wide.
+    """Pivot FICD, plus the FASA ingredients kept in their own FICD-format file, to wide.
 
     Returns a frame indexed by ingredient `code` with columns:
         - description
         - one column per parameter
     """
-    long = pd.read_csv(_resolve(data_dir, FICD_FILENAME))
+    long = pd.concat(
+        [pd.read_csv(_resolve(data_dir, name), dtype={"code": str})
+         for name in (FICD_FILENAME, FASA_FICD_FILENAME)],
+        ignore_index=True,
+    )
     long["quantity"] = pd.to_numeric(long["quantity"], errors="coerce")
 
     wide = long.pivot_table(

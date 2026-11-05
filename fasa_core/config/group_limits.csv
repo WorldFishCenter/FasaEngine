@@ -1,0 +1,27 @@
+# FASA group limits: bounds on a GROUP of ingredients taken together (e.g. all brans).
+#
+# A single-ingredient maximum (ingredient_limits.csv) lets two brans each reach the limit;
+# a group limit bounds their sum. Members are the pool ingredients whose `group` column
+# (ingredient_pool_africa.csv) names the group: the FASA ingredients the team marked
+# (scripts/data/fasa_ingredients.csv) and the IAFFD fish and shrimp meals and brans, by name
+# (scripts/build_ingredient_pool.py).
+#
+# Effect on the LP: one constraint per bound, sum of the priced members' inclusion
+# >= min / <= max. It is reported in `composition` and in the infeasibility report under
+# the group name, in % of feed. A minimum applies only when at least one member is priced
+# (the engine cannot force in an ingredient it has no price for); otherwise a warning says
+# it was not applied.
+#
+# Columns: group, then the same scope and bound columns as ingredient_limits.csv
+# (species, production_system, stage_weight, processing_method: blank = all, stage as a
+# substring of the ASNS stage label; min/max_inclusion as a mass FRACTION in [0, 1]).
+# The most specific matching row wins.
+#
+# Source: FASA engine decisions workbook (5 November 2026), tab 3b part B, from FASA APP
+# DATA rows 6 (Fishmeal) and 258 (all brans combined). Tilapia stages mapped to the FASA
+# weight groups as in tab 3b part A: 0-10 g = < 5g and 5-10g.
+group,species,production_system,stage_weight,processing_method,min_inclusion,max_inclusion,note
+All brans,,,,,,0.15,all brans combined max 15%
+Fishmeal,Nile Tilapia,,,,0.03,,fishmeals together min 3% (10-100 g and >100 g)
+Fishmeal,Nile Tilapia,,< 5g (Starter),,0.05,,fishmeals together min 5% (0-10 g)
+Fishmeal,Nile Tilapia,,5-10g (Pre-grower),,0.05,,fishmeals together min 5% (0-10 g)

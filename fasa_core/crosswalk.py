@@ -7,7 +7,8 @@ Reads `config/crosswalk.json` once and exposes:
     → ("__ratio__", {"numer": ..., "denom": ...})   for DP/DE-style ratios
     → (None, None)                                  if the spec is unmappable
 
-  premix_mask_codes()  → set[str] of ASNS codes masked by default
+  premix_mask_codes()   → set[str] of ASNS codes masked by default
+  premix_composition()  → {ASNS code: amount per kg of premix, in the spec's ASNS unit}
 """
 
 from __future__ import annotations
@@ -19,6 +20,7 @@ from typing import Any, Tuple
 
 CROSSWALK_PATH = Path(__file__).parent / "config" / "crosswalk.json"
 PREMIX_PATH    = Path(__file__).parent / "config" / "premix_mask.json"
+PREMIX_COMPOSITION_PATH = Path(__file__).parent / "config" / "premix_composition.json"
 
 
 @lru_cache(maxsize=1)
@@ -63,8 +65,8 @@ def resolve(spec_code: str, processing_method: str = "pelleted") -> Tuple[Any, A
 
 
 def premix_mask_codes(stage: str | None = None) -> set[str]:
-    """Return the set of ASNS spec codes whose constraints are skipped because
-    the premix supplies them.
+    """Return the set of ASNS spec codes whose constraints are skipped without a
+    check (premix_mask.json).
 
     Parameters
     ----------
@@ -83,6 +85,26 @@ def premix_mask_codes(stage: str | None = None) -> set[str]:
                 base = (base | set(mods.get("add", []))) - set(mods.get("remove", []))
                 break
     return base
+
+
+@lru_cache(maxsize=1)
+def premix_composition() -> dict[str, float]:
+    """The premix's content per kg of premix, keyed by ASNS spec code, in that spec's
+    ASNS unit — so `amount * premix_rate` is the premix's contribution per kg of feed.
+
+    Raises when an entry's unit is not the spec's ASNS unit per kg (a unit slip).
+    """
+    raw = json.loads(PREMIX_COMPOSITION_PATH.read_text())["per_kg_premix"]
+    out: dict[str, float] = {}
+    for code, entry in raw.items():
+        expected = spec_unit(code)
+        if f"{entry['unit']}/kg" != expected:
+            raise ValueError(
+                f"premix_composition.json: {code} is in {entry['unit']} per kg of premix, "
+                f"but its ASNS unit is {expected!r}."
+            )
+        out[code] = float(entry["amount"])
+    return out
 
 
 def duplicate_of(spec_code: str) -> str | None:
