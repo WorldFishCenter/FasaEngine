@@ -33,7 +33,7 @@
 # mapped to the ASNS stages as in its tab 3b, written only where it differs from the
 # species maximum (a stage row is more specific, so it wins). The shrimp meal (14002) and
 # broken dried shrimp (14007) caps were removed in its tab 1b; Ochonga carries them now.
-# IAFFD blood meal, poultry meal, corn gluten meal, maize, broken rice, rapeseed meal, corn bran, wheat bran, wheat flour, palm oil, cassava tuber meal (rows at the end)
+# IAFFD blood meal, poultry meal, corn gluten meal, maize, broken rice, rapeseed meal, corn bran, wheat bran, wheat flour, palm oil, cassava tuber meal, methionine (rows at the end)
 # take FASA APP DATA's limits for the FASA lines of the same name, removed in tab 1 for
 # lack of a lab sample.
 #
@@ -559,3 +559,11 @@ FASA-ZM-11,African Catfish,,,,,0.05,"decisions tab 1 row 106: Chikanda (Sacchaom
 30307,African Catfish,,1000-1200g (Grower),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
 30307,African Catfish,,>1200g (Grower),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
 30307,African Catfish,,>1000g (Brood),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
+61111,Nile Tilapia,,10-30g (Pre-grower),,,0.002,FASA APP DATA column L (10-100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,30-70g (Grower),,,0.002,FASA APP DATA column L (10-100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,70-100g (Grower),,,0.002,FASA APP DATA column L (10-100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,100-200g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,200-400g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,400-800g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,>800g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,>1000g (Brood),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
