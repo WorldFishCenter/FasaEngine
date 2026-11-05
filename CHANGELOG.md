@@ -7,6 +7,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-05
+
 ### Added
 - `/validate-recipe` takes an optional `premix_rate` (`0.01`, `0.015` or `0.02`, default `0.02`), so its nutrient checks count the premix as `/formulate` does. When checking a recipe made at 1% or 1.5%, send that rate.
 - 43 FASA ingredients, the lines the FASA team kept in the decisions workbook returned on 5 November 2026: FASA lab samples used as-fed, with phosphorus, toxins, the anti-nutrients the lab did not measure, trace minerals and vitamins from the IAFFD ingredient the team linked to each, and digestible energy equal to gross energy times that IAFFD ingredient's digestibility. Price them like any other ingredient, with the codes `FASA-KE-01` to `FASA-ZM-11` listed in `scripts/data/fasa_ingredients.csv`; all 299 IAFFD ingredients stay. With the 24 test prices and every FASA ingredient at almost no cost, all 19 General stages have a recipe, and FASA ingredients make up 42 to 68% of it (median 57%).
