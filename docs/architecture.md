@@ -58,8 +58,7 @@ The project provides an API that helps formulate fish feed recipes based on:
   members are named in the pool's `group` column).
   They express what a mill can actually formulate and process, which composition data
   alone does not. The ingredient table carries per-species and per-stage maximums; the nutrient table
-  ships without data rows pending the values, and filling its columns activates it with
-  no code change. Clients can also supply bounds per request.
+  holds an ash maximum (WorldFish), and further rows take effect with no code change. Clients can also supply bounds per request.
 
 ## Versioning and changes
 

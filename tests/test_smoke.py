@@ -419,10 +419,16 @@ def test_shipped_ingredient_limits_resolve_per_species():
         LimitScope,
         ingredient_bounds,
         ingredient_limit_rows,
+        nutrient_bounds,
         nutrient_limit_rows,
     )
 
-    assert nutrient_limit_rows() == ()  # nutrient half still awaits its values
+    # nutrient half: only the WorldFish ash maximum, which has no value for catfish 5-500 g
+    assert {r["key"] for r in nutrient_limit_rows()} == {"PA06"}
+    ash = lambda sp, st: nutrient_bounds(LimitScope(sp, st, "General")).get("PA06")  # noqa: E731
+    assert ash("Nile Tilapia", "30-70g (Grower)").maximum == 10
+    assert ash("African Catfish", "500-800g (Grower)").maximum == 8
+    assert ash("African Catfish", "50-200g (Grower)") is None
     rows = ingredient_limit_rows()
     assert {r["key"] for r in rows} <= {rec.code for rec in load_pool()}
     assert {r["scope"]["species"] for r in rows} <= {"", *SUPPORTED_SPECIES}
@@ -524,7 +530,9 @@ def test_a_binding_nutrient_limit_is_named_in_the_iis():
 
 def test_ingredients_without_a_limit_row_keep_an_open_box():
     """An ingredient no limit row names keeps an open box; nutrients come from ASNS and the FASA rules."""
-    from fasa_core.inclusion_limits import LimitScope, group_limit_rows, ingredient_bounds
+    from fasa_core.inclusion_limits import (
+        LimitScope, group_limit_rows, ingredient_bounds, nutrient_limit_rows,
+    )
 
     base = formulate(**BASE)
     if base.status != "optimal":
@@ -535,9 +543,9 @@ def test_ingredients_without_a_limit_row_keep_an_open_box():
     assert unnamed
     assert all(line.limit_source is None for line in unnamed)
     assert all(line.max_inclusion_percent is None for line in unnamed)
-    groups = {r["key"] for r in group_limit_rows()}
+    layered = {r["key"] for r in group_limit_rows() + nutrient_limit_rows()}
     assert all(line.source in ("asns", "fasa") for line in base.composition
-               if line.code not in groups)
+               if line.code not in layered)
 
 
 def test_scope_resolution_prefers_the_most_specific_row(tmp_path):

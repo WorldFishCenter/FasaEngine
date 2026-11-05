@@ -7,8 +7,8 @@ minimum carrier levels). Without it a least-cost LP happily returns diets that m
 every nutrient target yet cannot be extruded or will not grow fish.
 
 Three config files. The ingredient table carries per-species and per-stage maximums; the
-nutrient table ships with a documented header and no data rows yet, so ASNS (with the
-FASA team's changes) alone bounds nutrients:
+nutrient table holds only an ash maximum (WorldFish), so otherwise ASNS (with the FASA
+team's changes) alone bounds nutrients:
 
   * `config/nutrient_limits.csv`    bounds on dietary nutrient levels, keyed by ASNS code
   * `config/ingredient_limits.csv`  bounds on single-ingredient inclusion, keyed by FICD or
