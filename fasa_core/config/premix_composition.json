@@ -1,0 +1,38 @@
+{
+  "_doc": [
+    "Composition of the vitamin/mineral premix every feed carries, per kg of premix, as",
+    "supplied by the FASA team (FASA APP DATA.xlsx, sheet PREMIX, received 2026-10-29):",
+    "one default premix for every user, at 1, 1.5 or 2% of the feed.",
+    "",
+    "Each entry is keyed by the ASNS spec code it supplies. The engine adds",
+    "amount x premix_rate to that nutrient (per kg of feed), so these specs are checked like",
+    "any other nutrient, premix included. `label` is the name on the FASA sheet; `unit` is the",
+    "sheet's unit per kg of premix and must equal the spec's ASNS unit without '/kg'",
+    "(checked at load time).",
+    "",
+    "Not used: cobalt (200 mg) and BHT (1500 mg), for which ASNS sets no requirement.",
+    "Choline and inositol are not in this premix and stay in premix_mask.json."
+  ],
+
+  "per_kg_premix": {
+    "V10": {"label": "Vitamin A",      "amount": 2000000, "unit": "IU"},
+    "V11": {"label": "Vitamin D3",     "amount": 400000,  "unit": "IU"},
+    "V12": {"label": "Vitamin E",      "amount": 30000,   "unit": "mg"},
+    "V13": {"label": "Vitamin K3",     "amount": 2000,    "unit": "mg"},
+    "V07": {"label": "Vitamin B1",     "amount": 5000,    "unit": "mg"},
+    "V06": {"label": "Vitamin B2",     "amount": 8000,    "unit": "mg"},
+    "V05": {"label": "Vitamin B6",     "amount": 5000,    "unit": "mg"},
+    "V08": {"label": "Vitamin B12",    "amount": 10,      "unit": "mg"},
+    "V03": {"label": "Nicotinic acid", "amount": 40000,   "unit": "mg"},
+    "V09": {"label": "Vitamin C",      "amount": 50000,   "unit": "mg"},
+    "V04": {"label": "C-Pantothenate", "amount": 15000,   "unit": "mg"},
+    "V02": {"label": "Folic acid",     "amount": 1500,    "unit": "mg"},
+    "V01": {"label": "Biotin",         "amount": 200,     "unit": "mg"},
+    "M09": {"label": "Iron",           "amount": 10000,   "unit": "mg"},
+    "M08": {"label": "Copper",         "amount": 1600,    "unit": "mg"},
+    "M10": {"label": "Manganese",      "amount": 6000,    "unit": "mg"},
+    "M12": {"label": "Zinc",           "amount": 15000,   "unit": "mg"},
+    "M13": {"label": "Iodine",         "amount": 200,     "unit": "mg"},
+    "M11": {"label": "Selenium",       "amount": 20,      "unit": "mg"}
+  }
+}

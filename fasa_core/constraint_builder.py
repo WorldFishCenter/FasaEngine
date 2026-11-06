@@ -16,18 +16,29 @@ Intermediate form per row:
       "kind":             "linear"  (ratios get linearized in this same form)
     }
 
-The premix mask is applied here: masked spec codes never make it into the
+The premix is applied here too. Its composition (premix_composition.json) is
+credited through `constant` — `amount * premix_rate` per kg of feed — so its
+vitamins and trace minerals are checked like any other nutrient. The premix
+mask covers only what the premix lacks: masked spec codes never make it into the
 output. Toxin (TX*) maximums are NEVER masked, even if premix_mask.json lists
 them — the premix doesn't add toxins, and the safety ceilings on
 aflatoxin/gossypol/etc. are non-negotiable per the FASA brief.
+
+The FASA team's changes to the ASNS rules come first (`_apply_fasa_rules`; the values
+live in config/defaults.py): some rules are dropped for every feed, catfish crude protein
+follows the FASA requirements table, crude protein and lipid get a maximum, and a saponin
+maximum is added. A rule this step created or changed reports source "fasa".
 
 The nutrient inclusion-limit layer (`inclusion_limits`) is folded into the ASNS
 row set before emission, so the limits inherit the whole existing pipeline —
 crosswalk resolution, unit conversion, coefficients, the composition report and
 the deletion-filter IIS. A row the layer created or tightened is exempt from the
 premix mask — an explicit operator bound always binds — while a plain ASNS row
-for the same code stays masked, so capping zinc does not also resurrect the zinc
-minimum the premix supplies.
+for the same code stays masked, so capping choline does not also resurrect the
+choline minimum the FASA team dropped.
+
+Group limits (config/group_limits.csv) are emitted last: one row per bound on the sum of
+the priced members' inclusion, in % of feed, under the group's name.
 """
 
 from __future__ import annotations
@@ -38,9 +49,17 @@ from typing import Optional
 import pandas as pd
 
 from . import crosswalk
-from .config.defaults import IN_SPEC_ABS_TOL, IN_SPEC_INPUT_TOL, IN_SPEC_REL_TOL
+from .config.defaults import (
+    DROPPED_RULES,
+    FASA_REQUIREMENTS,
+    IN_SPEC_ABS_TOL,
+    IN_SPEC_INPUT_TOL,
+    IN_SPEC_REL_TOL,
+    PROTEIN_LIPID_RANGE,
+    SAPONIN_RULE,
+)
 from .data_loader import get_active_constraints
-from .inclusion_limits import Bound
+from .inclusion_limits import Bound, LimitScope, group_bounds
 from .ingredient_pool import IngredientRecord, attach_ficd_rows
 from .models import NutrientLine
 
@@ -54,7 +73,7 @@ class LinearConstraint:
     coeffs: dict[str, float]
     constant: float
     unit: str
-    source: str = "asns"    # "asns" | "asns+<layer>" | "<layer>"; see inclusion_limits
+    source: str = "asns"    # "asns" | "fasa" | "<that>+<layer>" | "<layer>"; see inclusion_limits
 
     def __repr__(self) -> str:                                                # pragma: no cover
         op = {"Minimum": ">=", "Maximum": "<=", "Ratio": "="}[self.restriction_type]
@@ -66,6 +85,8 @@ def build_constraints(
     stage: str,
     production_system: str,
     pool: list[IngredientRecord],
+    *,
+    premix_rate: float,
     processing_method: str = "pelleted",
     nutrient_limits: Optional[dict[str, Bound]] = None,
 ) -> tuple[list[LinearConstraint], list[str]]:
@@ -76,11 +97,15 @@ def build_constraints(
     constraints : list[LinearConstraint]
     warnings    : list[str] — non-fatal notes (unmappable specs, etc.)
     """
-    asns_active = get_active_constraints(species, stage, production_system)
+    asns_active = _apply_fasa_rules(
+        get_active_constraints(species, stage, production_system), species, stage
+    )
     asns_active, warnings = _apply_nutrient_limits(asns_active, nutrient_limits or {})
     ficd_pool = attach_ficd_rows(pool).set_index("code")
 
-    # every feed carries the premix, so the specs it covers are always masked
+    # every feed carries the premix: its composition is credited below; the codes in
+    # premix_mask.json are skipped
+    premix = crosswalk.premix_composition()
     mask = crosswalk.premix_mask_codes(stage)
 
     out: list[LinearConstraint] = []
@@ -96,11 +121,11 @@ def build_constraints(
 
         # --- masking rules -------------------------------------------------- #
         if code in mask and not code.startswith("TX") and source == "asns":
-            # vit/trace-mineral satisfied by premix; skip silently
+            # in premix_mask.json: not checked; skip silently
             continue
         # toxins are NEVER masked. Neither is a row the limit layer
         # created or tightened — but a plain ASNS row for the same code stays masked,
-        # so bounding zinc's maximum never resurrects the minimum the premix supplies.
+        # so bounding choline's maximum never resurrects the dropped minimum.
 
         ficd_param, factor = crosswalk.resolve(code, processing_method)
         unit = row["unit"] or crosswalk.spec_unit(code)
@@ -118,9 +143,9 @@ def build_constraints(
         # ------------- linear (non-ratio) specs ---------------------------- #
         if ficd_param != "__ratio__":
             coeffs = _ingredient_coefficients(ficd_pool, ficd_param)
-            constant = 0.0  # placeholder — premix nutrient credit could be added here
-                            # in the future for non-masked specs that the premix still
-                            # contributes to (e.g., choline). For MVP we keep it 0.
+            # the premix's own content of this nutrient per kg of feed (0 for most
+            # specs), converted like the target into FICD units
+            constant = premix.get(code, 0.0) * premix_rate * float(factor)
 
             # apply the unit conversion to the spec target
             rhs = rhs_raw * float(factor)
@@ -173,6 +198,66 @@ def build_constraints(
                 source=source,
             )
         )
+
+    scope = LimitScope(species, stage, production_system, processing_method)
+    groups, group_warnings = _group_constraints(pool, group_bounds(scope))
+    return out + groups, warnings + group_warnings
+
+
+def _apply_fasa_rules(asns_active: pd.DataFrame, species: str, stage: str) -> pd.DataFrame:
+    """Apply the FASA team's changes to the ASNS rules (decisions of 5 November 2026).
+
+    Dropped rules leave every feed; a rule created or changed here reports source "fasa".
+    """
+    df = asns_active[~asns_active["code"].isin(DROPPED_RULES)].copy()
+    df["source"] = "asns"
+
+    for code, value in FASA_REQUIREMENTS.get((species, stage), {}).items():
+        df.loc[df["code"] == code, ["value_numeric", "source"]] = [value, "fasa"]
+
+    added = []
+    for code, width in PROTEIN_LIPID_RANGE.items():
+        for idx in df.index[(df["code"] == code) & (df["restriction_type"] == "Minimum")]:
+            minimum = float(df.at[idx, "value_numeric"])
+            added.append({**df.loc[idx].to_dict(), "restriction_type": "Maximum",
+                          "value_numeric": round(minimum + width, 6), "source": "fasa"})
+            df.loc[idx, ["value_numeric", "source"]] = [round(minimum - width, 6), "fasa"]
+
+    soyasaponin, saponin = SAPONIN_RULE
+    for idx in df.index[df["code"] == soyasaponin]:
+        added.append({**df.loc[idx].to_dict(), "code": saponin, "source": "fasa"})
+
+    return pd.concat([df, pd.DataFrame(added)], ignore_index=True) if added else df
+
+
+def _group_constraints(
+    pool: list[IngredientRecord],
+    bounds: dict[str, Bound],
+) -> tuple[list[LinearConstraint], list[str]]:
+    """One row per group bound: the priced members' inclusion summed, in % of feed."""
+    out: list[LinearConstraint] = []
+    warnings: list[str] = []
+    for group, bound in sorted(bounds.items()):
+        members = {rec.code: 100.0 for rec in pool if rec.group == group}
+        if not members:
+            if bound.minimum:
+                warnings.append(
+                    f"[limit] the {bound.minimum * 100:g}% minimum on '{group}' was not "
+                    f"applied: none of its ingredients is priced."
+                )
+            continue
+        for rtype, value in (("Minimum", bound.minimum), ("Maximum", bound.maximum)):
+            if value is not None:
+                out.append(LinearConstraint(
+                    spec_code=group,
+                    spec_label=f"{group} (ingredients together)",
+                    restriction_type=rtype,
+                    rhs=value * 100.0,
+                    coeffs=members,
+                    constant=0.0,
+                    unit="% of feed",
+                    source=bound.source,
+                ))
     return out, warnings
 
 
@@ -182,12 +267,12 @@ def _apply_nutrient_limits(
 ) -> tuple[pd.DataFrame, list[str]]:
     """Fold the nutrient inclusion-limit layer into the active ASNS rows.
 
-    Where ASNS already states the same direction for a spec code, the tighter value
-    replaces the target; where it does not, a row is appended. Either way the result
-    is an ordinary ASNS-shaped frame, so the emission loop below stays unchanged.
+    Runs after `_apply_fasa_rules`, which sets each row's `source`. Where the frame
+    already states the same direction for a spec code, the tighter value replaces the
+    target and `+limits` (or `+request`) is appended to its source; where it does not, a
+    row is appended. The emission loop below reads the result unchanged.
     """
     df = asns_active.copy()
-    df["source"] = "asns"
     if not bounds:
         return df, []
 
@@ -206,7 +291,7 @@ def _apply_nutrient_limits(
                 tighter = max(current, value) if rtype == "Minimum" else min(current, value)
                 if tighter != current:
                     df.at[idx, "value_numeric"] = tighter
-                    df.at[idx, "source"] = f"asns+{bound.source}"
+                    df.at[idx, "source"] = f"{df.at[idx, 'source']}+{bound.source}"
                 continue
 
             ficd_param, _ = crosswalk.resolve(code)

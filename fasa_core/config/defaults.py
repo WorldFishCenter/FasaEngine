@@ -8,6 +8,7 @@ DEFAULT_DATA_DIR = PACKAGE_ROOT / "data"
 
 ASNS_FILENAME = "ASNS_nutrition_specification_database.csv"
 FICD_FILENAME = "FICD_feed_ingredient_composition_database.csv"
+FASA_FICD_FILENAME = "FASA_feed_ingredient_composition.csv"   # FASA ingredients, FICD format
 PAFF_FORMULATIONS_FILENAME = (
     "PAFF_practical_aquaculture_feed_formulation_database_Feed_Formulations.csv"
 )
@@ -43,11 +44,10 @@ def as_percent(value: "float | None") -> "float | None":
 
 
 # --- premix ---
-# Every feed carries a vitamin/mineral premix. It is modelled as a fixed slice of the
-# feed that supplies the vitamins and trace minerals listed in premix_mask.json (their
-# constraints are skipped) and adds nothing else: its own nutrients are not counted.
-# Moving to a real premix with a known composition means crediting its nutrients in
-# constraint_builder (the `constant` term) and trimming the mask to what it covers.
+# Every feed carries a vitamin/mineral premix: a fixed slice of the feed whose
+# vitamins and trace minerals (premix_composition.json) are counted at premix_rate
+# through constraint_builder's `constant` term. It adds nothing else. Choline and
+# inositol, which it lacks, are skipped (premix_mask.json): the FASA team dropped them.
 PREMIX_RATES = (0.01, 0.015, 0.02)   # the rates a caller may choose: 1, 1.5 or 2 % of feed
 DEFAULT_PREMIX_RATE = 0.02
 
@@ -61,6 +61,44 @@ def check_premix_rate(rate: float) -> float:
     if rate not in PREMIX_RATES:
         raise ValueError(f"premix_rate must be one of {list(PREMIX_RATES)}")
     return rate
+
+
+def check_prices(prices: dict[str, float]) -> dict[str, float]:
+    """Return `prices` if none is negative, else raise ValueError.
+
+    Shared by the API request validator and the core `formulate()` entry point. A price
+    of 0 is allowed (a free by-product); a negative one would make the feed cost wrong.
+    """
+    negative = sorted(code for code, price in prices.items() if price < 0)
+    if negative:
+        raise ValueError(f"prices must not be negative: {', '.join(negative)}")
+    return prices
+
+# --- FASA team's rule decisions (decisions workbook returned 5 November 2026) ---
+# ASNS rules removed from every feed. Choline (V14) and inositol (V15), also dropped
+# (tab 2), are skipped through premix_mask.json instead.
+DROPPED_RULES = frozenset({
+    "ADPXF02", "ADPXF09", "ADPXF10",                                  # digestible protein, DP/DE
+    *(f"ADAAF{n:02d}" for n in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13)),  # digestible amino acids
+    "M0271", "M0272", "M0273", "M0274",                               # digestible phosphorus
+    "FA14", "FA15",                                                   # phospholipids, cholesterol
+    "M03", "M04", "M05", "M06",                                       # Na, Cl, K, Mg
+    "PA02",                                                           # moisture minimum (10%)
+})
+# Digestible energy (ED01, ED02, ADPXF04) stays for every feed, as the team confirmed; FASA
+# ingredients get gross energy x the linked IAFFD ingredient's digestibility
+# (build_fasa_ingredients.py).
+# Crude protein and lipid may range this far either side of the requirement: the minimum
+# comes down by as much and a maximum is added (the team's example: protein 42 -> 40-44).
+PROTEIN_LIPID_RANGE = {"PA03": 2.0, "PA04": 1.0}
+# Where the FASA requirements table (FASA APP DATA rows 316-364) replaces ASNS: catfish crude
+# protein only. Its other filled rows equal ASNS.
+FASA_REQUIREMENTS = {
+    ("African Catfish", "50-200g (Grower)"): {"PA03": 36.0},    # ASNS 35.6
+    ("African Catfish", "800-1000g (Grower)"): {"PA03": 31.5},  # ASNS 31.7
+}
+# Saponin maximum: the ASNS soyasaponin (TX15) maximum, read against the FASA lab saponin.
+SAPONIN_RULE = ("TX15", "TX15F")
 
 # --- processing ---
 DEFAULT_PROCESSING_METHOD = "pelleted"   # "pelleted" | "extruded"

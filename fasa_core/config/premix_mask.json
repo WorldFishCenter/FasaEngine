@@ -1,29 +1,21 @@
 {
   "_doc": [
-    "Premix mask: ASNS specification codes whose nutritional requirement is assumed",
-    "to be satisfied by a fixed-rate vitamin/trace-mineral premix added to the feed.",
-    "Every feed carries the premix, so constraints with these codes are always SKIPPED",
-    "by the LP; everything else (macros, AAs, energy, Ca, P, fatty acids, toxins) stays.",
+    "Premix mask: ASNS specification codes that are not checked. Constraints with these",
+    "codes are SKIPPED by the LP.",
     "",
-    "The codes here are defaults sourced from common smallholder-feed-mill practice.",
+    "The premix's vitamins and trace minerals are counted from premix_composition.json",
+    "and checked like any other nutrient. Only the two it lacks remain here, choline",
+    "(V14) and inositol (V15): the FASA team dropped these rules (decisions workbook",
+    "returned 5 November 2026, tab 2).",
     "",
     "Toxins (TX*) are NEVER masked — they are hard ceilings driven by raw-ingredient",
     "selection, regardless of premix presence."
   ],
 
-  "default_mask_codes": [
-    "V01", "V02", "V03", "V04", "V05", "V06", "V07", "V08", "V09",
-    "V10", "V11", "V12", "V13", "V14", "V15",
-    "M08", "M09", "M10", "M11", "M12", "M13"
-  ],
+  "default_mask_codes": ["V14", "V15"],
 
   "stage_overrides": {
     "_doc": "Optional: stage-specific mask additions/removals. Format: {<stage_label>: {add: [...], remove: [...]}}",
-    "<5g (Starter)": {"add": [], "remove": []},
-    "Brood": {
-      "_doc": "For brood stock, vitamin C is critical for egg quality and may be restored as a hard constraint.",
-      "add": [],
-      "remove": ["V09"]
-    }
+    "<5g (Starter)": {"add": [], "remove": []}
   }
 }

@@ -6,13 +6,17 @@ composition table (fibre ceilings, per-ingredient palatability/extrudability cap
 minimum carrier levels). Without it a least-cost LP happily returns diets that meet
 every nutrient target yet cannot be extruded or will not grow fish.
 
-Two config files. The ingredient table carries per-species maximums; the nutrient table
-ships with a documented header and no data rows yet, so ASNS alone bounds nutrients:
+Three config files. The ingredient table carries per-species and per-stage maximums; the
+nutrient table holds only an ash maximum (WorldFish), so otherwise ASNS (with the FASA
+team's changes) alone bounds nutrients:
 
   * `config/nutrient_limits.csv`    bounds on dietary nutrient levels, keyed by ASNS code
-  * `config/ingredient_limits.csv`  bounds on single-ingredient inclusion, keyed by FICD code
+  * `config/ingredient_limits.csv`  bounds on single-ingredient inclusion, keyed by FICD or
+                                    FASA ingredient code
+  * `config/group_limits.csv`       bounds on a group of ingredients together, keyed by the
+                                    group name in the pool's `group` column
 
-Both share the same scoping convention: the `species`, `production_system`,
+All three share the same scoping convention: the `species`, `production_system`,
 `stage_weight` and `processing_method` columns are filters, blank meaning "applies to
 all". `stage_weight` matches as a substring of the ASNS stage label (the convention
 `crosswalk.premix_mask_codes` already uses for its stage overrides). When several rows
@@ -40,8 +44,9 @@ from .ingredient_pool import IngredientRecord
 
 NUTRIENT_LIMITS_PATH = Path(__file__).parent / "config" / "nutrient_limits.csv"
 INGREDIENT_LIMITS_PATH = Path(__file__).parent / "config" / "ingredient_limits.csv"
+GROUP_LIMITS_PATH = Path(__file__).parent / "config" / "group_limits.csv"
 
-# Scope columns shared by both files; blank cell ⇒ no filtering on that dimension.
+# Scope columns shared by all three files; blank cell ⇒ no filtering on that dimension.
 SCOPE_COLUMNS = ("species", "production_system", "stage_weight", "processing_method")
 
 
@@ -120,6 +125,11 @@ def ingredient_bounds(
         if rec.code not in resolved and rec.max_inclusion is not None:
             resolved[rec.code] = Bound(maximum=rec.max_inclusion, source="pool")
     return resolved
+
+
+def group_bounds(scope: LimitScope) -> dict[str, Bound]:
+    """Resolve the limits on groups of ingredients taken together, keyed by group name."""
+    return _resolve(group_limit_rows(), scope)
 
 
 def box(bound: Optional[Bound]) -> tuple[float, float]:
@@ -213,14 +223,25 @@ def nutrient_limit_rows() -> tuple[dict, ...]:
 @lru_cache(maxsize=1)
 def ingredient_limit_rows() -> tuple[dict, ...]:
     """Parsed ingredient-limit rows. Raises on a bound outside [0, 1]."""
-    rows = _load(INGREDIENT_LIMITS_PATH, "code", "min_inclusion", "max_inclusion")
+    return _fractions(INGREDIENT_LIMITS_PATH, "code")
+
+
+@lru_cache(maxsize=1)
+def group_limit_rows() -> tuple[dict, ...]:
+    """Parsed group-limit rows, keyed by group name. Raises on a bound outside [0, 1]."""
+    return _fractions(GROUP_LIMITS_PATH, "group")
+
+
+def _fractions(path: Path, key_col: str) -> tuple[dict, ...]:
+    """Load an inclusion-limit file whose bounds are mass fractions, checking each is in [0, 1]."""
+    rows = _load(path, key_col, "min_inclusion", "max_inclusion")
     for row in rows:
         for field in ("min", "max"):
             value = row[field]
             if value is not None and not 0.0 <= value <= 1.0:
                 raise ValueError(
-                    f"ingredient_limits.csv: code {row['key']!r} has "
-                    f"{field}_inclusion {value!r} outside [0, 1] (mass fraction)."
+                    f"{path.name}: {key_col} {row['key']!r} has {field}_inclusion "
+                    f"{value!r} outside [0, 1] (mass fraction)."
                 )
     return rows
 

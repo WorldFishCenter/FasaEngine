@@ -37,6 +37,7 @@ from .config.defaults import (
     WARN_INGREDIENT_INCLUSION_THRESHOLD,
     as_percent,
     check_premix_rate,
+    check_prices,
     normalize_country,
 )
 from .constraint_builder import LinearConstraint, build_constraints, score_constraints
@@ -83,6 +84,7 @@ def formulate(
     # `locally_available` is compared against the pool's upper-cased ISO-2 tags.
     country = normalize_country(country)
     check_premix_rate(premix_rate)
+    check_prices(prices)
 
     # request fields every response echoes back, whatever its status
     echoed = dict(
@@ -124,10 +126,17 @@ def formulate(
         stage=stage,
         production_system=production_system,
         pool=pool,
+        premix_rate=premix_rate,
         processing_method=processing_method,
         nutrient_limits=nutrient_box,
     )
     build_warnings += inclusion_limits.zero_cap_warnings(ingredient_box, pool_by_code)
+    unpooled = sorted(set(prices) - set(pool_by_code))
+    if unpooled:
+        build_warnings.append(
+            f"[skip] {len(unpooled)} priced code(s) are not in the ingredient pool and were "
+            f"ignored: {', '.join(unpooled)}."
+        )
 
     # MVP placeholder hook (no-op). Wire in non-additive interaction corrections
     # here when empirical pairwise data becomes available (Hua & Bureau 2012).
@@ -176,9 +185,10 @@ def formulate(
             ],
             suggestion=(
                 "Consider adding alternative ingredients (e.g., synthetic Lys/Met, "
-                "fish meal, soybean meal), a lower premix rate, relaxing an "
-                "inclusion limit, or relaxing the production-system tier "
-                "(General-LowCost ↔ General)."
+                "fish meal, soybean meal), another premix rate (a lower one leaves "
+                "more room for the other ingredients, a higher one adds more of the "
+                "premix's vitamins and trace minerals), relaxing an inclusion limit, "
+                "or relaxing the production-system tier (General-LowCost ↔ General)."
             ),
         ))
 

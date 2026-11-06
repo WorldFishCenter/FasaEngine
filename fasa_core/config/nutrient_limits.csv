@@ -34,7 +34,15 @@
 # columns); ties are resolved toward the tighter bound. Each direction resolves
 # independently.
 #
-# NO ROWS YET — the limits are still being compiled. While this file holds no data rows
-# the engine behaves exactly as before (ASNS alone). Fill the columns to activate the
-# layer; callers can also pass `nutrient_limits` per request in the meantime.
+# Rows: the ash maximum from WorldFish's feed formulation constraints (Ingredient _Max
+# inclusion.xlsx, sheets Tilapia and Catfish); ASNS has an ash row with no value. That file
+# covers General only; the rows apply to every production system. It gives no ash value
+# for catfish 5-500 g.
 spec_code,species,production_system,stage_weight,processing_method,min,max,unit,note
+PA06,Nile Tilapia,,,,,10,%,"WorldFish feed formulation constraints, sheet Tilapia (all stages)"
+PA06,African Catfish,,< 5g (Starter),,,10,%,"WorldFish feed formulation constraints, sheet Catfish"
+PA06,African Catfish,,500-800g (Grower),,,8,%,"WorldFish feed formulation constraints, sheet Catfish"
+PA06,African Catfish,,800-1000g (Grower),,,8,%,"WorldFish feed formulation constraints, sheet Catfish"
+PA06,African Catfish,,1000-1200g (Grower),,,8,%,"WorldFish feed formulation constraints, sheet Catfish"
+PA06,African Catfish,,>1200g (Grower),,,8,%,"WorldFish feed formulation constraints, sheet Catfish"
+PA06,African Catfish,,>1000g (Brood),,,8,%,"WorldFish feed formulation constraints, sheet Catfish"

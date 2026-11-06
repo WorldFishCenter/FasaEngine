@@ -1,0 +1,56 @@
+# FASA ingredients: the 43 lines kept in tab 1 of the FASA engine decisions workbook
+# (returned by the FASA team on 5 November 2026). Input of scripts/build_fasa_ingredients.py
+# and scripts/build_ingredient_pool.py.
+#
+# Columns:
+#   code         engine code, FASA-<sample country>-<nn>. Fixed once assigned: the app stores
+#                it, so never renumber; give a new line the next free number.
+#   name         ingredient name as in FASA APP DATA.xlsx (tab 1, column B)
+#   sample       lab sample in Ingredient Databasev2.xlsx, sheet Nutrient composition (column F)
+#   country      the sample's country of origin, as in the lab file
+#   iaffd_code   the IAFFD ingredient that fills the sample's gaps (column G)
+#   group        ingredient group that shares a limit in fasa_core/config/group_limits.csv (column J)
+code,name,sample,country,iaffd_code,group
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis)","Clupeid, Worongi, (Pellonula leonensis)",Nigeria,10009,Fishmeal
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis)","Clupeid, Worongi, (Sierathrissa leonensis)",Nigeria,10009,Fishmeal
+FASA-NG-03,Mudskipper (Periophhthalmus argentilineatus),Mudskipper (Periophhthalmus argentilineatus),Nigeria,10009,Fishmeal
+FASA-KE-01,Omena (Rastrineobola argentea),Omena (Rastrineobola argentea),Kenya,10040,Fishmeal
+FASA-ZM-01,Kakeya,Kakeya,Zambia,10009,Fishmeal
+FASA-ZM-02,Chisense (Potamothrissa acutirostris),Chisense (Potamothrissa acutirostris),Zambia,10011,Fishmeal
+FASA-ZM-03,Siavonga Kapenta (Limothrissa miodon),Siavonga Kapenta (Limothrissa miodon),Zambia,10018,Fishmeal
+FASA-KE-02,Shrimp meal /Ochonga,Ochonga / Shrimps,Kenya,14000,Fishmeal
+FASA-ZM-04,Crayfish (Cherax quadricarinatus),Crayfish (Cherax quadricarinatus),Zambia,14006,Fishmeal
+FASA-KE-03,Ochonga,Ochonga / Shrimps,Kenya,14000,Fishmeal
+FASA-NG-04,Black Soldier Fly Larvae (Hermetia illucens),Black Soldier Fly Larvae (Hermetia illucens),Nigeria,27110,
+FASA-KE-04,Black Soldier Fly Larvae Meal,Black soldier fly larvae meal,Kenya,27111,
+FASA-KE-05,Mealworm,Meal worm,Kenya,27004,
+FASA-KE-06,Cricket,Cricket,Kenya,27002,
+FASA-ZM-05,Caterpillar (Vinkubala),Caterpillar (Vinkubala),Zambia,27004,
+FASA-ZM-06,Caterpillar (Tukanja),Caterpillar (Tukanja),Zambia,27004,
+FASA-KE-07,Soybean meal (defatted),Soybean meal dry,Kenya,31257,
+FASA-KE-08,Soy bean full fat,Soybean full fat,Kenya,31264,
+FASA-KE-09,cottonseed meal /cake,Cottonseed cake,Kenya,30406,
+FASA-KE-10,"peanut meal, cake",Groundnut cake,Kenya,30845,
+FASA-KE-11,"Sunflower meal, cake",Sunflower meal,Kenya,31420,
+FASA-ZM-07,"Sunflower meal, cake",Sunflower cake,Zambia,31420,
+FASA-NG-05,White cowpea (Vigna unguiculata),White cowpea (Vigna unguiculata),Nigeria,30555,
+FASA-NG-06,Brown cowpea (Vigna unguiculata),Brown cowpea (Vigna unguiculata),Nigeria,30555,
+FASA-ZM-08,Velvet beans seed (Mucuna pruriens),Velvet beans seed (Mucuna pruriens),Zambia,30555,
+FASA-ZM-09,Velvet beans meal (Mucuna pruriens),Velvet beans meal,Zambia,30555,
+FASA-NG-07,Local brewery waste (Sorghum bicolor),Local brewery waste (Sorghum bicolor),Nigeria,30517,
+FASA-KE-12,Brewery and distillery grains,Brewery and distillery grains,Kenya,30212,
+FASA-NG-08,Shea nut butter waste (Vitellaria paradoxa),Shea nut butter waste (Vitellaria paradoxa),Nigeria,30402,
+FASA-NG-09,Baobab leave Meal (Adansonia digitata),Baobab leave Meal (Adansonia digitata),Nigeria,42005,
+FASA-NG-10,Bambara nut waste meal (Vigna subterranean),Bambara nut waste meal (Vigna subterranean),Nigeria,30402,
+FASA-NG-11,Roselle seed meal,Roselle seed meal,Nigeria,30841,
+FASA-NG-12,African Locust bean fruit pulp (Parkia biglobosa),African Locust bean fruit pulp (Parkia biglobosa),Nigeria,30402,
+FASA-NG-13,Tiger nut waste (Cyperus esculentus),Tiger nut waste (Cyperus esculentus),Nigeria,30402,
+FASA-NG-14,Yam peel meal,Yam peel meal,Nigeria,30105,
+FASA-ZM-10,Tea waste (Camellia sinesis),Tea waste (Camellia sinesis),Zambia,30402,
+FASA-NG-15,Plantain peel meal (Musa sapientum),Plantain peel meal  (Musa sapientum),Nigeria,30105,
+FASA-NG-16,Chaya leaf meal (Cnidoscolus chayamansa),Chaya leaf meal (Cnidoscolus chayamansa),Nigeria,42005,
+FASA-KE-13,"Sorghum, meal",Sorghum meal,Kenya,31147,
+FASA-KE-14,rice bran,Rice bran,Kenya,30937,All brans
+FASA-KE-15,Wheat pollard,Wheat pollard,Kenya,31617,All brans
+FASA-KE-16,Cassava (Dried),"Cassava, dried",Kenya,30310,
+FASA-ZM-11,Chikanda (Sacchaomyces cerevisiae),Chikanda (Sacchaomyces cerevisiae),Zambia,40205,

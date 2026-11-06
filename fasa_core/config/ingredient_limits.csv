@@ -13,7 +13,7 @@
 # no price for.
 #
 # Columns:
-#   code                FICD ingredient code (must be present in the ingredient pool).
+#   code                FICD or FASA ingredient code (must be present in the ingredient pool).
 #   species             blank = all. Exact match ("Nile Tilapia" | "African Catfish").
 #   production_system   blank = all. Exact match ("General-LowCost" | "General").
 #   stage_weight        blank = all. SUBSTRING match against the ASNS stage label, so
@@ -27,6 +27,15 @@
 #   max_inclusion       mass FRACTION of total feed in [0, 1] — write 0.15 for 15%, NOT 15.
 #                       Blank = no ceiling. A value outside [0, 1] fails at load time.
 #   note                free text, not read by the engine.
+#
+# FASA ingredients (rows at the end): maximum per species from tab 1 (columns H-I) of the
+# FASA engine decisions workbook (5 November 2026); per stage from FASA APP DATA columns K-P,
+# mapped to the ASNS stages as in its tab 3b, written only where it differs from the
+# species maximum (a stage row is more specific, so it wins). The shrimp meal (14002) and
+# broken dried shrimp (14007) caps were removed in its tab 1b; Ochonga carries them now.
+# IAFFD blood meal, poultry meal, corn gluten meal, maize, broken rice, rapeseed meal, corn bran, wheat bran, wheat flour, palm oil, cassava tuber meal, methionine (rows at the end)
+# take FASA APP DATA's limits for the FASA lines of the same name, removed in tab 1 for
+# lack of a lab sample.
 #
 # The API reports these bounds back as PERCENTAGES (max_inclusion_percent: 15.0); only
 # this file and the request payload use fractions.
@@ -47,10 +56,6 @@ code,species,production_system,stage_weight,processing_method,min_inclusion,max_
 31408,African Catfish,,,,,0.1,table row 9: Sunflower cake
 31409,Nile Tilapia,,,,,0.1,table row 9: Sunflower cake
 31409,African Catfish,,,,,0.1,table row 9: Sunflower cake
-14002,Nile Tilapia,,,,,0.05,table row 13: Ochonga / Shrimps
-14002,African Catfish,,,,,0.025,table row 13: Ochonga / Shrimps
-14007,Nile Tilapia,,,,,0.05,table row 13: Ochonga / Shrimps
-14007,African Catfish,,,,,0.025,table row 13: Ochonga / Shrimps
 31264,Nile Tilapia,,,,,0.25,table row 14: Soybean full fat
 31264,African Catfish,,,,,0.25,table row 14: Soybean full fat
 31265,Nile Tilapia,,,,,0.25,table row 14: Soybean full fat
@@ -193,3 +198,372 @@ code,species,production_system,stage_weight,processing_method,min_inclusion,max_
 31421,African Catfish,,,,,0.2,table row 26: Sunflower meal
 30841,Nile Tilapia,,,,,0.18,table row 39+40: Cowpea
 30841,African Catfish,,,,,0.15,table row 39+40: Cowpea
+FASA-NG-01,Nile Tilapia,,,,,0.2,"decisions tab 1 row 10: Clupeid, Worongi, (Pellonula leonensis)"
+FASA-NG-01,African Catfish,,,,,0.2,"decisions tab 1 row 10: Clupeid, Worongi, (Pellonula leonensis)"
+FASA-NG-02,Nile Tilapia,,,,,0.2,"decisions tab 1 row 11: Clupeid, Worongi, (Sierathrissa leonensis)"
+FASA-NG-02,African Catfish,,,,,0.2,"decisions tab 1 row 11: Clupeid, Worongi, (Sierathrissa leonensis)"
+FASA-NG-03,Nile Tilapia,,,,,0.1,"decisions tab 1 row 12: Mudskipper (Periophhthalmus argentilineatus)"
+FASA-NG-03,African Catfish,,,,,0.25,"decisions tab 1 row 12: Mudskipper (Periophhthalmus argentilineatus)"
+FASA-KE-01,Nile Tilapia,,,,,0.1,"decisions tab 1 row 13: Omena (Rastrineobola argentea)"
+FASA-KE-01,African Catfish,,,,,0.25,"decisions tab 1 row 13: Omena (Rastrineobola argentea)"
+FASA-ZM-01,Nile Tilapia,,,,,0.2,"decisions tab 1 row 14: Kakeya"
+FASA-ZM-01,African Catfish,,,,,0.2,"decisions tab 1 row 14: Kakeya"
+FASA-ZM-02,Nile Tilapia,,,,,0.2,"decisions tab 1 row 15: Chisense (Potamothrissa acutirostris)"
+FASA-ZM-02,African Catfish,,,,,0.2,"decisions tab 1 row 15: Chisense (Potamothrissa acutirostris)"
+FASA-ZM-03,Nile Tilapia,,,,,0.2,"decisions tab 1 row 16: Siavonga Kapenta (Limothrissa miodon)"
+FASA-ZM-03,African Catfish,,,,,0.2,"decisions tab 1 row 16: Siavonga Kapenta (Limothrissa miodon)"
+FASA-KE-02,Nile Tilapia,,,,,0.05,"decisions tab 1 row 17: Shrimp meal /Ochonga"
+FASA-KE-02,African Catfish,,,,,0.025,"decisions tab 1 row 17: Shrimp meal /Ochonga"
+FASA-ZM-04,Nile Tilapia,,,,,0.015,"decisions tab 1 row 18: Crayfish (Cherax quadricarinatus)"
+FASA-ZM-04,African Catfish,,,,,0.015,"decisions tab 1 row 18: Crayfish (Cherax quadricarinatus)"
+FASA-KE-03,Nile Tilapia,,,,,0.05,"decisions tab 1 row 23: Ochonga"
+FASA-KE-03,African Catfish,,,,,0.025,"decisions tab 1 row 23: Ochonga"
+FASA-NG-04,Nile Tilapia,,,,,0.1,"decisions tab 1 row 25: Black Soldier Fly Larvae (Hermetia illucens)"
+FASA-NG-04,African Catfish,,,,,0.075,"decisions tab 1 row 25: Black Soldier Fly Larvae (Hermetia illucens)"
+FASA-KE-04,Nile Tilapia,,,,,0.1,"decisions tab 1 row 26: Black Soldier Fly Larvae Meal"
+FASA-KE-04,African Catfish,,,,,0.075,"decisions tab 1 row 26: Black Soldier Fly Larvae Meal"
+FASA-KE-05,Nile Tilapia,,,,,0.15,"decisions tab 1 row 29: Mealworm"
+FASA-KE-05,African Catfish,,,,,0.075,"decisions tab 1 row 29: Mealworm"
+FASA-KE-06,Nile Tilapia,,,,,0.05,"decisions tab 1 row 30: Cricket"
+FASA-KE-06,African Catfish,,,,,0.05,"decisions tab 1 row 30: Cricket"
+FASA-ZM-05,Nile Tilapia,,,,,0.1,"decisions tab 1 row 31: Caterpillar (Vinkubala)"
+FASA-ZM-05,African Catfish,,,,,0.05,"decisions tab 1 row 31: Caterpillar (Vinkubala)"
+FASA-ZM-06,Nile Tilapia,,,,,0.05,"decisions tab 1 row 32: Caterpillar (Tukanja)"
+FASA-ZM-06,African Catfish,,,,,0.025,"decisions tab 1 row 32: Caterpillar (Tukanja)"
+FASA-KE-07,Nile Tilapia,,,,,0.5,"decisions tab 1 row 37: Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,,,,0.25,"decisions tab 1 row 37: Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,< 5g (Starter),,,0.35,"FASA APP DATA column K (0-10 g): Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,5-10g (Pre-grower),,,0.35,"FASA APP DATA column K (0-10 g): Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,10-30g (Pre-grower),,,0.4,"FASA APP DATA column L (10-100 g): Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,30-70g (Grower),,,0.4,"FASA APP DATA column L (10-100 g): Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,70-100g (Grower),,,0.4,"FASA APP DATA column L (10-100 g): Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,100-200g (Grower),,,0.45,"FASA APP DATA column M (>100 g): Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,200-400g (Grower),,,0.45,"FASA APP DATA column M (>100 g): Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,400-800g (Grower),,,0.45,"FASA APP DATA column M (>100 g): Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,>800g (Grower),,,0.45,"FASA APP DATA column M (>100 g): Soybean meal (defatted)"
+FASA-KE-07,Nile Tilapia,,>1000g (Brood),,,0.45,"FASA APP DATA column M (>100 g): Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,< 5g (Starter),,,0.36,"FASA APP DATA column N (0-10 g): Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,5-50g (Pre-grower),,,0.36,"FASA APP DATA column O (10-200 g): Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,50-200g (Grower),,,0.36,"FASA APP DATA column O (10-200 g): Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,200-500g (Grower),,,0.36,"FASA APP DATA column P (>200 g): Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,500-800g (Grower),,,0.36,"FASA APP DATA column P (>200 g): Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,800-1000g (Grower),,,0.36,"FASA APP DATA column P (>200 g): Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,1000-1200g (Grower),,,0.36,"FASA APP DATA column P (>200 g): Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,>1200g (Grower),,,0.36,"FASA APP DATA column P (>200 g): Soybean meal (defatted)"
+FASA-KE-07,African Catfish,,>1000g (Brood),,,0.36,"FASA APP DATA column P (>200 g): Soybean meal (defatted)"
+FASA-KE-08,Nile Tilapia,,,,,0.25,"decisions tab 1 row 38: Soy bean full fat"
+FASA-KE-08,African Catfish,,,,,0.25,"decisions tab 1 row 38: Soy bean full fat"
+FASA-KE-09,Nile Tilapia,,,,,0.1,"decisions tab 1 row 41: cottonseed meal /cake"
+FASA-KE-09,African Catfish,,,,,0.15,"decisions tab 1 row 41: cottonseed meal /cake"
+FASA-KE-10,Nile Tilapia,,,,,0.15,"decisions tab 1 row 43: peanut meal, cake"
+FASA-KE-10,African Catfish,,,,,0.1,"decisions tab 1 row 43: peanut meal, cake"
+FASA-KE-11,Nile Tilapia,,,,,0.15,"decisions tab 1 row 44: Sunflower meal, cake"
+FASA-KE-11,African Catfish,,,,,0.2,"decisions tab 1 row 44: Sunflower meal, cake"
+FASA-ZM-07,Nile Tilapia,,,,,0.15,"decisions tab 1 row 45: Sunflower meal, cake"
+FASA-ZM-07,African Catfish,,,,,0.2,"decisions tab 1 row 45: Sunflower meal, cake"
+FASA-NG-05,Nile Tilapia,,,,,0.18,"decisions tab 1 row 46: White cowpea (Vigna unguiculata)"
+FASA-NG-05,African Catfish,,,,,0.15,"decisions tab 1 row 46: White cowpea (Vigna unguiculata)"
+FASA-NG-06,Nile Tilapia,,,,,0.18,"decisions tab 1 row 47: Brown cowpea (Vigna unguiculata)"
+FASA-NG-06,African Catfish,,,,,0.15,"decisions tab 1 row 47: Brown cowpea (Vigna unguiculata)"
+FASA-ZM-08,Nile Tilapia,,,,,0.05,"decisions tab 1 row 48: Velvet beans seed (Mucuna pruriens)"
+FASA-ZM-08,African Catfish,,,,,0.05,"decisions tab 1 row 48: Velvet beans seed (Mucuna pruriens)"
+FASA-ZM-09,Nile Tilapia,,,,,0.05,"decisions tab 1 row 49: Velvet beans meal (Mucuna pruriens)"
+FASA-ZM-09,African Catfish,,,,,0.05,"decisions tab 1 row 49: Velvet beans meal (Mucuna pruriens)"
+FASA-NG-07,Nile Tilapia,,,,,0.2,"decisions tab 1 row 52: Local brewery waste (Sorghum bicolor)"
+FASA-NG-07,African Catfish,,,,,0.2,"decisions tab 1 row 52: Local brewery waste (Sorghum bicolor)"
+FASA-KE-12,Nile Tilapia,,,,,0.2,"decisions tab 1 row 53: Brewery and distillery grains"
+FASA-KE-12,African Catfish,,,,,0.2,"decisions tab 1 row 53: Brewery and distillery grains"
+FASA-NG-08,Nile Tilapia,,,,,0.025,"decisions tab 1 row 54: Shea nut butter waste (Vitellaria paradoxa)"
+FASA-NG-08,African Catfish,,,,,0,"decisions tab 1 row 54: Shea nut butter waste (Vitellaria paradoxa)"
+FASA-NG-09,Nile Tilapia,,,,,0.025,"decisions tab 1 row 55: Baobab leave Meal (Adansonia digitata)"
+FASA-NG-09,African Catfish,,,,,0.05,"decisions tab 1 row 55: Baobab leave Meal (Adansonia digitata)"
+FASA-NG-10,Nile Tilapia,,,,,0.025,"decisions tab 1 row 56: Bambara nut waste meal (Vigna subterranean)"
+FASA-NG-10,African Catfish,,,,,0.025,"decisions tab 1 row 56: Bambara nut waste meal (Vigna subterranean)"
+FASA-NG-11,Nile Tilapia,,,,,0.15,"decisions tab 1 row 57: Roselle seed meal"
+FASA-NG-11,African Catfish,,,,,0.07,"decisions tab 1 row 57: Roselle seed meal"
+FASA-NG-12,Nile Tilapia,,,,,0.05,"decisions tab 1 row 58: African Locust bean fruit pulp (Parkia biglobosa)"
+FASA-NG-12,African Catfish,,,,,0.01,"decisions tab 1 row 58: African Locust bean fruit pulp (Parkia biglobosa)"
+FASA-NG-13,Nile Tilapia,,,,,0.05,"decisions tab 1 row 59: Tiger nut waste (Cyperus esculentus)"
+FASA-NG-13,African Catfish,,,,,0.05,"decisions tab 1 row 59: Tiger nut waste (Cyperus esculentus)"
+FASA-NG-14,Nile Tilapia,,,,,0.025,"decisions tab 1 row 60: Yam peel meal"
+FASA-NG-14,African Catfish,,,,,0.075,"decisions tab 1 row 60: Yam peel meal"
+FASA-ZM-10,Nile Tilapia,,,,,0.05,"decisions tab 1 row 61: Tea waste (Camellia sinesis)"
+FASA-ZM-10,African Catfish,,,,,0.02,"decisions tab 1 row 61: Tea waste (Camellia sinesis)"
+FASA-NG-15,Nile Tilapia,,,,,0.025,"decisions tab 1 row 62: Plantain peel meal (Musa sapientum)"
+FASA-NG-15,African Catfish,,,,,0.075,"decisions tab 1 row 62: Plantain peel meal (Musa sapientum)"
+FASA-NG-16,Nile Tilapia,,,,,0.05,"decisions tab 1 row 64: Chaya leaf meal (Cnidoscolus chayamansa)"
+FASA-NG-16,African Catfish,,,,,0,"decisions tab 1 row 64: Chaya leaf meal (Cnidoscolus chayamansa)"
+FASA-KE-13,Nile Tilapia,,,,,0.15,"decisions tab 1 row 74: Sorghum, meal"
+FASA-KE-13,African Catfish,,,,,0.075,"decisions tab 1 row 74: Sorghum, meal"
+FASA-KE-14,Nile Tilapia,,,,,0.3,"decisions tab 1 row 76: rice bran"
+FASA-KE-14,African Catfish,,,,,0.15,"decisions tab 1 row 76: rice bran"
+FASA-KE-14,Nile Tilapia,,< 5g (Starter),,,0.1,"FASA APP DATA column K (0-10 g): rice bran"
+FASA-KE-14,Nile Tilapia,,5-10g (Pre-grower),,,0.1,"FASA APP DATA column K (0-10 g): rice bran"
+FASA-KE-14,Nile Tilapia,,10-30g (Pre-grower),,,0.1,"FASA APP DATA column L (10-100 g): rice bran"
+FASA-KE-14,Nile Tilapia,,30-70g (Grower),,,0.1,"FASA APP DATA column L (10-100 g): rice bran"
+FASA-KE-14,Nile Tilapia,,70-100g (Grower),,,0.1,"FASA APP DATA column L (10-100 g): rice bran"
+FASA-KE-14,Nile Tilapia,,100-200g (Grower),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
+FASA-KE-14,Nile Tilapia,,200-400g (Grower),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
+FASA-KE-14,Nile Tilapia,,400-800g (Grower),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
+FASA-KE-14,Nile Tilapia,,>800g (Grower),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
+FASA-KE-14,Nile Tilapia,,>1000g (Brood),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
+FASA-KE-14,African Catfish,,< 5g (Starter),,,0.1,"FASA APP DATA column N (0-10 g): rice bran"
+FASA-KE-14,African Catfish,,5-50g (Pre-grower),,,0.1,"FASA APP DATA column O (10-200 g): rice bran"
+FASA-KE-14,African Catfish,,50-200g (Grower),,,0.1,"FASA APP DATA column O (10-200 g): rice bran"
+FASA-KE-14,African Catfish,,200-500g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
+FASA-KE-14,African Catfish,,500-800g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
+FASA-KE-14,African Catfish,,800-1000g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
+FASA-KE-14,African Catfish,,1000-1200g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
+FASA-KE-14,African Catfish,,>1200g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
+FASA-KE-14,African Catfish,,>1000g (Brood),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
+FASA-KE-15,Nile Tilapia,,,,,0.25,"decisions tab 1 row 79: Wheat pollard"
+FASA-KE-15,African Catfish,,,,,0.15,"decisions tab 1 row 79: Wheat pollard"
+FASA-KE-16,Nile Tilapia,,,,,0.06,"decisions tab 1 row 80: Cassava (Dried)"
+FASA-KE-16,African Catfish,,,,,0.05,"decisions tab 1 row 80: Cassava (Dried)"
+FASA-ZM-11,Nile Tilapia,,,,,0.05,"decisions tab 1 row 106: Chikanda (Sacchaomyces cerevisiae)"
+FASA-ZM-11,African Catfish,,,,,0.05,"decisions tab 1 row 106: Chikanda (Sacchaomyces cerevisiae)"
+# IAFFD versions of FASA APP DATA lines removed in tab 1 of the decisions workbook (no lab
+# sample): Serge's limits for those lines (FASA APP DATA columns K-P) apply to them.
+20002,Nile Tilapia,,,,,0.05,FASA APP DATA columns K-M: Blood meal (FASA line removed)
+20002,African Catfish,,,,,0.04,FASA APP DATA columns N-P: Blood meal (FASA line removed)
+20003,Nile Tilapia,,,,,0.05,FASA APP DATA columns K-M: Blood meal (FASA line removed)
+20003,African Catfish,,,,,0.04,FASA APP DATA columns N-P: Blood meal (FASA line removed)
+23001,Nile Tilapia,,< 5g (Starter),,,0.1,FASA APP DATA column K (0-10 g): Poultry meal (FASA line removed)
+23001,Nile Tilapia,,5-10g (Pre-grower),,,0.1,FASA APP DATA column K (0-10 g): Poultry meal (FASA line removed)
+23001,Nile Tilapia,,10-30g (Pre-grower),,,0.07,FASA APP DATA column L (10-100 g): Poultry meal (FASA line removed)
+23001,Nile Tilapia,,30-70g (Grower),,,0.07,FASA APP DATA column L (10-100 g): Poultry meal (FASA line removed)
+23001,Nile Tilapia,,70-100g (Grower),,,0.07,FASA APP DATA column L (10-100 g): Poultry meal (FASA line removed)
+23001,Nile Tilapia,,100-200g (Grower),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23001,Nile Tilapia,,200-400g (Grower),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23001,Nile Tilapia,,400-800g (Grower),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23001,Nile Tilapia,,>800g (Grower),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23001,Nile Tilapia,,>1000g (Brood),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23001,African Catfish,,,,,0.08,FASA APP DATA columns N-P: Poultry meal (FASA line removed)
+23002,Nile Tilapia,,< 5g (Starter),,,0.1,FASA APP DATA column K (0-10 g): Poultry meal (FASA line removed)
+23002,Nile Tilapia,,5-10g (Pre-grower),,,0.1,FASA APP DATA column K (0-10 g): Poultry meal (FASA line removed)
+23002,Nile Tilapia,,10-30g (Pre-grower),,,0.07,FASA APP DATA column L (10-100 g): Poultry meal (FASA line removed)
+23002,Nile Tilapia,,30-70g (Grower),,,0.07,FASA APP DATA column L (10-100 g): Poultry meal (FASA line removed)
+23002,Nile Tilapia,,70-100g (Grower),,,0.07,FASA APP DATA column L (10-100 g): Poultry meal (FASA line removed)
+23002,Nile Tilapia,,100-200g (Grower),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23002,Nile Tilapia,,200-400g (Grower),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23002,Nile Tilapia,,400-800g (Grower),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23002,Nile Tilapia,,>800g (Grower),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23002,Nile Tilapia,,>1000g (Brood),,,0.04,FASA APP DATA column M (>100 g): Poultry meal (FASA line removed)
+23002,African Catfish,,,,,0.08,FASA APP DATA columns N-P: Poultry meal (FASA line removed)
+30342,Nile Tilapia,,< 5g (Starter),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30342,Nile Tilapia,,5-10g (Pre-grower),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30342,Nile Tilapia,,10-30g (Pre-grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30342,Nile Tilapia,,30-70g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30342,Nile Tilapia,,70-100g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30342,Nile Tilapia,,100-200g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30342,Nile Tilapia,,200-400g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30342,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30342,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30342,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,< 5g (Starter),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,5-10g (Pre-grower),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,10-30g (Pre-grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,30-70g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,70-100g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,100-200g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,200-400g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30343,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,< 5g (Starter),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,5-10g (Pre-grower),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,10-30g (Pre-grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,30-70g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,70-100g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,100-200g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,200-400g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30344,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,< 5g (Starter),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,5-10g (Pre-grower),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,10-30g (Pre-grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,30-70g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,70-100g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,100-200g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,200-400g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30345,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,< 5g (Starter),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,5-10g (Pre-grower),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,10-30g (Pre-grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,30-70g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,70-100g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,100-200g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,200-400g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30346,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,< 5g (Starter),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,5-10g (Pre-grower),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,10-30g (Pre-grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,30-70g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,70-100g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,100-200g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,200-400g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30347,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,< 5g (Starter),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,5-10g (Pre-grower),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,10-30g (Pre-grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,30-70g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,70-100g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,100-200g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,200-400g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30370,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
+30355,Nile Tilapia,,100-200g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30355,Nile Tilapia,,200-400g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30355,Nile Tilapia,,400-800g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30355,Nile Tilapia,,>800g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30355,Nile Tilapia,,>1000g (Brood),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30357,Nile Tilapia,,100-200g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30357,Nile Tilapia,,200-400g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30357,Nile Tilapia,,400-800g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30357,Nile Tilapia,,>800g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30357,Nile Tilapia,,>1000g (Brood),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30358,Nile Tilapia,,100-200g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30358,Nile Tilapia,,200-400g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30358,Nile Tilapia,,400-800g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30358,Nile Tilapia,,>800g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30358,Nile Tilapia,,>1000g (Brood),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
+30944,Nile Tilapia,,,,,0.15,"FASA APP DATA columns K-M: Rice, broken (FASA line removed)"
+30944,African Catfish,,,,,0.06,"FASA APP DATA columns N-P: Rice, broken (FASA line removed)"
+30905,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30905,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30905,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30905,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30905,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30905,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30905,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30905,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30905,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30906,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30906,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30906,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30906,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30906,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30906,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30906,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30906,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30906,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30907,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30907,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30907,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30907,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30907,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30907,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30907,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30907,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30907,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30908,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30908,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30908,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30908,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30908,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30908,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30908,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30908,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30908,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30909,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30909,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30909,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30909,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30909,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30909,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30909,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30909,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30909,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30910,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30910,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30910,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30910,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30910,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30910,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30910,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30910,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30910,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30912,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30912,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30912,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30912,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30912,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30912,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30912,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30912,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30912,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30915,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30915,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30915,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30915,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30915,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30915,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30915,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30915,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30915,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30917,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30917,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30917,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30917,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30917,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30917,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30917,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30917,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30917,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30918,Nile Tilapia,,10-30g (Pre-grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30918,Nile Tilapia,,30-70g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30918,Nile Tilapia,,70-100g (Grower),,,0.08,FASA APP DATA column L (10-100 g): Rapeseed (FASA line removed)
+30918,Nile Tilapia,,100-200g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30918,Nile Tilapia,,200-400g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30918,Nile Tilapia,,400-800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30918,Nile Tilapia,,>800g (Grower),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30918,Nile Tilapia,,>1000g (Brood),,,0.07,FASA APP DATA column M (>100 g): Rapeseed (FASA line removed)
+30918,African Catfish,,,,,0.1,FASA APP DATA columns N-P: Rapeseed (FASA line removed)
+30351,Nile Tilapia,,,,,0.1,FASA APP DATA columns K-M: corn bran (FASA line removed)
+30351,African Catfish,,,,,0.1,FASA APP DATA columns N-P: corn bran (FASA line removed)
+31605,Nile Tilapia,,,,,0.1,FASA APP DATA columns K-M: wheat bran (FASA line removed)
+31605,African Catfish,,,,,0.1,FASA APP DATA columns N-P: wheat bran (FASA line removed)
+31621,African Catfish,,,,,0.1,FASA APP DATA columns N-P: wheat flour (FASA line removed)
+52113,Nile Tilapia,,10-30g (Pre-grower),,,0.03,FASA APP DATA column L (10-100 g): palm oil (FASA line removed)
+52113,Nile Tilapia,,30-70g (Grower),,,0.03,FASA APP DATA column L (10-100 g): palm oil (FASA line removed)
+52113,Nile Tilapia,,70-100g (Grower),,,0.03,FASA APP DATA column L (10-100 g): palm oil (FASA line removed)
+52113,Nile Tilapia,,100-200g (Grower),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
+52113,Nile Tilapia,,200-400g (Grower),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
+52113,Nile Tilapia,,400-800g (Grower),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
+52113,Nile Tilapia,,>800g (Grower),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
+52113,Nile Tilapia,,>1000g (Brood),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
+30307,Nile Tilapia,,< 5g (Starter),,,0.0,"FASA APP DATA column K (0-10 g): cassava tuber, meal (FASA line removed)"
+30307,Nile Tilapia,,5-10g (Pre-grower),,,0.0,"FASA APP DATA column K (0-10 g): cassava tuber, meal (FASA line removed)"
+30307,Nile Tilapia,,10-30g (Pre-grower),,,0.06,"FASA APP DATA column L (10-100 g): cassava tuber, meal (FASA line removed)"
+30307,Nile Tilapia,,30-70g (Grower),,,0.06,"FASA APP DATA column L (10-100 g): cassava tuber, meal (FASA line removed)"
+30307,Nile Tilapia,,70-100g (Grower),,,0.06,"FASA APP DATA column L (10-100 g): cassava tuber, meal (FASA line removed)"
+30307,Nile Tilapia,,100-200g (Grower),,,0.06,"FASA APP DATA column M (>100 g): cassava tuber, meal (FASA line removed)"
+30307,Nile Tilapia,,200-400g (Grower),,,0.06,"FASA APP DATA column M (>100 g): cassava tuber, meal (FASA line removed)"
+30307,Nile Tilapia,,400-800g (Grower),,,0.06,"FASA APP DATA column M (>100 g): cassava tuber, meal (FASA line removed)"
+30307,Nile Tilapia,,>800g (Grower),,,0.06,"FASA APP DATA column M (>100 g): cassava tuber, meal (FASA line removed)"
+30307,Nile Tilapia,,>1000g (Brood),,,0.06,"FASA APP DATA column M (>100 g): cassava tuber, meal (FASA line removed)"
+30307,African Catfish,,< 5g (Starter),,,0.06,"FASA APP DATA column N (0-10 g): cassava tuber, meal (FASA line removed)"
+30307,African Catfish,,5-50g (Pre-grower),,,0.06,"FASA APP DATA column O (10-200 g): cassava tuber, meal (FASA line removed)"
+30307,African Catfish,,50-200g (Grower),,,0.06,"FASA APP DATA column O (10-200 g): cassava tuber, meal (FASA line removed)"
+30307,African Catfish,,200-500g (Grower),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
+30307,African Catfish,,500-800g (Grower),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
+30307,African Catfish,,800-1000g (Grower),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
+30307,African Catfish,,1000-1200g (Grower),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
+30307,African Catfish,,>1200g (Grower),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
+30307,African Catfish,,>1000g (Brood),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
+61111,Nile Tilapia,,10-30g (Pre-grower),,,0.002,FASA APP DATA column L (10-100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,30-70g (Grower),,,0.002,FASA APP DATA column L (10-100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,70-100g (Grower),,,0.002,FASA APP DATA column L (10-100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,100-200g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,200-400g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,400-800g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,>800g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
+61111,Nile Tilapia,,>1000g (Brood),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)

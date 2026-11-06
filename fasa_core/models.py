@@ -14,6 +14,7 @@ from .config.defaults import (
     DEFAULT_PREMIX_RATE,
     PREMIX_RATES,
     check_premix_rate,
+    check_prices,
     normalize_country,
 )
 
@@ -100,9 +101,10 @@ class FormulateRequest(BaseModel):
     prices: Dict[str, float] = Field(
         ...,
         description=(
-            "Mapping of FICD ingredient code (string) -> price per kg in the user's "
-            "local currency. Only ingredients present in this mapping AND in the "
-            "configured availability pool are eligible."
+            "Mapping of ingredient code (string) -> price per kg in the user's "
+            "local currency: an IAFFD (FICD) code such as '31147', or a FASA ingredient "
+            "code such as 'FASA-KE-13'. Only ingredients present in this mapping AND in "
+            "the configured availability pool are eligible."
         ),
         min_length=1,
         max_length=300,
@@ -143,6 +145,11 @@ class FormulateRequest(BaseModel):
     @classmethod
     def _premix_rate_is_offered(cls, v):
         return check_premix_rate(v)
+
+    @field_validator("prices")
+    @classmethod
+    def _prices_are_not_negative(cls, v):
+        return check_prices(v)
 
     nutrient_limits: Optional[Dict[str, NutrientLimit]] = Field(
         default=None,
@@ -208,10 +215,23 @@ class ValidateRecipeRequest(BaseModel):
         default="pelleted",
         description=(
             "Scopes the inclusion limits and selects the digestible-energy column "
-            "used by the nutrient checks. As in /formulate, the vitamin and "
-            "trace-mineral specs the premix covers are not checked."
+            "used by the nutrient checks."
         ),
     )
+    premix_rate: float = Field(
+        DEFAULT_PREMIX_RATE,
+        description=(
+            "Premix rate the recipe is made for: 0.01, 0.015 or 0.02 (1, 1.5 or 2%). "
+            "As in /formulate, the nutrient checks count the premix's vitamins and "
+            "trace minerals at this rate."
+        ),
+        json_schema_extra={"enum": list(PREMIX_RATES)},
+    )
+
+    @field_validator("premix_rate")
+    @classmethod
+    def _premix_rate_is_offered(cls, v):
+        return check_premix_rate(v)
 
     nutrient_limits: Optional[Dict[str, NutrientLimit]] = Field(
         default=None,
@@ -266,7 +286,13 @@ class IngredientLine(BaseModel):
 
 
 class NutrientLine(BaseModel):
-    code: str
+    code: str = Field(
+        ...,
+        description=(
+            "ASNS spec code; 'TX15F' for the FASA saponin rule; or a group name such "
+            "as 'All brans' for a limit on a group of ingredients together, in % of feed."
+        ),
+    )
     spec_label: str
     restriction_type: Literal["Minimum", "Maximum", "Ratio"]
     target: Optional[float]
@@ -277,9 +303,10 @@ class NutrientLine(BaseModel):
     source: str = Field(
         default="asns",
         description=(
-            "Where `target` came from: 'asns' (species requirement alone), "
-            "'asns+limits'/'asns+request' (an ASNS target tightened by the inclusion-limit "
-            "layer), or 'limits'/'request' (a bound ASNS does not state for this stage)."
+            "Where `target` came from: 'asns' (species requirement alone), 'fasa' (a "
+            "rule the FASA team added or changed), 'asns+limits'/'fasa+request' etc. (that "
+            "target tightened by the inclusion-limit layer), or 'limits'/'request' (a "
+            "bound ASNS does not state for this stage, including group limits)."
         ),
     )
 
@@ -287,7 +314,9 @@ class NutrientLine(BaseModel):
 class InfeasibilityReport(BaseModel):
     """Returned only when the LP is infeasible at the supplied prices/pool."""
 
-    iis_codes: List[str] = Field(..., description="Irreducible Inconsistent Subset of ASNS spec codes.")
+    iis_codes: List[str] = Field(
+        ..., description="Irreducible Inconsistent Subset of rule codes, as in `composition`."
+    )
     iis_explanations: List[str]
     suggestion: str
     bound_conflicts: List[str] = Field(

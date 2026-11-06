@@ -70,18 +70,34 @@ Recommended client behavior:
 - Always send `premix_price` (premix price per kg, same currency as `prices`). Every feed
   carries the premix; `premix_rate` is `0.01`, `0.015` or `0.02` (default `0.02`), and
   `cost_per_kg` includes `premix_rate × premix_price`. Premix products cannot be priced in
-  `prices`. Since 1.0.0 `premix_enabled`, `max_fishmeal_cost_share`,
+  `prices`. The premix's vitamins and trace minerals are counted at `premix_rate`, so
+  `composition` lists them (13 vitamins, 6 trace minerals) with the premix's share included
+  in `achieved`. Since 1.0.0 `premix_enabled`, `max_fishmeal_cost_share`,
   `max_binder_inclusion` and `custom_premix_mask_codes` are gone; sending them returns 422.
+- `prices` takes IAFFD (FICD) codes and the 43 FASA ingredient codes (`FASA-KE-01` …
+  `FASA-ZM-11`; names and lab samples in `scripts/data/fasa_ingredients.csv`, and the pool
+  rows with class `fasa` in `fasa_core/config/ingredient_pool_africa.csv`). A FASA code
+  never changes once given. Prices must be 0 or more (0 for a free by-product); a negative
+  price returns 422. A code that is not in the ingredient pool is ignored, with a `[skip]`
+  warning naming it.
+- Always send `production_system`. When it is left out the engine formulates for
+  `General-LowCost` and adds a `[default]` warning.
 - Optionally send `country` (ISO-2: `KE`/`NG`/`ZM`) to have each recipe line flagged
   `locally_available` (`true`/`false`; `null` when no `country` is sent). This is an
   advisory highlight only — the optimizer is never restricted to local ingredients.
 - Optionally send `nutrient_limits` and/or `ingredient_limits` to bound dietary nutrient
   levels (ASNS spec code -> `{min, max}` in that code's ASNS unit) or single-ingredient
-  inclusion (FICD code -> `{min, max}` as a mass fraction of feed). These override the
+  inclusion (ingredient code -> `{min, max}` as a mass fraction of feed). These override the
   engine's configured limit tables for the codes they name; where ASNS already states the
   same bound, the tighter value binds. Each `recipe` line echoes the box applied
   (`min_inclusion_percent`, `max_inclusion_percent`, `limit_source`) and each
-  `composition` line carries a `source` naming where its target came from.
+  `composition` line carries a `source` naming where its target came from (`fasa` for a
+  rule the FASA team added or changed).
+- `composition` and `iis_codes` are not only ASNS codes: `TX15F` is the FASA saponin rule,
+  and a limit on a group of ingredients (all brans at most 15%, fishmeals at least 5% / 3%
+  for tilapia) appears under the group name, e.g. `All brans`, with unit `% of feed`. The
+  rules the FASA team dropped (digestible protein, amino acids and phosphorus, DP/DE,
+  phospholipids, cholesterol, Na/Cl/K/Mg, moisture) no longer appear.
 - **Watch the units on ingredient limits:** you send a **fraction** (`{"max": 0.15}`) and
   get back a **percentage** (`"max_inclusion_percent": 15.0`). Out-of-range request values
   are rejected with 422, so `15` sent for 15% fails loudly, but rendering `0.15` as "0.15%"
@@ -93,8 +109,9 @@ Recommended client behavior:
   non-empty the ingredient inclusion limits alone cannot add up to the feed mass and no
   IIS was computed.
 - To check a recipe the user edited (or one from elsewhere) without re-running the LP,
-  post it to `/validate-recipe` with the same `species`/`stage`/`production_system` and
-  any limit overrides. It returns `in_limits`, per-ingredient `inclusion_checks`, and
+  post it to `/validate-recipe` with the same `species`/`stage`/`production_system`,
+  `premix_rate` (default `0.02`) and any limit overrides; the nutrient checks count the
+  premix at that rate. It returns `in_limits`, per-ingredient `inclusion_checks`, and
   `nutrient_checks` in the same shape as `/formulate`'s `composition`. All fields other
   than `fractions` are optional, so existing callers are unaffected. `parameters` takes
   FICD parameter names; a name the current FICD does not carry returns 400. FICD v11.1

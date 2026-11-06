@@ -2,7 +2,7 @@
 
 import pytest
 
-from fasa_core.crosswalk import resolve, premix_mask_codes
+from fasa_core.crosswalk import resolve, premix_composition, premix_mask_codes
 from fasa_core.data_loader import (
     get_active_constraints,
     load_asns,
@@ -103,15 +103,22 @@ def test_resolve_ratio():
     assert ratio["denom"] == "dig_ge_de_fish_kcal"
 
 
-def test_premix_mask_excludes_amino_acids_and_macros():
-    mask = premix_mask_codes()
-    # vit + trace minerals masked, AAs and macros not
-    assert "V10" in mask
-    assert "M12" in mask
-    assert "AA05" not in mask
-    assert "PA03" not in mask
-    # toxins never masked even by default
-    assert "TX01" not in mask
+def test_premix_mask_is_only_what_the_premix_lacks():
+    """The premix's vitamins and trace minerals are counted; only choline and
+    inositol, which it does not contain and the FASA team dropped, are masked."""
+    assert premix_mask_codes() == {"V14", "V15"}
+    assert premix_mask_codes(">1000g (Brood)") == {"V14", "V15"}
+    assert not premix_mask_codes() & set(premix_composition())
+
+
+def test_premix_composition_is_counted_per_kg_of_feed():
+    """Each premix nutrient adds amount x premix_rate per kg of feed."""
+    rules, _ = _rules(BASE["species"], BASE["stage"], BASE["production_system"], premix_rate=0.015)
+    by_code = {code: c for (code, _), c in rules.items()}
+    assert by_code["V10"].constant == pytest.approx(2_000_000 * 0.015)   # vitamin A, IU/kg
+    assert by_code["M09"].constant == pytest.approx(10_000 * 0.015)      # iron, mg/kg
+    assert by_code["PA03"].constant == 0.0                              # protein: none
+    assert not {"V14", "V15"} & set(by_code)                            # still masked
 
 
 # --------------------------------------------------------------------------- #
@@ -205,6 +212,20 @@ def test_formulate_request_accepts_only_the_offered_premix_rates():
         formulate(**BASE, premix_rate=0.005)  # direct callers get the same rule
 
 
+def test_validate_recipe_takes_the_same_premix_rates():
+    """/validate-recipe counts the premix too, so it needs the rate, same rule."""
+    from pydantic import ValidationError
+
+    from fasa_core.models import ValidateRecipeRequest
+    from fasa_core.validator import validate_recipe
+
+    assert ValidateRecipeRequest(fractions={"30355": 0.98}).premix_rate == 0.02
+    with pytest.raises(ValidationError):
+        ValidateRecipeRequest(fractions={"30355": 0.98}, premix_rate=0.005)
+    with pytest.raises(ValueError):
+        validate_recipe({"30355": 0.98}, premix_rate=0.005)
+
+
 def test_formulate_without_batch_size_omits_absolute_quantities():
     """Default (no batch_size_kg) returns percent-only output."""
     res = formulate(**BASE)
@@ -238,6 +259,7 @@ def test_formulate_catfish_uses_carni_track():
         stage="< 5g (Starter)",
         production_system="General",
         pool=pool,
+        premix_rate=0.02,
     )
     codes = {c.spec_code for c in cons}
     # African Catfish ASNS uses ED01, not ED02
@@ -397,10 +419,16 @@ def test_shipped_ingredient_limits_resolve_per_species():
         LimitScope,
         ingredient_bounds,
         ingredient_limit_rows,
+        nutrient_bounds,
         nutrient_limit_rows,
     )
 
-    assert nutrient_limit_rows() == ()  # nutrient half still awaits its values
+    # nutrient half: only the WorldFish ash maximum, which has no value for catfish 5-500 g
+    assert {r["key"] for r in nutrient_limit_rows()} == {"PA06"}
+    ash = lambda sp, st: nutrient_bounds(LimitScope(sp, st, "General")).get("PA06")  # noqa: E731
+    assert ash("Nile Tilapia", "30-70g (Grower)").maximum == 10
+    assert ash("African Catfish", "500-800g (Grower)").maximum == 8
+    assert ash("African Catfish", "50-200g (Grower)") is None
     rows = ingredient_limit_rows()
     assert {r["key"] for r in rows} <= {rec.code for rec in load_pool()}
     assert {r["scope"]["species"] for r in rows} <= {"", *SUPPORTED_SPECIES}
@@ -440,10 +468,10 @@ def test_nutrient_limit_on_a_ratio_spec_is_skipped_with_a_warning():
 
 
 def test_nutrient_limit_is_not_masked_by_the_premix():
-    """Zinc is premix-masked, but an explicit operator bound must still bind."""
-    res = formulate(**BASE, nutrient_limits={"M12": {"max": 250.0}})
-    zinc = _spec(res, "M12")
-    assert (zinc.restriction_type, zinc.target, zinc.source) == ("Maximum", 250.0, "request")
+    """Choline is premix-masked, but an explicit operator bound must still bind."""
+    res = formulate(**BASE, nutrient_limits={"V14": {"max": 5000.0}})
+    choline = _spec(res, "V14")
+    assert (choline.restriction_type, choline.target, choline.source) == ("Maximum", 5000.0, "request")
 
 
 def test_ingredient_limit_floor_is_honored_and_echoed():
@@ -496,22 +524,28 @@ def test_a_binding_nutrient_limit_is_named_in_the_iis():
     res = formulate(**BASE, nutrient_limits={"PA03": {"max": 20.0}})
     assert res.status == "infeasible"
     assert "PA03" in res.infeasibility.iis_codes
-    assert any("[request]" in e for e in res.infeasibility.iis_explanations)
+    # tightens the FASA protein maximum, so the source reads fasa+request
+    assert any("+request]" in e for e in res.infeasibility.iis_explanations)
 
 
 def test_ingredients_without_a_limit_row_keep_an_open_box():
-    """An ingredient no limit row names keeps an open box; nutrients stay ASNS-only."""
-    from fasa_core.inclusion_limits import LimitScope, ingredient_bounds
+    """An ingredient no limit row names keeps an open box; nutrients come from ASNS and the FASA rules."""
+    from fasa_core.inclusion_limits import (
+        LimitScope, group_limit_rows, ingredient_bounds, nutrient_limit_rows,
+    )
 
     base = formulate(**BASE)
     if base.status != "optimal":
         pytest.skip(f"LP did not solve to optimal (status={base.status})")
-    named = ingredient_bounds(LimitScope(BASE["species"]), [])
+    named = ingredient_bounds(LimitScope(BASE["species"], BASE["stage"],
+                                         BASE["production_system"]), [])
     unnamed = [line for line in base.recipe if line.code not in named]
     assert unnamed
     assert all(line.limit_source is None for line in unnamed)
     assert all(line.max_inclusion_percent is None for line in unnamed)
-    assert all(line.source == "asns" for line in base.composition)
+    layered = {r["key"] for r in group_limit_rows() + nutrient_limit_rows()}
+    assert all(line.source in ("asns", "fasa") for line in base.composition
+               if line.code not in layered)
 
 
 def test_scope_resolution_prefers_the_most_specific_row(tmp_path):
@@ -724,3 +758,95 @@ def test_validate_recipe_rejects_an_unknown_stage():
     with pytest.raises(ValueError, match="No ASNS constraints"):
         validate_recipe({"30355": 0.995}, parameters=[], species="Nile Tilapia",
                         stage="not-a-stage", production_system="General")
+
+
+# --------------------------------------------------------------------------- #
+# FASA team's decisions (5 November 2026)                                     #
+# --------------------------------------------------------------------------- #
+
+
+def _rules(species, stage, production_system="General", premix_rate=0.02):
+    from fasa_core.constraint_builder import build_constraints
+    from fasa_core.ingredient_pool import load_pool
+
+    cons, warnings = build_constraints(
+        species=species, stage=stage, production_system=production_system,
+        pool=load_pool(only_codes=set(DEMO_PRICES)), premix_rate=premix_rate,
+    )
+    return {(c.spec_code, c.restriction_type): c for c in cons}, warnings
+
+
+def test_fasa_rule_changes():
+    from fasa_core.config.defaults import DROPPED_RULES
+
+    rules, _ = _rules("African Catfish", "50-200g (Grower)")
+    assert not {code for code, _ in rules} & DROPPED_RULES
+    assert rules[("PA03", "Minimum")].rhs == 34.0          # FASA table 36.0 (ASNS 35.6) - 2
+    assert rules[("PA03", "Minimum")].source == "fasa"
+    assert rules[("PA03", "Maximum")].rhs == 38.0          # 36.0 + 2
+    lipid = rules[("PA04", "Minimum")].rhs
+    assert rules[("PA04", "Maximum")].rhs == pytest.approx(lipid + 2)  # ASNS -1 / +1
+    assert rules[("TX15F", "Maximum")].rhs == rules[("TX15", "Maximum")].rhs
+    assert ("ED01", "Minimum") in rules                     # digestible energy kept
+
+
+def test_fasa_ingredients_are_in_the_pool_with_their_composition():
+    from fasa_core.ingredient_pool import attach_ficd_rows, load_pool
+
+    fasa = [r for r in load_pool() if r.cls == "fasa"]
+    assert len(fasa) == 43
+    assert all(r.code.startswith("FASA-") and r.countries == {r.code[5:7]} for r in fasa)
+    rows = attach_ficd_rows(fasa).set_index("code")
+    assert rows["crude_protein_percent"].gt(0).all()
+    # digestible energy = gross energy x the linked IAFFD ingredient's digestibility
+    de = rows["gross_energy_kcal_kcal_kg"] * rows["adc_ge_omni_pelleted_percent"] / 100
+    assert (de - rows["de_fish_omni_pelleted_kcal_kg"]).abs().max() < 1e-3
+
+
+def test_group_limits_bound_their_members_together():
+    from fasa_core.inclusion_limits import group_limit_rows
+    from fasa_core.ingredient_pool import load_pool
+
+    from fasa_core.constraint_builder import build_constraints
+
+    pool = load_pool()
+    pooled = {r.group for r in pool if r.group}
+    assert {r["key"] for r in group_limit_rows()} <= pooled
+    members = {r.code for r in pool if r.group == "All brans"}
+    assert {"FASA-KE-14", "30937", "31617"} <= members      # FASA rice bran, IAFFD rice bran, pollard
+    assert "10018" in {r.code for r in pool if r.group == "Fishmeal"}  # IAFFD fish meal
+
+    no_members = [r for r in load_pool(only_codes=set(DEMO_PRICES)) if not r.group]
+    cons, warnings = build_constraints(species="Nile Tilapia", stage="< 5g (Starter)",
+                                       production_system="General", pool=no_members,
+                                       premix_rate=0.02)
+    assert not {c.spec_code for c in cons} & pooled
+    assert any("'Fishmeal'" in w for w in warnings)
+
+    brans = {"FASA-KE-14": 0.01, "FASA-KE-15": 0.01}               # rice bran, wheat pollard
+    res = formulate(**{**BASE, "stage": ">800g (Grower)",
+                       "prices": {**DEMO_PRICES, **brans}})
+    assert res.status == "optimal"
+    line = next(c for c in res.composition if c.code == "All brans")
+    assert line.restriction_type == "Maximum" and line.target == 15.0 and line.in_spec
+    share = sum(r.inclusion_percent for r in res.recipe if r.code in members)
+    assert share == pytest.approx(line.achieved, abs=1e-3) == pytest.approx(15.0)  # binds
+
+
+def test_validate_recipe_checks_a_group_minimum_the_recipe_misses():
+    from fasa_core.validator import validate_recipe
+
+    res = validate_recipe({"30355": 0.98}, parameters=[], species="Nile Tilapia",
+                          stage="< 5g (Starter)", production_system="General")
+    line = next(c for c in res.nutrient_checks if c.code == "Fishmeal")
+    assert line.restriction_type == "Minimum" and line.achieved == 0 and not line.in_spec
+
+
+def test_limit_stages_name_real_asns_stages():
+    """A mistyped stage_weight matches no stage and is silently ignored."""
+    from fasa_core.inclusion_limits import group_limit_rows, ingredient_limit_rows
+
+    stages = set(load_asns()["stage_weight"].dropna())
+    for row in ingredient_limit_rows() + group_limit_rows():
+        stage = row["scope"]["stage_weight"]
+        assert not stage or any(stage in s for s in stages), stage

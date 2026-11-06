@@ -24,6 +24,7 @@ from fasa_core import __version__
 from fasa_core.config.defaults import (
     ASNS_FILENAME,
     DEFAULT_DATA_DIR,
+    FASA_FICD_FILENAME,
     FICD_FILENAME,
     PAFF_COMPOSITION_FILENAME,
     PAFF_FORMULATIONS_FILENAME,
@@ -31,8 +32,13 @@ from fasa_core.config.defaults import (
     SUPPORTED_PRODUCTION_SYSTEMS,
     SUPPORTED_SPECIES,
 )
+from fasa_core.crosswalk import premix_composition
 from fasa_core.data_loader import list_supported_stages, load_ficd_wide
-from fasa_core.inclusion_limits import ingredient_limit_rows, nutrient_limit_rows
+from fasa_core.inclusion_limits import (
+    group_limit_rows,
+    ingredient_limit_rows,
+    nutrient_limit_rows,
+)
 from fasa_core.models import (
     ErrorResponse,
     FormulateRequest,
@@ -87,6 +93,7 @@ def _readiness_check() -> tuple[bool, str]:
     required_files = (
         ASNS_FILENAME,
         FICD_FILENAME,
+        FASA_FICD_FILENAME,
         PAFF_FORMULATIONS_FILENAME,
         PAFF_COMPOSITION_FILENAME,
     )
@@ -102,8 +109,13 @@ def _readiness_check() -> tuple[bool, str]:
         # rather than on the first /formulate call.
         nutrient_limit_rows()
         ingredient_limit_rows()
+        group_limit_rows()
     except Exception as exc:
         return False, f"Failed to load inclusion limits: {exc}"
+    try:
+        premix_composition()   # a unit slip raises on load
+    except Exception as exc:
+        return False, f"Failed to load the premix composition: {exc}"
     return True, "ready"
 
 
@@ -225,6 +237,11 @@ def formulate_endpoint(
             nutrient_limits=req.nutrient_limits,
             ingredient_limits=req.ingredient_limits,
         )
+        if "production_system" not in req.model_fields_set:
+            result.warnings.append(
+                f"[default] production_system was not sent; formulated for "
+                f"'{req.production_system}'."
+            )
         elapsed_ms = (time.perf_counter() - started_at) * 1000.0
         LOGGER.info(
             "formulate.result status=%s elapsed_ms=%.2f warnings=%d",
@@ -268,6 +285,7 @@ def validate_recipe(
             stage=req.stage,
             production_system=req.production_system,
             processing_method=req.processing_method,
+            premix_rate=req.premix_rate,
             nutrient_limits=req.nutrient_limits,
             ingredient_limits=req.ingredient_limits,
         )

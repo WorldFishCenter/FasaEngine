@@ -160,6 +160,29 @@ def test_validate_recipe_rejects_an_unknown_parameter():
     assert "sid_lys_porcine_percent" in r.json()["detail"]["details"]
 
 
+def test_formulate_rejects_a_negative_price_and_warns_on_unknown_codes():
+    client = _client(auth_required=True, token="abc123")
+    headers = {"Authorization": "Bearer abc123"}
+    r = client.post("/formulate", headers=headers,
+                    json={**BASE, "prices": {**BASE["prices"], "30355": -5}})
+    assert r.status_code == 422 and "30355" in r.text
+    r = client.post("/formulate", headers=headers,
+                    json={**BASE, "prices": {**BASE["prices"], "30355": 0, "XYZ": 10}})
+    assert r.status_code == 200
+    assert any(w.startswith("[skip]") and "XYZ" in w for w in r.json()["warnings"])
+
+
+def test_formulate_warns_when_the_production_system_is_left_out():
+    client = _client(auth_required=True, token="abc123")
+    headers = {"Authorization": "Bearer abc123"}
+    payload = {k: v for k, v in BASE.items() if k != "production_system"}
+    r = client.post("/formulate", headers=headers, json=payload)
+    assert r.status_code == 200 and r.json()["production_system"] == "General-LowCost"
+    assert any(w.startswith("[default]") for w in r.json()["warnings"])
+    r = client.post("/formulate", headers=headers, json=BASE)
+    assert not any(w.startswith("[default]") for w in r.json()["warnings"])
+
+
 def test_removed_fields_are_rejected():
     """Fields removed in 1.0.0 are a 422, not silently ignored."""
     client = _client(auth_required=True, token="abc123")

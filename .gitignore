@@ -33,6 +33,7 @@ pytest-cache-files-*/
 
 # AI
 .claude/
+graphify-out/
 
 # Environment variables
 .env

@@ -37,6 +37,13 @@ The project provides an API that helps formulate fish feed recipes based on:
 
 - Core data is kept in repository CSV files under `data/`. New ASNS/FICD exports are
   converted into that layout by `scripts/import_datasets.py`.
+- The FASA ingredients have their own FICD-format file,
+  `data/FASA_feed_ingredient_composition.csv`, built from the FASA lab results by
+  `scripts/build_fasa_ingredients.py` (list of ingredients: `scripts/data/fasa_ingredients.csv`).
+  The engine reads it together with FICD, and a FICD import never overwrites it.
+- The FASA team's changes to the ASNS rules (rules dropped, catfish protein, protein and
+  lipid maximums, saponin) and the one decision still pending are constants in
+  `fasa_core/config/defaults.py`, applied by `constraint_builder` before any other layer.
 - This keeps the setup simple and reproducible.
 - The current data changes infrequently.
 - The ingredient pool (`fasa_core/config/ingredient_pool_africa.csv`) is country-aware:
@@ -44,13 +51,14 @@ The project provides an API that helps formulate fish feed recipes based on:
   `/formulate` flags which ingredients are *locally available* in the response; it never
   restricts the optimization. The pool is regenerated from source lists by
   `scripts/build_ingredient_pool.py`.
-- Two hand-maintained tables hold the min/max inclusion layer:
-  `fasa_core/config/nutrient_limits.csv` (bounds on dietary nutrient levels) and
-  `fasa_core/config/ingredient_limits.csv` (bounds on single-ingredient inclusion).
+- Three hand-maintained tables hold the min/max inclusion layer:
+  `fasa_core/config/nutrient_limits.csv` (bounds on dietary nutrient levels),
+  `fasa_core/config/ingredient_limits.csv` (bounds on single-ingredient inclusion) and
+  `fasa_core/config/group_limits.csv` (bounds on a group of ingredients together, whose
+  members are named in the pool's `group` column).
   They express what a mill can actually formulate and process, which composition data
-  alone does not. The ingredient table carries per-species maximums; the nutrient table
-  ships without data rows pending the values, and filling its columns activates it with
-  no code change. Clients can also supply bounds per request.
+  alone does not. The ingredient table carries per-species and per-stage maximums; the nutrient table
+  holds an ash maximum (WorldFish), and further rows take effect with no code change. Clients can also supply bounds per request.
 
 ## Versioning and changes
 

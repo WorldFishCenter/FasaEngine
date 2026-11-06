@@ -7,6 +7,32 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-05
+
+### Added
+- `/validate-recipe` takes an optional `premix_rate` (`0.01`, `0.015` or `0.02`, default `0.02`), so its nutrient checks count the premix as `/formulate` does. When checking a recipe made at 1% or 1.5%, send that rate.
+- 43 FASA ingredients, the lines the FASA team kept in the decisions workbook returned on 5 November 2026: FASA lab samples used as-fed, with phosphorus, toxins, the anti-nutrients the lab did not measure, trace minerals and vitamins from the IAFFD ingredient the team linked to each, and digestible energy equal to gross energy times that IAFFD ingredient's digestibility. Price them like any other ingredient, with the codes `FASA-KE-01` to `FASA-ZM-11` listed in `scripts/data/fasa_ingredients.csv`; all 299 IAFFD ingredients stay. With the 24 test prices and every FASA ingredient at almost no cost, all 19 General stages have a recipe, and FASA ingredients make up 42 to 68% of it (median 57%).
+- Maximum inclusion for each FASA ingredient, per species (workbook tab 1), and per stage where FASA APP DATA gives a weight-group value, which then wins. That only applies to soybean meal (tilapia 35/40/45%, catfish 36%) and rice bran (10%).
+- Maximum inclusion for 31 IAFFD ingredients whose FASA line the team removed for lack of a lab sample, taking the FASA team's limits for that line: blood meal (tilapia 5%, catfish 4%), poultry meal (tilapia 10/7/4% by weight group, catfish 8%), corn gluten meal (tilapia 7/5/5%), rapeseed meal (tilapia 8/7% from 10 g, catfish 10%), corn bran and wheat bran (10%), broken rice (tilapia 15%, catfish 6%), cassava tuber meal (tilapia 0% up to 10 g, then 6%; catfish 6%), maize (tilapia over 100 g, 10%), palm oil (tilapia from 10 g, 3%), synthetic methionine (tilapia from 10 g, 0.2%) and wheat flour (catfish 10%). Where FASA APP DATA does not say max or min, the value is read as a maximum. Without them, recipes with real prices could hold 26-42% blood meal.
+- Limits on groups of ingredients together: all brans at most 15%, and fishmeals at least 5% for tilapia up to 10 g and 3% above. They count the FASA ingredients the team marked and the IAFFD ones of the same kind (13 brans and wheat pollards, 27 fish and shrimp meals in all). In `/formulate` a group minimum applies only when one of its ingredients is priced, otherwise a warning says it was not applied; `/validate-recipe` always checks it.
+- An ash maximum, from WorldFish's feed formulation constraints: 10% for tilapia, 10% for catfish under 5 g and 8% from 500 g (none yet for catfish 5-500 g). IAFFD's own ash maximum is blank, so feeds had no ash limit before; with real prices, ash reached 16%.
+- A saponin maximum (`TX15F`) for the FASA lab saponin values, equal to the ASNS soyasaponin maximum for the stage.
+- A range for crude protein of 2 points either side of the requirement, and 1 point for crude lipid: the minimum comes down by that much and a maximum is added (African Catfish 50-200g: 34-38% protein).
+- `/formulate` warns when a priced code is not in the ingredient pool (it is still ignored, as before), and when a request leaves out `production_system`, which then defaults to General-LowCost.
+
+### Changed
+- `/formulate` refuses a negative price: the API returns 422 and `fasa_core.formulate` raises an error. A price of 0 stays allowed, for a free by-product. Before, a negative price was accepted and made `cost_per_kg` wrong. Migration: send prices of 0 or more.
+- These rules are dropped for every feed, as the FASA team decided: digestible protein and digestible protein per unit of energy, digestible amino acids, digestible phosphorus, phospholipids, cholesterol, sodium, chlorine, potassium, magnesium, and the 10% moisture minimum. Without the moisture minimum, all 19 General stages have a recipe with the 24 test prices (9 before).
+- African Catfish crude protein follows the FASA requirements table: 36.0% at 50-200g (ASNS 35.6%) and 31.5% at 800-1000g (ASNS 31.7%).
+- The 5% / 2.5% caps on IAFFD shrimp meal (14002) and broken dried shrimp (14007) are removed; the FASA Ochonga lines carry them instead.
+- The FASA team confirmed keeping the digestible energy rules for every feed, with FASA ingredients' digestible energy calculated as above.
+- `composition` and `nutrient_checks` no longer list the dropped rules, and gain the protein and lipid maximums, `TX15F`, and one line per group limit, whose `code` is the group name (for example `All brans`), in % of feed. `source` reads `fasa` for a rule the FASA team added or changed. Migration: the dropped rules' codes (for example `PA02`, `ADAAF01`, `M03`) no longer appear in `composition` or `nutrient_checks`, so stop looking them up; and do not assume every `composition` or `iis_codes` entry is an ASNS code.
+- The premix's vitamins and trace minerals now count in every formulation. The composition the FASA team supplied on 29 October 2026 (13 vitamins and 6 trace minerals per kg of premix) is added at the chosen `premix_rate`, and these nutrients are checked against ASNS like any other instead of being assumed covered. With the test prices, all 59 formulations that had a solution keep one and 58 are unchanged; Nile Tilapia, General, 30-70g at 1% premix costs 0.2% more because the ingredients now top up iodine.
+- `composition` in `/formulate` and `nutrient_checks` in `/validate-recipe` now list the 13 vitamins and 6 trace minerals, with the premix's share included in `achieved`.
+- Brood stages no longer need vitamin C from the ingredients, since the premix supplies it. With the test prices, African Catfish brood at 1% premix now has a solution.
+- At 1% the premix alone is below the ASNS minimum for iodine in 10 species and stage combinations, for iron in 3 and for selenium in 1, so the ingredients must supply the rest. The FICD iodine gap noted in 0.5.0 therefore matters in those cases.
+- Choline and inositol are not in the premix and are not checked: the FASA team dropped these rules. The premix's cobalt and BHT are not used, as ASNS sets no requirement for them.
+
 ## [1.0.0] - 2026-10-15
 
 ### Changed
