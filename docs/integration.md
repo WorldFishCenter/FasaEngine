@@ -74,12 +74,15 @@ Recommended client behavior:
   `composition` lists them (13 vitamins, 6 trace minerals) with the premix's share included
   in `achieved`. Since 1.0.0 `premix_enabled`, `max_fishmeal_cost_share`,
   `max_binder_inclusion` and `custom_premix_mask_codes` are gone; sending them returns 422.
-- `prices` takes IAFFD (FICD) codes and the 43 FASA ingredient codes (`FASA-KE-01` …
-  `FASA-ZM-11`; names and lab samples in `scripts/data/fasa_ingredients.csv`, and the pool
+- `prices` takes IAFFD (FICD) codes and the 42 FASA ingredient codes (`FASA-KE-01` …
+  `FASA-ZM-10`; `FASA-ZM-11`, Chikanda, was removed and now gets a `[skip]` warning; names and lab samples in `scripts/data/fasa_ingredients.csv`, and the pool
   rows with class `fasa` in `fasa_core/config/ingredient_pool_africa.csv`). A FASA code
   never changes once given. Prices must be 0 or more (0 for a free by-product); a negative
   price returns 422. A code that is not in the ingredient pool is ignored, with a `[skip]`
   warning naming it.
+- The FASA team's default prices per country are in `data/FASA_default_prices.csv`: the code
+  to send, the price per kg in local currency (NGN, KES, ZMW) and a status. Rows marked
+  `to check` or `missing` are not final; the `premix` row is the `premix_price`.
 - Always send `production_system`. When it is left out the engine formulates for
   `General-LowCost` and adds a `[default]` warning.
 - Optionally send `country` (ISO-2: `KE`/`NG`/`ZM`) to have each recipe line flagged
@@ -105,6 +108,8 @@ Recommended client behavior:
   and come back in that spec code's ASNS unit. Since the v11.1 datasets, Vitamin A (`V10`)
   and Vitamin D (`V11`) are in IU/kg (previously mg and µg).
 - Handle `status` in response (`optimal`, `infeasible`, `error`).
+- `/formulate`, `/validate-recipe` and `/supported` return `engine_version` (e.g. `"1.1.0"`).
+  Store it with each saved recipe or check to know which engine release produced it.
 - On `infeasible`, check `infeasibility.bound_conflicts` before `iis_codes`: when it is
   non-empty the ingredient inclusion limits alone cannot add up to the feed mass and no
   IIS was computed.

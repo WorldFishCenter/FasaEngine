@@ -7,6 +7,19 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+### Added
+- `/formulate`, `/validate-recipe` and `/supported` responses now include `engine_version`, the engine release that produced them (as `/health` already reports it under `version`), so a stored recipe or check can be traced to the engine that made it.
+- The FASA team's default prices for Nigeria, Kenya and Zambia, in `data/FASA_default_prices.csv`, for the app to offer as starting prices. Each row gives the code to send in `prices` (or the `premix_price`), the price per kg in local currency, and whether it is final (`ok`) or still `to check` or `missing`. As of 6 November 2026: 134 rows, 76 ok, 57 to check, and the Zambia premix price missing.
+
+### Changed
+- FASA ingredients now take their amino acids from the IAFFD ingredient the FASA team paired with each, scaled to the FASA lab crude protein, as the team decided on 6 November 2026; the lab amino acids, 2 to 3 times lower than IAFFD's, are no longer used. With the FASA default prices, 80 of 84 test formulations now have a recipe (76 before) and FASA ingredients make up a median 27% of it (21% before).
+- FASA ingredients now have lab starch values (FASA lab file of 6 November 2026), so they count towards the starch minimum instead of counting as zero. The same file corrects the ash of Zambian tea waste from 23.2% to 5.9%. With the FASA default prices, 80 of 84 test formulations have a recipe, as before, and FASA ingredients make up a median 28% of it.
+- Maximum inclusion per weight group for 15 common ingredients, from the FASA team's ingredient form of 6 November 2026: feather meal, L-lysine, maize, fish meal, cassava starch, wheat flour, meat and bone meal, corn gluten meal, the vitamin C product, DCP, fish oil, soybean oil, DL-methionine, palm oil and palm kernel meal. Four earlier maximums go up: grain maize for tilapia over 100 g (10% to 40%), 60% CP corn gluten meal for tilapia (7/5/5% to 15/20/30%), wheat flour for catfish over 10 g (10% to 15%) and DL-methionine for tilapia from 10 g (0.2% to 0.6%); the form sets each IAFFD version on its own, so the other maizes and corn gluten meals keep their earlier maximums. With the FASA default prices, 75 of 84 test formulations have a recipe (80 before): tilapia up to 10 g in Kenya and Zambia and Kenyan tilapia brood no longer get one.
+- The seven IAFFD rice brans may now make up at most 10% of the feed for both species (it was 30% for tilapia and 15% for catfish), the rice bran maximum the FASA team set on 6 November 2026; the Kenyan FASA rice bran already had 10% at every stage. With the FASA default prices no recipe changes, as none used more than 10%.
+
+### Removed
+- Chikanda (`FASA-ZM-11`), at the FASA team's request: it is no longer an ingredient and has no default price. Its code is not reused. Migration: stop sending `FASA-ZM-11` in `prices`; it is now ignored with a `[skip]` warning.
+
 ## [1.1.0] - 2026-11-05
 
 ### Added

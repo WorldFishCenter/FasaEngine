@@ -194,3 +194,13 @@ def test_removed_fields_are_rejected():
     r = client.post("/validate-recipe", headers=headers,
                     json={"fractions": {"30355": 0.98}, "premix_enabled": True})
     assert r.status_code == 422
+
+
+def test_responses_carry_the_engine_version():
+    from fasa_core import __version__
+    client = _client(auth_required=True, token="abc123")
+    headers = {"Authorization": "Bearer abc123"}
+    assert client.post("/formulate", json=BASE, headers=headers).json()["engine_version"] == __version__
+    r = client.post("/validate-recipe", json={"fractions": {"30355": 0.98}}, headers=headers)
+    assert r.json()["engine_version"] == __version__
+    assert client.get("/supported", headers=headers).json()["engine_version"] == __version__
