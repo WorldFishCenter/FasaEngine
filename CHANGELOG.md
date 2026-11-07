@@ -7,6 +7,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-11-07
+
 ### Added
 - `/formulate`, `/validate-recipe` and `/supported` responses now include `engine_version`, the engine release that produced them (as `/health` already reports it under `version`), so a stored recipe or check can be traced to the engine that made it.
 - The FASA team's default prices for Nigeria, Kenya and Zambia, in `data/FASA_default_prices.csv`, for the app to offer as starting prices. Each row gives the code to send in `prices` (or the `premix_price`), the price per kg in local currency, and whether it is final (`ok`) or still `to check` or `missing`. As of 6 November 2026: 134 rows, 76 ok, 57 to check, and the Zambia premix price missing.

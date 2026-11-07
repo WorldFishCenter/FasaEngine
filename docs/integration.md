@@ -108,7 +108,7 @@ Recommended client behavior:
   and come back in that spec code's ASNS unit. Since the v11.1 datasets, Vitamin A (`V10`)
   and Vitamin D (`V11`) are in IU/kg (previously mg and µg).
 - Handle `status` in response (`optimal`, `infeasible`, `error`).
-- `/formulate`, `/validate-recipe` and `/supported` return `engine_version` (e.g. `"1.1.0"`).
+- `/formulate`, `/validate-recipe` and `/supported` return `engine_version` (e.g. `"1.2.0"`).
   Store it with each saved recipe or check to know which engine release produced it.
 - On `infeasible`, check `infeasibility.bound_conflicts` before `iis_codes`: when it is
   non-empty the ingredient inclusion limits alone cannot add up to the feed mass and no
