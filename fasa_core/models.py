@@ -6,10 +6,11 @@ single source of truth for input/output shapes.
 
 from __future__ import annotations
 
-from typing import Dict, List, Literal, Optional
+from typing import Annotated, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field, ConfigDict, field_validator, model_validator
 
+from . import __version__
 from .config.defaults import (
     DEFAULT_PREMIX_RATE,
     PREMIX_RATES,
@@ -17,6 +18,11 @@ from .config.defaults import (
     check_prices,
     normalize_country,
 )
+
+# on every response that carries a result, so stored recipes and checks can be traced
+EngineVersion = Annotated[
+    str, Field(default=__version__, description="The engine release that produced this response.")
+]
 
 
 # ---------- inclusion limits (shared by request and response) --------------- #
@@ -356,6 +362,8 @@ class FormulateResponse(BaseModel):
     premix_quantity_kg: Optional[float] = None
     total_cost: Optional[float] = None
 
+    engine_version: EngineVersion
+
 
 class HealthResponse(BaseModel):
     status: Literal["ok"]
@@ -367,6 +375,7 @@ class SupportedResponse(BaseModel):
     production_systems: List[str]
     countries: List[str]
     stages_by_species_and_system: Dict[str, Dict[str, List[str]]]
+    engine_version: EngineVersion
 
 
 class IngredientLimitLine(BaseModel):
@@ -432,6 +441,7 @@ class ValidateRecipeResponse(BaseModel):
         default=[],
         description="Non-fatal notes: '[mass]' (fractions do not form a complete diet), '[skip]' (a check could not run).",
     )
+    engine_version: EngineVersion
 
 
 class ErrorResponse(BaseModel):
