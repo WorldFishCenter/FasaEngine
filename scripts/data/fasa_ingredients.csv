@@ -1,5 +1,6 @@
-# FASA ingredients: the 43 lines kept in tab 1 of the FASA engine decisions workbook
-# (returned by the FASA team on 5 November 2026). Input of scripts/build_fasa_ingredients.py
+# FASA ingredients: the lines kept in tab 1 of the FASA engine decisions workbook (returned
+# by the FASA team on 5 November 2026), less Chikanda (FASA-ZM-11), which the team removed
+# on 6 November 2026; its code is not reused. Input of scripts/build_fasa_ingredients.py
 # and scripts/build_ingredient_pool.py.
 #
 # Columns:
@@ -53,4 +54,3 @@ FASA-KE-13,"Sorghum, meal",Sorghum meal,Kenya,31147,
 FASA-KE-14,rice bran,Rice bran,Kenya,30937,All brans
 FASA-KE-15,Wheat pollard,Wheat pollard,Kenya,31617,All brans
 FASA-KE-16,Cassava (Dried),"Cassava, dried",Kenya,30310,
-FASA-ZM-11,Chikanda (Sacchaomyces cerevisiae),Chikanda (Sacchaomyces cerevisiae),Zambia,40205,

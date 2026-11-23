@@ -14,6 +14,9 @@ Values, as the FASA team decided (decisions workbook, 5 November 2026):
   * phosphorus, the toxins, the anti-nutrients the lab did not measure, the trace
     minerals and the vitamins are filled from the linked IAFFD ingredient;
   * digestible energy = lab gross energy x the linked IAFFD ingredient's digestibility %;
+  * amino acids come from the linked IAFFD ingredient, as a share of its crude protein
+    applied to the lab crude protein (meeting of 6 November 2026: the lab amino acids
+    are 2-3 times lower than IAFFD's and are not used);
   * starch comes from the lab only. Values for the rules the team dropped are left out.
 
 Fails if a line's lab sample is missing or empty, or if a rule the engine checks has no
@@ -58,27 +61,13 @@ LAB = {
     "Crude Fibre %": ("crude_fibre_percent", 1),
     "Crude Lipid %": ("crude_lipids_percent", 1),
     "Gross Calorific Value J/g": ("gross_energy_kcal_kcal_kg", 1 / 4.184),  # kJ/kg -> kcal/kg
-    "L-Arginine": ("arginine_percent", 1),
-    "L-Histidine": ("histidine_percent", 1),
-    "L-Isoleucine": ("isoleucine_percent", 1),
-    "L-leucine": ("leucine_percent", 1),
-    "L-lysine": ("lysine_percent", 1),
-    "L-Methionine": ("methionine_percent", 1),
-    "L-Phenylalanine": ("phenylalanine_percent", 1),
-    "L-Threonine": ("threonine_percent", 1),
-    "L-Tryptophan": ("tryptophan_percent", 1),
-    "L-valine": ("valine_percent", 1),
-    "L-tyrosine": ("tyrosine_percent", 1),
-    "Saponin*": ("saponin_mg_kg", 1000),                # mg/g -> mg/kg
-    "Tannin*": ("tannins_mg_eq_cathin_kg", 10000),      # % -> mg/kg
-    "Phytic Acid*": ("phytic_acid_g_kg", 10),           # % -> g/kg
-    "Total Gossypol*": ("gossypol_mg_kg", 10000),       # % -> mg/kg
+    "Saponin* (mg/g)": ("saponin_mg_kg", 1000),         # mg/g -> mg/kg
+    "Tannin*(%)": ("tannins_mg_eq_cathin_kg", 10000),   # % -> mg/kg
+    "Phytic Acid* (%)": ("phytic_acid_g_kg", 10),       # % -> g/kg
+    "Total Gossypol (%)": ("gossypol_mg_kg", 10000),    # % -> mg/kg
 }
 # FICD parameter -> lab columns it adds up
 LAB_SUMS = {
-    "cystine_percent": ("L-Cysteine", "L-Cystine"),
-    "tsaa_met_cys_percent": ("L-Methionine", "L-Cysteine", "L-Cystine"),
-    "phe_tyr_percent": ("L-Phenylalanine", "L-tyrosine"),
     "epa_dha_percent": ("Eicosapentaenoic acid EPA (C20: 5n3)", "Docosahexaenoic acid DHA (C22: 6n3)"),
     "sum_n_3_percent": ("α-linolenic acid (C18: 3n3)", "Eicosatrienoic acid (C20: 3n3)",
                         "Eicosapentaenoic acid EPA (C20: 5n3)", "Docosahexaenoic acid DHA (C22: 6n3)"),
@@ -93,6 +82,9 @@ FILL_RULES = (
     + [f"TX{n:02d}" for n in range(1, 17)]
     + [f"V{n:02d}" for n in range(1, 14)]
 )
+# amino acid rules: their values come from the linked IAFFD ingredient, scaled to the lab
+# crude protein
+AMINO_ACID_RULES = [f"AA{n:02d}" for n in range(1, 15)]
 # FICD digestible energy -> the IAFFD digestibility % it is gross energy x (FICD's own rule)
 DIGESTIBILITY = {
     "de_fish_carni_pelleted_kcal_kg": "adc_ge_carni_pelleted_percent",
@@ -110,8 +102,14 @@ def _num(cell: object) -> float | None:
     return None if pd.isna(value) else float(value)
 
 
-def _key(name: object) -> str:
-    return " ".join(str(name).split()).lower()
+def name_key(name: object) -> str:
+    """A name for matching: lower case, runs of spaces collapsed, empty for an empty cell."""
+    return " ".join(str(name or "").split()).lower()
+
+
+def read_lines() -> pd.DataFrame:
+    """The FASA lines (scripts/data/fasa_ingredients.csv), one row per FASA ingredient."""
+    return pd.read_csv(LINES_SRC, comment="#", dtype=str, keep_default_na=False)
 
 
 def read_lab(path: Path) -> tuple[dict[tuple[str, str], dict[str, float | None]], str | None]:
@@ -136,7 +134,7 @@ def read_lab(path: Path) -> tuple[dict[tuple[str, str], dict[str, float | None]]
             values[param] = sum(found) if found else None
         dm = values["dry_matter_percent"]
         values["moisture_percent"] = None if dm is None else 100 - dm
-        samples[(_key(row.iloc[col["Sample Name"]]), _key(row.iloc[col["Country of origin"]]))] = values
+        samples[(name_key(row.iloc[col["Sample Name"]]), name_key(row.iloc[col["Country of origin"]]))] = values
     return samples, starch
 
 
@@ -165,14 +163,15 @@ def checked_params() -> set[str]:
 
 
 def main(lab_path: str) -> int:
-    lines = pd.read_csv(LINES_SRC, comment="#", dtype=str, keep_default_na=False)
+    lines = read_lines()
     samples, starch = read_lab(Path(lab_path))
     iaffd = read_iaffd(set(lines["iaffd_code"]))
     fill = {crosswalk.resolve(code)[0] for code in FILL_RULES} | set(DIGESTIBILITY.values())
+    amino_acids = [crosswalk.resolve(code)[0] for code in AMINO_ACID_RULES]
 
     rows, problems = [], []
     for line in lines.itertuples():
-        lab = samples.get((_key(line.sample), _key(line.country)))
+        lab = samples.get((name_key(line.sample), name_key(line.country)))
         link = iaffd.get(line.iaffd_code)
         if lab is None or lab["crude_protein_percent"] is None:
             problems.append(f"{line.code}: no lab values for {line.sample} [{line.country}]")
@@ -184,6 +183,11 @@ def main(lab_path: str) -> int:
         for param in sorted(fill):  # sorted: same file on every rebuild
             if values.get(param) is None and pd.notna(link.get(param)):
                 values[param] = link[param]
+        cp, link_cp = values["crude_protein_percent"], link.get("crude_protein_percent")
+        if pd.notna(link_cp) and link_cp > 0:
+            for aa in amino_acids:
+                if pd.notna(link.get(aa)):
+                    values[aa] = link[aa] / link_cp * cp
         ge = values["gross_energy_kcal_kcal_kg"]
         for de, adc in DIGESTIBILITY.items():
             if ge is not None and pd.notna(link.get(adc)):

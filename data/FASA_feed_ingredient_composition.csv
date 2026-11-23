@@ -5,23 +5,10 @@ FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",crude_prote
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",crude_fibre_percent,1.4
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",crude_lipids_percent,10.4
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,4674.713193
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",arginine_percent,14.85
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",histidine_percent,3.96
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",isoleucine_percent,1.27
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",leucine_percent,3.45
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",lysine_percent,3.46
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",methionine_percent,1.85
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",phenylalanine_percent,2.43
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",threonine_percent,1.89
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",tryptophan_percent,0.51
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",valine_percent,2.08
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",tyrosine_percent,2.18
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,0.0
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",phytic_acid_g_kg,0.0
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",cystine_percent,2.56
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",tsaa_met_cys_percent,4.41
-FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",phe_tyr_percent,4.61
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",starch_percent,0.0
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",epa_dha_percent,1.1
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",sum_n_3_percent,1.3
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",sum_n_6_percent,0.5
@@ -64,6 +51,20 @@ FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",vitamin_e_m
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",vitamin_k_mg_kg,2.2
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",zeralenone_zon_ppb,0.0
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",zinc_mg_kg,91.0
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",arginine_percent,4.328597
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",histidine_percent,1.518806
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",isoleucine_percent,2.923701
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",leucine_percent,4.746269
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",lysine_percent,4.803224
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",methionine_percent,2.477552
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",phenylalanine_percent,3.882448
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",threonine_percent,2.667403
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",tryptophan_percent,0.721433
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",valine_percent,4.575403
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",cystine_percent,0.579045
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",tsaa_met_cys_percent,3.056597
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",tyrosine_percent,2.259224
+FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",phe_tyr_percent,6.141672
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,4300.736138
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,4300.736138
 FASA-NG-01,"Clupeid, Worongi, (Pellonula leonensis) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,4300.736138
@@ -75,23 +76,10 @@ FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",crude_pr
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",crude_fibre_percent,2.38
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",crude_lipids_percent,7.35
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,4630.258126
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",arginine_percent,13.43
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",histidine_percent,3.48
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",isoleucine_percent,1.27
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",leucine_percent,3.3
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",lysine_percent,3.06
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",methionine_percent,1.8
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",phenylalanine_percent,2.35
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",threonine_percent,1.71
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",tryptophan_percent,0.57
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",valine_percent,2.11
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",tyrosine_percent,2.28
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,0.0
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",phytic_acid_g_kg,0.0
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",cystine_percent,2.93
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",tsaa_met_cys_percent,4.73
-FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",phe_tyr_percent,4.63
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",starch_percent,6.95
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",epa_dha_percent,0.8
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",sum_n_3_percent,1.0
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",sum_n_6_percent,0.3
@@ -134,6 +122,20 @@ FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",vitamin_
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",vitamin_k_mg_kg,2.2
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",zeralenone_zon_ppb,0.0
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",zinc_mg_kg,91.0
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",arginine_percent,4.042746
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",histidine_percent,1.418507
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",isoleucine_percent,2.730627
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",leucine_percent,4.432836
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",lysine_percent,4.48603
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",methionine_percent,2.31394
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",phenylalanine_percent,3.62606
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",threonine_percent,2.491254
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",tryptophan_percent,0.673791
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",valine_percent,4.273254
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",cystine_percent,0.540806
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",tsaa_met_cys_percent,2.854746
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",tyrosine_percent,2.11003
+FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",phe_tyr_percent,5.73609
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,4259.837476
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,4259.837476
 FASA-NG-02,"Clupeid, Worongi, (Sierathrissa leonensis) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,4259.837476
@@ -145,23 +147,10 @@ FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",crude_
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",crude_fibre_percent,1.1
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",crude_lipids_percent,4.23
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,4320.506692
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",arginine_percent,12.9
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",histidine_percent,5.25
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",isoleucine_percent,1.23
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",leucine_percent,3.93
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",lysine_percent,3.94
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",methionine_percent,2.04
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",phenylalanine_percent,2.68
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",threonine_percent,2.57
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",tryptophan_percent,0.4
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",valine_percent,2.35
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",tyrosine_percent,2.07
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,0.0
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",phytic_acid_g_kg,0.0
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",cystine_percent,2.85
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",tsaa_met_cys_percent,4.89
-FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",phe_tyr_percent,4.75
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",starch_percent,3.07
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",epa_dha_percent,0.3
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",sum_n_3_percent,0.4
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",sum_n_6_percent,0.4
@@ -204,6 +193,20 @@ FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",vitami
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",vitamin_k_mg_kg,2.2
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",zeralenone_zon_ppb,0.0
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",zinc_mg_kg,91.0
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",arginine_percent,4.539582
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",histidine_percent,1.592836
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",isoleucine_percent,3.066209
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",leucine_percent,4.977612
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",lysine_percent,5.037343
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",methionine_percent,2.598313
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",phenylalanine_percent,4.071687
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",threonine_percent,2.797418
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",tryptophan_percent,0.756597
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",valine_percent,4.798418
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",cystine_percent,0.607269
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",tsaa_met_cys_percent,3.205582
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",tyrosine_percent,2.369343
+FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",phe_tyr_percent,6.44103
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,3974.866157
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,3974.866157
 FASA-NG-03,"Mudskipper (Periophhthalmus argentilineatus) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,3974.866157
@@ -215,23 +218,10 @@ FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",crude_protein_percent,
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",crude_fibre_percent,0.45
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",crude_lipids_percent,8.79
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",gross_energy_kcal_kcal_kg,3479.923518
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",arginine_percent,5.81
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",histidine_percent,3.63
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",isoleucine_percent,1.32
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",leucine_percent,3.2
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",lysine_percent,2.68
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",methionine_percent,1.52
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",phenylalanine_percent,1.35
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",threonine_percent,1.35
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",tryptophan_percent,0.62
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",valine_percent,1.46
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",tyrosine_percent,2.09
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",tannins_mg_eq_cathin_kg,0.0
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",phytic_acid_g_kg,0.0
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",cystine_percent,2.39
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",tsaa_met_cys_percent,3.91
-FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",phe_tyr_percent,3.44
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",starch_percent,5.31
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",epa_dha_percent,0.3
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",sum_n_3_percent,0.6
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",sum_n_6_percent,0.4
@@ -274,6 +264,20 @@ FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",vitamin_e_mg_kg,5.96
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",vitamin_k_mg_kg,2.0
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",zeralenone_zon_ppb,0.0
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",zinc_mg_kg,100.0
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",arginine_percent,3.041418
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",histidine_percent,1.248794
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",isoleucine_percent,2.205532
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",leucine_percent,3.111915
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",lysine_percent,2.829929
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",methionine_percent,0.98695
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",phenylalanine_percent,1.883262
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",threonine_percent,1.822837
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",tryptophan_percent,0.412908
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",valine_percent,2.326383
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",cystine_percent,0.302128
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",tsaa_met_cys_percent,1.289078
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",tyrosine_percent,1.430071
+FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",phe_tyr_percent,3.313333
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,2923.135755
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,2992.734226
 FASA-KE-01,"Omena (Rastrineobola argentea) [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,2923.135755
@@ -285,23 +289,10 @@ FASA-ZM-01,"Kakeya [FASA, Zambia]",crude_protein_percent,55.3
 FASA-ZM-01,"Kakeya [FASA, Zambia]",crude_fibre_percent,0.05
 FASA-ZM-01,"Kakeya [FASA, Zambia]",crude_lipids_percent,23.4
 FASA-ZM-01,"Kakeya [FASA, Zambia]",gross_energy_kcal_kcal_kg,5239.005736
-FASA-ZM-01,"Kakeya [FASA, Zambia]",arginine_percent,7.9
-FASA-ZM-01,"Kakeya [FASA, Zambia]",histidine_percent,1.72
-FASA-ZM-01,"Kakeya [FASA, Zambia]",isoleucine_percent,0.75
-FASA-ZM-01,"Kakeya [FASA, Zambia]",leucine_percent,2.98
-FASA-ZM-01,"Kakeya [FASA, Zambia]",lysine_percent,2.67
-FASA-ZM-01,"Kakeya [FASA, Zambia]",methionine_percent,1.27
-FASA-ZM-01,"Kakeya [FASA, Zambia]",phenylalanine_percent,1.89
-FASA-ZM-01,"Kakeya [FASA, Zambia]",threonine_percent,4.16
-FASA-ZM-01,"Kakeya [FASA, Zambia]",tryptophan_percent,0.44
-FASA-ZM-01,"Kakeya [FASA, Zambia]",valine_percent,0.93
-FASA-ZM-01,"Kakeya [FASA, Zambia]",tyrosine_percent,1.53
 FASA-ZM-01,"Kakeya [FASA, Zambia]",tannins_mg_eq_cathin_kg,0.0
 FASA-ZM-01,"Kakeya [FASA, Zambia]",phytic_acid_g_kg,0.0
 FASA-ZM-01,"Kakeya [FASA, Zambia]",gossypol_mg_kg,0.0
-FASA-ZM-01,"Kakeya [FASA, Zambia]",cystine_percent,2.04
-FASA-ZM-01,"Kakeya [FASA, Zambia]",tsaa_met_cys_percent,3.31
-FASA-ZM-01,"Kakeya [FASA, Zambia]",phe_tyr_percent,3.42
+FASA-ZM-01,"Kakeya [FASA, Zambia]",starch_percent,0.0
 FASA-ZM-01,"Kakeya [FASA, Zambia]",epa_dha_percent,0.9
 FASA-ZM-01,"Kakeya [FASA, Zambia]",sum_n_3_percent,1.7
 FASA-ZM-01,"Kakeya [FASA, Zambia]",sum_n_6_percent,3.1
@@ -344,6 +335,20 @@ FASA-ZM-01,"Kakeya [FASA, Zambia]",vitamin_e_mg_kg,3.72
 FASA-ZM-01,"Kakeya [FASA, Zambia]",vitamin_k_mg_kg,2.2
 FASA-ZM-01,"Kakeya [FASA, Zambia]",zeralenone_zon_ppb,0.0
 FASA-ZM-01,"Kakeya [FASA, Zambia]",zinc_mg_kg,91.0
+FASA-ZM-01,"Kakeya [FASA, Zambia]",arginine_percent,3.763701
+FASA-ZM-01,"Kakeya [FASA, Zambia]",histidine_percent,1.320597
+FASA-ZM-01,"Kakeya [FASA, Zambia]",isoleucine_percent,2.542149
+FASA-ZM-01,"Kakeya [FASA, Zambia]",leucine_percent,4.126866
+FASA-ZM-01,"Kakeya [FASA, Zambia]",lysine_percent,4.176388
+FASA-ZM-01,"Kakeya [FASA, Zambia]",methionine_percent,2.154224
+FASA-ZM-01,"Kakeya [FASA, Zambia]",phenylalanine_percent,3.375776
+FASA-ZM-01,"Kakeya [FASA, Zambia]",threonine_percent,2.319299
+FASA-ZM-01,"Kakeya [FASA, Zambia]",tryptophan_percent,0.627284
+FASA-ZM-01,"Kakeya [FASA, Zambia]",valine_percent,3.978299
+FASA-ZM-01,"Kakeya [FASA, Zambia]",cystine_percent,0.503478
+FASA-ZM-01,"Kakeya [FASA, Zambia]",tsaa_met_cys_percent,2.657701
+FASA-ZM-01,"Kakeya [FASA, Zambia]",tyrosine_percent,1.964388
+FASA-ZM-01,"Kakeya [FASA, Zambia]",phe_tyr_percent,5.340164
 FASA-ZM-01,"Kakeya [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,4819.885277
 FASA-ZM-01,"Kakeya [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,4819.885277
 FASA-ZM-01,"Kakeya [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,4819.885277
@@ -355,23 +360,10 @@ FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",crude_protein_
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",crude_fibre_percent,0.2
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",crude_lipids_percent,8.93
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",gross_energy_kcal_kcal_kg,4407.265774
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",arginine_percent,8.06
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",histidine_percent,0.9
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",isoleucine_percent,0.87
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",leucine_percent,2.66
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",lysine_percent,3.23
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",methionine_percent,1.03
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",phenylalanine_percent,1.72
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",threonine_percent,4.88
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",tryptophan_percent,0.49
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",valine_percent,0.78
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",tyrosine_percent,1.58
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",tannins_mg_eq_cathin_kg,0.0
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",phytic_acid_g_kg,0.0
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",gossypol_mg_kg,0.0
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",cystine_percent,1.63
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",tsaa_met_cys_percent,2.66
-FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",phe_tyr_percent,3.3
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",starch_percent,0.0
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",epa_dha_percent,1.0
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",sum_n_3_percent,1.2
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",sum_n_6_percent,0.7
@@ -414,6 +406,20 @@ FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",vitamin_e_mg_k
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",vitamin_k_mg_kg,2.0
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",zeralenone_zon_ppb,0.0
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",zinc_mg_kg,100.0
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",arginine_percent,4.233135
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",histidine_percent,1.741994
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",isoleucine_percent,3.068798
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",leucine_percent,4.33242
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",lysine_percent,4.467808
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",methionine_percent,1.741994
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",phenylalanine_percent,3.808919
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",threonine_percent,2.969513
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",tryptophan_percent,0.56863
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",valine_percent,3.826971
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",cystine_percent,0.424216
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",tsaa_met_cys_percent,2.16621
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",tyrosine_percent,1.985693
+FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",phe_tyr_percent,5.794612
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,3966.539197
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,3966.539197
 FASA-ZM-02,"Chisense (Potamothrissa acutirostris) [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,3966.539197
@@ -425,23 +431,10 @@ FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",crude_protein_
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",crude_fibre_percent,0.27
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",crude_lipids_percent,7.91
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",gross_energy_kcal_kcal_kg,3207.456979
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",arginine_percent,8.58
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",histidine_percent,1.86
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",isoleucine_percent,0.79
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",leucine_percent,2.27
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",lysine_percent,2.25
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",methionine_percent,1.13
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",phenylalanine_percent,1.82
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",threonine_percent,7.63
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",tryptophan_percent,0.95
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",valine_percent,0.72
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",tyrosine_percent,1.33
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",tannins_mg_eq_cathin_kg,0.0
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",phytic_acid_g_kg,0.0
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",gossypol_mg_kg,0.0
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",cystine_percent,2.32
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",tsaa_met_cys_percent,3.45
-FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",phe_tyr_percent,3.15
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",starch_percent,0.0
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",epa_dha_percent,0.7
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",sum_n_3_percent,1.0
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",sum_n_6_percent,0.5
@@ -484,6 +477,20 @@ FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",vitamin_e_mg_k
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",vitamin_k_mg_kg,2.0
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",zeralenone_zon_ppb,0.0
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",zinc_mg_kg,80.0
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",arginine_percent,2.977489
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",histidine_percent,1.842133
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",isoleucine_percent,2.601543
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",leucine_percent,4.669244
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",lysine_percent,3.646672
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",methionine_percent,1.353404
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",phenylalanine_percent,1.834614
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",threonine_percent,2.015068
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",tryptophan_percent,0.458654
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",valine_percent,2.375976
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",cystine_percent,0.451135
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",tsaa_met_cys_percent,1.804539
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",tyrosine_percent,2.120333
+FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",phe_tyr_percent,3.954947
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,2758.413002
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,2758.413002
 FASA-ZM-03,"Siavonga Kapenta (Limothrissa miodon) [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,2758.413002
@@ -495,23 +502,10 @@ FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",crude_protein_percent,16.4
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",crude_fibre_percent,1.89
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",crude_lipids_percent,0.79
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",gross_energy_kcal_kcal_kg,1250.717017
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",arginine_percent,3.93
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",histidine_percent,1.06
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",isoleucine_percent,0.47
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",leucine_percent,1.25
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",lysine_percent,1.1
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",methionine_percent,0.2
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",phenylalanine_percent,0.65
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",threonine_percent,0.31
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",tryptophan_percent,0.07
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",valine_percent,0.26
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",tyrosine_percent,0.7
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",tannins_mg_eq_cathin_kg,0.0
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",phytic_acid_g_kg,0.0
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",cystine_percent,0.56
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",tsaa_met_cys_percent,0.76
-FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",phe_tyr_percent,1.35
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",starch_percent,9.21
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",sum_n_6_percent,0.0
@@ -554,6 +548,20 @@ FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",vitamin_e_mg_kg,5.96
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",vitamin_k_mg_kg,2.0
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",zeralenone_zon_ppb,0.0
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",zinc_mg_kg,32.0
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",arginine_percent,1.046354
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",histidine_percent,0.316042
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",isoleucine_percent,0.585104
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",leucine_percent,0.960937
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",lysine_percent,0.845625
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",methionine_percent,0.303229
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",phenylalanine_percent,0.632083
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",threonine_percent,1.059167
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",tryptophan_percent,0.128125
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",valine_percent,0.657708
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",cystine_percent,0.234896
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",tsaa_met_cys_percent,0.538125
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",tyrosine_percent,0.555208
+FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",phe_tyr_percent,1.187292
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,787.951721
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,787.951721
 FASA-KE-02,"Shrimp meal /Ochonga [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,787.951721
@@ -565,23 +573,10 @@ FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",crude_protein_perc
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",crude_fibre_percent,10.8
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",crude_lipids_percent,4.68
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",gross_energy_kcal_kcal_kg,3515.774379
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",arginine_percent,5.24
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",histidine_percent,1.11
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",isoleucine_percent,1.08
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",leucine_percent,2.89
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",lysine_percent,2.71
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",methionine_percent,1.0
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",phenylalanine_percent,2.12
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",threonine_percent,3.53
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",tryptophan_percent,0.35
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",valine_percent,0.98
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",tyrosine_percent,1.89
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",tannins_mg_eq_cathin_kg,0.0
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",phytic_acid_g_kg,0.0
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",gossypol_mg_kg,0.0
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",cystine_percent,1.52
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",tsaa_met_cys_percent,2.52
-FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",phe_tyr_percent,4.01
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",starch_percent,12.72
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",epa_dha_percent,0.1
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",sum_n_3_percent,0.2
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",sum_n_6_percent,0.5
@@ -624,6 +619,20 @@ FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",vitamin_e_mg_kg,5.
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",vitamin_k_mg_kg,2.0
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",zeralenone_zon_ppb,0.0
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",zinc_mg_kg,32.0
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",arginine_percent,2.614417
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",histidine_percent,2.614417
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",isoleucine_percent,5.858583
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",leucine_percent,3.387292
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",lysine_percent,1.240417
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",methionine_percent,0.591583
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",phenylalanine_percent,1.965583
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",threonine_percent,1.555292
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",tryptophan_percent,0.868292
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",valine_percent,1.507583
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",cystine_percent,0.524792
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",tsaa_met_cys_percent,1.116375
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",tyrosine_percent,1.326292
+FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",phe_tyr_percent,3.291875
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,2461.042065
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,2601.67304
 FASA-ZM-04,"Crayfish (Cherax quadricarinatus) [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,2461.042065
@@ -635,23 +644,10 @@ FASA-KE-03,"Ochonga [FASA, Kenya]",crude_protein_percent,16.4
 FASA-KE-03,"Ochonga [FASA, Kenya]",crude_fibre_percent,1.89
 FASA-KE-03,"Ochonga [FASA, Kenya]",crude_lipids_percent,0.79
 FASA-KE-03,"Ochonga [FASA, Kenya]",gross_energy_kcal_kcal_kg,1250.717017
-FASA-KE-03,"Ochonga [FASA, Kenya]",arginine_percent,3.93
-FASA-KE-03,"Ochonga [FASA, Kenya]",histidine_percent,1.06
-FASA-KE-03,"Ochonga [FASA, Kenya]",isoleucine_percent,0.47
-FASA-KE-03,"Ochonga [FASA, Kenya]",leucine_percent,1.25
-FASA-KE-03,"Ochonga [FASA, Kenya]",lysine_percent,1.1
-FASA-KE-03,"Ochonga [FASA, Kenya]",methionine_percent,0.2
-FASA-KE-03,"Ochonga [FASA, Kenya]",phenylalanine_percent,0.65
-FASA-KE-03,"Ochonga [FASA, Kenya]",threonine_percent,0.31
-FASA-KE-03,"Ochonga [FASA, Kenya]",tryptophan_percent,0.07
-FASA-KE-03,"Ochonga [FASA, Kenya]",valine_percent,0.26
-FASA-KE-03,"Ochonga [FASA, Kenya]",tyrosine_percent,0.7
 FASA-KE-03,"Ochonga [FASA, Kenya]",tannins_mg_eq_cathin_kg,0.0
 FASA-KE-03,"Ochonga [FASA, Kenya]",phytic_acid_g_kg,0.0
 FASA-KE-03,"Ochonga [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-03,"Ochonga [FASA, Kenya]",cystine_percent,0.56
-FASA-KE-03,"Ochonga [FASA, Kenya]",tsaa_met_cys_percent,0.76
-FASA-KE-03,"Ochonga [FASA, Kenya]",phe_tyr_percent,1.35
+FASA-KE-03,"Ochonga [FASA, Kenya]",starch_percent,9.21
 FASA-KE-03,"Ochonga [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-03,"Ochonga [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-03,"Ochonga [FASA, Kenya]",sum_n_6_percent,0.0
@@ -694,6 +690,20 @@ FASA-KE-03,"Ochonga [FASA, Kenya]",vitamin_e_mg_kg,5.96
 FASA-KE-03,"Ochonga [FASA, Kenya]",vitamin_k_mg_kg,2.0
 FASA-KE-03,"Ochonga [FASA, Kenya]",zeralenone_zon_ppb,0.0
 FASA-KE-03,"Ochonga [FASA, Kenya]",zinc_mg_kg,32.0
+FASA-KE-03,"Ochonga [FASA, Kenya]",arginine_percent,1.046354
+FASA-KE-03,"Ochonga [FASA, Kenya]",histidine_percent,0.316042
+FASA-KE-03,"Ochonga [FASA, Kenya]",isoleucine_percent,0.585104
+FASA-KE-03,"Ochonga [FASA, Kenya]",leucine_percent,0.960937
+FASA-KE-03,"Ochonga [FASA, Kenya]",lysine_percent,0.845625
+FASA-KE-03,"Ochonga [FASA, Kenya]",methionine_percent,0.303229
+FASA-KE-03,"Ochonga [FASA, Kenya]",phenylalanine_percent,0.632083
+FASA-KE-03,"Ochonga [FASA, Kenya]",threonine_percent,1.059167
+FASA-KE-03,"Ochonga [FASA, Kenya]",tryptophan_percent,0.128125
+FASA-KE-03,"Ochonga [FASA, Kenya]",valine_percent,0.657708
+FASA-KE-03,"Ochonga [FASA, Kenya]",cystine_percent,0.234896
+FASA-KE-03,"Ochonga [FASA, Kenya]",tsaa_met_cys_percent,0.538125
+FASA-KE-03,"Ochonga [FASA, Kenya]",tyrosine_percent,0.555208
+FASA-KE-03,"Ochonga [FASA, Kenya]",phe_tyr_percent,1.187292
 FASA-KE-03,"Ochonga [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,787.951721
 FASA-KE-03,"Ochonga [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,787.951721
 FASA-KE-03,"Ochonga [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,787.951721
@@ -705,23 +715,10 @@ FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",crude_
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",crude_fibre_percent,16.6
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",crude_lipids_percent,23.2
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,5605.162524
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",arginine_percent,7.08
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",histidine_percent,2.35
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",isoleucine_percent,1.13
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",leucine_percent,1.7
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",lysine_percent,1.09
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",methionine_percent,1.52
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",phenylalanine_percent,1.24
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",threonine_percent,1.99
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",tryptophan_percent,0.32
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",valine_percent,1.66
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",tyrosine_percent,2.15
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,0.0
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",phytic_acid_g_kg,0.0
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",cystine_percent,2.34
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",tsaa_met_cys_percent,3.86
-FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",phe_tyr_percent,3.39
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",starch_percent,13.29
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",sum_n_3_percent,0.0
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",sum_n_6_percent,1.1
@@ -764,6 +761,20 @@ FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",vitami
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",vitamin_k_mg_kg,0.25
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",zeralenone_zon_ppb,0.0
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",zinc_mg_kg,57.4
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",arginine_percent,2.076682
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",histidine_percent,1.5291
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",isoleucine_percent,1.611754
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",leucine_percent,2.748246
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",lysine_percent,2.479621
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",methionine_percent,0.733555
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",phenylalanine_percent,3.037536
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",threonine_percent,1.518768
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",tryptophan_percent,1.033175
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",valine_percent,2.293649
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",cystine_percent,0.516588
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",tsaa_met_cys_percent,1.250142
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",tyrosine_percent,2.489953
+FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",phe_tyr_percent,5.527488
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,4876.491396
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,4988.594646
 FASA-NG-04,"Black Soldier Fly Larvae (Hermetia illucens) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,4876.491396
@@ -775,23 +786,10 @@ FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",crude_protein_percent,3
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",crude_fibre_percent,13.0
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",crude_lipids_percent,29.7
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",gross_energy_kcal_kcal_kg,5681.644359
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",arginine_percent,12.06
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",histidine_percent,2.28
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",isoleucine_percent,1.03
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",leucine_percent,2.31
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",lysine_percent,1.54
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",methionine_percent,0.47
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",phenylalanine_percent,0.92
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",threonine_percent,0.95
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",tryptophan_percent,0.86
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",valine_percent,0.88
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",tyrosine_percent,2.74
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",tannins_mg_eq_cathin_kg,0.0
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",phytic_acid_g_kg,0.0
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",cystine_percent,1.86
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",tsaa_met_cys_percent,2.33
-FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",phe_tyr_percent,3.66
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",starch_percent,7.43
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",sum_n_6_percent,1.7
@@ -834,6 +832,20 @@ FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",vitamin_e_mg_kg,160.8
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",vitamin_k_mg_kg,0.25
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",zeralenone_zon_ppb,0.0
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",zinc_mg_kg,52.4
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",arginine_percent,1.865865
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",histidine_percent,1.349774
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",isoleucine_percent,1.429173
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",leucine_percent,2.441504
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",lysine_percent,2.213233
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",methionine_percent,0.595489
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",phenylalanine_percent,2.689624
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",threonine_percent,1.359699
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",tryptophan_percent,0.992481
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",valine_percent,2.044511
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",cystine_percent,0.496241
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",tsaa_met_cys_percent,1.091729
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",tyrosine_percent,2.163609
+FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",phe_tyr_percent,4.853233
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,4943.030593
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,5056.66348
 FASA-KE-04,"Black Soldier Fly Larvae Meal [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,4943.030593
@@ -845,23 +857,10 @@ FASA-KE-05,"Mealworm [FASA, Kenya]",crude_protein_percent,45.9
 FASA-KE-05,"Mealworm [FASA, Kenya]",crude_fibre_percent,9.89
 FASA-KE-05,"Mealworm [FASA, Kenya]",crude_lipids_percent,25.2
 FASA-KE-05,"Mealworm [FASA, Kenya]",gross_energy_kcal_kcal_kg,5900.095602
-FASA-KE-05,"Mealworm [FASA, Kenya]",arginine_percent,10.25
-FASA-KE-05,"Mealworm [FASA, Kenya]",histidine_percent,2.26
-FASA-KE-05,"Mealworm [FASA, Kenya]",isoleucine_percent,1.6
-FASA-KE-05,"Mealworm [FASA, Kenya]",leucine_percent,3.58
-FASA-KE-05,"Mealworm [FASA, Kenya]",lysine_percent,3.34
-FASA-KE-05,"Mealworm [FASA, Kenya]",methionine_percent,0.71
-FASA-KE-05,"Mealworm [FASA, Kenya]",phenylalanine_percent,1.82
-FASA-KE-05,"Mealworm [FASA, Kenya]",threonine_percent,1.62
-FASA-KE-05,"Mealworm [FASA, Kenya]",tryptophan_percent,0.33
-FASA-KE-05,"Mealworm [FASA, Kenya]",valine_percent,1.18
-FASA-KE-05,"Mealworm [FASA, Kenya]",tyrosine_percent,3.01
 FASA-KE-05,"Mealworm [FASA, Kenya]",tannins_mg_eq_cathin_kg,0.0
 FASA-KE-05,"Mealworm [FASA, Kenya]",phytic_acid_g_kg,0.0
 FASA-KE-05,"Mealworm [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-05,"Mealworm [FASA, Kenya]",cystine_percent,2.58
-FASA-KE-05,"Mealworm [FASA, Kenya]",tsaa_met_cys_percent,3.29
-FASA-KE-05,"Mealworm [FASA, Kenya]",phe_tyr_percent,4.83
+FASA-KE-05,"Mealworm [FASA, Kenya]",starch_percent,12.15
 FASA-KE-05,"Mealworm [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-05,"Mealworm [FASA, Kenya]",sum_n_3_percent,0.1
 FASA-KE-05,"Mealworm [FASA, Kenya]",sum_n_6_percent,4.5
@@ -904,6 +903,20 @@ FASA-KE-05,"Mealworm [FASA, Kenya]",vitamin_e_mg_kg,160.8
 FASA-KE-05,"Mealworm [FASA, Kenya]",vitamin_k_mg_kg,0.25
 FASA-KE-05,"Mealworm [FASA, Kenya]",zeralenone_zon_ppb,0.0
 FASA-KE-05,"Mealworm [FASA, Kenya]",zinc_mg_kg,35.7
+FASA-KE-05,"Mealworm [FASA, Kenya]",arginine_percent,2.661429
+FASA-KE-05,"Mealworm [FASA, Kenya]",histidine_percent,1.550571
+FASA-KE-05,"Mealworm [FASA, Kenya]",isoleucine_percent,1.820571
+FASA-KE-05,"Mealworm [FASA, Kenya]",leucine_percent,2.931429
+FASA-KE-05,"Mealworm [FASA, Kenya]",lysine_percent,2.592
+FASA-KE-05,"Mealworm [FASA, Kenya]",methionine_percent,0.586286
+FASA-KE-05,"Mealworm [FASA, Kenya]",phenylalanine_percent,1.774286
+FASA-KE-05,"Mealworm [FASA, Kenya]",threonine_percent,1.951714
+FASA-KE-05,"Mealworm [FASA, Kenya]",tryptophan_percent,1.157143
+FASA-KE-05,"Mealworm [FASA, Kenya]",valine_percent,2.746286
+FASA-KE-05,"Mealworm [FASA, Kenya]",cystine_percent,0.462857
+FASA-KE-05,"Mealworm [FASA, Kenya]",tsaa_met_cys_percent,1.049143
+FASA-KE-05,"Mealworm [FASA, Kenya]",tyrosine_percent,3.209143
+FASA-KE-05,"Mealworm [FASA, Kenya]",phe_tyr_percent,4.983429
 FASA-KE-05,"Mealworm [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,4897.07935
 FASA-KE-05,"Mealworm [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,4956.080306
 FASA-KE-05,"Mealworm [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,4897.07935
@@ -915,23 +928,10 @@ FASA-KE-06,"Cricket [FASA, Kenya]",crude_protein_percent,56.6
 FASA-KE-06,"Cricket [FASA, Kenya]",crude_fibre_percent,9.6
 FASA-KE-06,"Cricket [FASA, Kenya]",crude_lipids_percent,27.8
 FASA-KE-06,"Cricket [FASA, Kenya]",gross_energy_kcal_kcal_kg,6695.506692
-FASA-KE-06,"Cricket [FASA, Kenya]",arginine_percent,14.13
-FASA-KE-06,"Cricket [FASA, Kenya]",histidine_percent,3.37
-FASA-KE-06,"Cricket [FASA, Kenya]",isoleucine_percent,0.95
-FASA-KE-06,"Cricket [FASA, Kenya]",leucine_percent,3.2
-FASA-KE-06,"Cricket [FASA, Kenya]",lysine_percent,2.48
-FASA-KE-06,"Cricket [FASA, Kenya]",methionine_percent,1.1
-FASA-KE-06,"Cricket [FASA, Kenya]",phenylalanine_percent,1.4
-FASA-KE-06,"Cricket [FASA, Kenya]",threonine_percent,1.43
-FASA-KE-06,"Cricket [FASA, Kenya]",tryptophan_percent,0.73
-FASA-KE-06,"Cricket [FASA, Kenya]",valine_percent,1.45
-FASA-KE-06,"Cricket [FASA, Kenya]",tyrosine_percent,4.23
 FASA-KE-06,"Cricket [FASA, Kenya]",tannins_mg_eq_cathin_kg,0.0
 FASA-KE-06,"Cricket [FASA, Kenya]",phytic_acid_g_kg,0.0
 FASA-KE-06,"Cricket [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-06,"Cricket [FASA, Kenya]",cystine_percent,2.56
-FASA-KE-06,"Cricket [FASA, Kenya]",tsaa_met_cys_percent,3.66
-FASA-KE-06,"Cricket [FASA, Kenya]",phe_tyr_percent,5.63
+FASA-KE-06,"Cricket [FASA, Kenya]",starch_percent,6.56
 FASA-KE-06,"Cricket [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-06,"Cricket [FASA, Kenya]",sum_n_3_percent,0.2
 FASA-KE-06,"Cricket [FASA, Kenya]",sum_n_6_percent,8.1
@@ -974,6 +974,20 @@ FASA-KE-06,"Cricket [FASA, Kenya]",vitamin_e_mg_kg,160.8
 FASA-KE-06,"Cricket [FASA, Kenya]",vitamin_k_mg_kg,0.25
 FASA-KE-06,"Cricket [FASA, Kenya]",zeralenone_zon_ppb,0.0
 FASA-KE-06,"Cricket [FASA, Kenya]",zinc_mg_kg,13.6
+FASA-KE-06,"Cricket [FASA, Kenya]",arginine_percent,2.83
+FASA-KE-06,"Cricket [FASA, Kenya]",histidine_percent,1.792333
+FASA-KE-06,"Cricket [FASA, Kenya]",isoleucine_percent,2.075333
+FASA-KE-06,"Cricket [FASA, Kenya]",leucine_percent,3.962
+FASA-KE-06,"Cricket [FASA, Kenya]",lysine_percent,3.584667
+FASA-KE-06,"Cricket [FASA, Kenya]",methionine_percent,1.132
+FASA-KE-06,"Cricket [FASA, Kenya]",phenylalanine_percent,2.169667
+FASA-KE-06,"Cricket [FASA, Kenya]",threonine_percent,2.264
+FASA-KE-06,"Cricket [FASA, Kenya]",tryptophan_percent,0.849
+FASA-KE-06,"Cricket [FASA, Kenya]",valine_percent,3.490333
+FASA-KE-06,"Cricket [FASA, Kenya]",cystine_percent,0.754667
+FASA-KE-06,"Cricket [FASA, Kenya]",tsaa_met_cys_percent,1.886667
+FASA-KE-06,"Cricket [FASA, Kenya]",tyrosine_percent,3.584667
+FASA-KE-06,"Cricket [FASA, Kenya]",phe_tyr_percent,5.754333
 FASA-KE-06,"Cricket [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,4954.674952
 FASA-KE-06,"Cricket [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,5289.450287
 FASA-KE-06,"Cricket [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,4954.674952
@@ -985,23 +999,10 @@ FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",crude_protein_percent,62.5
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",crude_fibre_percent,10.5
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",crude_lipids_percent,7.83
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",gross_energy_kcal_kcal_kg,4706.022945
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",arginine_percent,3.86
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",histidine_percent,1.11
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",isoleucine_percent,0.46
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",leucine_percent,2.53
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",lysine_percent,3.13
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",methionine_percent,0.82
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",phenylalanine_percent,1.64
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",threonine_percent,4.13
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",tryptophan_percent,0.57
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",valine_percent,0.83
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",tyrosine_percent,2.75
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",tannins_mg_eq_cathin_kg,0.0
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",phytic_acid_g_kg,0.0
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",gossypol_mg_kg,0.0
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",cystine_percent,1.77
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",tsaa_met_cys_percent,2.59
-FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",phe_tyr_percent,4.39
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",starch_percent,7.47
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",epa_dha_percent,0.0
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",sum_n_3_percent,0.8
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",sum_n_6_percent,0.6
@@ -1044,6 +1045,20 @@ FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",vitamin_e_mg_kg,160.8
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",vitamin_k_mg_kg,0.25
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",zeralenone_zon_ppb,0.0
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",zinc_mg_kg,35.7
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",arginine_percent,3.62395
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",histidine_percent,2.111345
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",isoleucine_percent,2.478992
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",leucine_percent,3.991597
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",lysine_percent,3.529412
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",methionine_percent,0.798319
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",phenylalanine_percent,2.415966
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",threonine_percent,2.657563
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",tryptophan_percent,1.57563
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",valine_percent,3.739496
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",cystine_percent,0.630252
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",tsaa_met_cys_percent,1.428571
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",tyrosine_percent,4.369748
+FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",phe_tyr_percent,6.785714
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,3905.999044
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,3953.059273
 FASA-ZM-05,"Caterpillar (Vinkubala) [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,3905.999044
@@ -1055,23 +1070,10 @@ FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",crude_protein_percent,54.4
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",crude_fibre_percent,10.6
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",crude_lipids_percent,13.8
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",gross_energy_kcal_kcal_kg,5446.940727
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",arginine_percent,3.43
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",histidine_percent,1.37
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",isoleucine_percent,0.3
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",leucine_percent,1.67
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",lysine_percent,2.18
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",methionine_percent,0.62
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",phenylalanine_percent,1.49
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",threonine_percent,4.31
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",tryptophan_percent,0.43
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",valine_percent,0.63
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",tyrosine_percent,2.19
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",tannins_mg_eq_cathin_kg,0.0
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",phytic_acid_g_kg,0.0
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",gossypol_mg_kg,0.0
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",cystine_percent,1.84
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",tsaa_met_cys_percent,2.46
-FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",phe_tyr_percent,3.68
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",starch_percent,9.6
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",epa_dha_percent,0.0
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",sum_n_3_percent,1.5
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",sum_n_6_percent,0.6
@@ -1114,6 +1116,20 @@ FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",vitamin_e_mg_kg,160.8
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",vitamin_k_mg_kg,0.25
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",zeralenone_zon_ppb,0.0
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",zinc_mg_kg,35.7
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",arginine_percent,3.154286
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",histidine_percent,1.837714
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",isoleucine_percent,2.157714
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",leucine_percent,3.474286
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",lysine_percent,3.072
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",methionine_percent,0.694857
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",phenylalanine_percent,2.102857
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",threonine_percent,2.313143
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",tryptophan_percent,1.371429
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",valine_percent,3.254857
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",cystine_percent,0.548571
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",tsaa_met_cys_percent,1.243429
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",tyrosine_percent,3.803429
+FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",phe_tyr_percent,5.906286
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,4520.960803
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,4575.43021
 FASA-ZM-06,"Caterpillar (Tukanja) [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,4520.960803
@@ -1125,24 +1141,11 @@ FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",crude_protein_percent,45.8
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",crude_fibre_percent,5.7
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",crude_lipids_percent,1.4
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",gross_energy_kcal_kcal_kg,4449.808795
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",arginine_percent,4.68
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",histidine_percent,2.53
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",isoleucine_percent,0.53
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",leucine_percent,2.19
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",lysine_percent,1.79
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",methionine_percent,1.46
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",phenylalanine_percent,1.61
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",threonine_percent,1.16
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",tryptophan_percent,0.57
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",valine_percent,0.89
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",tyrosine_percent,1.87
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",saponin_mg_kg,5700.0
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",tannins_mg_eq_cathin_kg,24000.0
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",phytic_acid_g_kg,4.0
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",cystine_percent,1.33
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",tsaa_met_cys_percent,2.79
-FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",phe_tyr_percent,3.48
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",starch_percent,37.38
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",sum_n_6_percent,0.7
@@ -1185,6 +1188,20 @@ FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",vitamin_e_mg_kg,2.23
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",vitamin_k_mg_kg,3.0
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",zeralenone_zon_ppb,12.0
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",zinc_mg_kg,50.0
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",arginine_percent,4.310021
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",histidine_percent,1.253474
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",isoleucine_percent,2.111621
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",leucine_percent,3.374737
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",lysine_percent,2.979411
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",methionine_percent,0.655663
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",phenylalanine_percent,2.410526
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",threonine_percent,1.745221
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",tryptophan_percent,0.655663
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",valine_percent,2.179116
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",cystine_percent,0.655663
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",tsaa_met_cys_percent,1.311326
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",tyrosine_percent,1.735579
+FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",phe_tyr_percent,4.146105
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,3025.869981
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,3203.862333
 FASA-KE-07,"Soybean meal (defatted) [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,3025.869981
@@ -1196,24 +1213,11 @@ FASA-KE-08,"Soy bean full fat [FASA, Kenya]",crude_protein_percent,36.8
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",crude_fibre_percent,6.12
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",crude_lipids_percent,18.4
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",gross_energy_kcal_kcal_kg,4787.045889
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",arginine_percent,4.06
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",histidine_percent,2.1
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",isoleucine_percent,0.58
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",leucine_percent,2.05
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",lysine_percent,1.73
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",methionine_percent,0.58
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",phenylalanine_percent,1.29
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",threonine_percent,0.79
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",tryptophan_percent,0.8
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",valine_percent,0.89
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",tyrosine_percent,1.63
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",saponin_mg_kg,830.0
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",tannins_mg_eq_cathin_kg,21000.0
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",phytic_acid_g_kg,3.0
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",cystine_percent,1.69
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",tsaa_met_cys_percent,2.27
-FASA-KE-08,"Soy bean full fat [FASA, Kenya]",phe_tyr_percent,2.92
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",starch_percent,33.09
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",sum_n_3_percent,1.0
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",sum_n_6_percent,8.1
@@ -1256,6 +1260,20 @@ FASA-KE-08,"Soy bean full fat [FASA, Kenya]",vitamin_e_mg_kg,24.34
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",vitamin_k_mg_kg,0.05
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",zeralenone_zon_ppb,36.0
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",zinc_mg_kg,45.0
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",arginine_percent,2.608608
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",histidine_percent,1.071392
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",isoleucine_percent,1.658329
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",leucine_percent,2.720405
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",lysine_percent,2.319797
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",methionine_percent,0.549671
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",phenylalanine_percent,1.844658
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",threonine_percent,1.434734
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",tryptophan_percent,0.475139
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",valine_percent,1.770127
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",cystine_percent,0.586937
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",tsaa_met_cys_percent,1.136608
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",tyrosine_percent,1.285671
+FASA-KE-08,"Soy bean full fat [FASA, Kenya]",phe_tyr_percent,3.130329
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,3829.636711
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,3877.50717
 FASA-KE-08,"Soy bean full fat [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,3829.636711
@@ -1267,23 +1285,10 @@ FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",crude_protein_percent,25.6
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",crude_fibre_percent,25.3
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",crude_lipids_percent,6.63
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",gross_energy_kcal_kcal_kg,4167.304015
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",arginine_percent,1.79
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",histidine_percent,1.12
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",isoleucine_percent,0.17
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",leucine_percent,0.59
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",lysine_percent,0.83
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",methionine_percent,0.65
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",phenylalanine_percent,0.24
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",threonine_percent,1.36
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",tryptophan_percent,0.48
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",valine_percent,0.65
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",tyrosine_percent,0.72
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",tannins_mg_eq_cathin_kg,20000.0
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",phytic_acid_g_kg,3.0
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",cystine_percent,0.7
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",tsaa_met_cys_percent,1.35
-FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",phe_tyr_percent,0.96
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",starch_percent,52.95
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",sum_n_6_percent,2.3
@@ -1326,6 +1331,20 @@ FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",vitamin_e_mg_kg,11.17
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",vitamin_k_mg_kg,0.0
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",zeralenone_zon_ppb,57.0
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",zinc_mg_kg,23.9
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",arginine_percent,3.01546
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",histidine_percent,0.753865
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",isoleucine_percent,0.82454
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",leucine_percent,1.539141
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",lysine_percent,1.13865
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",methionine_percent,0.400491
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",phenylalanine_percent,1.42135
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",threonine_percent,0.832393
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",tryptophan_percent,0.376933
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",valine_percent,1.154356
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",cystine_percent,0.958037
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",tsaa_met_cys_percent,1.358528
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",tyrosine_percent,0.816687
+FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",phe_tyr_percent,2.238037
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,2041.978967
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,2208.671128
 FASA-KE-09,"cottonseed meal /cake [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,2041.978967
@@ -1337,24 +1356,11 @@ FASA-KE-10,"peanut meal, cake [FASA, Kenya]",crude_protein_percent,6.6
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",crude_fibre_percent,13.8
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",crude_lipids_percent,11.9
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",gross_energy_kcal_kcal_kg,2705.544933
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",arginine_percent,0.19
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",histidine_percent,0.29
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",isoleucine_percent,0.02
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",leucine_percent,0.08
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",lysine_percent,0.07
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",methionine_percent,0.18
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",phenylalanine_percent,0.02
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",threonine_percent,0.25
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",tryptophan_percent,0.08
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",valine_percent,0.4
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",tyrosine_percent,0.1
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",saponin_mg_kg,51400.0
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",tannins_mg_eq_cathin_kg,23000.0
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",phytic_acid_g_kg,1.0
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",cystine_percent,0.1
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",tsaa_met_cys_percent,0.28
-FASA-KE-10,"peanut meal, cake [FASA, Kenya]",phe_tyr_percent,0.12
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",starch_percent,31.6
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",sum_n_6_percent,0.2
@@ -1397,6 +1403,20 @@ FASA-KE-10,"peanut meal, cake [FASA, Kenya]",vitamin_e_mg_kg,1.79
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",vitamin_k_mg_kg,0.05
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",zeralenone_zon_ppb,2682.0
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",zinc_mg_kg,52.5
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",arginine_percent,0.694813
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",histidine_percent,0.145055
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",isoleucine_percent,0.226286
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",leucine_percent,0.433714
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",lysine_percent,0.21178
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",methionine_percent,0.062374
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",phenylalanine_percent,0.326374
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",threonine_percent,0.178418
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",tryptophan_percent,0.065275
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",valine_percent,0.288659
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",cystine_percent,0.087033
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",tsaa_met_cys_percent,0.149407
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",tyrosine_percent,0.216132
+FASA-KE-10,"peanut meal, cake [FASA, Kenya]",phe_tyr_percent,0.542505
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,1920.936902
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,2002.10325
 FASA-KE-10,"peanut meal, cake [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,1975.047801
@@ -1408,24 +1428,11 @@ FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",crude_protein_percent,25.2
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",crude_fibre_percent,29.7
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",crude_lipids_percent,11.3
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",gross_energy_kcal_kcal_kg,4269.837476
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",arginine_percent,1.73
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",histidine_percent,2.1
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",isoleucine_percent,0.43
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",leucine_percent,0.52
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",lysine_percent,0.45
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",methionine_percent,0.7
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",phenylalanine_percent,1.23
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",threonine_percent,0.62
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",tryptophan_percent,0.15
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",valine_percent,0.48
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",tyrosine_percent,0.81
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",saponin_mg_kg,14300.0
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",tannins_mg_eq_cathin_kg,28000.0
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",phytic_acid_g_kg,2.0
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",cystine_percent,0.95
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",tsaa_met_cys_percent,1.65
-FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",phe_tyr_percent,2.04
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",starch_percent,51.05
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",sum_n_6_percent,1.1
@@ -1468,6 +1475,20 @@ FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",vitamin_e_mg_kg,6.77
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",vitamin_k_mg_kg,0.0
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",zeralenone_zon_ppb,48.4
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",zinc_mg_kg,96.0
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",arginine_percent,2.037913
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",histidine_percent,0.766957
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",isoleucine_percent,0.876522
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",leucine_percent,1.906435
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",lysine_percent,0.865565
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",methionine_percent,0.712174
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",phenylalanine_percent,1.369565
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",threonine_percent,0.920348
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",tryptophan_percent,0.558783
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",valine_percent,1.139478
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",cystine_percent,0.602609
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",tsaa_met_cys_percent,1.314783
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",tyrosine_percent,0.591652
+FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",phe_tyr_percent,1.961217
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,1451.744742
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,1750.633365
 FASA-KE-11,"Sunflower meal, cake [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,1451.744742
@@ -1479,24 +1500,11 @@ FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",crude_protein_percent,20.3
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",crude_fibre_percent,29.3
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",crude_lipids_percent,14.3
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",gross_energy_kcal_kcal_kg,4940.248566
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",arginine_percent,1.59
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",histidine_percent,1.4
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",isoleucine_percent,0.25
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",leucine_percent,0.88
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",lysine_percent,0.57
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",methionine_percent,0.5
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",phenylalanine_percent,1.09
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",threonine_percent,2.86
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",tryptophan_percent,0.15
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",valine_percent,0.29
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",tyrosine_percent,0.64
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",saponin_mg_kg,124100.0
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",tannins_mg_eq_cathin_kg,40000.0
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",phytic_acid_g_kg,6.0
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",gossypol_mg_kg,195000.0
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",cystine_percent,1.52
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",tsaa_met_cys_percent,2.02
-FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",phe_tyr_percent,1.73
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",starch_percent,46.1
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",epa_dha_percent,0.0
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",sum_n_3_percent,0.0
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",sum_n_6_percent,0.8
@@ -1539,6 +1547,20 @@ FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",vitamin_e_mg_kg,6.77
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",vitamin_k_mg_kg,0.0
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",zeralenone_zon_ppb,48.4
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",zinc_mg_kg,96.0
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",arginine_percent,1.641652
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",histidine_percent,0.617826
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",isoleucine_percent,0.706087
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",leucine_percent,1.535739
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",lysine_percent,0.697261
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",methionine_percent,0.573696
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",phenylalanine_percent,1.103261
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",threonine_percent,0.741391
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",tryptophan_percent,0.45013
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",valine_percent,0.917913
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",cystine_percent,0.485435
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",tsaa_met_cys_percent,1.05913
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",tyrosine_percent,0.476609
+FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",phe_tyr_percent,1.57987
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,1679.684512
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,2025.501912
 FASA-ZM-07,"Sunflower meal, cake [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,1679.684512
@@ -1550,24 +1572,11 @@ FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",crude_protein_perc
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",crude_fibre_percent,36.3
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",crude_lipids_percent,2.57
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,4306.166348
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",arginine_percent,2.36
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",histidine_percent,1.07
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",isoleucine_percent,0.32
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",leucine_percent,1.42
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",lysine_percent,1.19
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",methionine_percent,0.67
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",phenylalanine_percent,0.95
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",threonine_percent,0.77
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",tryptophan_percent,0.14
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",valine_percent,0.47
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",tyrosine_percent,1.38
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",saponin_mg_kg,5600.0
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,31000.0
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",phytic_acid_g_kg,1.0
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",cystine_percent,0.64
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",tsaa_met_cys_percent,1.31
-FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",phe_tyr_percent,2.33
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",starch_percent,61.44
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",sum_n_3_percent,0.3
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",sum_n_6_percent,0.7
@@ -1610,6 +1619,20 @@ FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",vitamin_e_mg_kg,3.
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",vitamin_k_mg_kg,0.09
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",zeralenone_zon_ppb,57.0
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",zinc_mg_kg,34.0
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",arginine_percent,2.011673
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",histidine_percent,0.548638
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",isoleucine_percent,0.914397
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",leucine_percent,1.463035
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",lysine_percent,1.389883
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",methionine_percent,0.228599
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",phenylalanine_percent,0.896109
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",threonine_percent,0.896109
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",tryptophan_percent,0.219455
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",valine_percent,1.115564
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",cystine_percent,0.283463
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",tsaa_met_cys_percent,0.512062
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",tyrosine_percent,0.658366
+FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",phe_tyr_percent,1.554475
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,2712.884799
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,3014.316444
 FASA-NG-05,"White cowpea (Vigna unguiculata) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,2971.25478
@@ -1621,24 +1644,11 @@ FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",crude_protein_perc
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",crude_fibre_percent,34.7
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",crude_lipids_percent,2.22
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,4218.929254
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",arginine_percent,2.1
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",histidine_percent,0.94
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",isoleucine_percent,0.3
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",leucine_percent,1.29
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",lysine_percent,1.2
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",methionine_percent,0.66
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",phenylalanine_percent,0.85
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",threonine_percent,0.75
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",tryptophan_percent,0.15
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",valine_percent,0.48
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",tyrosine_percent,0.65
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",saponin_mg_kg,24800.0
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,26000.0
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",phytic_acid_g_kg,1.0
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",cystine_percent,0.63
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",tsaa_met_cys_percent,1.29
-FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",phe_tyr_percent,1.5
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",starch_percent,63.96
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",sum_n_3_percent,0.3
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",sum_n_6_percent,0.6
@@ -1681,6 +1691,20 @@ FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",vitamin_e_mg_kg,3.
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",vitamin_k_mg_kg,0.09
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",zeralenone_zon_ppb,57.0
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",zinc_mg_kg,34.0
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",arginine_percent,1.831907
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",histidine_percent,0.499611
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",isoleucine_percent,0.832685
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",leucine_percent,1.332296
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",lysine_percent,1.265681
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",methionine_percent,0.208171
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",phenylalanine_percent,0.816031
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",threonine_percent,0.816031
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",tryptophan_percent,0.199844
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",valine_percent,1.015875
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",cystine_percent,0.258132
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",tsaa_met_cys_percent,0.466304
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",tyrosine_percent,0.599533
+FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",phe_tyr_percent,1.415564
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,2657.92543
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,2953.250478
 FASA-NG-06,"Brown cowpea (Vigna unguiculata) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,2911.061185
@@ -1692,24 +1716,11 @@ FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",crude_protein_pe
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",crude_fibre_percent,6.21
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",crude_lipids_percent,4.04
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",gross_energy_kcal_kcal_kg,4206.500956
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",arginine_percent,1.35
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",histidine_percent,1.18
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",isoleucine_percent,0.21
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",leucine_percent,1.13
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",lysine_percent,0.77
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",methionine_percent,0.35
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",phenylalanine_percent,1.2
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",threonine_percent,3.8
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",tryptophan_percent,0.23
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",valine_percent,0.38
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",tyrosine_percent,0.99
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",saponin_mg_kg,29400.0
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",tannins_mg_eq_cathin_kg,76000.0
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",phytic_acid_g_kg,30.0
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",gossypol_mg_kg,265000.0
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",cystine_percent,1.09
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",tsaa_met_cys_percent,1.44
-FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",phe_tyr_percent,2.19
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",starch_percent,48.36
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",epa_dha_percent,0.0
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",sum_n_3_percent,0.0
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",sum_n_6_percent,0.2
@@ -1752,6 +1763,20 @@ FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",vitamin_e_mg_kg,
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",vitamin_k_mg_kg,0.09
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",zeralenone_zon_ppb,57.0
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",zinc_mg_kg,34.0
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",arginine_percent,2.105837
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",histidine_percent,0.574319
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",isoleucine_percent,0.957198
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",leucine_percent,1.531518
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",lysine_percent,1.454942
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",methionine_percent,0.2393
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",phenylalanine_percent,0.938054
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",threonine_percent,0.938054
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",tryptophan_percent,0.229728
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",valine_percent,1.167782
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",cystine_percent,0.296732
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",tsaa_met_cys_percent,0.536031
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",tyrosine_percent,0.689183
+FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",phe_tyr_percent,1.627237
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,2650.095602
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,2944.550669
 FASA-ZM-08,"Velvet beans seed (Mucuna pruriens) [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,2902.48566
@@ -1763,24 +1788,11 @@ FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",crude_protein_pe
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",crude_fibre_percent,5.08
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",crude_lipids_percent,4.69
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",gross_energy_kcal_kcal_kg,4251.912046
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",arginine_percent,1.0
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",histidine_percent,0.92
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",isoleucine_percent,0.19
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",leucine_percent,1.05
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",lysine_percent,1.17
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",methionine_percent,0.28
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",phenylalanine_percent,0.81
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",threonine_percent,3.31
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",tryptophan_percent,0.3
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",valine_percent,0.34
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",tyrosine_percent,0.92
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",saponin_mg_kg,55900.0
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",tannins_mg_eq_cathin_kg,62000.0
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",phytic_acid_g_kg,30.0
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",gossypol_mg_kg,237000.0
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",cystine_percent,0.86
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",tsaa_met_cys_percent,1.14
-FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",phe_tyr_percent,1.73
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",starch_percent,46.61
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",epa_dha_percent,0.0
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",sum_n_3_percent,0.2
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",sum_n_6_percent,2.4
@@ -1823,6 +1835,20 @@ FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",vitamin_e_mg_kg,
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",vitamin_k_mg_kg,0.09
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",zeralenone_zon_ppb,57.0
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",zinc_mg_kg,34.0
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",arginine_percent,1.960311
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",histidine_percent,0.53463
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",isoleucine_percent,0.891051
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",leucine_percent,1.425681
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",lysine_percent,1.354397
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",methionine_percent,0.222763
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",phenylalanine_percent,0.87323
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",threonine_percent,0.87323
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",tryptophan_percent,0.213852
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",valine_percent,1.087082
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",cystine_percent,0.276226
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",tsaa_met_cys_percent,0.498988
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",tyrosine_percent,0.641556
+FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",phe_tyr_percent,1.514786
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,2678.704589
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,2976.338432
 FASA-ZM-09,"Velvet beans meal (Mucuna pruriens) [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,2933.819312
@@ -1834,23 +1860,10 @@ FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",crude_protein
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",crude_fibre_percent,9.59
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",crude_lipids_percent,3.62
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,4343.929254
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",arginine_percent,4.37
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",histidine_percent,0.51
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",isoleucine_percent,0.45
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",leucine_percent,1.94
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",lysine_percent,0.27
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",methionine_percent,0.7
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",phenylalanine_percent,1.03
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",threonine_percent,0.34
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",tryptophan_percent,0.33
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",valine_percent,1.06
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",tyrosine_percent,1.39
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,2400.0
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",phytic_acid_g_kg,1.0
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",cystine_percent,1.03
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",tsaa_met_cys_percent,1.73
-FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",phe_tyr_percent,2.42
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",starch_percent,57.26
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",sum_n_3_percent,0.0
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",sum_n_6_percent,1.1
@@ -1893,6 +1906,20 @@ FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",vitamin_e_mg_
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",vitamin_k_mg_kg,0.0
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",zeralenone_zon_ppb,1012.0
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",zinc_mg_kg,12.0
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",arginine_percent,1.119967
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",histidine_percent,0.450993
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",isoleucine_percent,0.901987
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",leucine_percent,2.720993
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",lysine_percent,0.511126
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",methionine_percent,0.360795
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",phenylalanine_percent,1.225199
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",threonine_percent,0.751656
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",tryptophan_percent,0.225497
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",valine_percent,1.119967
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",cystine_percent,0.398377
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",tsaa_met_cys_percent,0.759172
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",tyrosine_percent,0.338245
+FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",phe_tyr_percent,1.563444
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,2215.40392
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,2562.91826
 FASA-NG-07,"Local brewery waste (Sorghum bicolor) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,2258.843212
@@ -1904,23 +1931,10 @@ FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",crude_protein_percent,3
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",crude_fibre_percent,10.9
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",crude_lipids_percent,8.6
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",gross_energy_kcal_kcal_kg,4927.342256
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",arginine_percent,6.64
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",histidine_percent,1.41
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",isoleucine_percent,0.44
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",leucine_percent,2.92
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",lysine_percent,0.66
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",methionine_percent,0.58
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",phenylalanine_percent,1.17
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",threonine_percent,0.41
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",tryptophan_percent,0.88
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",valine_percent,0.97
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",tyrosine_percent,2.45
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",tannins_mg_eq_cathin_kg,0.0
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",phytic_acid_g_kg,4.0
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",cystine_percent,0.98
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",tsaa_met_cys_percent,1.56
-FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",phe_tyr_percent,3.62
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",starch_percent,38.85
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",sum_n_6_percent,0.6
@@ -1963,6 +1977,20 @@ FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",vitamin_e_mg_kg,19.99
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",vitamin_k_mg_kg,0.2
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",zeralenone_zon_ppb,57.0
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",zinc_mg_kg,82.0
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",arginine_percent,2.353333
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",histidine_percent,0.825019
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",isoleucine_percent,2.042261
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",leucine_percent,3.056628
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",lysine_percent,1.136092
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",methionine_percent,0.811494
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",phenylalanine_percent,2.272184
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",threonine_percent,1.393065
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",tryptophan_percent,0.513946
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",valine_percent,2.136935
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",cystine_percent,0.595096
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",tsaa_met_cys_percent,1.40659
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",tyrosine_percent,1.40659
+FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",phe_tyr_percent,3.678774
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,2315.85086
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,2710.038241
 FASA-KE-12,"Brewery and distillery grains [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,2315.85086
@@ -1974,24 +2002,11 @@ FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",crude_p
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",crude_fibre_percent,9.82
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",crude_lipids_percent,39.9
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,5254.780115
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",arginine_percent,1.43
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",histidine_percent,0.44
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",isoleucine_percent,0.08
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",leucine_percent,0.41
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",lysine_percent,0.12
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",methionine_percent,0.05
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",phenylalanine_percent,0.12
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",threonine_percent,0.44
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",tryptophan_percent,0.02
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",valine_percent,0.17
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",tyrosine_percent,0.4
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",saponin_mg_kg,35800.0
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,22000.0
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",phytic_acid_g_kg,1.0
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",gossypol_mg_kg,430.0
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",cystine_percent,0.17
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",tsaa_met_cys_percent,0.22
-FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",phe_tyr_percent,0.52
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",starch_percent,34.02
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",sum_n_3_percent,0.1
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",sum_n_6_percent,1.5
@@ -2034,6 +2049,20 @@ FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",vitamin
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",vitamin_k_mg_kg,0.0
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",zeralenone_zon_ppb,57.0
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",zinc_mg_kg,40.0
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",arginine_percent,0.315
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",histidine_percent,0.1575
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",isoleucine_percent,0.34125
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",leucine_percent,0.525
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",lysine_percent,0.315
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",methionine_percent,0.21
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",phenylalanine_percent,0.5775
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",threonine_percent,0.2625
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",tryptophan_percent,0.07875
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",valine_percent,0.315
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",cystine_percent,0.1575
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",tsaa_met_cys_percent,0.3675
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",tyrosine_percent,0.4725
+FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",phe_tyr_percent,1.05
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,578.025813
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,840.764818
 FASA-NG-08,"Shea nut butter waste (Vitellaria paradoxa) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,578.025813
@@ -2045,23 +2074,10 @@ FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",crude_protei
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",crude_fibre_percent,15.1
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",crude_lipids_percent,3.71
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,3686.902486
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",arginine_percent,1.88
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",histidine_percent,0.69
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",isoleucine_percent,0.16
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",leucine_percent,0.63
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",lysine_percent,0.31
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",methionine_percent,0.16
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",phenylalanine_percent,0.37
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",threonine_percent,0.39
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",tryptophan_percent,0.22
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",valine_percent,0.21
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",tyrosine_percent,0.56
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,37000.0
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",phytic_acid_g_kg,3.0
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",cystine_percent,0.36
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",tsaa_met_cys_percent,0.52
-FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",phe_tyr_percent,0.93
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",starch_percent,57.89
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",sum_n_3_percent,0.7
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",sum_n_6_percent,0.6
@@ -2104,6 +2120,20 @@ FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",vitamin_e_mg
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",vitamin_k_mg_kg,0.05
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",zeralenone_zon_ppb,0.0
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",zinc_mg_kg,1648.5
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",arginine_percent,0.892597
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",histidine_percent,0.336742
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",isoleucine_percent,0.735758
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",leucine_percent,1.330823
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",lysine_percent,0.781887
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",methionine_percent,0.279081
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",phenylalanine_percent,0.867226
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",threonine_percent,0.588145
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",tryptophan_percent,0.345968
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",valine_percent,0.934113
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",cystine_percent,0.126855
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",tsaa_met_cys_percent,0.405935
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",tyrosine_percent,0.61121
+FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",phe_tyr_percent,1.478435
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,1843.451243
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,1954.058317
 FASA-NG-09,"Baobab leave Meal (Adansonia digitata) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,1843.451243
@@ -2115,23 +2145,10 @@ FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",crude_p
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",crude_fibre_percent,41.6
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",crude_lipids_percent,4.92
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,4353.011472
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",arginine_percent,1.56
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",histidine_percent,0.77
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",isoleucine_percent,0.3
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",leucine_percent,1.0
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",lysine_percent,0.9
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",methionine_percent,0.38
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",phenylalanine_percent,0.67
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",threonine_percent,0.34
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",tryptophan_percent,0.19
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",valine_percent,0.16
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",tyrosine_percent,0.52
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,21000.0
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",phytic_acid_g_kg,1.0
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",gossypol_mg_kg,430.0
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",cystine_percent,0.28
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",tsaa_met_cys_percent,0.66
-FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",phe_tyr_percent,1.19
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",starch_percent,67.86
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",sum_n_3_percent,0.1
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",sum_n_6_percent,1.6
@@ -2174,6 +2191,20 @@ FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",vitamin
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",vitamin_k_mg_kg,0.0
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",zeralenone_zon_ppb,57.0
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",zinc_mg_kg,40.0
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",arginine_percent,0.465
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",histidine_percent,0.2325
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",isoleucine_percent,0.50375
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",leucine_percent,0.775
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",lysine_percent,0.465
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",methionine_percent,0.31
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",phenylalanine_percent,0.8525
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",threonine_percent,0.3875
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",tryptophan_percent,0.11625
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",valine_percent,0.465
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",cystine_percent,0.2325
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",tsaa_met_cys_percent,0.5425
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",tyrosine_percent,0.6975
+FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",phe_tyr_percent,1.55
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,478.831262
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,696.481836
 FASA-NG-10,"Bambara nut waste meal (Vigna subterranean) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,478.831262
@@ -2185,24 +2216,11 @@ FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",crude_protein_percent,24.7
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",crude_fibre_percent,21.9
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",crude_lipids_percent,3.44
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",gross_energy_kcal_kcal_kg,4119.98088
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",arginine_percent,3.01
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",histidine_percent,1.52
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",isoleucine_percent,0.27
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",leucine_percent,1.28
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",lysine_percent,0.64
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",methionine_percent,0.67
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",phenylalanine_percent,1.01
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",threonine_percent,0.8
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",tryptophan_percent,0.3
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",valine_percent,0.7
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",tyrosine_percent,0.91
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",saponin_mg_kg,20900.0
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",tannins_mg_eq_cathin_kg,29000.0
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",phytic_acid_g_kg,0.8
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",cystine_percent,1.23
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",tsaa_met_cys_percent,1.9
-FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",phe_tyr_percent,1.92
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",starch_percent,46.66
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",sum_n_3_percent,0.0
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",sum_n_6_percent,1.4
@@ -2245,6 +2263,20 @@ FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",vitamin_e_mg_kg,4.0
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",vitamin_k_mg_kg,0.05
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",zeralenone_zon_ppb,57.0
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",zinc_mg_kg,34.0
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",arginine_percent,1.665045
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",histidine_percent,0.815982
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",isoleucine_percent,0.981384
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",leucine_percent,1.841473
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",lysine_percent,1.609911
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",methionine_percent,0.363884
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",phenylalanine_percent,1.356295
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",threonine_percent,0.948304
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",tryptophan_percent,0.27567
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",valine_percent,1.157813
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",cystine_percent,0.27567
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",tsaa_met_cys_percent,0.639554
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",tyrosine_percent,0.749821
+FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",phe_tyr_percent,2.106116
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,2677.987572
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,3048.785851
 FASA-NG-11,"Roselle seed meal [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,2925.186424
@@ -2256,24 +2288,11 @@ FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",c
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",crude_fibre_percent,19.1
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",crude_lipids_percent,1.1
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,3678.059273
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",arginine_percent,0.77
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",histidine_percent,0.2
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",isoleucine_percent,0.05
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",leucine_percent,0.22
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",lysine_percent,0.36
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",methionine_percent,0.12
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",phenylalanine_percent,0.13
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",threonine_percent,0.19
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",tryptophan_percent,0.16
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",valine_percent,0.09
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",tyrosine_percent,0.29
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",saponin_mg_kg,263300.0
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,28000.0
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",phytic_acid_g_kg,0.2
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",gossypol_mg_kg,430.0
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",cystine_percent,0.3
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",tsaa_met_cys_percent,0.42
-FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",phe_tyr_percent,0.42
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",starch_percent,74.4
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",sum_n_3_percent,0.0
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",sum_n_6_percent,0.3
@@ -2316,6 +2335,20 @@ FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",v
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",vitamin_k_mg_kg,0.0
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",zeralenone_zon_ppb,57.0
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",zinc_mg_kg,40.0
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",arginine_percent,0.237
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",histidine_percent,0.1185
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",isoleucine_percent,0.25675
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",leucine_percent,0.395
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",lysine_percent,0.237
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",methionine_percent,0.158
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",phenylalanine_percent,0.4345
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",threonine_percent,0.1975
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",tryptophan_percent,0.05925
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",valine_percent,0.237
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",cystine_percent,0.1185
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",tsaa_met_cys_percent,0.2765
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",tyrosine_percent,0.3555
+FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",phe_tyr_percent,0.79
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,404.58652
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,588.489484
 FASA-NG-12,"African Locust bean fruit pulp (Parkia biglobosa) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,404.58652
@@ -2327,23 +2360,10 @@ FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",crude_protein_
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",crude_fibre_percent,21.9
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",crude_lipids_percent,19.5
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,3749.282983
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",arginine_percent,1.01
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",histidine_percent,0.2
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",isoleucine_percent,0.06
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",leucine_percent,0.34
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",lysine_percent,0.3
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",methionine_percent,0.08
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",phenylalanine_percent,0.16
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",threonine_percent,0.24
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",tryptophan_percent,0.05
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",valine_percent,0.1
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",tyrosine_percent,0.19
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,29000.0
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",phytic_acid_g_kg,1.0
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",gossypol_mg_kg,430.0
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",cystine_percent,0.19
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",tsaa_met_cys_percent,0.27
-FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",phe_tyr_percent,0.35
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",starch_percent,60.37
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",sum_n_3_percent,0.0
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",sum_n_6_percent,1.3
@@ -2386,6 +2406,20 @@ FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",vitamin_e_mg_k
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",vitamin_k_mg_kg,0.0
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",zeralenone_zon_ppb,57.0
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",zinc_mg_kg,40.0
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",arginine_percent,0.168
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",histidine_percent,0.084
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",isoleucine_percent,0.182
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",leucine_percent,0.28
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",lysine_percent,0.168
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",methionine_percent,0.112
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",phenylalanine_percent,0.308
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",threonine_percent,0.14
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",tryptophan_percent,0.042
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",valine_percent,0.168
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",cystine_percent,0.084
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",tsaa_met_cys_percent,0.196
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",tyrosine_percent,0.252
+FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",phe_tyr_percent,0.56
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,412.421128
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,599.885277
 FASA-NG-13,"Tiger nut waste (Cyperus esculentus) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,412.421128
@@ -2397,24 +2431,11 @@ FASA-NG-14,"Yam peel meal [FASA, Nigeria]",crude_protein_percent,6.7
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",crude_fibre_percent,4.62
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",crude_lipids_percent,1.41
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",gross_energy_kcal_kcal_kg,3813.575526
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",arginine_percent,1.04
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",histidine_percent,0.19
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",isoleucine_percent,0.1
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",leucine_percent,0.29
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",lysine_percent,0.2
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",methionine_percent,0.07
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",phenylalanine_percent,0.21
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",threonine_percent,0.28
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",tryptophan_percent,0.19
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",valine_percent,0.11
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",tyrosine_percent,0.36
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",saponin_mg_kg,5600.0
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",tannins_mg_eq_cathin_kg,37000.0
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",phytic_acid_g_kg,1.5
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",cystine_percent,0.1
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",tsaa_met_cys_percent,0.17
-FASA-NG-14,"Yam peel meal [FASA, Nigeria]",phe_tyr_percent,0.57
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",starch_percent,77.7
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",sum_n_3_percent,0.0
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",sum_n_6_percent,0.4
@@ -2457,35 +2478,36 @@ FASA-NG-14,"Yam peel meal [FASA, Nigeria]",vitamin_e_mg_kg,2.98
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",vitamin_k_mg_kg,0.02
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",zeralenone_zon_ppb,57.0
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",zinc_mg_kg,60.0
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",arginine_percent,0.309231
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",histidine_percent,0.566923
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",isoleucine_percent,0.292051
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",leucine_percent,0.618462
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",lysine_percent,0.274872
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",methionine_percent,0.120256
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",phenylalanine_percent,0.34359
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",threonine_percent,0.292051
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",tryptophan_percent,0.034359
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",valine_percent,0.481026
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",cystine_percent,0.103077
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",tsaa_met_cys_percent,0.223333
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",tyrosine_percent,0.206154
+FASA-NG-14,"Yam peel meal [FASA, Nigeria]",phe_tyr_percent,0.549744
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,2288.145315
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,2783.910134
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,2631.367113
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",de_fish_omni_extruded_kcal_kg,3012.724665
 FASA-NG-14,"Yam peel meal [FASA, Nigeria]",dig_ge_de_fish_kcal,2745.774379
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",dry_matter_percent,87.6
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",ash_percent,23.2
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",ash_percent,5.94
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",crude_protein_percent,15.7
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",crude_fibre_percent,16.3
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",crude_lipids_percent,1.52
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",gross_energy_kcal_kcal_kg,3991.395793
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",arginine_percent,0.74
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",histidine_percent,0.95
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",isoleucine_percent,0.17
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",leucine_percent,0.66
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",lysine_percent,0.48
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",methionine_percent,0.2
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",phenylalanine_percent,0.41
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",threonine_percent,0.91
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",tryptophan_percent,0.23
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",valine_percent,0.29
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",tyrosine_percent,0.57
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",saponin_mg_kg,297500.0
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",tannins_mg_eq_cathin_kg,88000.0
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",phytic_acid_g_kg,35.0
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",gossypol_mg_kg,214000.0
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",cystine_percent,0.88
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",tsaa_met_cys_percent,1.08
-FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",phe_tyr_percent,0.98
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",starch_percent,64.44
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",epa_dha_percent,0.0
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",sum_n_3_percent,0.2
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",sum_n_6_percent,0.2
@@ -2528,6 +2550,20 @@ FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",vitamin_e_mg_kg,3.0
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",vitamin_k_mg_kg,0.0
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",zeralenone_zon_ppb,57.0
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",zinc_mg_kg,40.0
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",arginine_percent,0.471
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",histidine_percent,0.2355
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",isoleucine_percent,0.51025
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",leucine_percent,0.785
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",lysine_percent,0.471
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",methionine_percent,0.314
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",phenylalanine_percent,0.8635
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",threonine_percent,0.3925
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",tryptophan_percent,0.11775
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",valine_percent,0.471
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",cystine_percent,0.2355
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",tsaa_met_cys_percent,0.5495
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",tyrosine_percent,0.7065
+FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",phe_tyr_percent,1.57
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,439.053537
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,638.623327
 FASA-ZM-10,"Tea waste (Camellia sinesis) [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,439.053537
@@ -2539,23 +2575,10 @@ FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",crude_protein_p
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",crude_fibre_percent,11.1
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",crude_lipids_percent,3.49
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,3946.701721
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",arginine_percent,1.72
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",histidine_percent,0.67
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",isoleucine_percent,0.14
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",leucine_percent,0.46
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",lysine_percent,0.22
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",methionine_percent,0.09
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",phenylalanine_percent,0.24
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",threonine_percent,0.31
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",tryptophan_percent,0.23
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",valine_percent,0.12
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",tyrosine_percent,0.47
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,31000.0
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",phytic_acid_g_kg,1.0
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",cystine_percent,0.23
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",tsaa_met_cys_percent,0.32
-FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",phe_tyr_percent,0.71
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",starch_percent,64.91
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",sum_n_3_percent,0.2
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",sum_n_6_percent,0.6
@@ -2598,6 +2621,20 @@ FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",vitamin_e_mg_kg
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",vitamin_k_mg_kg,0.02
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",zeralenone_zon_ppb,57.0
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",zinc_mg_kg,60.0
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",arginine_percent,0.452308
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",histidine_percent,0.829231
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",isoleucine_percent,0.427179
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",leucine_percent,0.904615
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",lysine_percent,0.402051
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",methionine_percent,0.175897
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",phenylalanine_percent,0.502564
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",threonine_percent,0.427179
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",tryptophan_percent,0.050256
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",valine_percent,0.70359
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",cystine_percent,0.150769
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",tsaa_met_cys_percent,0.326667
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",tyrosine_percent,0.301538
+FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",phe_tyr_percent,0.804103
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,2368.021033
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,2881.092256
 FASA-NG-15,"Plantain peel meal (Musa sapientum) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,2723.224187
@@ -2609,24 +2646,11 @@ FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",crude_prot
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",crude_fibre_percent,12.7
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",crude_lipids_percent,4.43
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",gross_energy_kcal_kcal_kg,4013.145315
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",arginine_percent,4.92
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",histidine_percent,1.41
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",isoleucine_percent,0.59
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",leucine_percent,1.73
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",lysine_percent,0.99
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",methionine_percent,0.46
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",phenylalanine_percent,1.17
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",threonine_percent,0.92
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",tryptophan_percent,0.63
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",valine_percent,0.31
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",tyrosine_percent,1.07
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",saponin_mg_kg,12600.0
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",tannins_mg_eq_cathin_kg,31000.0
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",phytic_acid_g_kg,0.0
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",gossypol_mg_kg,0.0
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",cystine_percent,1.07
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",tsaa_met_cys_percent,1.53
-FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",phe_tyr_percent,2.24
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",starch_percent,44.37
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",epa_dha_percent,0.0
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",sum_n_3_percent,1.0
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",sum_n_6_percent,0.4
@@ -2669,6 +2693,20 @@ FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",vitamin_e_
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",vitamin_k_mg_kg,0.05
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",zeralenone_zon_ppb,0.0
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",zinc_mg_kg,1648.5
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",arginine_percent,1.760226
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",histidine_percent,0.664065
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",isoleucine_percent,1.450935
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",leucine_percent,2.624419
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",lysine_percent,1.541903
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",methionine_percent,0.550355
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",phenylalanine_percent,1.710194
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",threonine_percent,1.159839
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",tryptophan_percent,0.682258
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",valine_percent,1.842097
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",cystine_percent,0.250161
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",tsaa_met_cys_percent,0.800516
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",tyrosine_percent,1.205323
+FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",phe_tyr_percent,2.915516
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",de_fish_carni_pelleted_kcal_kg,2006.572658
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",de_fish_omni_pelleted_kcal_kg,2126.967017
 FASA-NG-16,"Chaya leaf meal (Cnidoscolus chayamansa) [FASA, Nigeria]",de_fish_carni_extruded_kcal_kg,2006.572658
@@ -2680,23 +2718,10 @@ FASA-KE-13,"Sorghum, meal [FASA, Kenya]",crude_protein_percent,9.5
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",crude_fibre_percent,1.73
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",crude_lipids_percent,3.52
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",gross_energy_kcal_kcal_kg,4041.347992
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",arginine_percent,0.85
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",histidine_percent,0.22
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",isoleucine_percent,0.04
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",leucine_percent,0.45
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",lysine_percent,0.14
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",methionine_percent,0.18
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",phenylalanine_percent,0.11
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",threonine_percent,0.31
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",tryptophan_percent,0.09
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",valine_percent,0.37
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",tyrosine_percent,0.36
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",tannins_mg_eq_cathin_kg,18000.0
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",phytic_acid_g_kg,2.0
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",cystine_percent,0.26
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",tsaa_met_cys_percent,0.44
-FASA-KE-13,"Sorghum, meal [FASA, Kenya]",phe_tyr_percent,0.47
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",starch_percent,73.8
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",sum_n_6_percent,0.9
@@ -2739,6 +2764,20 @@ FASA-KE-13,"Sorghum, meal [FASA, Kenya]",vitamin_e_mg_kg,5.21
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",vitamin_k_mg_kg,0.05
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",zeralenone_zon_ppb,57.0
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",zinc_mg_kg,24.0
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",arginine_percent,0.5605
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",histidine_percent,0.5415
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",isoleucine_percent,0.57
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",leucine_percent,1.1685
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",lysine_percent,0.4465
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",methionine_percent,0.627
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",phenylalanine_percent,1.2065
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",threonine_percent,0.6555
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",tryptophan_percent,0.1235
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",valine_percent,0.4085
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",cystine_percent,0.608
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",tsaa_met_cys_percent,1.235
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",tyrosine_percent,0.304
+FASA-KE-13,"Sorghum, meal [FASA, Kenya]",phe_tyr_percent,1.5105
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,2546.049235
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,3031.010994
 FASA-KE-13,"Sorghum, meal [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,2950.184034
@@ -2750,24 +2789,11 @@ FASA-KE-14,"rice bran [FASA, Kenya]",crude_protein_percent,13.5
 FASA-KE-14,"rice bran [FASA, Kenya]",crude_fibre_percent,8.68
 FASA-KE-14,"rice bran [FASA, Kenya]",crude_lipids_percent,18.1
 FASA-KE-14,"rice bran [FASA, Kenya]",gross_energy_kcal_kcal_kg,3679.254302
-FASA-KE-14,"rice bran [FASA, Kenya]",arginine_percent,1.32
-FASA-KE-14,"rice bran [FASA, Kenya]",histidine_percent,0.87
-FASA-KE-14,"rice bran [FASA, Kenya]",isoleucine_percent,0.15
-FASA-KE-14,"rice bran [FASA, Kenya]",leucine_percent,0.35
-FASA-KE-14,"rice bran [FASA, Kenya]",lysine_percent,0.32
-FASA-KE-14,"rice bran [FASA, Kenya]",methionine_percent,0.5
-FASA-KE-14,"rice bran [FASA, Kenya]",phenylalanine_percent,0.38
-FASA-KE-14,"rice bran [FASA, Kenya]",threonine_percent,0.1
-FASA-KE-14,"rice bran [FASA, Kenya]",tryptophan_percent,0.17
-FASA-KE-14,"rice bran [FASA, Kenya]",valine_percent,0.23
-FASA-KE-14,"rice bran [FASA, Kenya]",tyrosine_percent,0.34
 FASA-KE-14,"rice bran [FASA, Kenya]",saponin_mg_kg,46700.0
 FASA-KE-14,"rice bran [FASA, Kenya]",tannins_mg_eq_cathin_kg,0.0
 FASA-KE-14,"rice bran [FASA, Kenya]",phytic_acid_g_kg,5.0
 FASA-KE-14,"rice bran [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-14,"rice bran [FASA, Kenya]",cystine_percent,0.61
-FASA-KE-14,"rice bran [FASA, Kenya]",tsaa_met_cys_percent,1.11
-FASA-KE-14,"rice bran [FASA, Kenya]",phe_tyr_percent,0.72
+FASA-KE-14,"rice bran [FASA, Kenya]",starch_percent,43.4
 FASA-KE-14,"rice bran [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-14,"rice bran [FASA, Kenya]",sum_n_3_percent,0.1
 FASA-KE-14,"rice bran [FASA, Kenya]",sum_n_6_percent,3.0
@@ -2810,6 +2836,20 @@ FASA-KE-14,"rice bran [FASA, Kenya]",vitamin_e_mg_kg,26.43
 FASA-KE-14,"rice bran [FASA, Kenya]",vitamin_k_mg_kg,0.06
 FASA-KE-14,"rice bran [FASA, Kenya]",zeralenone_zon_ppb,31.3
 FASA-KE-14,"rice bran [FASA, Kenya]",zinc_mg_kg,26.0
+FASA-KE-14,"rice bran [FASA, Kenya]",arginine_percent,1.2204
+FASA-KE-14,"rice bran [FASA, Kenya]",histidine_percent,0.3348
+FASA-KE-14,"rice bran [FASA, Kenya]",isoleucine_percent,0.5076
+FASA-KE-14,"rice bran [FASA, Kenya]",leucine_percent,0.918
+FASA-KE-14,"rice bran [FASA, Kenya]",lysine_percent,0.594
+FASA-KE-14,"rice bran [FASA, Kenya]",methionine_percent,0.2376
+FASA-KE-14,"rice bran [FASA, Kenya]",phenylalanine_percent,0.702
+FASA-KE-14,"rice bran [FASA, Kenya]",threonine_percent,0.4752
+FASA-KE-14,"rice bran [FASA, Kenya]",tryptophan_percent,0.1404
+FASA-KE-14,"rice bran [FASA, Kenya]",valine_percent,0.7344
+FASA-KE-14,"rice bran [FASA, Kenya]",cystine_percent,0.2808
+FASA-KE-14,"rice bran [FASA, Kenya]",tsaa_met_cys_percent,0.5184
+FASA-KE-14,"rice bran [FASA, Kenya]",tyrosine_percent,0.54
+FASA-KE-14,"rice bran [FASA, Kenya]",phe_tyr_percent,1.242
 FASA-KE-14,"rice bran [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,2207.552581
 FASA-KE-14,"rice bran [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,2501.892925
 FASA-KE-14,"rice bran [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,2354.722753
@@ -2821,23 +2861,10 @@ FASA-KE-15,"Wheat pollard [FASA, Kenya]",crude_protein_percent,15.5
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",crude_fibre_percent,6.13
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",crude_lipids_percent,3.62
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",gross_energy_kcal_kcal_kg,4168.73805
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",arginine_percent,0.61
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",histidine_percent,0.69
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",isoleucine_percent,0.11
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",leucine_percent,0.33
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",lysine_percent,0.47
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",methionine_percent,0.53
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",phenylalanine_percent,0.14
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",threonine_percent,0.65
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",tryptophan_percent,0.08
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",valine_percent,0.28
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",tyrosine_percent,0.34
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",tannins_mg_eq_cathin_kg,22000.0
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",phytic_acid_g_kg,5.0
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",cystine_percent,0.89
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",tsaa_met_cys_percent,1.42
-FASA-KE-15,"Wheat pollard [FASA, Kenya]",phe_tyr_percent,0.48
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",starch_percent,65.68
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",sum_n_3_percent,0.0
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",sum_n_6_percent,0.8
@@ -2880,6 +2907,20 @@ FASA-KE-15,"Wheat pollard [FASA, Kenya]",vitamin_e_mg_kg,10.5
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",vitamin_k_mg_kg,0.05
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",zeralenone_zon_ppb,50.0
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",zinc_mg_kg,89.0
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",arginine_percent,1.039752
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",histidine_percent,0.413975
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",isoleucine_percent,0.500621
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",leucine_percent,0.933851
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",lysine_percent,0.616149
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",methionine_percent,0.231056
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",phenylalanine_percent,0.606522
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",threonine_percent,0.500621
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",tryptophan_percent,0.221429
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",valine_percent,0.712422
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",cystine_percent,0.327329
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",tsaa_met_cys_percent,0.558385
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",tyrosine_percent,0.413975
+FASA-KE-15,"Wheat pollard [FASA, Kenya]",phe_tyr_percent,1.020497
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,1542.433078
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,2084.369025
 FASA-KE-15,"Wheat pollard [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,1584.120459
@@ -2891,23 +2932,10 @@ FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",crude_protein_percent,13.5
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",crude_fibre_percent,9.35
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",crude_lipids_percent,18.3
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",gross_energy_kcal_kcal_kg,3755.01912
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",arginine_percent,1.98
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",histidine_percent,0.94
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",isoleucine_percent,0.09
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",leucine_percent,0.58
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",lysine_percent,0.37
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",methionine_percent,0.14
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",phenylalanine_percent,0.3
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",threonine_percent,0.62
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",tryptophan_percent,0.18
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",valine_percent,0.22
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",tyrosine_percent,0.38
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",tannins_mg_eq_cathin_kg,22000.0
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",phytic_acid_g_kg,9.0
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",gossypol_mg_kg,0.0
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",cystine_percent,0.4
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",tsaa_met_cys_percent,0.54
-FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",phe_tyr_percent,0.68
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",starch_percent,44.0
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",epa_dha_percent,0.0
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",sum_n_3_percent,0.2
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",sum_n_6_percent,3.8
@@ -2950,79 +2978,22 @@ FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",vitamin_e_mg_kg,37.22
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",vitamin_k_mg_kg,0.2
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",zeralenone_zon_ppb,14.0
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",zinc_mg_kg,12.55
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",arginine_percent,0.84375
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",histidine_percent,0.5625
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",isoleucine_percent,0.45
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",leucine_percent,0.84375
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",lysine_percent,0.61875
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",methionine_percent,0.16875
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",phenylalanine_percent,0.45
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",threonine_percent,0.45
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",tryptophan_percent,0.1125
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",valine_percent,0.73125
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",cystine_percent,0.28125
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",tsaa_met_cys_percent,0.45
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",tyrosine_percent,0.28125
+FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",phe_tyr_percent,0.73125
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",de_fish_carni_pelleted_kcal_kg,2328.111855
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",de_fish_omni_pelleted_kcal_kg,2853.814532
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",de_fish_carni_extruded_kcal_kg,2778.714149
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",de_fish_omni_extruded_kcal_kg,3154.216061
 FASA-KE-16,"Cassava (Dried) [FASA, Kenya]",dig_ge_de_fish_kcal,2891.364723
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",dry_matter_percent,86.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",ash_percent,10.4
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",crude_protein_percent,2.28
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",crude_fibre_percent,8.63
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",crude_lipids_percent,0.22
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",gross_energy_kcal_kcal_kg,3709.369025
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",arginine_percent,0.24
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",histidine_percent,0.6
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",isoleucine_percent,0.03
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",leucine_percent,0.1
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",lysine_percent,0.07
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",methionine_percent,0.04
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",phenylalanine_percent,0.08
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",threonine_percent,0.23
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",tryptophan_percent,0.04
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",valine_percent,0.05
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",tyrosine_percent,0.06
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",saponin_mg_kg,19800.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",tannins_mg_eq_cathin_kg,33000.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",phytic_acid_g_kg,6.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",gossypol_mg_kg,172000.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",cystine_percent,0.12
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",tsaa_met_cys_percent,0.16
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",phe_tyr_percent,0.14
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",epa_dha_percent,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",sum_n_3_percent,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",sum_n_6_percent,0.2
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",moisture_percent,14.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",adc_ge_carni_extruded_percent,51.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",adc_ge_carni_pelleted_percent,48.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",adc_ge_fish_percent,54.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",adc_ge_omni_extruded_percent,63.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",adc_ge_omni_pelleted_percent,61.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",aflatoxin_b_ppb,23.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",anti_trypsic_factors_mg_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",biotin_b7_mg_kg,1.4
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",copper_mg_kg,20.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",cyanogens_mg_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",deoxynivalenol_don_ppb,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",dioxins_ng_whoteq_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",folic_acid_b9_mg_kg,20.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",fumonisin_fum_ppb,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",glucosinolates_mmol_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",iodine_mg_kg,0.05
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",iron_mg_kg,80.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",isoflavones_mg_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",lectins_mg_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",manganese_mg_kg,35.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",niacin_b3_mg_kg,300.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",pantothenic_acid_b5_mg_kg,180.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",pc_bs_ng_whoteq_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",phosphorus_percent,0.45
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",pyridoxine_b6_mg_kg,15.3
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",riboflavin_b2_mg_kg,40.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",selenium_mg_kg,1.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",sinapine_mg_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",soyasaponins_mg_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",thiamin_b1_mg_kg,100.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",vitamin_a_iu_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",vitamin_b12_mg_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",vitamin_c_mg_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",vitamin_d_iu_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",vitamin_e_mg_kg,1.49
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",vitamin_k_mg_kg,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",zeralenone_zon_ppb,0.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",zinc_mg_kg,100.0
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",de_fish_carni_pelleted_kcal_kg,1780.497132
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",de_fish_omni_pelleted_kcal_kg,2262.715105
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",de_fish_carni_extruded_kcal_kg,1891.778203
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",de_fish_omni_extruded_kcal_kg,2336.902486
-FASA-ZM-11,"Chikanda (Sacchaomyces cerevisiae) [FASA, Zambia]",dig_ge_de_fish_kcal,2003.059273

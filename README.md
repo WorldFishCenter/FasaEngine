@@ -41,11 +41,11 @@ Project changes are tracked in [`CHANGELOG.md`](CHANGELOG.md).
 
 - **Linear programming engine** (PuLP + HiGHS) that solves a digestibility-aware least-cost feed formulation against the active ASNS constraints for a chosen species/stage/production-system tuple.
 - **Premix always included**: every feed carries a vitamin/mineral premix at 1, 1.5 or 2% of the feed (`premix_rate`, default 2%), priced by the caller (`premix_price`) and counted in the feed cost. Its composition, supplied by the FASA team (`fasa_core/config/premix_composition.json`), is counted at that rate, so its 13 vitamins and 6 trace minerals are checked against ASNS like any other nutrient, premix included. Choline and inositol, which it does not contain, are not checked (the FASA team dropped these rules). Premix products are not in the ingredient pool.
-- **FASA ingredients**: 43 FASA lab samples (codes `FASA-KE-01` … `FASA-ZM-11`, listed in `scripts/data/fasa_ingredients.csv`) sit in the pool next to the 299 IAFFD ingredients. Their composition is kept in its own FICD-format file, `data/FASA_feed_ingredient_composition.csv`, so a FICD import never overwrites it. Lab values are used as-fed; the gaps the FASA team chose to fill (phosphorus, toxins, anti-nutrients, trace minerals, vitamins) come from a linked IAFFD ingredient, and digestible energy is the lab gross energy times that ingredient's digestibility.
+- **FASA ingredients**: 42 FASA lab samples (codes `FASA-KE-01` … `FASA-ZM-10`, listed in `scripts/data/fasa_ingredients.csv`) sit in the pool next to the 299 IAFFD ingredients. Their composition is kept in its own FICD-format file, `data/FASA_feed_ingredient_composition.csv`, so a FICD import never overwrites it. Lab values are used as-fed; the gaps the FASA team chose to fill (phosphorus, toxins, anti-nutrients, trace minerals, vitamins) come from a linked IAFFD ingredient, digestible energy is the lab gross energy times that ingredient's digestibility, and the amino acids are that ingredient's amino acid profile applied to the lab crude protein (the FASA team's decision of 6 November 2026; the lab amino acids are not used).
 - **FASA rule decisions** (decisions workbook, 5 November 2026; values in `fasa_core/config/defaults.py`): digestible protein, DP/DE, digestible amino acids, digestible phosphorus, phospholipids, cholesterol, Na/Cl/K/Mg and the moisture minimum are dropped for every feed; catfish crude protein follows the FASA requirements table where it differs; crude protein and lipid may range 2 / 1 points either side of the requirement (minimum lowered, maximum added); a saponin maximum (`TX15F`) applies the soyasaponin limit to the FASA lab saponin. Digestible energy stays for every feed.
-- **Calls made without the FASA team** (5 November 2026; to change if they disagree): a lab value written "<0.1" counts as zero; both Ochonga lines (`FASA-KE-02`, `FASA-KE-03`, one lab sample) stay, each with its own maximum; General-LowCost stays; catfish crude protein changes only at the two stages the FASA table names (50-200 g and 800-1000 g); a FASA ingredient's `countries` is its lab sample's country and is advisory only; the premix sheet is read as written (calcium pantothenate counted as pantothenic acid, vitamin K3 as vitamin K); the team's "±2 / ±1" for protein and lipid is read as a range either side of the requirement (catfish 50-200g: 34-38%), not only a maximum above it; WorldFish's ash maximum, given for the General system, applies to General-LowCost too; where WorldFish's ingredient maximums differ from Serge's tab 1 (sunflower cake Zambia, Chikanda, cassava dried Kenya, brewery grains Kenya, local brewery waste Nigeria), Serge's are used; the group limits count the IAFFD fish and shrimp meals and brans (wheat pollard included) as well as the FASA ones; the FASA team's limits for FASA lines removed for lack of a lab sample (blood meal, poultry meal, corn gluten meal, maize, broken rice, rapeseed meal, corn bran, wheat bran, wheat flour, palm oil, cassava tuber meal, methionine) apply to the IAFFD ingredients of the same name.
+- **Calls made without the FASA team** (5 November 2026; to change if they disagree): a lab value written "<0.1" counts as zero; both Ochonga lines (`FASA-KE-02`, `FASA-KE-03`, one lab sample) stay, each with its own maximum; General-LowCost stays; catfish crude protein changes only at the two stages the FASA table names (50-200 g and 800-1000 g); a FASA ingredient's `countries` is its lab sample's country and is advisory only; the premix sheet is read as written (calcium pantothenate counted as pantothenic acid, vitamin K3 as vitamin K); the team's "±2 / ±1" for protein and lipid is read as a range either side of the requirement (catfish 50-200g: 34-38%), not only a maximum above it; WorldFish's ash maximum, given for the General system, applies to General-LowCost too; where WorldFish's ingredient maximums differ from Serge's tab 1 (sunflower cake Zambia, cassava dried Kenya, brewery grains Kenya, local brewery waste Nigeria), Serge's are used; the group limits count the IAFFD fish and shrimp meals and brans (wheat pollard included) as well as the FASA ones; the FASA team's limits for FASA lines removed for lack of a lab sample (blood meal, poultry meal, corn gluten meal, maize, broken rice, rapeseed meal, corn bran, wheat bran, cassava tuber meal) apply to the IAFFD ingredients of the same name; so does the FASA team's rice bran maximum (10%, 6 November 2026), which replaces the October table's 30% / 15% for the seven IAFFD rice brans; a maximum from the FASA ingredient form applies only to the IAFFD version the form sets it for, so 60% CP corn gluten meal and grain maize take the form's and the other corn gluten meals and maizes keep FASA APP DATA's.
 - **Hard ceilings on toxins / anti-nutrients**: aflatoxin B, gossypol, phytic acid, glucosinolates, tannins, etc. are enforced as Maximum constraints and are never masked by the premix.
-- **Min/max inclusion layer**: a second layer of bounds on top of composition data, because nutrient tables alone let the LP build diets that pass every target yet cannot be extruded or grown on. `fasa_core/config/nutrient_limits.csv` adds Minimum/Maximum bounds on dietary nutrient levels (the tighter of ASNS and the limit binds); `fasa_core/config/ingredient_limits.csv` bounds how much of any single ingredient may go in; `fasa_core/config/group_limits.csv` bounds a group of ingredients together (all brans at most 15%, fishmeals at least 5/3% for tilapia). The ingredient table carries maximums for 146 pool ingredients (103 IAFFD, 43 FASA), per species or, where the FASA weight groups differ, per stage; the nutrient table holds an ash maximum (tilapia 10%; catfish 10% under 5 g, 8% from 500 g, from WorldFish's feed constraints), and further rows take effect with no code change. Either can be supplied per request via `nutrient_limits` / `ingredient_limits`.
+- **Min/max inclusion layer**: a second layer of bounds on top of composition data, because nutrient tables alone let the LP build diets that pass every target yet cannot be extruded or grown on. `fasa_core/config/nutrient_limits.csv` adds Minimum/Maximum bounds on dietary nutrient levels (the tighter of ASNS and the limit binds); `fasa_core/config/ingredient_limits.csv` bounds how much of any single ingredient may go in; `fasa_core/config/group_limits.csv` bounds a group of ingredients together (all brans at most 15%, fishmeals at least 5/3% for tilapia). The ingredient table carries maximums for 155 pool ingredients (113 IAFFD, 42 FASA), per species or, where the FASA weight groups differ, per stage; the nutrient table holds an ash maximum (tilapia 10%; catfish 10% under 5 g, 8% from 500 g, from WorldFish's feed constraints), and further rows take effect with no code change. Either can be supplied per request via `nutrient_limits` / `ingredient_limits`.
 - **Hard-fail with IIS reporting**: when the constraint set is infeasible at the supplied prices/pool, a deletion-filter algorithm extracts a minimal Irreducible Inconsistent Subset of constraints and returns it to the caller so the miller knows exactly why the recipe could not be built.
 - **PAFF benchmark gate**: independent recomputation of PAFF reference recipes' nutrient composition acts as the correctness test for the data-loading and crosswalk pipeline.
 - **FastAPI surface** with `/formulate`, `/supported`, `/validate-recipe`, and `/health` endpoints. `/validate-recipe` scores a caller-supplied recipe against the same inclusion limits and constraint set the optimizer uses, so a hand-edited formulation can be checked without re-running the LP.
@@ -59,6 +59,7 @@ fasa_engine/
 │   ├── ASNS_nutrition_specification_database.csv
 │   ├── FICD_feed_ingredient_composition_database.csv
 │   ├── FASA_feed_ingredient_composition.csv   FASA ingredients, FICD format (generated)
+│   ├── FASA_default_prices.csv                default prices per country, for the app (generated)
 │   ├── PAFF_practical_aquaculture_feed_formulation_database_Feed_Formulations.csv
 │   └── PAFF_practical_aquaculture_feed_formulation_database_Calculated_Composition.csv
 ├── fasa_core/
@@ -85,9 +86,11 @@ fasa_engine/
 │   ├── build_ingredient_pool.py        regenerates the country-tagged pool CSV
 │   ├── import_datasets.py              converts raw ASNS/FICD exports into data/
 │   ├── build_fasa_ingredients.py       builds the FASA composition file from the lab results
+│   ├── build_fasa_prices.py            builds the default price list from the FASA team's files
+│   ├── apply_fasa_limit_form.py        applies the maximums the FASA team enters in the ingredient form
 │   └── data/
 │       ├── countries_pool.csv          source country list (builder input)
-│       └── fasa_ingredients.csv        the 43 FASA ingredients: code, lab sample, linked IAFFD code
+│       └── fasa_ingredients.csv        the FASA ingredients: code, lab sample, linked IAFFD code
 ├── tests/test_smoke.py                 pytest smoke + PAFF reproduction
 ├── examples/tilapia_starter_demo.py    runnable end-to-end demo
 └── requirements.txt
@@ -124,6 +127,27 @@ Run the last two steps also when a new FASA lab file arrives. `build_fasa_ingred
 `openpyxl`, which the engine itself does not; it stops if a lab sample is missing or empty, or
 if a rule the engine checks would have no FASA value source, and reports how many samples have
 a starch value.
+
+`data/FASA_default_prices.csv` is the FASA team's price list for the app (the engine does not
+read it; prices always come from the request). Each row gives the code to send, the price per kg
+in local currency and a status (`ok`, `to check`, `missing`). Rebuild it whenever the FASA team
+changes FASA APP DATA or the decisions workbook, or the FASA ingredients change; a test fails if
+it names a code the pool no longer has:
+
+```bash
+uv run --no-project --with pandas --with openpyxl python scripts/build_fasa_prices.py \
+    "<path to>/FASA APP DATA.xlsx" "<path to>/FASA engine decisions.xlsx"
+```
+
+The FASA team sets ingredient maximums per weight group in an ingredient form ("FASA ingredient
+maximums and groups.xlsx", one line per pool ingredient, pre-filled with the engine's values).
+Each time they return it, apply it; an ingredient whose line differs from the engine gets all its
+rows in `ingredient_limits.csv` replaced by the form's, and a second run changes nothing:
+
+```bash
+uv run --no-project --with pandas --with openpyxl \
+    python scripts/apply_fasa_limit_form.py "<path to>/FASA ingredient maximums and groups.xlsx"
+```
 
 ## Quickstart
 
@@ -221,6 +245,7 @@ curl -X POST "http://127.0.0.1:8000/formulate" \
 
 - **`recipe`**: ingredient inclusions (percent of final feed) + cost breakdown. If `batch_size_kg` was supplied on the request, each line also carries `quantity_kg`. If `country` was supplied, each line carries `locally_available` (`true`/`false`); it is `null` when no `country` was requested. Each line also echoes the inclusion box that was applied (`min_inclusion_percent`, `max_inclusion_percent`, `limit_source`).
 - **`cost_per_kg`**: cost of the whole feed, premix included: the sum of the recipe lines' `cost_contribution` plus `premix_rate × premix_price`. Both premix values are echoed.
+- **`engine_version`**: the engine release that produced the response; store it with the recipe.
 - **`batch_size_kg` / `premix_quantity_kg` / `total_cost`**: echoed only when `batch_size_kg` was supplied; otherwise `null`.
 - **`composition`**: per-spec achieved vs target, including toxin ceilings. `source` says whether the target came from ASNS alone or from the inclusion-limit layer.
 - **`status`**:

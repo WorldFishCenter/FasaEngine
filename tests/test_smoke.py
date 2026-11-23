@@ -291,6 +291,31 @@ def test_pool_carries_country_tags_and_every_code_resolves_in_ficd():
     assert by_code["10073"].countries == frozenset()
 
 
+def test_default_price_list_matches_the_pool():
+    """The app's price list names only pool codes and has a row for every FASA line;
+    if this fails, rerun scripts/build_fasa_prices.py."""
+    import pandas as pd
+
+    from fasa_core.config.defaults import DEFAULT_DATA_DIR
+    from fasa_core.ingredient_pool import load_pool
+    from scripts.build_fasa_ingredients import read_lines
+
+    prices = pd.read_csv(DEFAULT_DATA_DIR / "FASA_default_prices.csv", dtype=str, keep_default_na=False)
+    codes = set(prices["code"])
+    assert codes - {"", "premix"} <= {rec.code for rec in load_pool()}
+    assert set(read_lines()["code"]) <= codes
+
+
+def test_limit_form_rewrite_keeps_comments_in_place():
+    """scripts/apply_fasa_limit_form.py moves a replaced ingredient's rows to the end of
+    the limits file and leaves every comment where it was."""
+    from scripts.apply_fasa_limit_form import rewrite
+
+    lines = ["# header\n", "code,max\n", "A,0.1\n", "# block\n", "B,0.2\n", "A,0.3\n"]
+    assert rewrite(lines, {"A": [["A", "0.5"]]}) == "# header\ncode,max\n# block\nB,0.2\nA,0.5\n"
+    assert rewrite(lines, {}) == "".join(lines)
+
+
 def test_formulate_country_flags_locally_available():
     """With a country, each recipe line's locally_available reflects the pool tag."""
     from fasa_core.ingredient_pool import load_pool
@@ -433,9 +458,9 @@ def test_shipped_ingredient_limits_resolve_per_species():
     assert {r["key"] for r in rows} <= {rec.code for rec in load_pool()}
     assert {r["scope"]["species"] for r in rows} <= {"", *SUPPORTED_SPECIES}
 
-    # rice bran: 30% of the diet for tilapia, 15% for catfish
-    assert ingredient_bounds(LimitScope("Nile Tilapia"), [])["30937"].maximum == 0.30
-    assert ingredient_bounds(LimitScope("African Catfish"), [])["30937"].maximum == 0.15
+    # blood meal: 5% of the diet for tilapia, 4% for catfish
+    assert ingredient_bounds(LimitScope("Nile Tilapia"), [])["20002"].maximum == 0.05
+    assert ingredient_bounds(LimitScope("African Catfish"), [])["20002"].maximum == 0.04
 
 
 def test_nutrient_limit_tighter_than_asns_replaces_the_target():
@@ -792,9 +817,10 @@ def test_fasa_rule_changes():
 
 def test_fasa_ingredients_are_in_the_pool_with_their_composition():
     from fasa_core.ingredient_pool import attach_ficd_rows, load_pool
+    from scripts.build_fasa_ingredients import read_lines
 
     fasa = [r for r in load_pool() if r.cls == "fasa"]
-    assert len(fasa) == 43
+    assert {r.code for r in fasa} == set(read_lines()["code"])
     assert all(r.code.startswith("FASA-") and r.countries == {r.code[5:7]} for r in fasa)
     rows = attach_ficd_rows(fasa).set_index("code")
     assert rows["crude_protein_percent"].gt(0).all()

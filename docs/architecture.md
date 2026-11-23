@@ -41,6 +41,9 @@ The project provides an API that helps formulate fish feed recipes based on:
   `data/FASA_feed_ingredient_composition.csv`, built from the FASA lab results by
   `scripts/build_fasa_ingredients.py` (list of ingredients: `scripts/data/fasa_ingredients.csv`).
   The engine reads it together with FICD, and a FICD import never overwrites it.
+- `data/FASA_default_prices.csv`, the FASA team's prices per country for the app, is built
+  by `scripts/build_fasa_prices.py` from FASA APP DATA and the decisions workbook. The
+  engine does not read it.
 - The FASA team's changes to the ASNS rules (rules dropped, catfish protein, protein and
   lipid maximums, saponin) and the one decision still pending are constants in
   `fasa_core/config/defaults.py`, applied by `constraint_builder` before any other layer.

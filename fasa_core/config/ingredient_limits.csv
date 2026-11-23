@@ -28,14 +28,18 @@
 #                       Blank = no ceiling. A value outside [0, 1] fails at load time.
 #   note                free text, not read by the engine.
 #
-# FASA ingredients (rows at the end): maximum per species from tab 1 (columns H-I) of the
+# FASA ingredients (rows after the October table): maximum per species from tab 1 (columns H-I) of the
 # FASA engine decisions workbook (5 November 2026); per stage from FASA APP DATA columns K-P,
 # mapped to the ASNS stages as in its tab 3b, written only where it differs from the
 # species maximum (a stage row is more specific, so it wins). The shrimp meal (14002) and
 # broken dried shrimp (14007) caps were removed in its tab 1b; Ochonga carries them now.
-# IAFFD blood meal, poultry meal, corn gluten meal, maize, broken rice, rapeseed meal, corn bran, wheat bran, wheat flour, palm oil, cassava tuber meal, methionine (rows at the end)
-# take FASA APP DATA's limits for the FASA lines of the same name, removed in tab 1 for
-# lack of a lab sample.
+# IAFFD blood meal, poultry meal, corn gluten meal (all but 60% CP), maize (high lysine,
+# high oil), broken rice, rapeseed meal, corn bran, wheat bran and cassava tuber meal (rows
+# after the FASA ones) take FASA APP DATA's limits for the FASA lines of the same name,
+# removed in tab 1 for lack of a lab sample. Ingredients whose line in the FASA team's
+# ingredient form differs from the engine (rows at the end) take the form's maximum per
+# weight group, written by scripts/apply_fasa_limit_form.py. The
+# seven IAFFD rice brans and the FASA rice bran take the team's 10% of 6 November 2026.
 #
 # The API reports these bounds back as PERCENTAGES (max_inclusion_percent: 15.0); only
 # this file and the request payload use fractions.
@@ -100,20 +104,20 @@ code,species,production_system,stage_weight,processing_method,min_inclusion,max_
 30846,African Catfish,,,,,0.1,table row 18: Groundnut cake
 30847,Nile Tilapia,,,,,0.15,table row 18: Groundnut cake
 30847,African Catfish,,,,,0.1,table row 18: Groundnut cake
-30935,Nile Tilapia,,,,,0.3,table row 19: Rice bran
-30935,African Catfish,,,,,0.15,table row 19: Rice bran
-30936,Nile Tilapia,,,,,0.3,table row 19: Rice bran
-30936,African Catfish,,,,,0.15,table row 19: Rice bran
-30937,Nile Tilapia,,,,,0.3,table row 19: Rice bran
-30937,African Catfish,,,,,0.15,table row 19: Rice bran
-30938,Nile Tilapia,,,,,0.3,table row 19: Rice bran
-30938,African Catfish,,,,,0.15,table row 19: Rice bran
-30939,Nile Tilapia,,,,,0.3,table row 19: Rice bran
-30939,African Catfish,,,,,0.15,table row 19: Rice bran
-30940,Nile Tilapia,,,,,0.3,table row 19: Rice bran
-30940,African Catfish,,,,,0.15,table row 19: Rice bran
-30949,Nile Tilapia,,,,,0.3,table row 19: Rice bran
-30949,African Catfish,,,,,0.15,table row 19: Rice bran
+30935,Nile Tilapia,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30935,African Catfish,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30936,Nile Tilapia,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30936,African Catfish,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30937,Nile Tilapia,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30937,African Catfish,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30938,Nile Tilapia,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30938,African Catfish,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30939,Nile Tilapia,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30939,African Catfish,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30940,Nile Tilapia,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30940,African Catfish,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30949,Nile Tilapia,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
+30949,African Catfish,,,,,0.1,FASA APP DATA columns I-J (6 Nov 2026): rice bran; was table row 19
 30403,Nile Tilapia,,,,,0.1,table row 20: Cottonseed cake
 30403,African Catfish,,,,,0.15,table row 20: Cottonseed cake
 30404,Nile Tilapia,,,,,0.1,table row 20: Cottonseed cake
@@ -295,33 +299,12 @@ FASA-NG-16,Nile Tilapia,,,,,0.05,"decisions tab 1 row 64: Chaya leaf meal (Cnido
 FASA-NG-16,African Catfish,,,,,0,"decisions tab 1 row 64: Chaya leaf meal (Cnidoscolus chayamansa)"
 FASA-KE-13,Nile Tilapia,,,,,0.15,"decisions tab 1 row 74: Sorghum, meal"
 FASA-KE-13,African Catfish,,,,,0.075,"decisions tab 1 row 74: Sorghum, meal"
-FASA-KE-14,Nile Tilapia,,,,,0.3,"decisions tab 1 row 76: rice bran"
-FASA-KE-14,African Catfish,,,,,0.15,"decisions tab 1 row 76: rice bran"
-FASA-KE-14,Nile Tilapia,,< 5g (Starter),,,0.1,"FASA APP DATA column K (0-10 g): rice bran"
-FASA-KE-14,Nile Tilapia,,5-10g (Pre-grower),,,0.1,"FASA APP DATA column K (0-10 g): rice bran"
-FASA-KE-14,Nile Tilapia,,10-30g (Pre-grower),,,0.1,"FASA APP DATA column L (10-100 g): rice bran"
-FASA-KE-14,Nile Tilapia,,30-70g (Grower),,,0.1,"FASA APP DATA column L (10-100 g): rice bran"
-FASA-KE-14,Nile Tilapia,,70-100g (Grower),,,0.1,"FASA APP DATA column L (10-100 g): rice bran"
-FASA-KE-14,Nile Tilapia,,100-200g (Grower),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
-FASA-KE-14,Nile Tilapia,,200-400g (Grower),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
-FASA-KE-14,Nile Tilapia,,400-800g (Grower),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
-FASA-KE-14,Nile Tilapia,,>800g (Grower),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
-FASA-KE-14,Nile Tilapia,,>1000g (Brood),,,0.1,"FASA APP DATA column M (>100 g): rice bran"
-FASA-KE-14,African Catfish,,< 5g (Starter),,,0.1,"FASA APP DATA column N (0-10 g): rice bran"
-FASA-KE-14,African Catfish,,5-50g (Pre-grower),,,0.1,"FASA APP DATA column O (10-200 g): rice bran"
-FASA-KE-14,African Catfish,,50-200g (Grower),,,0.1,"FASA APP DATA column O (10-200 g): rice bran"
-FASA-KE-14,African Catfish,,200-500g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
-FASA-KE-14,African Catfish,,500-800g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
-FASA-KE-14,African Catfish,,800-1000g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
-FASA-KE-14,African Catfish,,1000-1200g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
-FASA-KE-14,African Catfish,,>1200g (Grower),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
-FASA-KE-14,African Catfish,,>1000g (Brood),,,0.1,"FASA APP DATA column P (>200 g): rice bran"
+FASA-KE-14,Nile Tilapia,,,,,0.1,"FASA APP DATA columns I-J (6 Nov 2026): rice bran; was decisions tab 1 row 76"
+FASA-KE-14,African Catfish,,,,,0.1,"FASA APP DATA columns I-J (6 Nov 2026): rice bran; was decisions tab 1 row 76"
 FASA-KE-15,Nile Tilapia,,,,,0.25,"decisions tab 1 row 79: Wheat pollard"
 FASA-KE-15,African Catfish,,,,,0.15,"decisions tab 1 row 79: Wheat pollard"
 FASA-KE-16,Nile Tilapia,,,,,0.06,"decisions tab 1 row 80: Cassava (Dried)"
 FASA-KE-16,African Catfish,,,,,0.05,"decisions tab 1 row 80: Cassava (Dried)"
-FASA-ZM-11,Nile Tilapia,,,,,0.05,"decisions tab 1 row 106: Chikanda (Sacchaomyces cerevisiae)"
-FASA-ZM-11,African Catfish,,,,,0.05,"decisions tab 1 row 106: Chikanda (Sacchaomyces cerevisiae)"
 # IAFFD versions of FASA APP DATA lines removed in tab 1 of the decisions workbook (no lab
 # sample): Serge's limits for those lines (FASA APP DATA columns K-P) apply to them.
 20002,Nile Tilapia,,,,,0.05,FASA APP DATA columns K-M: Blood meal (FASA line removed)
@@ -380,16 +363,6 @@ FASA-ZM-11,African Catfish,,,,,0.05,"decisions tab 1 row 106: Chikanda (Sacchaom
 30344,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
 30344,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
 30344,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,< 5g (Starter),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,5-10g (Pre-grower),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,10-30g (Pre-grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,30-70g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,70-100g (Grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,100-200g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,200-400g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
-30345,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
 30346,Nile Tilapia,,< 5g (Starter),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
 30346,Nile Tilapia,,5-10g (Pre-grower),,,0.07,FASA APP DATA column K (0-10 g): Corn gluten meal (FASA line removed)
 30346,Nile Tilapia,,10-30g (Pre-grower),,,0.05,FASA APP DATA column L (10-100 g): Corn gluten meal (FASA line removed)
@@ -420,11 +393,6 @@ FASA-ZM-11,African Catfish,,,,,0.05,"decisions tab 1 row 106: Chikanda (Sacchaom
 30370,Nile Tilapia,,400-800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
 30370,Nile Tilapia,,>800g (Grower),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
 30370,Nile Tilapia,,>1000g (Brood),,,0.05,FASA APP DATA column M (>100 g): Corn gluten meal (FASA line removed)
-30355,Nile Tilapia,,100-200g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
-30355,Nile Tilapia,,200-400g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
-30355,Nile Tilapia,,400-800g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
-30355,Nile Tilapia,,>800g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
-30355,Nile Tilapia,,>1000g (Brood),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
 30357,Nile Tilapia,,100-200g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
 30357,Nile Tilapia,,200-400g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
 30357,Nile Tilapia,,400-800g (Grower),,,0.1,FASA APP DATA column M (>100 g): corn grain (FASA line removed)
@@ -531,15 +499,6 @@ FASA-ZM-11,African Catfish,,,,,0.05,"decisions tab 1 row 106: Chikanda (Sacchaom
 30351,African Catfish,,,,,0.1,FASA APP DATA columns N-P: corn bran (FASA line removed)
 31605,Nile Tilapia,,,,,0.1,FASA APP DATA columns K-M: wheat bran (FASA line removed)
 31605,African Catfish,,,,,0.1,FASA APP DATA columns N-P: wheat bran (FASA line removed)
-31621,African Catfish,,,,,0.1,FASA APP DATA columns N-P: wheat flour (FASA line removed)
-52113,Nile Tilapia,,10-30g (Pre-grower),,,0.03,FASA APP DATA column L (10-100 g): palm oil (FASA line removed)
-52113,Nile Tilapia,,30-70g (Grower),,,0.03,FASA APP DATA column L (10-100 g): palm oil (FASA line removed)
-52113,Nile Tilapia,,70-100g (Grower),,,0.03,FASA APP DATA column L (10-100 g): palm oil (FASA line removed)
-52113,Nile Tilapia,,100-200g (Grower),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
-52113,Nile Tilapia,,200-400g (Grower),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
-52113,Nile Tilapia,,400-800g (Grower),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
-52113,Nile Tilapia,,>800g (Grower),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
-52113,Nile Tilapia,,>1000g (Brood),,,0.03,FASA APP DATA column M (>100 g): palm oil (FASA line removed)
 30307,Nile Tilapia,,< 5g (Starter),,,0.0,"FASA APP DATA column K (0-10 g): cassava tuber, meal (FASA line removed)"
 30307,Nile Tilapia,,5-10g (Pre-grower),,,0.0,"FASA APP DATA column K (0-10 g): cassava tuber, meal (FASA line removed)"
 30307,Nile Tilapia,,10-30g (Pre-grower),,,0.06,"FASA APP DATA column L (10-100 g): cassava tuber, meal (FASA line removed)"
@@ -559,11 +518,180 @@ FASA-ZM-11,African Catfish,,,,,0.05,"decisions tab 1 row 106: Chikanda (Sacchaom
 30307,African Catfish,,1000-1200g (Grower),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
 30307,African Catfish,,>1200g (Grower),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
 30307,African Catfish,,>1000g (Brood),,,0.06,"FASA APP DATA column P (>200 g): cassava tuber, meal (FASA line removed)"
-61111,Nile Tilapia,,10-30g (Pre-grower),,,0.002,FASA APP DATA column L (10-100 g): Methonine (FASA line removed)
-61111,Nile Tilapia,,30-70g (Grower),,,0.002,FASA APP DATA column L (10-100 g): Methonine (FASA line removed)
-61111,Nile Tilapia,,70-100g (Grower),,,0.002,FASA APP DATA column L (10-100 g): Methonine (FASA line removed)
-61111,Nile Tilapia,,100-200g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
-61111,Nile Tilapia,,200-400g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
-61111,Nile Tilapia,,400-800g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
-61111,Nile Tilapia,,>800g (Grower),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
-61111,Nile Tilapia,,>1000g (Brood),,,0.002,FASA APP DATA column M (>100 g): Methonine (FASA line removed)
+# Ingredients whose line in the FASA team's ingredient form differs from the engine: all of
+# their rows, per weight group, written here by scripts/apply_fasa_limit_form.py.
+21001,Nile Tilapia,,< 5g (Starter),,,0.03,"FASA ingredient form of 2026-11-06 (0-10 g): Feather meal A, 77% CP"
+21001,Nile Tilapia,,5-10g (Pre-grower),,,0.03,"FASA ingredient form of 2026-11-06 (0-10 g): Feather meal A, 77% CP"
+21001,Nile Tilapia,,10-30g (Pre-grower),,,0.08,"FASA ingredient form of 2026-11-06 (10-100 g): Feather meal A, 77% CP"
+21001,Nile Tilapia,,30-70g (Grower),,,0.08,"FASA ingredient form of 2026-11-06 (10-100 g): Feather meal A, 77% CP"
+21001,Nile Tilapia,,70-100g (Grower),,,0.08,"FASA ingredient form of 2026-11-06 (10-100 g): Feather meal A, 77% CP"
+21001,Nile Tilapia,,100-200g (Grower),,,0.12,"FASA ingredient form of 2026-11-06 (>100 g): Feather meal A, 77% CP"
+21001,Nile Tilapia,,200-400g (Grower),,,0.12,"FASA ingredient form of 2026-11-06 (>100 g): Feather meal A, 77% CP"
+21001,Nile Tilapia,,400-800g (Grower),,,0.12,"FASA ingredient form of 2026-11-06 (>100 g): Feather meal A, 77% CP"
+21001,Nile Tilapia,,>800g (Grower),,,0.12,"FASA ingredient form of 2026-11-06 (>100 g): Feather meal A, 77% CP"
+21001,Nile Tilapia,,>1000g (Brood),,,0.12,"FASA ingredient form of 2026-11-06 (>100 g): Feather meal A, 77% CP"
+21001,African Catfish,,< 5g (Starter),,,0.05,"FASA ingredient form of 2026-11-06 (0-10 g): Feather meal A, 77% CP"
+21001,African Catfish,,5-50g (Pre-grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-200 g): Feather meal A, 77% CP"
+21001,African Catfish,,50-200g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-200 g): Feather meal A, 77% CP"
+21001,African Catfish,,200-500g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Feather meal A, 77% CP"
+21001,African Catfish,,500-800g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Feather meal A, 77% CP"
+21001,African Catfish,,800-1000g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Feather meal A, 77% CP"
+21001,African Catfish,,1000-1200g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Feather meal A, 77% CP"
+21001,African Catfish,,>1200g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Feather meal A, 77% CP"
+21001,African Catfish,,>1000g (Brood),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Feather meal A, 77% CP"
+61108,Nile Tilapia,,< 5g (Starter),,,0.02,FASA ingredient form of 2026-11-06 (0-10 g): L-Lysine
+61108,Nile Tilapia,,5-10g (Pre-grower),,,0.02,FASA ingredient form of 2026-11-06 (0-10 g): L-Lysine
+61108,Nile Tilapia,,10-30g (Pre-grower),,,0.02,FASA ingredient form of 2026-11-06 (10-100 g): L-Lysine
+61108,Nile Tilapia,,30-70g (Grower),,,0.02,FASA ingredient form of 2026-11-06 (10-100 g): L-Lysine
+61108,Nile Tilapia,,70-100g (Grower),,,0.02,FASA ingredient form of 2026-11-06 (10-100 g): L-Lysine
+61108,Nile Tilapia,,100-200g (Grower),,,0.015,FASA ingredient form of 2026-11-06 (>100 g): L-Lysine
+61108,Nile Tilapia,,200-400g (Grower),,,0.015,FASA ingredient form of 2026-11-06 (>100 g): L-Lysine
+61108,Nile Tilapia,,400-800g (Grower),,,0.015,FASA ingredient form of 2026-11-06 (>100 g): L-Lysine
+61108,Nile Tilapia,,>800g (Grower),,,0.015,FASA ingredient form of 2026-11-06 (>100 g): L-Lysine
+61108,Nile Tilapia,,>1000g (Brood),,,0.015,FASA ingredient form of 2026-11-06 (>100 g): L-Lysine
+61108,African Catfish,,< 5g (Starter),,,0.02,FASA ingredient form of 2026-11-06 (0-10 g): L-Lysine
+61108,African Catfish,,5-50g (Pre-grower),,,0.02,FASA ingredient form of 2026-11-06 (10-200 g): L-Lysine
+61108,African Catfish,,50-200g (Grower),,,0.02,FASA ingredient form of 2026-11-06 (10-200 g): L-Lysine
+61108,African Catfish,,200-500g (Grower),,,0.015,FASA ingredient form of 2026-11-06 (>200 g): L-Lysine
+61108,African Catfish,,500-800g (Grower),,,0.015,FASA ingredient form of 2026-11-06 (>200 g): L-Lysine
+61108,African Catfish,,800-1000g (Grower),,,0.015,FASA ingredient form of 2026-11-06 (>200 g): L-Lysine
+61108,African Catfish,,1000-1200g (Grower),,,0.015,FASA ingredient form of 2026-11-06 (>200 g): L-Lysine
+61108,African Catfish,,>1200g (Grower),,,0.015,FASA ingredient form of 2026-11-06 (>200 g): L-Lysine
+61108,African Catfish,,>1000g (Brood),,,0.015,FASA ingredient form of 2026-11-06 (>200 g): L-Lysine
+30355,Nile Tilapia,,< 5g (Starter),,,0.25,"FASA ingredient form of 2026-11-06 (0-10 g): Corn, grain"
+30355,Nile Tilapia,,5-10g (Pre-grower),,,0.25,"FASA ingredient form of 2026-11-06 (0-10 g): Corn, grain"
+30355,Nile Tilapia,,10-30g (Pre-grower),,,0.35,"FASA ingredient form of 2026-11-06 (10-100 g): Corn, grain"
+30355,Nile Tilapia,,30-70g (Grower),,,0.35,"FASA ingredient form of 2026-11-06 (10-100 g): Corn, grain"
+30355,Nile Tilapia,,70-100g (Grower),,,0.35,"FASA ingredient form of 2026-11-06 (10-100 g): Corn, grain"
+30355,Nile Tilapia,,100-200g (Grower),,,0.4,"FASA ingredient form of 2026-11-06 (>100 g): Corn, grain"
+30355,Nile Tilapia,,200-400g (Grower),,,0.4,"FASA ingredient form of 2026-11-06 (>100 g): Corn, grain"
+30355,Nile Tilapia,,400-800g (Grower),,,0.4,"FASA ingredient form of 2026-11-06 (>100 g): Corn, grain"
+30355,Nile Tilapia,,>800g (Grower),,,0.4,"FASA ingredient form of 2026-11-06 (>100 g): Corn, grain"
+30355,Nile Tilapia,,>1000g (Brood),,,0.4,"FASA ingredient form of 2026-11-06 (>100 g): Corn, grain"
+30355,African Catfish,,< 5g (Starter),,,0.2,"FASA ingredient form of 2026-11-06 (0-10 g): Corn, grain"
+30355,African Catfish,,5-50g (Pre-grower),,,0.25,"FASA ingredient form of 2026-11-06 (10-200 g): Corn, grain"
+30355,African Catfish,,50-200g (Grower),,,0.25,"FASA ingredient form of 2026-11-06 (10-200 g): Corn, grain"
+30355,African Catfish,,200-500g (Grower),,,0.3,"FASA ingredient form of 2026-11-06 (>200 g): Corn, grain"
+30355,African Catfish,,500-800g (Grower),,,0.3,"FASA ingredient form of 2026-11-06 (>200 g): Corn, grain"
+30355,African Catfish,,800-1000g (Grower),,,0.3,"FASA ingredient form of 2026-11-06 (>200 g): Corn, grain"
+30355,African Catfish,,1000-1200g (Grower),,,0.3,"FASA ingredient form of 2026-11-06 (>200 g): Corn, grain"
+30355,African Catfish,,>1200g (Grower),,,0.3,"FASA ingredient form of 2026-11-06 (>200 g): Corn, grain"
+30355,African Catfish,,>1000g (Brood),,,0.3,"FASA ingredient form of 2026-11-06 (>200 g): Corn, grain"
+10022,Nile Tilapia,,,,,0.2,"FASA ingredient form of 2026-11-06: Fish meal, mixed fish, SEA, 50% CP"
+10022,African Catfish,,,,,0.25,"FASA ingredient form of 2026-11-06: Fish meal, mixed fish, SEA, 50% CP"
+30311,Nile Tilapia,,,,,0.1,"FASA ingredient form of 2026-11-06: Cassava, starch 75%"
+30311,African Catfish,,,,,0.05,"FASA ingredient form of 2026-11-06: Cassava, starch 75%"
+31621,Nile Tilapia,,< 5g (Starter),,,0.2,"FASA ingredient form of 2026-11-06 (0-10 g): Wheat flour, Trigo 30, Indonesia"
+31621,Nile Tilapia,,5-10g (Pre-grower),,,0.2,"FASA ingredient form of 2026-11-06 (0-10 g): Wheat flour, Trigo 30, Indonesia"
+31621,Nile Tilapia,,10-30g (Pre-grower),,,0.25,"FASA ingredient form of 2026-11-06 (10-100 g): Wheat flour, Trigo 30, Indonesia"
+31621,Nile Tilapia,,30-70g (Grower),,,0.25,"FASA ingredient form of 2026-11-06 (10-100 g): Wheat flour, Trigo 30, Indonesia"
+31621,Nile Tilapia,,70-100g (Grower),,,0.25,"FASA ingredient form of 2026-11-06 (10-100 g): Wheat flour, Trigo 30, Indonesia"
+31621,Nile Tilapia,,100-200g (Grower),,,0.35,"FASA ingredient form of 2026-11-06 (>100 g): Wheat flour, Trigo 30, Indonesia"
+31621,Nile Tilapia,,200-400g (Grower),,,0.35,"FASA ingredient form of 2026-11-06 (>100 g): Wheat flour, Trigo 30, Indonesia"
+31621,Nile Tilapia,,400-800g (Grower),,,0.35,"FASA ingredient form of 2026-11-06 (>100 g): Wheat flour, Trigo 30, Indonesia"
+31621,Nile Tilapia,,>800g (Grower),,,0.35,"FASA ingredient form of 2026-11-06 (>100 g): Wheat flour, Trigo 30, Indonesia"
+31621,Nile Tilapia,,>1000g (Brood),,,0.35,"FASA ingredient form of 2026-11-06 (>100 g): Wheat flour, Trigo 30, Indonesia"
+31621,African Catfish,,< 5g (Starter),,,0.1,"FASA ingredient form of 2026-11-06 (0-10 g): Wheat flour, Trigo 30, Indonesia"
+31621,African Catfish,,5-50g (Pre-grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-200 g): Wheat flour, Trigo 30, Indonesia"
+31621,African Catfish,,50-200g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-200 g): Wheat flour, Trigo 30, Indonesia"
+31621,African Catfish,,200-500g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Wheat flour, Trigo 30, Indonesia"
+31621,African Catfish,,500-800g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Wheat flour, Trigo 30, Indonesia"
+31621,African Catfish,,800-1000g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Wheat flour, Trigo 30, Indonesia"
+31621,African Catfish,,1000-1200g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Wheat flour, Trigo 30, Indonesia"
+31621,African Catfish,,>1200g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Wheat flour, Trigo 30, Indonesia"
+31621,African Catfish,,>1000g (Brood),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Wheat flour, Trigo 30, Indonesia"
+22000,Nile Tilapia,,< 5g (Starter),,,0.1,"FASA ingredient form of 2026-11-06 (0-10 g): Meat and bone meal, 37% CP"
+22000,Nile Tilapia,,5-10g (Pre-grower),,,0.1,"FASA ingredient form of 2026-11-06 (0-10 g): Meat and bone meal, 37% CP"
+22000,Nile Tilapia,,10-30g (Pre-grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-100 g): Meat and bone meal, 37% CP"
+22000,Nile Tilapia,,30-70g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-100 g): Meat and bone meal, 37% CP"
+22000,Nile Tilapia,,70-100g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-100 g): Meat and bone meal, 37% CP"
+22000,Nile Tilapia,,100-200g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Meat and bone meal, 37% CP"
+22000,Nile Tilapia,,200-400g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Meat and bone meal, 37% CP"
+22000,Nile Tilapia,,400-800g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Meat and bone meal, 37% CP"
+22000,Nile Tilapia,,>800g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Meat and bone meal, 37% CP"
+22000,Nile Tilapia,,>1000g (Brood),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Meat and bone meal, 37% CP"
+22000,African Catfish,,< 5g (Starter),,,0.05,"FASA ingredient form of 2026-11-06 (0-10 g): Meat and bone meal, 37% CP"
+22000,African Catfish,,5-50g (Pre-grower),,,0.1,"FASA ingredient form of 2026-11-06 (10-200 g): Meat and bone meal, 37% CP"
+22000,African Catfish,,50-200g (Grower),,,0.1,"FASA ingredient form of 2026-11-06 (10-200 g): Meat and bone meal, 37% CP"
+22000,African Catfish,,200-500g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Meat and bone meal, 37% CP"
+22000,African Catfish,,500-800g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Meat and bone meal, 37% CP"
+22000,African Catfish,,800-1000g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Meat and bone meal, 37% CP"
+22000,African Catfish,,1000-1200g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Meat and bone meal, 37% CP"
+22000,African Catfish,,>1200g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Meat and bone meal, 37% CP"
+22000,African Catfish,,>1000g (Brood),,,0.15,"FASA ingredient form of 2026-11-06 (>200 g): Meat and bone meal, 37% CP"
+30345,Nile Tilapia,,< 5g (Starter),,,0.15,"FASA ingredient form of 2026-11-06 (0-10 g): Corn gluten meal, 60% CP"
+30345,Nile Tilapia,,5-10g (Pre-grower),,,0.15,"FASA ingredient form of 2026-11-06 (0-10 g): Corn gluten meal, 60% CP"
+30345,Nile Tilapia,,10-30g (Pre-grower),,,0.2,"FASA ingredient form of 2026-11-06 (10-100 g): Corn gluten meal, 60% CP"
+30345,Nile Tilapia,,30-70g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (10-100 g): Corn gluten meal, 60% CP"
+30345,Nile Tilapia,,70-100g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (10-100 g): Corn gluten meal, 60% CP"
+30345,Nile Tilapia,,100-200g (Grower),,,0.3,"FASA ingredient form of 2026-11-06 (>100 g): Corn gluten meal, 60% CP"
+30345,Nile Tilapia,,200-400g (Grower),,,0.3,"FASA ingredient form of 2026-11-06 (>100 g): Corn gluten meal, 60% CP"
+30345,Nile Tilapia,,400-800g (Grower),,,0.3,"FASA ingredient form of 2026-11-06 (>100 g): Corn gluten meal, 60% CP"
+30345,Nile Tilapia,,>800g (Grower),,,0.3,"FASA ingredient form of 2026-11-06 (>100 g): Corn gluten meal, 60% CP"
+30345,Nile Tilapia,,>1000g (Brood),,,0.3,"FASA ingredient form of 2026-11-06 (>100 g): Corn gluten meal, 60% CP"
+30345,African Catfish,,< 5g (Starter),,,0.1,"FASA ingredient form of 2026-11-06 (0-10 g): Corn gluten meal, 60% CP"
+30345,African Catfish,,5-50g (Pre-grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-200 g): Corn gluten meal, 60% CP"
+30345,African Catfish,,50-200g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-200 g): Corn gluten meal, 60% CP"
+30345,African Catfish,,200-500g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Corn gluten meal, 60% CP"
+30345,African Catfish,,500-800g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Corn gluten meal, 60% CP"
+30345,African Catfish,,800-1000g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Corn gluten meal, 60% CP"
+30345,African Catfish,,1000-1200g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Corn gluten meal, 60% CP"
+30345,African Catfish,,>1200g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Corn gluten meal, 60% CP"
+30345,African Catfish,,>1000g (Brood),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Corn gluten meal, 60% CP"
+60128,Nile Tilapia,,,,,0.005,"FASA ingredient form of 2026-11-06: Rovimix-stay-C 35, ascorbyl-monophosphate, DSM"
+60128,African Catfish,,,,,0.005,"FASA ingredient form of 2026-11-06: Rovimix-stay-C 35, ascorbyl-monophosphate, DSM"
+62134,Nile Tilapia,,< 5g (Starter),,,0.02,"FASA ingredient form of 2026-11-06 (0-10 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,Nile Tilapia,,5-10g (Pre-grower),,,0.02,"FASA ingredient form of 2026-11-06 (0-10 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,Nile Tilapia,,10-30g (Pre-grower),,,0.015,"FASA ingredient form of 2026-11-06 (10-100 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,Nile Tilapia,,30-70g (Grower),,,0.015,"FASA ingredient form of 2026-11-06 (10-100 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,Nile Tilapia,,70-100g (Grower),,,0.015,"FASA ingredient form of 2026-11-06 (10-100 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,Nile Tilapia,,100-200g (Grower),,,0.01,"FASA ingredient form of 2026-11-06 (>100 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,Nile Tilapia,,200-400g (Grower),,,0.01,"FASA ingredient form of 2026-11-06 (>100 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,Nile Tilapia,,400-800g (Grower),,,0.01,"FASA ingredient form of 2026-11-06 (>100 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,Nile Tilapia,,>800g (Grower),,,0.01,"FASA ingredient form of 2026-11-06 (>100 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,Nile Tilapia,,>1000g (Brood),,,0.01,"FASA ingredient form of 2026-11-06 (>100 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,African Catfish,,< 5g (Starter),,,0.02,"FASA ingredient form of 2026-11-06 (0-10 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,African Catfish,,5-50g (Pre-grower),,,0.015,"FASA ingredient form of 2026-11-06 (10-200 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,African Catfish,,50-200g (Grower),,,0.015,"FASA ingredient form of 2026-11-06 (10-200 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,African Catfish,,200-500g (Grower),,,0.01,"FASA ingredient form of 2026-11-06 (>200 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,African Catfish,,500-800g (Grower),,,0.01,"FASA ingredient form of 2026-11-06 (>200 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,African Catfish,,800-1000g (Grower),,,0.01,"FASA ingredient form of 2026-11-06 (>200 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,African Catfish,,1000-1200g (Grower),,,0.01,"FASA ingredient form of 2026-11-06 (>200 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,African Catfish,,>1200g (Grower),,,0.01,"FASA ingredient form of 2026-11-06 (>200 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+62134,African Catfish,,>1000g (Brood),,,0.01,"FASA ingredient form of 2026-11-06 (>200 g): Dicalcium phosphate anydrous, DCP, CaHPO4.H2O"
+50123,Nile Tilapia,,,,,0.03,"FASA ingredient form of 2026-11-06: Fish oil, mixed fish, SEA"
+50123,African Catfish,,,,,0.03,"FASA ingredient form of 2026-11-06: Fish oil, mixed fish, SEA"
+52117,Nile Tilapia,,,,,0.03,FASA ingredient form of 2026-11-06: Soybean oil
+52117,African Catfish,,,,,0.03,FASA ingredient form of 2026-11-06: Soybean oil
+61111,Nile Tilapia,,< 5g (Starter),,,0.01,FASA ingredient form of 2026-11-06 (0-10 g): DL-Methionine
+61111,Nile Tilapia,,5-10g (Pre-grower),,,0.01,FASA ingredient form of 2026-11-06 (0-10 g): DL-Methionine
+61111,Nile Tilapia,,10-30g (Pre-grower),,,0.006,FASA ingredient form of 2026-11-06 (10-100 g): DL-Methionine
+61111,Nile Tilapia,,30-70g (Grower),,,0.006,FASA ingredient form of 2026-11-06 (10-100 g): DL-Methionine
+61111,Nile Tilapia,,70-100g (Grower),,,0.006,FASA ingredient form of 2026-11-06 (10-100 g): DL-Methionine
+61111,Nile Tilapia,,100-200g (Grower),,,0.006,FASA ingredient form of 2026-11-06 (>100 g): DL-Methionine
+61111,Nile Tilapia,,200-400g (Grower),,,0.006,FASA ingredient form of 2026-11-06 (>100 g): DL-Methionine
+61111,Nile Tilapia,,400-800g (Grower),,,0.006,FASA ingredient form of 2026-11-06 (>100 g): DL-Methionine
+61111,Nile Tilapia,,>800g (Grower),,,0.006,FASA ingredient form of 2026-11-06 (>100 g): DL-Methionine
+61111,Nile Tilapia,,>1000g (Brood),,,0.006,FASA ingredient form of 2026-11-06 (>100 g): DL-Methionine
+61111,African Catfish,,,,,0.01,FASA ingredient form of 2026-11-06: DL-Methionine
+52113,Nile Tilapia,,,,,0.03,FASA ingredient form of 2026-11-06: Palm oil
+52113,African Catfish,,,,,0.03,FASA ingredient form of 2026-11-06: Palm oil
+30806,Nile Tilapia,,< 5g (Starter),,,0.1,"FASA ingredient form of 2026-11-06 (0-10 g): Palm kernel meal, expeller"
+30806,Nile Tilapia,,5-10g (Pre-grower),,,0.1,"FASA ingredient form of 2026-11-06 (0-10 g): Palm kernel meal, expeller"
+30806,Nile Tilapia,,10-30g (Pre-grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-100 g): Palm kernel meal, expeller"
+30806,Nile Tilapia,,30-70g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-100 g): Palm kernel meal, expeller"
+30806,Nile Tilapia,,70-100g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-100 g): Palm kernel meal, expeller"
+30806,Nile Tilapia,,100-200g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Palm kernel meal, expeller"
+30806,Nile Tilapia,,200-400g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Palm kernel meal, expeller"
+30806,Nile Tilapia,,400-800g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Palm kernel meal, expeller"
+30806,Nile Tilapia,,>800g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Palm kernel meal, expeller"
+30806,Nile Tilapia,,>1000g (Brood),,,0.2,"FASA ingredient form of 2026-11-06 (>100 g): Palm kernel meal, expeller"
+30806,African Catfish,,< 5g (Starter),,,0.1,"FASA ingredient form of 2026-11-06 (0-10 g): Palm kernel meal, expeller"
+30806,African Catfish,,5-50g (Pre-grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-200 g): Palm kernel meal, expeller"
+30806,African Catfish,,50-200g (Grower),,,0.15,"FASA ingredient form of 2026-11-06 (10-200 g): Palm kernel meal, expeller"
+30806,African Catfish,,200-500g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Palm kernel meal, expeller"
+30806,African Catfish,,500-800g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Palm kernel meal, expeller"
+30806,African Catfish,,800-1000g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Palm kernel meal, expeller"
+30806,African Catfish,,1000-1200g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Palm kernel meal, expeller"
+30806,African Catfish,,>1200g (Grower),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Palm kernel meal, expeller"
+30806,African Catfish,,>1000g (Brood),,,0.2,"FASA ingredient form of 2026-11-06 (>200 g): Palm kernel meal, expeller"
